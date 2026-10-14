@@ -1,0 +1,1836 @@
+==========       CONFIG      =============
+data_folder:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/data/ABIDE_aal
+atlas:aal
+num_rois:116
+num_classes:2
+num_subjects:871
+key:SUB_ID
+labels:DX_GROUP
+ages:AGE_AT_SCAN
+genders:SEX
+sites:SITE_ID
+scores:['SITE_ID', 'SEX', 'AGE_AT_SCAN']
+variable:connectivity
+dataset:ABIDE
+model:MM_GTUNets
+node_dim:500
+img_depth:2
+ph_depth:3
+hidden:128
+out:16
+dropout:0.3
+edge_drop:0.3
+pool_ratios:0.8
+smh:1
+deg:0.0001
+val:0.01
+use_cpu:False
+gpu_id:0
+train:True
+seed:911
+early_stop:100
+lr:0.0001
+vae_lr:0.001
+wd:0.0005
+epoch:500
+folds:10
+log_save:False
+model_save:True
+result_save:True
+print_freq:5
+ckpt_path:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal
+time:261014
+device:cuda:0
+==========     CONFIG END    =============
+
+
+===> Phase is train.
+
+Loading features....
+Loading labels....
+Loading phenotypic data....
+Data has loaded!
+
+
+========================== Fold 0 ==========================
+Number of labeled samples 704
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 1901329152.00000
+Epoch: 100,	lr: 0.00100,	loss: 365958.25000
+Epoch: 200,	lr: 0.00100,	loss: 360737.03125
+Epoch: 300,	lr: 0.00100,	loss: 359739.37500
+Epoch: 400,	lr: 0.00100,	loss: 359486.84375
+Epoch: 500,	lr: 0.00100,	loss: 359420.65625
+Epoch: 600,	lr: 0.00100,	loss: 359396.96875
+Epoch: 700,	lr: 0.00100,	loss: 359385.46875
+Epoch: 800,	lr: 0.00100,	loss: 359377.50000
+Epoch: 900,	lr: 0.00100,	loss: 359374.40625
+Epoch: 1000,	lr: 0.00100,	loss: 359365.09375
+Epoch: 1100,	lr: 0.00100,	loss: 359368.46875
+Epoch: 1200,	lr: 0.00100,	loss: 359391.18750
+Epoch: 1300,	lr: 0.00100,	loss: 359359.93750
+Epoch: 1400,	lr: 0.00100,	loss: 359358.31250
+Epoch: 1500,	lr: 0.00100,	loss: 359376.65625
+Early stopping
+
+ => Fold 0 best pretrain vae loss 359354.25000, epoch 1384
+
+  Number of training samples 704
+  Number of validation samples 79
+  Start training...
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+Epoch: 0,	lr: 0.00010,	train loss: 1.66855,	train acc: 0.50000,	eval loss: 1.63232,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.65300,	train acc: 0.50852,	eval loss: 1.63962,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:8 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 10,	lr: 0.00010,	train loss: 1.63658,	train acc: 0.54261,	eval loss: 1.62293,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:10 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:12 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:14 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.60760,	train acc: 0.54261,	eval loss: 1.61000,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:17 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:18 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.59449,	train acc: 0.56534,	eval loss: 1.60070,	eval acc: 0.59494 ,	eval spe: 0.64865	eval_sen: 0.54762
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:23 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.57553,	train acc: 0.58239,	eval loss: 1.59914,	eval acc: 0.48101 ,	eval spe: 0.13514	eval_sen: 0.78571
+Epoch:28 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:29 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 30,	lr: 0.00010,	train loss: 1.55850,	train acc: 0.59943,	eval loss: 1.58942,	eval acc: 0.48101 ,	eval spe: 0.05405	eval_sen: 0.85714
+Epoch:30 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.52801,	train acc: 0.66335,	eval loss: 1.58047,	eval acc: 0.50633 ,	eval spe: 0.00000	eval_sen: 0.95238
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:38 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 40,	lr: 0.00010,	train loss: 1.49571,	train acc: 0.68040,	eval loss: 1.56063,	eval acc: 0.56962 ,	eval spe: 0.24324	eval_sen: 0.85714
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:41 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 45,	lr: 0.00010,	train loss: 1.47222,	train acc: 0.68892,	eval loss: 1.55737,	eval acc: 0.62025 ,	eval spe: 0.21622	eval_sen: 0.97619
+Epoch: 50,	lr: 0.00010,	train loss: 1.44348,	train acc: 0.72159,	eval loss: 1.55060,	eval acc: 0.56962 ,	eval spe: 0.16216	eval_sen: 0.92857
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 55,	lr: 0.00010,	train loss: 1.40237,	train acc: 0.74574,	eval loss: 1.52876,	eval acc: 0.56962 ,	eval spe: 0.18919	eval_sen: 0.90476
+Epoch: 60,	lr: 0.00010,	train loss: 1.36018,	train acc: 0.78125,	eval loss: 1.53523,	eval acc: 0.49367 ,	eval spe: 0.10811	eval_sen: 0.83333
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 65,	lr: 0.00010,	train loss: 1.33079,	train acc: 0.80256,	eval loss: 1.51916,	eval acc: 0.64557 ,	eval spe: 0.40541	eval_sen: 0.85714
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 70,	lr: 0.00010,	train loss: 1.29412,	train acc: 0.83665,	eval loss: 1.52208,	eval acc: 0.55696 ,	eval spe: 0.29730	eval_sen: 0.78571
+Epoch: 75,	lr: 0.00010,	train loss: 1.25303,	train acc: 0.86648,	eval loss: 1.51166,	eval acc: 0.56962 ,	eval spe: 0.45946	eval_sen: 0.66667
+Epoch:78 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold0.pth
+Epoch: 80,	lr: 0.00010,	train loss: 1.19576,	train acc: 0.88068,	eval loss: 1.49120,	eval acc: 0.60759 ,	eval spe: 0.32432	eval_sen: 0.85714
+Epoch: 85,	lr: 0.00010,	train loss: 1.17498,	train acc: 0.91051,	eval loss: 1.55941,	eval acc: 0.56962 ,	eval spe: 0.45946	eval_sen: 0.66667
+Epoch: 90,	lr: 0.00010,	train loss: 1.14590,	train acc: 0.91335,	eval loss: 1.59068,	eval acc: 0.53165 ,	eval spe: 0.43243	eval_sen: 0.61905
+Epoch: 95,	lr: 0.00010,	train loss: 1.11315,	train acc: 0.93608,	eval loss: 1.62958,	eval acc: 0.56962 ,	eval spe: 0.45946	eval_sen: 0.66667
+Epoch: 100,	lr: 0.00010,	train loss: 1.08622,	train acc: 0.95170,	eval loss: 1.67137,	eval acc: 0.51899 ,	eval spe: 0.35135	eval_sen: 0.66667
+Epoch: 105,	lr: 0.00010,	train loss: 1.05274,	train acc: 0.96733,	eval loss: 1.83008,	eval acc: 0.58228 ,	eval spe: 0.45946	eval_sen: 0.69048
+Epoch: 110,	lr: 0.00010,	train loss: 1.03932,	train acc: 0.97159,	eval loss: 1.80716,	eval acc: 0.53165 ,	eval spe: 0.45946	eval_sen: 0.59524
+Epoch: 115,	lr: 0.00010,	train loss: 1.00779,	train acc: 0.98011,	eval loss: 1.98786,	eval acc: 0.50633 ,	eval spe: 0.40541	eval_sen: 0.59524
+Epoch: 120,	lr: 0.00010,	train loss: 0.99595,	train acc: 0.97585,	eval loss: 1.80117,	eval acc: 0.58228 ,	eval spe: 0.45946	eval_sen: 0.69048
+Epoch: 125,	lr: 0.00010,	train loss: 0.96392,	train acc: 0.99006,	eval loss: 2.05545,	eval acc: 0.53165 ,	eval spe: 0.43243	eval_sen: 0.61905
+Epoch: 130,	lr: 0.00010,	train loss: 0.95436,	train acc: 0.98580,	eval loss: 2.00659,	eval acc: 0.55696 ,	eval spe: 0.40541	eval_sen: 0.69048
+Epoch: 135,	lr: 0.00010,	train loss: 0.94491,	train acc: 0.98722,	eval loss: 2.05427,	eval acc: 0.56962 ,	eval spe: 0.43243	eval_sen: 0.69048
+Epoch: 140,	lr: 0.00010,	train loss: 0.93277,	train acc: 0.99148,	eval loss: 2.07803,	eval acc: 0.53165 ,	eval spe: 0.45946	eval_sen: 0.59524
+Epoch: 145,	lr: 0.00010,	train loss: 0.93022,	train acc: 0.99716,	eval loss: 2.05476,	eval acc: 0.53165 ,	eval spe: 0.43243	eval_sen: 0.61905
+Epoch: 150,	lr: 0.00010,	train loss: 0.91670,	train acc: 0.99432,	eval loss: 2.15136,	eval acc: 0.55696 ,	eval spe: 0.48649	eval_sen: 0.61905
+Epoch: 155,	lr: 0.00010,	train loss: 0.91029,	train acc: 0.99858,	eval loss: 2.23868,	eval acc: 0.54430 ,	eval spe: 0.45946	eval_sen: 0.61905
+Epoch: 160,	lr: 0.00010,	train loss: 0.91141,	train acc: 0.99574,	eval loss: 2.18581,	eval acc: 0.56962 ,	eval spe: 0.48649	eval_sen: 0.64286
+Epoch: 165,	lr: 0.00010,	train loss: 0.89637,	train acc: 0.99858,	eval loss: 2.20027,	eval acc: 0.54430 ,	eval spe: 0.45946	eval_sen: 0.61905
+Epoch: 170,	lr: 0.00010,	train loss: 0.88932,	train acc: 0.99858,	eval loss: 2.25096,	eval acc: 0.59494 ,	eval spe: 0.48649	eval_sen: 0.69048
+Epoch: 175,	lr: 0.00010,	train loss: 0.89611,	train acc: 0.99858,	eval loss: 2.21661,	eval acc: 0.51899 ,	eval spe: 0.45946	eval_sen: 0.57143
+Early stopping
+
+ => Fold 0 best val_loss 1.49097, val_acc 0.56962, epoch 78
+
+Training time of 0-fold data: 61.5932109375 s
+
+  Number of testing samples 88
+  Start testing...
+  Fold 0 test accuracy 0.69318, AUC 0.74779
+
+========================== Fold 1 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 45792904.00000
+Epoch: 100,	lr: 0.00100,	loss: 366529.09375
+Epoch: 200,	lr: 0.00100,	loss: 360412.78125
+Epoch: 300,	lr: 0.00100,	loss: 359656.56250
+Epoch: 400,	lr: 0.00100,	loss: 359482.50000
+Epoch: 500,	lr: 0.00100,	loss: 359420.78125
+Epoch: 600,	lr: 0.00100,	loss: 359401.46875
+Epoch: 700,	lr: 0.00100,	loss: 359388.31250
+Epoch: 800,	lr: 0.00100,	loss: 359378.59375
+Epoch: 900,	lr: 0.00100,	loss: 359374.28125
+Epoch: 1000,	lr: 0.00100,	loss: 359370.84375
+Epoch: 1100,	lr: 0.00100,	loss: 359365.68750
+Epoch: 1200,	lr: 0.00100,	loss: 359367.40625
+Early stopping
+
+ => Fold 1 best pretrain vae loss 359361.75000, epoch 1169
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.08982,	train acc: 0.47801,	eval loss: 1.05198,	eval acc: 0.55696 ,	eval spe: 0.38889	eval_sen: 0.69767
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.06202,	train acc: 0.49645,	eval loss: 1.05453,	eval acc: 0.48101 ,	eval spe: 1.00000	eval_sen: 0.04651
+Epoch: 10,	lr: 0.00010,	train loss: 1.06467,	train acc: 0.52766,	eval loss: 1.05797,	eval acc: 0.45570 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:11 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:14 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.05641,	train acc: 0.52624,	eval loss: 1.04699,	eval acc: 0.45570 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:18 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:19 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.03550,	train acc: 0.53759,	eval loss: 1.03713,	eval acc: 0.45570 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:21 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:22 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:23 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:24 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.01382,	train acc: 0.54468,	eval loss: 1.02052,	eval acc: 0.45570 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:26 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:27 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:28 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:29 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 30,	lr: 0.00010,	train loss: 0.97925,	train acc: 0.58723,	eval loss: 0.99813,	eval acc: 0.48101 ,	eval spe: 0.97222	eval_sen: 0.06977
+Epoch:30 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 35,	lr: 0.00010,	train loss: 0.96312,	train acc: 0.60426,	eval loss: 0.98744,	eval acc: 0.53165 ,	eval spe: 0.97222	eval_sen: 0.16279
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 40,	lr: 0.00010,	train loss: 0.92625,	train acc: 0.64255,	eval loss: 0.97630,	eval acc: 0.48101 ,	eval spe: 0.88889	eval_sen: 0.13953
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:41 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:42 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 45,	lr: 0.00010,	train loss: 0.88784,	train acc: 0.66241,	eval loss: 0.95612,	eval acc: 0.58228 ,	eval spe: 0.77778	eval_sen: 0.41860
+Epoch:45 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 50,	lr: 0.00010,	train loss: 0.84879,	train acc: 0.68936,	eval loss: 0.94354,	eval acc: 0.56962 ,	eval spe: 0.75000	eval_sen: 0.41860
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.80832,	train acc: 0.70213,	eval loss: 0.92063,	eval acc: 0.63291 ,	eval spe: 0.63889	eval_sen: 0.62791
+Epoch:55 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:56 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.77621,	train acc: 0.72199,	eval loss: 0.90752,	eval acc: 0.64557 ,	eval spe: 0.83333	eval_sen: 0.48837
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.75488,	train acc: 0.76454,	eval loss: 0.89636,	eval acc: 0.58228 ,	eval spe: 0.72222	eval_sen: 0.46512
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.69942,	train acc: 0.78298,	eval loss: 0.88552,	eval acc: 0.63291 ,	eval spe: 0.86111	eval_sen: 0.44186
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:74 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.66369,	train acc: 0.78723,	eval loss: 0.84564,	eval acc: 0.70886 ,	eval spe: 0.66667	eval_sen: 0.74419
+Epoch:79 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.65855,	train acc: 0.80709,	eval loss: 0.79124,	eval acc: 0.70886 ,	eval spe: 0.63889	eval_sen: 0.76744
+Epoch:80 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:81 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:82 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.61599,	train acc: 0.82979,	eval loss: 0.79250,	eval acc: 0.74684 ,	eval spe: 0.91667	eval_sen: 0.60465
+Epoch:87 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.59845,	train acc: 0.83546,	eval loss: 0.77714,	eval acc: 0.72152 ,	eval spe: 0.88889	eval_sen: 0.58140
+Epoch: 95,	lr: 0.00010,	train loss: 0.56628,	train acc: 0.84965,	eval loss: 0.73319,	eval acc: 0.78481 ,	eval spe: 0.80556	eval_sen: 0.76744
+Epoch:99 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.54290,	train acc: 0.87518,	eval loss: 0.69258,	eval acc: 0.78481 ,	eval spe: 0.72222	eval_sen: 0.83721
+Epoch: 105,	lr: 0.00010,	train loss: 0.53858,	train acc: 0.87376,	eval loss: 0.77758,	eval acc: 0.75949 ,	eval spe: 0.86111	eval_sen: 0.67442
+Epoch:109 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.48911,	train acc: 0.91348,	eval loss: 0.78148,	eval acc: 0.77215 ,	eval spe: 0.88889	eval_sen: 0.67442
+Epoch: 115,	lr: 0.00010,	train loss: 0.49462,	train acc: 0.89929,	eval loss: 0.70047,	eval acc: 0.78481 ,	eval spe: 0.69444	eval_sen: 0.86047
+Epoch:116 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 120,	lr: 0.00010,	train loss: 0.47200,	train acc: 0.91915,	eval loss: 0.71645,	eval acc: 0.77215 ,	eval spe: 0.80556	eval_sen: 0.74419
+Epoch: 125,	lr: 0.00010,	train loss: 0.44766,	train acc: 0.93191,	eval loss: 0.72031,	eval acc: 0.82278 ,	eval spe: 0.97222	eval_sen: 0.69767
+Epoch: 130,	lr: 0.00010,	train loss: 0.42130,	train acc: 0.95461,	eval loss: 0.66820,	eval acc: 0.84810 ,	eval spe: 0.91667	eval_sen: 0.79070
+Epoch: 135,	lr: 0.00010,	train loss: 0.42376,	train acc: 0.93901,	eval loss: 0.69054,	eval acc: 0.81013 ,	eval spe: 0.77778	eval_sen: 0.83721
+Epoch: 140,	lr: 0.00010,	train loss: 0.41881,	train acc: 0.94184,	eval loss: 0.72506,	eval acc: 0.83544 ,	eval spe: 0.91667	eval_sen: 0.76744
+Epoch: 145,	lr: 0.00010,	train loss: 0.41124,	train acc: 0.95177,	eval loss: 0.71199,	eval acc: 0.81013 ,	eval spe: 0.83333	eval_sen: 0.79070
+Epoch: 150,	lr: 0.00010,	train loss: 0.37902,	train acc: 0.96170,	eval loss: 0.66722,	eval acc: 0.81013 ,	eval spe: 0.86111	eval_sen: 0.76744
+Epoch: 155,	lr: 0.00010,	train loss: 0.36991,	train acc: 0.95887,	eval loss: 0.61949,	eval acc: 0.82278 ,	eval spe: 0.94444	eval_sen: 0.72093
+Epoch:159 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 160,	lr: 0.00010,	train loss: 0.36640,	train acc: 0.96738,	eval loss: 0.62200,	eval acc: 0.78481 ,	eval spe: 0.80556	eval_sen: 0.76744
+Epoch: 165,	lr: 0.00010,	train loss: 0.34563,	train acc: 0.97163,	eval loss: 0.65680,	eval acc: 0.86076 ,	eval spe: 0.86111	eval_sen: 0.86047
+Epoch: 170,	lr: 0.00010,	train loss: 0.33531,	train acc: 0.97730,	eval loss: 0.65875,	eval acc: 0.83544 ,	eval spe: 0.91667	eval_sen: 0.76744
+Epoch:174 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold1.pth
+Epoch: 175,	lr: 0.00010,	train loss: 0.33530,	train acc: 0.97589,	eval loss: 0.67425,	eval acc: 0.83544 ,	eval spe: 0.88889	eval_sen: 0.79070
+Epoch: 180,	lr: 0.00010,	train loss: 0.31780,	train acc: 0.98723,	eval loss: 0.76316,	eval acc: 0.82278 ,	eval spe: 0.88889	eval_sen: 0.76744
+Epoch: 185,	lr: 0.00010,	train loss: 0.31116,	train acc: 0.98723,	eval loss: 0.67372,	eval acc: 0.84810 ,	eval spe: 0.86111	eval_sen: 0.83721
+Epoch: 190,	lr: 0.00010,	train loss: 0.30089,	train acc: 0.98865,	eval loss: 0.68939,	eval acc: 0.82278 ,	eval spe: 0.91667	eval_sen: 0.74419
+Epoch: 195,	lr: 0.00010,	train loss: 0.30212,	train acc: 0.99007,	eval loss: 0.65464,	eval acc: 0.83544 ,	eval spe: 0.88889	eval_sen: 0.79070
+Epoch: 200,	lr: 0.00010,	train loss: 0.29047,	train acc: 0.99149,	eval loss: 0.74112,	eval acc: 0.83544 ,	eval spe: 0.88889	eval_sen: 0.79070
+Epoch: 205,	lr: 0.00010,	train loss: 0.28054,	train acc: 0.98723,	eval loss: 0.71914,	eval acc: 0.81013 ,	eval spe: 0.83333	eval_sen: 0.79070
+Epoch: 210,	lr: 0.00010,	train loss: 0.28433,	train acc: 0.99007,	eval loss: 0.77763,	eval acc: 0.83544 ,	eval spe: 0.88889	eval_sen: 0.79070
+Epoch: 215,	lr: 0.00010,	train loss: 0.28557,	train acc: 0.98723,	eval loss: 0.76184,	eval acc: 0.82278 ,	eval spe: 0.88889	eval_sen: 0.76744
+Epoch: 220,	lr: 0.00010,	train loss: 0.28969,	train acc: 0.97872,	eval loss: 0.74152,	eval acc: 0.79747 ,	eval spe: 0.86111	eval_sen: 0.74419
+Epoch: 225,	lr: 0.00010,	train loss: 0.26405,	train acc: 0.99574,	eval loss: 0.79798,	eval acc: 0.77215 ,	eval spe: 0.86111	eval_sen: 0.69767
+Epoch: 230,	lr: 0.00010,	train loss: 0.26249,	train acc: 0.99433,	eval loss: 0.71462,	eval acc: 0.82278 ,	eval spe: 0.86111	eval_sen: 0.79070
+Epoch: 235,	lr: 0.00010,	train loss: 0.25749,	train acc: 0.99433,	eval loss: 0.66101,	eval acc: 0.86076 ,	eval spe: 0.80556	eval_sen: 0.90698
+Epoch: 240,	lr: 0.00010,	train loss: 0.27611,	train acc: 0.98156,	eval loss: 0.72102,	eval acc: 0.83544 ,	eval spe: 0.83333	eval_sen: 0.83721
+Epoch: 245,	lr: 0.00010,	train loss: 0.25823,	train acc: 0.99574,	eval loss: 0.71252,	eval acc: 0.81013 ,	eval spe: 0.88889	eval_sen: 0.74419
+Epoch: 250,	lr: 0.00010,	train loss: 0.26001,	train acc: 0.99007,	eval loss: 0.72622,	eval acc: 0.84810 ,	eval spe: 0.83333	eval_sen: 0.86047
+Epoch: 255,	lr: 0.00010,	train loss: 0.25783,	train acc: 0.99433,	eval loss: 0.77478,	eval acc: 0.84810 ,	eval spe: 0.83333	eval_sen: 0.86047
+Epoch: 260,	lr: 0.00010,	train loss: 0.26188,	train acc: 0.99291,	eval loss: 0.70526,	eval acc: 0.82278 ,	eval spe: 0.88889	eval_sen: 0.76744
+Epoch: 265,	lr: 0.00010,	train loss: 0.24690,	train acc: 1.00000,	eval loss: 0.65903,	eval acc: 0.86076 ,	eval spe: 0.88889	eval_sen: 0.83721
+Epoch: 270,	lr: 0.00010,	train loss: 0.24438,	train acc: 0.99574,	eval loss: 0.74879,	eval acc: 0.84810 ,	eval spe: 0.88889	eval_sen: 0.81395
+Early stopping
+
+ => Fold 1 best val_loss 0.59213, val_acc 0.84810, epoch 174
+
+Training time of 1-fold data: 76.764359375 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 1 test accuracy 0.83908, AUC 0.91145
+
+========================== Fold 2 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 174504454127616.00000
+Epoch: 100,	lr: 0.00100,	loss: 1656965.75000
+Epoch: 200,	lr: 0.00100,	loss: 363204.71875
+Epoch: 300,	lr: 0.00100,	loss: 359929.87500
+Epoch: 400,	lr: 0.00100,	loss: 359561.59375
+Epoch: 500,	lr: 0.00100,	loss: 359476.71875
+Epoch: 600,	lr: 0.00100,	loss: 359425.84375
+Epoch: 700,	lr: 0.00100,	loss: 359403.09375
+Epoch: 800,	lr: 0.00100,	loss: 359390.06250
+Epoch: 900,	lr: 0.00100,	loss: 359390.71875
+Epoch: 1000,	lr: 0.00100,	loss: 359382.53125
+Epoch: 1100,	lr: 0.00100,	loss: 359392.40625
+Epoch: 1200,	lr: 0.00100,	loss: 359389.46875
+Early stopping
+
+ => Fold 2 best pretrain vae loss 359372.03125, epoch 1121
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.12167,	train acc: 0.45674,	eval loss: 1.07221,	eval acc: 0.45570 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:1 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.10309,	train acc: 0.51348,	eval loss: 1.09582,	eval acc: 0.48101 ,	eval spe: 0.94444	eval_sen: 0.09302
+Epoch: 10,	lr: 0.00010,	train loss: 1.11821,	train acc: 0.51489,	eval loss: 1.11845,	eval acc: 0.41772 ,	eval spe: 0.27778	eval_sen: 0.53488
+Epoch: 15,	lr: 0.00010,	train loss: 1.12166,	train acc: 0.51631,	eval loss: 1.12383,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 0.97674
+Epoch: 20,	lr: 0.00010,	train loss: 1.11014,	train acc: 0.55887,	eval loss: 1.11161,	eval acc: 0.54430 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 25,	lr: 0.00010,	train loss: 1.07393,	train acc: 0.60000,	eval loss: 1.08946,	eval acc: 0.54430 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 30,	lr: 0.00010,	train loss: 1.04364,	train acc: 0.62837,	eval loss: 1.06744,	eval acc: 0.54430 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:30 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.00798,	train acc: 0.63830,	eval loss: 1.04730,	eval acc: 0.54430 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:38 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 40,	lr: 0.00010,	train loss: 0.97575,	train acc: 0.66667,	eval loss: 1.02350,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 0.97674
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:41 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:42 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 45,	lr: 0.00010,	train loss: 0.91799,	train acc: 0.71348,	eval loss: 0.99729,	eval acc: 0.55696 ,	eval spe: 0.05556	eval_sen: 0.97674
+Epoch:45 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:46 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 50,	lr: 0.00010,	train loss: 0.89354,	train acc: 0.73050,	eval loss: 0.98628,	eval acc: 0.54430 ,	eval spe: 0.05556	eval_sen: 0.95349
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.85485,	train acc: 0.75035,	eval loss: 0.97506,	eval acc: 0.60759 ,	eval spe: 0.30556	eval_sen: 0.86047
+Epoch:55 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.83140,	train acc: 0.76028,	eval loss: 0.96091,	eval acc: 0.64557 ,	eval spe: 0.25000	eval_sen: 0.97674
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.79661,	train acc: 0.79007,	eval loss: 0.95155,	eval acc: 0.60759 ,	eval spe: 0.41667	eval_sen: 0.76744
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.75574,	train acc: 0.81560,	eval loss: 0.92209,	eval acc: 0.60759 ,	eval spe: 0.38889	eval_sen: 0.79070
+Epoch:70 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:71 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:72 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:74 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.72481,	train acc: 0.82695,	eval loss: 0.89399,	eval acc: 0.74684 ,	eval spe: 0.63889	eval_sen: 0.83721
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.68829,	train acc: 0.82695,	eval loss: 0.89778,	eval acc: 0.68354 ,	eval spe: 0.52778	eval_sen: 0.81395
+Epoch:81 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:83 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:84 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.65889,	train acc: 0.85106,	eval loss: 0.86531,	eval acc: 0.69620 ,	eval spe: 0.52778	eval_sen: 0.83721
+Epoch:86 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:88 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.61860,	train acc: 0.88652,	eval loss: 0.82910,	eval acc: 0.74684 ,	eval spe: 0.66667	eval_sen: 0.81395
+Epoch:93 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 95,	lr: 0.00010,	train loss: 0.59415,	train acc: 0.90922,	eval loss: 0.83290,	eval acc: 0.74684 ,	eval spe: 0.58333	eval_sen: 0.88372
+Epoch:97 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.58398,	train acc: 0.90071,	eval loss: 0.83064,	eval acc: 0.65823 ,	eval spe: 0.66667	eval_sen: 0.65116
+Epoch: 105,	lr: 0.00010,	train loss: 0.55318,	train acc: 0.91631,	eval loss: 0.80942,	eval acc: 0.77215 ,	eval spe: 0.66667	eval_sen: 0.86047
+Epoch:108 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.53202,	train acc: 0.92199,	eval loss: 0.78596,	eval acc: 0.75949 ,	eval spe: 0.72222	eval_sen: 0.79070
+Epoch:113 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch:114 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 115,	lr: 0.00010,	train loss: 0.50967,	train acc: 0.93617,	eval loss: 0.73700,	eval acc: 0.82278 ,	eval spe: 0.80556	eval_sen: 0.83721
+Epoch:115 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 120,	lr: 0.00010,	train loss: 0.49179,	train acc: 0.94043,	eval loss: 0.80673,	eval acc: 0.77215 ,	eval spe: 0.58333	eval_sen: 0.93023
+Epoch:122 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold2.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.47073,	train acc: 0.94610,	eval loss: 0.72013,	eval acc: 0.82278 ,	eval spe: 0.80556	eval_sen: 0.83721
+Epoch: 130,	lr: 0.00010,	train loss: 0.45245,	train acc: 0.95035,	eval loss: 0.78649,	eval acc: 0.73418 ,	eval spe: 0.72222	eval_sen: 0.74419
+Epoch: 135,	lr: 0.00010,	train loss: 0.45384,	train acc: 0.94043,	eval loss: 0.71545,	eval acc: 0.83544 ,	eval spe: 0.77778	eval_sen: 0.88372
+Epoch: 140,	lr: 0.00010,	train loss: 0.42480,	train acc: 0.96454,	eval loss: 0.77284,	eval acc: 0.74684 ,	eval spe: 0.72222	eval_sen: 0.76744
+Epoch: 145,	lr: 0.00010,	train loss: 0.40930,	train acc: 0.97730,	eval loss: 0.80813,	eval acc: 0.81013 ,	eval spe: 0.69444	eval_sen: 0.90698
+Epoch: 150,	lr: 0.00010,	train loss: 0.40993,	train acc: 0.96170,	eval loss: 0.75375,	eval acc: 0.79747 ,	eval spe: 0.75000	eval_sen: 0.83721
+Epoch: 155,	lr: 0.00010,	train loss: 0.39146,	train acc: 0.97305,	eval loss: 0.77680,	eval acc: 0.72152 ,	eval spe: 0.69444	eval_sen: 0.74419
+Epoch: 160,	lr: 0.00010,	train loss: 0.39319,	train acc: 0.97163,	eval loss: 0.79991,	eval acc: 0.74684 ,	eval spe: 0.66667	eval_sen: 0.81395
+Epoch: 165,	lr: 0.00010,	train loss: 0.37355,	train acc: 0.97730,	eval loss: 0.73478,	eval acc: 0.77215 ,	eval spe: 0.69444	eval_sen: 0.83721
+Epoch: 170,	lr: 0.00010,	train loss: 0.37517,	train acc: 0.98298,	eval loss: 0.80236,	eval acc: 0.74684 ,	eval spe: 0.72222	eval_sen: 0.76744
+Epoch: 175,	lr: 0.00010,	train loss: 0.35972,	train acc: 0.98723,	eval loss: 0.84953,	eval acc: 0.78481 ,	eval spe: 0.72222	eval_sen: 0.83721
+Epoch: 180,	lr: 0.00010,	train loss: 0.36015,	train acc: 0.98865,	eval loss: 0.79839,	eval acc: 0.78481 ,	eval spe: 0.72222	eval_sen: 0.83721
+Epoch: 185,	lr: 0.00010,	train loss: 0.34714,	train acc: 0.99007,	eval loss: 0.86467,	eval acc: 0.74684 ,	eval spe: 0.69444	eval_sen: 0.79070
+Epoch: 190,	lr: 0.00010,	train loss: 0.34937,	train acc: 0.99291,	eval loss: 0.82403,	eval acc: 0.79747 ,	eval spe: 0.69444	eval_sen: 0.88372
+Epoch: 195,	lr: 0.00010,	train loss: 0.33921,	train acc: 0.99149,	eval loss: 0.78215,	eval acc: 0.74684 ,	eval spe: 0.75000	eval_sen: 0.74419
+Epoch: 200,	lr: 0.00010,	train loss: 0.33021,	train acc: 0.99433,	eval loss: 0.86331,	eval acc: 0.75949 ,	eval spe: 0.75000	eval_sen: 0.76744
+Epoch: 205,	lr: 0.00010,	train loss: 0.31928,	train acc: 0.99858,	eval loss: 0.82369,	eval acc: 0.77215 ,	eval spe: 0.69444	eval_sen: 0.83721
+Epoch: 210,	lr: 0.00010,	train loss: 0.32144,	train acc: 0.99716,	eval loss: 0.75100,	eval acc: 0.75949 ,	eval spe: 0.72222	eval_sen: 0.79070
+Epoch: 215,	lr: 0.00010,	train loss: 0.31311,	train acc: 0.99858,	eval loss: 0.76921,	eval acc: 0.75949 ,	eval spe: 0.69444	eval_sen: 0.81395
+Epoch: 220,	lr: 0.00010,	train loss: 0.31163,	train acc: 0.99291,	eval loss: 0.80260,	eval acc: 0.79747 ,	eval spe: 0.75000	eval_sen: 0.83721
+Early stopping
+
+ => Fold 2 best val_loss 0.68537, val_acc 0.81013, epoch 122
+
+Training time of 2-fold data: 72.4571171875 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 2 test accuracy 0.80460, AUC 0.89502
+
+========================== Fold 3 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 16919032832.00000
+Epoch: 100,	lr: 0.00100,	loss: 445733.12500
+Epoch: 200,	lr: 0.00100,	loss: 364598.62500
+Epoch: 300,	lr: 0.00100,	loss: 361102.75000
+Epoch: 400,	lr: 0.00100,	loss: 360004.46875
+Epoch: 500,	lr: 0.00100,	loss: 359638.75000
+Epoch: 600,	lr: 0.00100,	loss: 359480.15625
+Epoch: 700,	lr: 0.00100,	loss: 359443.65625
+Epoch: 800,	lr: 0.00100,	loss: 359423.46875
+Epoch: 900,	lr: 0.00100,	loss: 359407.43750
+Epoch: 1000,	lr: 0.00100,	loss: 359396.09375
+Epoch: 1100,	lr: 0.00100,	loss: 359399.40625
+Epoch: 1200,	lr: 0.00100,	loss: 359398.31250
+Epoch: 1300,	lr: 0.00100,	loss: 359386.90625
+Epoch: 1400,	lr: 0.00100,	loss: 359401.12500
+Early stopping
+
+ => Fold 3 best pretrain vae loss 359379.43750, epoch 1273
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.29884,	train acc: 0.50496,	eval loss: 1.28354,	eval acc: 0.48101 ,	eval spe: 0.29730	eval_sen: 0.64286
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:1 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:3 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:4 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.29705,	train acc: 0.44823,	eval loss: 1.27365,	eval acc: 0.45570 ,	eval spe: 0.94595	eval_sen: 0.02381
+Epoch:6 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:7 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:9 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 10,	lr: 0.00010,	train loss: 1.27162,	train acc: 0.51206,	eval loss: 1.26219,	eval acc: 0.48101 ,	eval spe: 1.00000	eval_sen: 0.02381
+Epoch:10 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:11 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:12 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:13 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:14 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.24241,	train acc: 0.53617,	eval loss: 1.24872,	eval acc: 0.48101 ,	eval spe: 1.00000	eval_sen: 0.02381
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:16 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:18 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:19 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.23153,	train acc: 0.53050,	eval loss: 1.22883,	eval acc: 0.48101 ,	eval spe: 1.00000	eval_sen: 0.02381
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:21 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:22 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:23 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:24 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.20666,	train acc: 0.54326,	eval loss: 1.21537,	eval acc: 0.46835 ,	eval spe: 0.97297	eval_sen: 0.02381
+Epoch:25 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:27 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:29 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 30,	lr: 0.00010,	train loss: 1.17777,	train acc: 0.58723,	eval loss: 1.19627,	eval acc: 0.51899 ,	eval spe: 0.91892	eval_sen: 0.16667
+Epoch:30 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.15469,	train acc: 0.59574,	eval loss: 1.17283,	eval acc: 0.49367 ,	eval spe: 0.86486	eval_sen: 0.16667
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:38 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 40,	lr: 0.00010,	train loss: 1.10764,	train acc: 0.62270,	eval loss: 1.14283,	eval acc: 0.56962 ,	eval spe: 0.72973	eval_sen: 0.42857
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:42 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 45,	lr: 0.00010,	train loss: 1.06173,	train acc: 0.65390,	eval loss: 1.11751,	eval acc: 0.55696 ,	eval spe: 0.70270	eval_sen: 0.42857
+Epoch:45 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:46 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 50,	lr: 0.00010,	train loss: 1.01654,	train acc: 0.67660,	eval loss: 1.09911,	eval acc: 0.49367 ,	eval spe: 0.62162	eval_sen: 0.38095
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.96706,	train acc: 0.70922,	eval loss: 1.06518,	eval acc: 0.54430 ,	eval spe: 0.59459	eval_sen: 0.50000
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:59 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.92466,	train acc: 0.72482,	eval loss: 1.04238,	eval acc: 0.62025 ,	eval spe: 0.56757	eval_sen: 0.66667
+Epoch:61 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:63 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.87155,	train acc: 0.76454,	eval loss: 1.00589,	eval acc: 0.63291 ,	eval spe: 0.59459	eval_sen: 0.66667
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.82448,	train acc: 0.78014,	eval loss: 0.95731,	eval acc: 0.69620 ,	eval spe: 0.67568	eval_sen: 0.71429
+Epoch:70 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.78591,	train acc: 0.80284,	eval loss: 0.94674,	eval acc: 0.64557 ,	eval spe: 0.67568	eval_sen: 0.61905
+Epoch:77 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:79 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.74190,	train acc: 0.84539,	eval loss: 0.93072,	eval acc: 0.68354 ,	eval spe: 0.75676	eval_sen: 0.61905
+Epoch:82 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.70119,	train acc: 0.85816,	eval loss: 0.91780,	eval acc: 0.65823 ,	eval spe: 0.70270	eval_sen: 0.61905
+Epoch:86 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.66943,	train acc: 0.87092,	eval loss: 0.87599,	eval acc: 0.78481 ,	eval spe: 0.72973	eval_sen: 0.83333
+Epoch: 95,	lr: 0.00010,	train loss: 0.63580,	train acc: 0.88936,	eval loss: 0.86419,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch:96 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch:97 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.59581,	train acc: 0.91631,	eval loss: 0.79309,	eval acc: 0.73418 ,	eval spe: 0.86486	eval_sen: 0.61905
+Epoch:100 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 105,	lr: 0.00010,	train loss: 0.57188,	train acc: 0.93617,	eval loss: 0.81739,	eval acc: 0.78481 ,	eval spe: 0.72973	eval_sen: 0.83333
+Epoch: 110,	lr: 0.00010,	train loss: 0.53843,	train acc: 0.92624,	eval loss: 0.77117,	eval acc: 0.81013 ,	eval spe: 0.78378	eval_sen: 0.83333
+Epoch:110 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 115,	lr: 0.00010,	train loss: 0.50999,	train acc: 0.94326,	eval loss: 0.75459,	eval acc: 0.78481 ,	eval spe: 0.70270	eval_sen: 0.85714
+Epoch:115 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 120,	lr: 0.00010,	train loss: 0.48010,	train acc: 0.96028,	eval loss: 0.78716,	eval acc: 0.73418 ,	eval spe: 0.64865	eval_sen: 0.80952
+Epoch:122 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.45306,	train acc: 0.96596,	eval loss: 0.82963,	eval acc: 0.77215 ,	eval spe: 0.81081	eval_sen: 0.73810
+Epoch: 130,	lr: 0.00010,	train loss: 0.43506,	train acc: 0.96879,	eval loss: 0.78582,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Epoch:133 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 135,	lr: 0.00010,	train loss: 0.41557,	train acc: 0.97021,	eval loss: 0.80419,	eval acc: 0.74684 ,	eval spe: 0.67568	eval_sen: 0.80952
+Epoch: 140,	lr: 0.00010,	train loss: 0.39586,	train acc: 0.98582,	eval loss: 0.83010,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch:144 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 145,	lr: 0.00010,	train loss: 0.38497,	train acc: 0.98582,	eval loss: 0.69796,	eval acc: 0.74684 ,	eval spe: 0.72973	eval_sen: 0.76190
+Epoch: 150,	lr: 0.00010,	train loss: 0.37768,	train acc: 0.98865,	eval loss: 0.84457,	eval acc: 0.73418 ,	eval spe: 0.64865	eval_sen: 0.80952
+Epoch: 155,	lr: 0.00010,	train loss: 0.36797,	train acc: 0.98298,	eval loss: 0.77950,	eval acc: 0.75949 ,	eval spe: 0.67568	eval_sen: 0.83333
+Epoch: 160,	lr: 0.00010,	train loss: 0.35309,	train acc: 0.98440,	eval loss: 0.76688,	eval acc: 0.77215 ,	eval spe: 0.67568	eval_sen: 0.85714
+Epoch:162 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold3.pth
+Epoch: 165,	lr: 0.00010,	train loss: 0.35014,	train acc: 0.99433,	eval loss: 0.79493,	eval acc: 0.75949 ,	eval spe: 0.75676	eval_sen: 0.76190
+Epoch: 170,	lr: 0.00010,	train loss: 0.33625,	train acc: 0.99574,	eval loss: 0.82610,	eval acc: 0.79747 ,	eval spe: 0.72973	eval_sen: 0.85714
+Epoch: 175,	lr: 0.00010,	train loss: 0.32915,	train acc: 0.99433,	eval loss: 0.82536,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Epoch: 180,	lr: 0.00010,	train loss: 0.32723,	train acc: 0.99291,	eval loss: 0.75137,	eval acc: 0.75949 ,	eval spe: 0.72973	eval_sen: 0.78571
+Epoch: 185,	lr: 0.00010,	train loss: 0.31467,	train acc: 0.99574,	eval loss: 0.74537,	eval acc: 0.78481 ,	eval spe: 0.72973	eval_sen: 0.83333
+Epoch: 190,	lr: 0.00010,	train loss: 0.30660,	train acc: 0.99858,	eval loss: 0.72915,	eval acc: 0.82278 ,	eval spe: 0.78378	eval_sen: 0.85714
+Epoch: 195,	lr: 0.00010,	train loss: 0.30730,	train acc: 0.99433,	eval loss: 0.74923,	eval acc: 0.79747 ,	eval spe: 0.75676	eval_sen: 0.83333
+Epoch: 200,	lr: 0.00010,	train loss: 0.30019,	train acc: 0.99716,	eval loss: 0.72539,	eval acc: 0.79747 ,	eval spe: 0.75676	eval_sen: 0.83333
+Epoch: 205,	lr: 0.00010,	train loss: 0.29733,	train acc: 0.99858,	eval loss: 0.91587,	eval acc: 0.78481 ,	eval spe: 0.70270	eval_sen: 0.85714
+Epoch: 210,	lr: 0.00010,	train loss: 0.29910,	train acc: 1.00000,	eval loss: 0.78472,	eval acc: 0.78481 ,	eval spe: 0.72973	eval_sen: 0.83333
+Epoch: 215,	lr: 0.00010,	train loss: 0.29265,	train acc: 1.00000,	eval loss: 0.75284,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 220,	lr: 0.00010,	train loss: 0.29244,	train acc: 1.00000,	eval loss: 0.84234,	eval acc: 0.77215 ,	eval spe: 0.64865	eval_sen: 0.88095
+Epoch: 225,	lr: 0.00010,	train loss: 0.29085,	train acc: 0.99858,	eval loss: 0.84487,	eval acc: 0.75949 ,	eval spe: 0.72973	eval_sen: 0.78571
+Epoch: 230,	lr: 0.00010,	train loss: 0.29304,	train acc: 1.00000,	eval loss: 0.77765,	eval acc: 0.77215 ,	eval spe: 0.70270	eval_sen: 0.83333
+Epoch: 235,	lr: 0.00010,	train loss: 0.28595,	train acc: 1.00000,	eval loss: 0.85983,	eval acc: 0.79747 ,	eval spe: 0.75676	eval_sen: 0.83333
+Epoch: 240,	lr: 0.00010,	train loss: 0.28504,	train acc: 1.00000,	eval loss: 0.81668,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Epoch: 245,	lr: 0.00010,	train loss: 0.28645,	train acc: 1.00000,	eval loss: 0.79632,	eval acc: 0.78481 ,	eval spe: 0.64865	eval_sen: 0.90476
+Epoch: 250,	lr: 0.00010,	train loss: 0.27787,	train acc: 0.99858,	eval loss: 0.79352,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch: 255,	lr: 0.00010,	train loss: 0.27916,	train acc: 1.00000,	eval loss: 0.79812,	eval acc: 0.79747 ,	eval spe: 0.72973	eval_sen: 0.85714
+Epoch: 260,	lr: 0.00010,	train loss: 0.28116,	train acc: 1.00000,	eval loss: 0.86930,	eval acc: 0.75949 ,	eval spe: 0.70270	eval_sen: 0.80952
+Early stopping
+
+ => Fold 3 best val_loss 0.65093, val_acc 0.79747, epoch 162
+
+Training time of 3-fold data: 86.5316328125 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 3 test accuracy 0.86207, AUC 0.93245
+
+========================== Fold 4 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 36296114176.00000
+Epoch: 100,	lr: 0.00100,	loss: 372111.40625
+Epoch: 200,	lr: 0.00100,	loss: 360904.03125
+Epoch: 300,	lr: 0.00100,	loss: 359818.34375
+Epoch: 400,	lr: 0.00100,	loss: 359559.09375
+Epoch: 500,	lr: 0.00100,	loss: 359454.46875
+Epoch: 600,	lr: 0.00100,	loss: 359420.25000
+Epoch: 700,	lr: 0.00100,	loss: 359399.81250
+Epoch: 800,	lr: 0.00100,	loss: 359388.37500
+Epoch: 900,	lr: 0.00100,	loss: 359375.03125
+Epoch: 1000,	lr: 0.00100,	loss: 359376.56250
+Epoch: 1100,	lr: 0.00100,	loss: 359365.50000
+Epoch: 1200,	lr: 0.00100,	loss: 359373.68750
+Epoch: 1300,	lr: 0.00100,	loss: 359368.50000
+Epoch: 1400,	lr: 0.00100,	loss: 359385.65625
+Epoch: 1500,	lr: 0.00100,	loss: 359356.53125
+Epoch: 1600,	lr: 0.00100,	loss: 359362.59375
+Early stopping
+
+ => Fold 4 best pretrain vae loss 359353.15625, epoch 1432
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.34897,	train acc: 0.49787,	eval loss: 1.31834,	eval acc: 0.41772 ,	eval spe: 0.67568	eval_sen: 0.19048
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:3 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:4 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.32537,	train acc: 0.49787,	eval loss: 1.31118,	eval acc: 0.43038 ,	eval spe: 0.45946	eval_sen: 0.40476
+Epoch:6 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:7 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:8 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:9 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 10,	lr: 0.00010,	train loss: 1.28798,	train acc: 0.53901,	eval loss: 1.28153,	eval acc: 0.55696 ,	eval spe: 0.13514	eval_sen: 0.92857
+Epoch:10 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:11 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:12 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:13 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:14 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.26186,	train acc: 0.55177,	eval loss: 1.25094,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:16 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:17 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:18 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:19 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.20484,	train acc: 0.58582,	eval loss: 1.21988,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:21 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:22 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:23 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:24 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.18910,	train acc: 0.57163,	eval loss: 1.19145,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:25 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:26 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:27 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:28 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:29 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 30,	lr: 0.00010,	train loss: 1.14651,	train acc: 0.59433,	eval loss: 1.17215,	eval acc: 0.54430 ,	eval spe: 0.02703	eval_sen: 1.00000
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.11779,	train acc: 0.60851,	eval loss: 1.15345,	eval acc: 0.56962 ,	eval spe: 0.08108	eval_sen: 1.00000
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 40,	lr: 0.00010,	train loss: 1.08993,	train acc: 0.66667,	eval loss: 1.14178,	eval acc: 0.55696 ,	eval spe: 0.05405	eval_sen: 1.00000
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:41 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 45,	lr: 0.00010,	train loss: 1.05859,	train acc: 0.67943,	eval loss: 1.12405,	eval acc: 0.55696 ,	eval spe: 0.16216	eval_sen: 0.90476
+Epoch:45 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:46 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 50,	lr: 0.00010,	train loss: 1.00098,	train acc: 0.73759,	eval loss: 1.10473,	eval acc: 0.62025 ,	eval spe: 0.27027	eval_sen: 0.92857
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.96236,	train acc: 0.76028,	eval loss: 1.08191,	eval acc: 0.64557 ,	eval spe: 0.37838	eval_sen: 0.88095
+Epoch:55 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:56 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.92825,	train acc: 0.77163,	eval loss: 1.05958,	eval acc: 0.70886 ,	eval spe: 0.56757	eval_sen: 0.83333
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:63 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.88923,	train acc: 0.80426,	eval loss: 1.02688,	eval acc: 0.77215 ,	eval spe: 0.62162	eval_sen: 0.90476
+Epoch:65 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.85019,	train acc: 0.83404,	eval loss: 1.02045,	eval acc: 0.68354 ,	eval spe: 0.64865	eval_sen: 0.71429
+Epoch:71 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:74 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.79274,	train acc: 0.86241,	eval loss: 0.95588,	eval acc: 0.75949 ,	eval spe: 0.72973	eval_sen: 0.78571
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:77 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.75489,	train acc: 0.87092,	eval loss: 0.93338,	eval acc: 0.72152 ,	eval spe: 0.64865	eval_sen: 0.78571
+Epoch:81 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:82 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.72807,	train acc: 0.90355,	eval loss: 0.89435,	eval acc: 0.77215 ,	eval spe: 0.89189	eval_sen: 0.66667
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:86 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:87 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.67677,	train acc: 0.92766,	eval loss: 0.86439,	eval acc: 0.77215 ,	eval spe: 0.78378	eval_sen: 0.76190
+Epoch:91 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:92 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:93 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 95,	lr: 0.00010,	train loss: 0.65629,	train acc: 0.92482,	eval loss: 0.81594,	eval acc: 0.81013 ,	eval spe: 0.89189	eval_sen: 0.73810
+Epoch: 100,	lr: 0.00010,	train loss: 0.62459,	train acc: 0.94043,	eval loss: 0.82152,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch:101 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch:104 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 105,	lr: 0.00010,	train loss: 0.59753,	train acc: 0.95461,	eval loss: 0.74297,	eval acc: 0.83544 ,	eval spe: 0.89189	eval_sen: 0.78571
+Epoch:105 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.56453,	train acc: 0.96738,	eval loss: 0.80575,	eval acc: 0.77215 ,	eval spe: 0.86486	eval_sen: 0.69048
+Epoch: 115,	lr: 0.00010,	train loss: 0.55980,	train acc: 0.95461,	eval loss: 0.80771,	eval acc: 0.78481 ,	eval spe: 0.89189	eval_sen: 0.69048
+Epoch: 120,	lr: 0.00010,	train loss: 0.55325,	train acc: 0.96170,	eval loss: 0.76300,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch:123 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold4.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.52196,	train acc: 0.97163,	eval loss: 0.77165,	eval acc: 0.84810 ,	eval spe: 0.78378	eval_sen: 0.90476
+Epoch: 130,	lr: 0.00010,	train loss: 0.51416,	train acc: 0.96879,	eval loss: 0.71664,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 135,	lr: 0.00010,	train loss: 0.49425,	train acc: 0.98440,	eval loss: 0.81821,	eval acc: 0.77215 ,	eval spe: 0.86486	eval_sen: 0.69048
+Epoch: 140,	lr: 0.00010,	train loss: 0.49725,	train acc: 0.98298,	eval loss: 0.78051,	eval acc: 0.84810 ,	eval spe: 0.83784	eval_sen: 0.85714
+Epoch: 145,	lr: 0.00010,	train loss: 0.48130,	train acc: 0.98723,	eval loss: 0.76760,	eval acc: 0.87342 ,	eval spe: 0.86486	eval_sen: 0.88095
+Epoch: 150,	lr: 0.00010,	train loss: 0.46487,	train acc: 0.98723,	eval loss: 0.72655,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 155,	lr: 0.00010,	train loss: 0.46262,	train acc: 0.98865,	eval loss: 0.74949,	eval acc: 0.84810 ,	eval spe: 0.83784	eval_sen: 0.85714
+Epoch: 160,	lr: 0.00010,	train loss: 0.45180,	train acc: 0.99291,	eval loss: 0.77066,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 165,	lr: 0.00010,	train loss: 0.44100,	train acc: 0.99433,	eval loss: 0.78259,	eval acc: 0.84810 ,	eval spe: 0.83784	eval_sen: 0.85714
+Epoch: 170,	lr: 0.00010,	train loss: 0.43815,	train acc: 0.99433,	eval loss: 0.82063,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 175,	lr: 0.00010,	train loss: 0.43426,	train acc: 0.99574,	eval loss: 0.81708,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 180,	lr: 0.00010,	train loss: 0.43004,	train acc: 0.99716,	eval loss: 0.83606,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 185,	lr: 0.00010,	train loss: 0.42417,	train acc: 0.99574,	eval loss: 0.82069,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 190,	lr: 0.00010,	train loss: 0.41919,	train acc: 1.00000,	eval loss: 0.80932,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 195,	lr: 0.00010,	train loss: 0.42113,	train acc: 1.00000,	eval loss: 0.77640,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Epoch: 200,	lr: 0.00010,	train loss: 0.41637,	train acc: 0.99858,	eval loss: 0.77936,	eval acc: 0.78481 ,	eval spe: 0.81081	eval_sen: 0.76190
+Epoch: 205,	lr: 0.00010,	train loss: 0.40777,	train acc: 1.00000,	eval loss: 0.82634,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 210,	lr: 0.00010,	train loss: 0.40179,	train acc: 1.00000,	eval loss: 0.87761,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 215,	lr: 0.00010,	train loss: 0.40532,	train acc: 1.00000,	eval loss: 0.80326,	eval acc: 0.86076 ,	eval spe: 0.86486	eval_sen: 0.85714
+Epoch: 220,	lr: 0.00010,	train loss: 0.39880,	train acc: 1.00000,	eval loss: 0.81587,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Early stopping
+
+ => Fold 4 best val_loss 0.70247, val_acc 0.83544, epoch 123
+
+Training time of 4-fold data: 74.7500078125 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 4 test accuracy 0.77011, AUC 0.83085
+
+========================== Fold 5 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 1967160688640.00000
+Epoch: 100,	lr: 0.00100,	loss: 502840.37500
+Epoch: 200,	lr: 0.00100,	loss: 362782.50000
+Epoch: 300,	lr: 0.00100,	loss: 359970.15625
+Epoch: 400,	lr: 0.00100,	loss: 359596.87500
+Epoch: 500,	lr: 0.00100,	loss: 359500.18750
+Epoch: 600,	lr: 0.00100,	loss: 359451.59375
+Epoch: 700,	lr: 0.00100,	loss: 359418.43750
+Epoch: 800,	lr: 0.00100,	loss: 359397.37500
+Epoch: 900,	lr: 0.00100,	loss: 359381.62500
+Epoch: 1000,	lr: 0.00100,	loss: 359372.03125
+Epoch: 1100,	lr: 0.00100,	loss: 359380.81250
+Epoch: 1200,	lr: 0.00100,	loss: 359364.71875
+Epoch: 1300,	lr: 0.00100,	loss: 359373.00000
+Early stopping
+
+ => Fold 5 best pretrain vae loss 359359.46875, epoch 1282
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.01788,	train acc: 0.52340,	eval loss: 0.98525,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:1 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:2 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:3 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 5,	lr: 0.00010,	train loss: 0.97468,	train acc: 0.54043,	eval loss: 0.97003,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:5 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:6 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:7 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:8 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:9 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 10,	lr: 0.00010,	train loss: 0.96695,	train acc: 0.52340,	eval loss: 0.95312,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:10 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:11 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:13 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 15,	lr: 0.00010,	train loss: 0.93430,	train acc: 0.55035,	eval loss: 0.94455,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 20,	lr: 0.00010,	train loss: 0.93683,	train acc: 0.56879,	eval loss: 0.95048,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 25,	lr: 0.00010,	train loss: 0.94152,	train acc: 0.56879,	eval loss: 0.96273,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 30,	lr: 0.00010,	train loss: 0.94087,	train acc: 0.63830,	eval loss: 0.97358,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 35,	lr: 0.00010,	train loss: 0.93031,	train acc: 0.64965,	eval loss: 0.97367,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 40,	lr: 0.00010,	train loss: 0.90889,	train acc: 0.67376,	eval loss: 0.96878,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 45,	lr: 0.00010,	train loss: 0.87455,	train acc: 0.70496,	eval loss: 0.95325,	eval acc: 0.58228 ,	eval spe: 0.10811	eval_sen: 1.00000
+Epoch: 50,	lr: 0.00010,	train loss: 0.83782,	train acc: 0.74326,	eval loss: 0.93865,	eval acc: 0.62025 ,	eval spe: 0.24324	eval_sen: 0.95238
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.80474,	train acc: 0.74752,	eval loss: 0.92439,	eval acc: 0.62025 ,	eval spe: 0.27027	eval_sen: 0.92857
+Epoch:55 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:56 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.76744,	train acc: 0.78014,	eval loss: 0.91198,	eval acc: 0.65823 ,	eval spe: 0.32432	eval_sen: 0.95238
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:63 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.72339,	train acc: 0.82979,	eval loss: 0.89842,	eval acc: 0.70886 ,	eval spe: 0.59459	eval_sen: 0.80952
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.68919,	train acc: 0.83404,	eval loss: 0.88018,	eval acc: 0.70886 ,	eval spe: 0.51351	eval_sen: 0.88095
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.65904,	train acc: 0.85674,	eval loss: 0.84292,	eval acc: 0.74684 ,	eval spe: 0.72973	eval_sen: 0.76190
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:77 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:78 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:79 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.63096,	train acc: 0.86241,	eval loss: 0.82610,	eval acc: 0.69620 ,	eval spe: 0.62162	eval_sen: 0.76190
+Epoch:80 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:81 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:82 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:84 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.58364,	train acc: 0.90213,	eval loss: 0.78653,	eval acc: 0.75949 ,	eval spe: 0.75676	eval_sen: 0.76190
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:88 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.54883,	train acc: 0.91348,	eval loss: 0.76244,	eval acc: 0.74684 ,	eval spe: 0.72973	eval_sen: 0.76190
+Epoch:90 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:94 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 95,	lr: 0.00010,	train loss: 0.53151,	train acc: 0.92766,	eval loss: 0.74629,	eval acc: 0.75949 ,	eval spe: 0.67568	eval_sen: 0.83333
+Epoch:95 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:98 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.48507,	train acc: 0.94468,	eval loss: 0.78323,	eval acc: 0.73418 ,	eval spe: 0.78378	eval_sen: 0.69048
+Epoch: 105,	lr: 0.00010,	train loss: 0.47553,	train acc: 0.94326,	eval loss: 0.76747,	eval acc: 0.77215 ,	eval spe: 0.81081	eval_sen: 0.73810
+Epoch: 110,	lr: 0.00010,	train loss: 0.44777,	train acc: 0.95887,	eval loss: 0.75968,	eval acc: 0.75949 ,	eval spe: 0.75676	eval_sen: 0.76190
+Epoch: 115,	lr: 0.00010,	train loss: 0.43318,	train acc: 0.96879,	eval loss: 0.74038,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 120,	lr: 0.00010,	train loss: 0.41368,	train acc: 0.96170,	eval loss: 0.74387,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch:121 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:124 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.39369,	train acc: 0.97305,	eval loss: 0.73910,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 130,	lr: 0.00010,	train loss: 0.38129,	train acc: 0.97872,	eval loss: 0.71953,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 135,	lr: 0.00010,	train loss: 0.35915,	train acc: 0.98723,	eval loss: 0.73542,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch:137 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch:139 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold5.pth
+Epoch: 140,	lr: 0.00010,	train loss: 0.35021,	train acc: 0.98440,	eval loss: 0.73489,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 145,	lr: 0.00010,	train loss: 0.34128,	train acc: 0.98014,	eval loss: 0.73176,	eval acc: 0.79747 ,	eval spe: 0.78378	eval_sen: 0.80952
+Epoch: 150,	lr: 0.00010,	train loss: 0.32884,	train acc: 0.99007,	eval loss: 0.72895,	eval acc: 0.78481 ,	eval spe: 0.81081	eval_sen: 0.76190
+Epoch: 155,	lr: 0.00010,	train loss: 0.32350,	train acc: 0.99007,	eval loss: 0.75191,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 160,	lr: 0.00010,	train loss: 0.31466,	train acc: 0.99149,	eval loss: 0.71143,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 165,	lr: 0.00010,	train loss: 0.30544,	train acc: 0.99291,	eval loss: 0.74011,	eval acc: 0.79747 ,	eval spe: 0.81081	eval_sen: 0.78571
+Epoch: 170,	lr: 0.00010,	train loss: 0.29509,	train acc: 0.99433,	eval loss: 0.68187,	eval acc: 0.82278 ,	eval spe: 0.86486	eval_sen: 0.78571
+Epoch: 175,	lr: 0.00010,	train loss: 0.29619,	train acc: 0.99716,	eval loss: 0.75206,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 180,	lr: 0.00010,	train loss: 0.29086,	train acc: 0.99716,	eval loss: 0.78128,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 185,	lr: 0.00010,	train loss: 0.28569,	train acc: 1.00000,	eval loss: 0.73124,	eval acc: 0.86076 ,	eval spe: 0.86486	eval_sen: 0.85714
+Epoch: 190,	lr: 0.00010,	train loss: 0.28513,	train acc: 0.99574,	eval loss: 0.85714,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 195,	lr: 0.00010,	train loss: 0.27478,	train acc: 1.00000,	eval loss: 0.80477,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 200,	lr: 0.00010,	train loss: 0.27242,	train acc: 1.00000,	eval loss: 0.79009,	eval acc: 0.79747 ,	eval spe: 0.81081	eval_sen: 0.78571
+Epoch: 205,	lr: 0.00010,	train loss: 0.27488,	train acc: 0.99858,	eval loss: 0.76748,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 210,	lr: 0.00010,	train loss: 0.27032,	train acc: 1.00000,	eval loss: 0.82148,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 215,	lr: 0.00010,	train loss: 0.26713,	train acc: 1.00000,	eval loss: 0.74577,	eval acc: 0.79747 ,	eval spe: 0.86486	eval_sen: 0.73810
+Epoch: 220,	lr: 0.00010,	train loss: 0.26390,	train acc: 1.00000,	eval loss: 0.70705,	eval acc: 0.84810 ,	eval spe: 0.81081	eval_sen: 0.88095
+Epoch: 225,	lr: 0.00010,	train loss: 0.26573,	train acc: 0.99858,	eval loss: 0.77280,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 230,	lr: 0.00010,	train loss: 0.25748,	train acc: 1.00000,	eval loss: 0.79595,	eval acc: 0.79747 ,	eval spe: 0.86486	eval_sen: 0.73810
+Epoch: 235,	lr: 0.00010,	train loss: 0.25585,	train acc: 1.00000,	eval loss: 0.79402,	eval acc: 0.81013 ,	eval spe: 0.72973	eval_sen: 0.88095
+Early stopping
+
+ => Fold 5 best val_loss 0.67878, val_acc 0.78481, epoch 139
+
+Training time of 5-fold data: 78.2346171875 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 5 test accuracy 0.86207, AUC 0.92660
+
+========================== Fold 6 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 61205938176.00000
+Epoch: 100,	lr: 0.00100,	loss: 373947.43750
+Epoch: 200,	lr: 0.00100,	loss: 361226.84375
+Epoch: 300,	lr: 0.00100,	loss: 359847.56250
+Epoch: 400,	lr: 0.00100,	loss: 359538.93750
+Epoch: 500,	lr: 0.00100,	loss: 359450.12500
+Epoch: 600,	lr: 0.00100,	loss: 359414.78125
+Epoch: 700,	lr: 0.00100,	loss: 359397.62500
+Epoch: 800,	lr: 0.00100,	loss: 359387.96875
+Epoch: 900,	lr: 0.00100,	loss: 359378.31250
+Epoch: 1000,	lr: 0.00100,	loss: 359372.09375
+Epoch: 1100,	lr: 0.00100,	loss: 359373.75000
+Epoch: 1200,	lr: 0.00100,	loss: 359363.93750
+Epoch: 1300,	lr: 0.00100,	loss: 359363.12500
+Early stopping
+
+ => Fold 6 best pretrain vae loss 359360.06250, epoch 1244
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.03292,	train acc: 0.49078,	eval loss: 0.98203,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:1 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 5,	lr: 0.00010,	train loss: 0.99454,	train acc: 0.54468,	eval loss: 0.98256,	eval acc: 0.46835 ,	eval spe: 0.16216	eval_sen: 0.73810
+Epoch: 10,	lr: 0.00010,	train loss: 0.98285,	train acc: 0.55035,	eval loss: 0.98241,	eval acc: 0.50633 ,	eval spe: 0.00000	eval_sen: 0.95238
+Epoch: 15,	lr: 0.00010,	train loss: 0.98588,	train acc: 0.51206,	eval loss: 0.98108,	eval acc: 0.51899 ,	eval spe: 0.00000	eval_sen: 0.97619
+Epoch: 20,	lr: 0.00010,	train loss: 0.97417,	train acc: 0.55319,	eval loss: 0.98558,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 25,	lr: 0.00010,	train loss: 0.95261,	train acc: 0.60993,	eval loss: 0.98669,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 30,	lr: 0.00010,	train loss: 0.93392,	train acc: 0.64965,	eval loss: 0.98642,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 35,	lr: 0.00010,	train loss: 0.93505,	train acc: 0.63121,	eval loss: 0.98232,	eval acc: 0.54430 ,	eval spe: 0.02703	eval_sen: 1.00000
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 40,	lr: 0.00010,	train loss: 0.89303,	train acc: 0.67943,	eval loss: 0.98104,	eval acc: 0.56962 ,	eval spe: 0.10811	eval_sen: 0.97619
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 45,	lr: 0.00010,	train loss: 0.86886,	train acc: 0.69929,	eval loss: 0.97460,	eval acc: 0.59494 ,	eval spe: 0.16216	eval_sen: 0.97619
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 50,	lr: 0.00010,	train loss: 0.85967,	train acc: 0.73333,	eval loss: 0.96936,	eval acc: 0.58228 ,	eval spe: 0.16216	eval_sen: 0.95238
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.81777,	train acc: 0.74043,	eval loss: 0.95876,	eval acc: 0.65823 ,	eval spe: 0.40541	eval_sen: 0.88095
+Epoch:56 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:59 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.79016,	train acc: 0.79007,	eval loss: 0.94656,	eval acc: 0.68354 ,	eval spe: 0.40541	eval_sen: 0.92857
+Epoch:63 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.75702,	train acc: 0.79574,	eval loss: 0.92774,	eval acc: 0.68354 ,	eval spe: 0.48649	eval_sen: 0.85714
+Epoch:65 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.72994,	train acc: 0.79716,	eval loss: 0.89706,	eval acc: 0.70886 ,	eval spe: 0.51351	eval_sen: 0.88095
+Epoch:70 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:72 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.67538,	train acc: 0.86525,	eval loss: 0.90033,	eval acc: 0.67089 ,	eval spe: 0.62162	eval_sen: 0.71429
+Epoch:79 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.65742,	train acc: 0.86383,	eval loss: 0.87192,	eval acc: 0.68354 ,	eval spe: 0.62162	eval_sen: 0.73810
+Epoch:83 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.63062,	train acc: 0.87376,	eval loss: 0.85394,	eval acc: 0.70886 ,	eval spe: 0.64865	eval_sen: 0.76190
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch:86 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.60864,	train acc: 0.87801,	eval loss: 0.87183,	eval acc: 0.68354 ,	eval spe: 0.56757	eval_sen: 0.78571
+Epoch: 95,	lr: 0.00010,	train loss: 0.57084,	train acc: 0.89929,	eval loss: 0.84501,	eval acc: 0.70886 ,	eval spe: 0.64865	eval_sen: 0.76190
+Epoch: 100,	lr: 0.00010,	train loss: 0.55282,	train acc: 0.90496,	eval loss: 0.83122,	eval acc: 0.72152 ,	eval spe: 0.67568	eval_sen: 0.76190
+Epoch: 105,	lr: 0.00010,	train loss: 0.51928,	train acc: 0.93191,	eval loss: 0.78178,	eval acc: 0.74684 ,	eval spe: 0.67568	eval_sen: 0.80952
+Epoch:105 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.50375,	train acc: 0.94043,	eval loss: 0.87669,	eval acc: 0.67089 ,	eval spe: 0.64865	eval_sen: 0.69048
+Epoch: 115,	lr: 0.00010,	train loss: 0.49602,	train acc: 0.93333,	eval loss: 0.82526,	eval acc: 0.69620 ,	eval spe: 0.67568	eval_sen: 0.71429
+Epoch: 120,	lr: 0.00010,	train loss: 0.46126,	train acc: 0.95887,	eval loss: 0.87235,	eval acc: 0.75949 ,	eval spe: 0.67568	eval_sen: 0.83333
+Epoch: 125,	lr: 0.00010,	train loss: 0.45473,	train acc: 0.94184,	eval loss: 0.87478,	eval acc: 0.67089 ,	eval spe: 0.67568	eval_sen: 0.66667
+Epoch: 130,	lr: 0.00010,	train loss: 0.44056,	train acc: 0.95461,	eval loss: 0.93537,	eval acc: 0.67089 ,	eval spe: 0.75676	eval_sen: 0.59524
+Epoch:133 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold6.pth
+Epoch: 135,	lr: 0.00010,	train loss: 0.43277,	train acc: 0.95745,	eval loss: 0.89440,	eval acc: 0.69620 ,	eval spe: 0.70270	eval_sen: 0.69048
+Epoch: 140,	lr: 0.00010,	train loss: 0.42412,	train acc: 0.96028,	eval loss: 0.84932,	eval acc: 0.73418 ,	eval spe: 0.67568	eval_sen: 0.78571
+Epoch: 145,	lr: 0.00010,	train loss: 0.41622,	train acc: 0.95319,	eval loss: 0.94748,	eval acc: 0.68354 ,	eval spe: 0.72973	eval_sen: 0.64286
+Epoch: 150,	lr: 0.00010,	train loss: 0.39042,	train acc: 0.97163,	eval loss: 0.90852,	eval acc: 0.69620 ,	eval spe: 0.70270	eval_sen: 0.69048
+Epoch: 155,	lr: 0.00010,	train loss: 0.38758,	train acc: 0.97589,	eval loss: 0.83567,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Epoch: 160,	lr: 0.00010,	train loss: 0.38617,	train acc: 0.98440,	eval loss: 0.86674,	eval acc: 0.72152 ,	eval spe: 0.72973	eval_sen: 0.71429
+Epoch: 165,	lr: 0.00010,	train loss: 0.37486,	train acc: 0.98582,	eval loss: 0.87358,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 170,	lr: 0.00010,	train loss: 0.36426,	train acc: 0.98582,	eval loss: 0.94364,	eval acc: 0.75949 ,	eval spe: 0.75676	eval_sen: 0.76190
+Epoch: 175,	lr: 0.00010,	train loss: 0.34917,	train acc: 0.98865,	eval loss: 0.87910,	eval acc: 0.75949 ,	eval spe: 0.75676	eval_sen: 0.76190
+Epoch: 180,	lr: 0.00010,	train loss: 0.34850,	train acc: 0.98582,	eval loss: 0.95137,	eval acc: 0.70886 ,	eval spe: 0.70270	eval_sen: 0.71429
+Epoch: 185,	lr: 0.00010,	train loss: 0.35044,	train acc: 0.98014,	eval loss: 0.97167,	eval acc: 0.73418 ,	eval spe: 0.78378	eval_sen: 0.69048
+Epoch: 190,	lr: 0.00010,	train loss: 0.33648,	train acc: 0.99149,	eval loss: 0.93338,	eval acc: 0.75949 ,	eval spe: 0.72973	eval_sen: 0.78571
+Epoch: 195,	lr: 0.00010,	train loss: 0.33399,	train acc: 0.99149,	eval loss: 0.87975,	eval acc: 0.75949 ,	eval spe: 0.72973	eval_sen: 0.78571
+Epoch: 200,	lr: 0.00010,	train loss: 0.32602,	train acc: 0.99149,	eval loss: 0.84231,	eval acc: 0.73418 ,	eval spe: 0.72973	eval_sen: 0.73810
+Epoch: 205,	lr: 0.00010,	train loss: 0.33308,	train acc: 0.99007,	eval loss: 0.88653,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 210,	lr: 0.00010,	train loss: 0.32129,	train acc: 0.99433,	eval loss: 1.00206,	eval acc: 0.74684 ,	eval spe: 0.78378	eval_sen: 0.71429
+Epoch: 215,	lr: 0.00010,	train loss: 0.31965,	train acc: 0.99574,	eval loss: 1.00927,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 220,	lr: 0.00010,	train loss: 0.30829,	train acc: 0.99433,	eval loss: 0.97526,	eval acc: 0.72152 ,	eval spe: 0.72973	eval_sen: 0.71429
+Epoch: 225,	lr: 0.00010,	train loss: 0.30476,	train acc: 0.99291,	eval loss: 1.04565,	eval acc: 0.69620 ,	eval spe: 0.72973	eval_sen: 0.66667
+Epoch: 230,	lr: 0.00010,	train loss: 0.31160,	train acc: 0.99149,	eval loss: 0.92891,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Early stopping
+
+ => Fold 6 best val_loss 0.77333, val_acc 0.74684, epoch 133
+
+Training time of 6-fold data: 69.3117578125 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 6 test accuracy 0.77011, AUC 0.80851
+
+========================== Fold 7 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 12184641536.00000
+Epoch: 100,	lr: 0.00100,	loss: 377917.90625
+Epoch: 200,	lr: 0.00100,	loss: 360983.81250
+Epoch: 300,	lr: 0.00100,	loss: 359840.21875
+Epoch: 400,	lr: 0.00100,	loss: 359526.03125
+Epoch: 500,	lr: 0.00100,	loss: 359445.43750
+Epoch: 600,	lr: 0.00100,	loss: 359411.31250
+Epoch: 700,	lr: 0.00100,	loss: 359387.18750
+Epoch: 800,	lr: 0.00100,	loss: 359374.75000
+Epoch: 900,	lr: 0.00100,	loss: 359366.56250
+Epoch: 1000,	lr: 0.00100,	loss: 359361.15625
+Epoch: 1100,	lr: 0.00100,	loss: 359362.87500
+Epoch: 1200,	lr: 0.00100,	loss: 359372.71875
+Early stopping
+
+ => Fold 7 best pretrain vae loss 359354.18750, epoch 1122
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.03848,	train acc: 0.52766,	eval loss: 1.03908,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.07356,	train acc: 0.52766,	eval loss: 1.07893,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 10,	lr: 0.00010,	train loss: 1.11007,	train acc: 0.54043,	eval loss: 1.10725,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 15,	lr: 0.00010,	train loss: 1.11736,	train acc: 0.57447,	eval loss: 1.14079,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 20,	lr: 0.00010,	train loss: 1.12123,	train acc: 0.62270,	eval loss: 1.14663,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 25,	lr: 0.00010,	train loss: 1.10573,	train acc: 0.66383,	eval loss: 1.14404,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 30,	lr: 0.00010,	train loss: 1.06556,	train acc: 0.66667,	eval loss: 1.12001,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 35,	lr: 0.00010,	train loss: 1.02927,	train acc: 0.70638,	eval loss: 1.10653,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 40,	lr: 0.00010,	train loss: 0.99782,	train acc: 0.68511,	eval loss: 1.08059,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch: 45,	lr: 0.00010,	train loss: 0.93497,	train acc: 0.74184,	eval loss: 1.05419,	eval acc: 0.54430 ,	eval spe: 0.02703	eval_sen: 1.00000
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 50,	lr: 0.00010,	train loss: 0.89954,	train acc: 0.76312,	eval loss: 1.03098,	eval acc: 0.60759 ,	eval spe: 0.18919	eval_sen: 0.97619
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:53 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 55,	lr: 0.00010,	train loss: 0.84517,	train acc: 0.78582,	eval loss: 1.02121,	eval acc: 0.63291 ,	eval spe: 0.24324	eval_sen: 0.97619
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:59 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 60,	lr: 0.00010,	train loss: 0.82690,	train acc: 0.82270,	eval loss: 1.00295,	eval acc: 0.67089 ,	eval spe: 0.35135	eval_sen: 0.95238
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:62 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.78375,	train acc: 0.83830,	eval loss: 0.99962,	eval acc: 0.63291 ,	eval spe: 0.35135	eval_sen: 0.88095
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.75284,	train acc: 0.86241,	eval loss: 0.96629,	eval acc: 0.67089 ,	eval spe: 0.40541	eval_sen: 0.90476
+Epoch:72 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:74 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.71394,	train acc: 0.88652,	eval loss: 0.93656,	eval acc: 0.69620 ,	eval spe: 0.48649	eval_sen: 0.88095
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:76 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:79 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.68601,	train acc: 0.88794,	eval loss: 0.90193,	eval acc: 0.70886 ,	eval spe: 0.56757	eval_sen: 0.83333
+Epoch:80 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:83 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:84 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.64558,	train acc: 0.90780,	eval loss: 0.87400,	eval acc: 0.78481 ,	eval spe: 0.67568	eval_sen: 0.88095
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:86 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:87 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.61705,	train acc: 0.93191,	eval loss: 0.88109,	eval acc: 0.69620 ,	eval spe: 0.51351	eval_sen: 0.85714
+Epoch:91 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:92 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:93 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 95,	lr: 0.00010,	train loss: 0.57519,	train acc: 0.94894,	eval loss: 0.83411,	eval acc: 0.73418 ,	eval spe: 0.59459	eval_sen: 0.85714
+Epoch:96 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.53672,	train acc: 0.95461,	eval loss: 0.82667,	eval acc: 0.74684 ,	eval spe: 0.56757	eval_sen: 0.90476
+Epoch:101 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:103 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:104 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 105,	lr: 0.00010,	train loss: 0.52772,	train acc: 0.96028,	eval loss: 0.80661,	eval acc: 0.73418 ,	eval spe: 0.56757	eval_sen: 0.88095
+Epoch:108 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.50761,	train acc: 0.96738,	eval loss: 0.82010,	eval acc: 0.77215 ,	eval spe: 0.56757	eval_sen: 0.95238
+Epoch: 115,	lr: 0.00010,	train loss: 0.50455,	train acc: 0.95887,	eval loss: 0.75263,	eval acc: 0.82278 ,	eval spe: 0.70270	eval_sen: 0.92857
+Epoch: 120,	lr: 0.00010,	train loss: 0.49058,	train acc: 0.98014,	eval loss: 0.77964,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch:122 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.47494,	train acc: 0.98582,	eval loss: 0.78581,	eval acc: 0.74684 ,	eval spe: 0.56757	eval_sen: 0.90476
+Epoch: 130,	lr: 0.00010,	train loss: 0.46043,	train acc: 0.98298,	eval loss: 0.77433,	eval acc: 0.81013 ,	eval spe: 0.67568	eval_sen: 0.92857
+Epoch:133 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch:134 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 135,	lr: 0.00010,	train loss: 0.45471,	train acc: 0.98156,	eval loss: 0.74797,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 140,	lr: 0.00010,	train loss: 0.44176,	train acc: 0.98865,	eval loss: 0.70040,	eval acc: 0.79747 ,	eval spe: 0.75676	eval_sen: 0.83333
+Epoch:140 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 145,	lr: 0.00010,	train loss: 0.44373,	train acc: 0.98865,	eval loss: 0.75514,	eval acc: 0.75949 ,	eval spe: 0.64865	eval_sen: 0.85714
+Epoch:146 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold7.pth
+Epoch: 150,	lr: 0.00010,	train loss: 0.42574,	train acc: 0.99007,	eval loss: 0.69041,	eval acc: 0.83544 ,	eval spe: 0.78378	eval_sen: 0.88095
+Epoch: 155,	lr: 0.00010,	train loss: 0.41771,	train acc: 0.98865,	eval loss: 0.70044,	eval acc: 0.84810 ,	eval spe: 0.81081	eval_sen: 0.88095
+Epoch: 160,	lr: 0.00010,	train loss: 0.42382,	train acc: 0.99007,	eval loss: 0.72846,	eval acc: 0.79747 ,	eval spe: 0.67568	eval_sen: 0.90476
+Epoch: 165,	lr: 0.00010,	train loss: 0.41181,	train acc: 0.99433,	eval loss: 0.76648,	eval acc: 0.74684 ,	eval spe: 0.59459	eval_sen: 0.88095
+Epoch: 170,	lr: 0.00010,	train loss: 0.40244,	train acc: 0.99574,	eval loss: 0.73948,	eval acc: 0.82278 ,	eval spe: 0.78378	eval_sen: 0.85714
+Epoch: 175,	lr: 0.00010,	train loss: 0.39966,	train acc: 0.99716,	eval loss: 0.72240,	eval acc: 0.79747 ,	eval spe: 0.72973	eval_sen: 0.85714
+Epoch: 180,	lr: 0.00010,	train loss: 0.39601,	train acc: 0.99433,	eval loss: 0.75753,	eval acc: 0.81013 ,	eval spe: 0.72973	eval_sen: 0.88095
+Epoch: 185,	lr: 0.00010,	train loss: 0.38736,	train acc: 0.99858,	eval loss: 0.71846,	eval acc: 0.86076 ,	eval spe: 0.78378	eval_sen: 0.92857
+Epoch: 190,	lr: 0.00010,	train loss: 0.38136,	train acc: 1.00000,	eval loss: 0.69343,	eval acc: 0.81013 ,	eval spe: 0.72973	eval_sen: 0.88095
+Epoch: 195,	lr: 0.00010,	train loss: 0.39113,	train acc: 0.99858,	eval loss: 0.75971,	eval acc: 0.83544 ,	eval spe: 0.78378	eval_sen: 0.88095
+Epoch: 200,	lr: 0.00010,	train loss: 0.40335,	train acc: 0.99858,	eval loss: 0.76613,	eval acc: 0.81013 ,	eval spe: 0.70270	eval_sen: 0.90476
+Epoch: 205,	lr: 0.00010,	train loss: 0.38907,	train acc: 0.99574,	eval loss: 0.76581,	eval acc: 0.83544 ,	eval spe: 0.78378	eval_sen: 0.88095
+Epoch: 210,	lr: 0.00010,	train loss: 0.38270,	train acc: 1.00000,	eval loss: 0.75187,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 215,	lr: 0.00010,	train loss: 0.38527,	train acc: 1.00000,	eval loss: 0.81472,	eval acc: 0.78481 ,	eval spe: 0.67568	eval_sen: 0.88095
+Epoch: 220,	lr: 0.00010,	train loss: 0.37911,	train acc: 1.00000,	eval loss: 0.80407,	eval acc: 0.82278 ,	eval spe: 0.78378	eval_sen: 0.85714
+Epoch: 225,	lr: 0.00010,	train loss: 0.38063,	train acc: 1.00000,	eval loss: 0.75578,	eval acc: 0.83544 ,	eval spe: 0.78378	eval_sen: 0.88095
+Epoch: 230,	lr: 0.00010,	train loss: 0.38947,	train acc: 1.00000,	eval loss: 0.74567,	eval acc: 0.84810 ,	eval spe: 0.81081	eval_sen: 0.88095
+Epoch: 235,	lr: 0.00010,	train loss: 0.39288,	train acc: 1.00000,	eval loss: 0.79522,	eval acc: 0.82278 ,	eval spe: 0.70270	eval_sen: 0.92857
+Epoch: 240,	lr: 0.00010,	train loss: 0.39157,	train acc: 0.99716,	eval loss: 0.88100,	eval acc: 0.81013 ,	eval spe: 0.67568	eval_sen: 0.92857
+Epoch: 245,	lr: 0.00010,	train loss: 0.38740,	train acc: 1.00000,	eval loss: 0.76586,	eval acc: 0.84810 ,	eval spe: 0.78378	eval_sen: 0.90476
+Early stopping
+
+ => Fold 7 best val_loss 0.67232, val_acc 0.86076, epoch 146
+
+Training time of 7-fold data: 93.875171875 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 7 test accuracy 0.86207, AUC 0.92500
+
+========================== Fold 8 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 22996081180672.00000
+Epoch: 100,	lr: 0.00100,	loss: 817118.56250
+Epoch: 200,	lr: 0.00100,	loss: 371242.71875
+Epoch: 300,	lr: 0.00100,	loss: 360866.31250
+Epoch: 400,	lr: 0.00100,	loss: 359661.65625
+Epoch: 500,	lr: 0.00100,	loss: 359478.18750
+Epoch: 600,	lr: 0.00100,	loss: 359421.31250
+Epoch: 700,	lr: 0.00100,	loss: 359396.53125
+Epoch: 800,	lr: 0.00100,	loss: 359391.18750
+Epoch: 900,	lr: 0.00100,	loss: 359390.81250
+Epoch: 1000,	lr: 0.00100,	loss: 359376.31250
+Epoch: 1100,	lr: 0.00100,	loss: 359378.18750
+Early stopping
+
+ => Fold 8 best pretrain vae loss 359372.03125, epoch 1006
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.93965,	train acc: 0.47660,	eval loss: 1.90367,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:1 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:3 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.92834,	train acc: 0.46950,	eval loss: 1.89123,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:5 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:6 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:7 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:8 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:9 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 10,	lr: 0.00010,	train loss: 1.88369,	train acc: 0.48936,	eval loss: 1.85399,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:11 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:12 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:14 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.82865,	train acc: 0.50355,	eval loss: 1.79680,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:16 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:17 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.78898,	train acc: 0.51631,	eval loss: 1.77694,	eval acc: 0.46835 ,	eval spe: 1.00000	eval_sen: 0.00000
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:21 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:22 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.75898,	train acc: 0.54610,	eval loss: 1.76533,	eval acc: 0.50633 ,	eval spe: 0.97297	eval_sen: 0.09524
+Epoch:25 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:27 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 30,	lr: 0.00010,	train loss: 1.75725,	train acc: 0.56170,	eval loss: 1.75671,	eval acc: 0.51899 ,	eval spe: 0.81081	eval_sen: 0.26190
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.72303,	train acc: 0.57305,	eval loss: 1.74305,	eval acc: 0.50633 ,	eval spe: 0.70270	eval_sen: 0.33333
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:38 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 40,	lr: 0.00010,	train loss: 1.70569,	train acc: 0.59858,	eval loss: 1.72492,	eval acc: 0.53165 ,	eval spe: 0.48649	eval_sen: 0.57143
+Epoch:42 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 45,	lr: 0.00010,	train loss: 1.67349,	train acc: 0.59149,	eval loss: 1.68670,	eval acc: 0.53165 ,	eval spe: 0.43243	eval_sen: 0.61905
+Epoch:46 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 50,	lr: 0.00010,	train loss: 1.61047,	train acc: 0.63972,	eval loss: 1.64641,	eval acc: 0.59494 ,	eval spe: 0.59459	eval_sen: 0.59524
+Epoch:52 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 55,	lr: 0.00010,	train loss: 1.55541,	train acc: 0.69645,	eval loss: 1.61751,	eval acc: 0.60759 ,	eval spe: 0.67568	eval_sen: 0.54762
+Epoch:56 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:59 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 60,	lr: 0.00010,	train loss: 1.49728,	train acc: 0.69787,	eval loss: 1.54913,	eval acc: 0.70886 ,	eval spe: 0.51351	eval_sen: 0.88095
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:61 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 65,	lr: 0.00010,	train loss: 1.44806,	train acc: 0.73333,	eval loss: 1.53982,	eval acc: 0.67089 ,	eval spe: 0.67568	eval_sen: 0.66667
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:67 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:68 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 70,	lr: 0.00010,	train loss: 1.40643,	train acc: 0.75177,	eval loss: 1.47961,	eval acc: 0.77215 ,	eval spe: 0.72973	eval_sen: 0.80952
+Epoch:70 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:72 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 75,	lr: 0.00010,	train loss: 1.34082,	train acc: 0.79149,	eval loss: 1.43710,	eval acc: 0.69620 ,	eval spe: 0.64865	eval_sen: 0.73810
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:77 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 80,	lr: 0.00010,	train loss: 1.29835,	train acc: 0.81418,	eval loss: 1.41667,	eval acc: 0.73418 ,	eval spe: 0.78378	eval_sen: 0.69048
+Epoch:80 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:82 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:83 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 85,	lr: 0.00010,	train loss: 1.25825,	train acc: 0.83972,	eval loss: 1.35846,	eval acc: 0.79747 ,	eval spe: 0.75676	eval_sen: 0.83333
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 90,	lr: 0.00010,	train loss: 1.20597,	train acc: 0.84539,	eval loss: 1.30835,	eval acc: 0.78481 ,	eval spe: 0.75676	eval_sen: 0.80952
+Epoch:90 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:93 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 95,	lr: 0.00010,	train loss: 1.14911,	train acc: 0.88652,	eval loss: 1.32306,	eval acc: 0.69620 ,	eval spe: 0.78378	eval_sen: 0.61905
+Epoch:99 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 100,	lr: 0.00010,	train loss: 1.12275,	train acc: 0.88794,	eval loss: 1.26999,	eval acc: 0.77215 ,	eval spe: 0.81081	eval_sen: 0.73810
+Epoch:100 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:102 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:103 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 105,	lr: 0.00010,	train loss: 1.06102,	train acc: 0.91915,	eval loss: 1.27432,	eval acc: 0.73418 ,	eval spe: 0.75676	eval_sen: 0.71429
+Epoch:106 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:107 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 110,	lr: 0.00010,	train loss: 1.03937,	train acc: 0.92057,	eval loss: 1.21412,	eval acc: 0.77215 ,	eval spe: 0.78378	eval_sen: 0.76190
+Epoch:110 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 115,	lr: 0.00010,	train loss: 0.99877,	train acc: 0.93333,	eval loss: 1.22321,	eval acc: 0.75949 ,	eval spe: 0.78378	eval_sen: 0.73810
+Epoch:117 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 120,	lr: 0.00010,	train loss: 0.95393,	train acc: 0.94468,	eval loss: 1.16170,	eval acc: 0.77215 ,	eval spe: 0.81081	eval_sen: 0.73810
+Epoch:120 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch:121 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 125,	lr: 0.00010,	train loss: 0.94123,	train acc: 0.95603,	eval loss: 1.13874,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch:129 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 130,	lr: 0.00010,	train loss: 0.91531,	train acc: 0.94894,	eval loss: 1.10864,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch:130 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 135,	lr: 0.00010,	train loss: 0.88837,	train acc: 0.95887,	eval loss: 1.15063,	eval acc: 0.75949 ,	eval spe: 0.78378	eval_sen: 0.73810
+Epoch:138 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 140,	lr: 0.00010,	train loss: 0.86620,	train acc: 0.97021,	eval loss: 1.18098,	eval acc: 0.78481 ,	eval spe: 0.89189	eval_sen: 0.69048
+Epoch:143 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 145,	lr: 0.00010,	train loss: 0.83402,	train acc: 0.97305,	eval loss: 1.09209,	eval acc: 0.79747 ,	eval spe: 0.78378	eval_sen: 0.80952
+Epoch: 150,	lr: 0.00010,	train loss: 0.82176,	train acc: 0.97163,	eval loss: 1.12263,	eval acc: 0.79747 ,	eval spe: 0.81081	eval_sen: 0.78571
+Epoch: 155,	lr: 0.00010,	train loss: 0.80905,	train acc: 0.98156,	eval loss: 1.04265,	eval acc: 0.83544 ,	eval spe: 0.89189	eval_sen: 0.78571
+Epoch:155 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 160,	lr: 0.00010,	train loss: 0.79522,	train acc: 0.98298,	eval loss: 1.11512,	eval acc: 0.78481 ,	eval spe: 0.83784	eval_sen: 0.73810
+Epoch:164 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 165,	lr: 0.00010,	train loss: 0.76876,	train acc: 0.99007,	eval loss: 1.08636,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch: 170,	lr: 0.00010,	train loss: 0.77671,	train acc: 0.98014,	eval loss: 1.05044,	eval acc: 0.87342 ,	eval spe: 0.83784	eval_sen: 0.90476
+Epoch: 175,	lr: 0.00010,	train loss: 0.77229,	train acc: 0.98865,	eval loss: 1.10837,	eval acc: 0.77215 ,	eval spe: 0.83784	eval_sen: 0.71429
+Epoch: 180,	lr: 0.00010,	train loss: 0.74781,	train acc: 0.99858,	eval loss: 1.08448,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch:182 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 185,	lr: 0.00010,	train loss: 0.74141,	train acc: 0.99574,	eval loss: 1.09275,	eval acc: 0.82278 ,	eval spe: 0.78378	eval_sen: 0.85714
+Epoch:186 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 190,	lr: 0.00010,	train loss: 0.74614,	train acc: 0.99858,	eval loss: 1.06659,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch:193 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 195,	lr: 0.00010,	train loss: 0.72778,	train acc: 0.99858,	eval loss: 1.06354,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 200,	lr: 0.00010,	train loss: 0.71819,	train acc: 0.99716,	eval loss: 1.02879,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 205,	lr: 0.00010,	train loss: 0.71345,	train acc: 0.99858,	eval loss: 1.07820,	eval acc: 0.78481 ,	eval spe: 0.83784	eval_sen: 0.73810
+Epoch:207 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold8.pth
+Epoch: 210,	lr: 0.00010,	train loss: 0.70538,	train acc: 1.00000,	eval loss: 1.08926,	eval acc: 0.79747 ,	eval spe: 0.86486	eval_sen: 0.73810
+Epoch: 215,	lr: 0.00010,	train loss: 0.70445,	train acc: 1.00000,	eval loss: 1.07931,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 220,	lr: 0.00010,	train loss: 0.70240,	train acc: 0.99858,	eval loss: 1.02304,	eval acc: 0.82278 ,	eval spe: 0.86486	eval_sen: 0.78571
+Epoch: 225,	lr: 0.00010,	train loss: 0.70162,	train acc: 1.00000,	eval loss: 1.06013,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 230,	lr: 0.00010,	train loss: 0.69027,	train acc: 1.00000,	eval loss: 1.10091,	eval acc: 0.78481 ,	eval spe: 0.83784	eval_sen: 0.73810
+Epoch: 235,	lr: 0.00010,	train loss: 0.69973,	train acc: 1.00000,	eval loss: 1.07076,	eval acc: 0.83544 ,	eval spe: 0.89189	eval_sen: 0.78571
+Epoch: 240,	lr: 0.00010,	train loss: 0.68886,	train acc: 0.99858,	eval loss: 1.05772,	eval acc: 0.81013 ,	eval spe: 0.89189	eval_sen: 0.73810
+Epoch: 245,	lr: 0.00010,	train loss: 0.67672,	train acc: 1.00000,	eval loss: 1.07080,	eval acc: 0.82278 ,	eval spe: 0.89189	eval_sen: 0.76190
+Epoch: 250,	lr: 0.00010,	train loss: 0.67932,	train acc: 1.00000,	eval loss: 1.09314,	eval acc: 0.79747 ,	eval spe: 0.86486	eval_sen: 0.73810
+Epoch: 255,	lr: 0.00010,	train loss: 0.66914,	train acc: 1.00000,	eval loss: 1.03929,	eval acc: 0.83544 ,	eval spe: 0.89189	eval_sen: 0.78571
+Epoch: 260,	lr: 0.00010,	train loss: 0.68530,	train acc: 1.00000,	eval loss: 1.08344,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 265,	lr: 0.00010,	train loss: 0.69087,	train acc: 1.00000,	eval loss: 1.08880,	eval acc: 0.82278 ,	eval spe: 0.89189	eval_sen: 0.76190
+Epoch: 270,	lr: 0.00010,	train loss: 0.67209,	train acc: 1.00000,	eval loss: 1.10113,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 275,	lr: 0.00010,	train loss: 0.67509,	train acc: 1.00000,	eval loss: 1.08853,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 280,	lr: 0.00010,	train loss: 0.67661,	train acc: 1.00000,	eval loss: 1.10848,	eval acc: 0.78481 ,	eval spe: 0.89189	eval_sen: 0.69048
+Epoch: 285,	lr: 0.00010,	train loss: 0.66714,	train acc: 1.00000,	eval loss: 1.09339,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 290,	lr: 0.00010,	train loss: 0.67179,	train acc: 1.00000,	eval loss: 1.09424,	eval acc: 0.82278 ,	eval spe: 0.89189	eval_sen: 0.76190
+Epoch: 295,	lr: 0.00010,	train loss: 0.67255,	train acc: 1.00000,	eval loss: 1.11401,	eval acc: 0.79747 ,	eval spe: 0.86486	eval_sen: 0.73810
+Epoch: 300,	lr: 0.00010,	train loss: 0.67625,	train acc: 1.00000,	eval loss: 1.05434,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 305,	lr: 0.00010,	train loss: 0.67190,	train acc: 1.00000,	eval loss: 1.04504,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Early stopping
+
+ => Fold 8 best val_loss 0.99979, val_acc 0.82278, epoch 207
+
+Training time of 8-fold data: 107.8099765625 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 8 test accuracy 0.91954, AUC 0.94309
+
+========================== Fold 9 ==========================
+Number of labeled samples 705
+Number of features selected 500
+MM_GTUNets(
+  (vae): VAE(
+    (encoder): Sequential(
+      (0): Linear(in_features=3, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1000, bias=True)
+    )
+    (decoder): Sequential(
+      (0): Linear(in_features=500, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=3, bias=True)
+      (3): Sigmoid()
+    )
+    (criterion): MSELoss()
+  )
+  (rp_attention): RP_Attention(
+    (conv): CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (convs): ModuleList(
+      (0-2): 3 x CustomConv2d(3, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (mm_attention): Multimodal_Attention(
+    (shared_lin): Linear(in_features=16, out_features=16, bias=True)
+    (img_lin): Linear(in_features=16, out_features=16, bias=True)
+    (ph_lin): Linear(in_features=16, out_features=16, bias=True)
+  )
+  (img_unet): GTUNet(500, 128, 16, depth=2, pool_ratios=[0.8, 0.8])
+  (ph_unet): GTUNet(500, 128, 16, depth=3, pool_ratios=[0.8, 0.8, 0.8])
+  (clf): Sequential(
+    (0): Linear(in_features=16, out_features=256, bias=True)
+    (1): ReLU()
+    (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 293641650176.00000
+Epoch: 100,	lr: 0.00100,	loss: 413645.21875
+Epoch: 200,	lr: 0.00100,	loss: 361621.81250
+Epoch: 300,	lr: 0.00100,	loss: 359914.50000
+Epoch: 400,	lr: 0.00100,	loss: 359533.81250
+Epoch: 500,	lr: 0.00100,	loss: 359429.31250
+Epoch: 600,	lr: 0.00100,	loss: 359399.71875
+Epoch: 700,	lr: 0.00100,	loss: 359382.53125
+Epoch: 800,	lr: 0.00100,	loss: 359372.06250
+Epoch: 900,	lr: 0.00100,	loss: 359367.09375
+Epoch: 1000,	lr: 0.00100,	loss: 359373.18750
+Early stopping
+
+ => Fold 9 best pretrain vae loss 359359.84375, epoch 982
+
+  Number of training samples 705
+  Number of validation samples 79
+  Start training...
+Epoch: 0,	lr: 0.00010,	train loss: 1.29675,	train acc: 0.52624,	eval loss: 1.26434,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:0 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:4 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 5,	lr: 0.00010,	train loss: 1.29471,	train acc: 0.49362,	eval loss: 1.26300,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:6 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:7 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:9 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 10,	lr: 0.00010,	train loss: 1.26881,	train acc: 0.51489,	eval loss: 1.25376,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:12 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:13 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 15,	lr: 0.00010,	train loss: 1.25762,	train acc: 0.52057,	eval loss: 1.24531,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:15 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:16 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:19 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 20,	lr: 0.00010,	train loss: 1.24550,	train acc: 0.51206,	eval loss: 1.23801,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:20 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:22 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:23 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:24 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 25,	lr: 0.00010,	train loss: 1.21506,	train acc: 0.57447,	eval loss: 1.22959,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:25 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:26 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:27 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:28 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:29 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 30,	lr: 0.00010,	train loss: 1.19775,	train acc: 0.59433,	eval loss: 1.21470,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:30 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:31 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:32 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:33 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:34 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 35,	lr: 0.00010,	train loss: 1.16860,	train acc: 0.60567,	eval loss: 1.20002,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:35 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:36 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:37 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:38 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:39 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 40,	lr: 0.00010,	train loss: 1.13740,	train acc: 0.64965,	eval loss: 1.18317,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:40 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:41 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:42 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:43 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:44 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 45,	lr: 0.00010,	train loss: 1.11281,	train acc: 0.67660,	eval loss: 1.17532,	eval acc: 0.53165 ,	eval spe: 0.00000	eval_sen: 1.00000
+Epoch:46 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:47 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:48 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:49 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 50,	lr: 0.00010,	train loss: 1.08115,	train acc: 0.72057,	eval loss: 1.16337,	eval acc: 0.54430 ,	eval spe: 0.08108	eval_sen: 0.95238
+Epoch:50 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:51 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:54 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 55,	lr: 0.00010,	train loss: 1.06389,	train acc: 0.72624,	eval loss: 1.15098,	eval acc: 0.59494 ,	eval spe: 0.13514	eval_sen: 1.00000
+Epoch:55 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:57 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:58 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:59 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 60,	lr: 0.00010,	train loss: 1.02078,	train acc: 0.72766,	eval loss: 1.12372,	eval acc: 0.68354 ,	eval spe: 0.37838	eval_sen: 0.95238
+Epoch:60 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:63 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:64 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 65,	lr: 0.00010,	train loss: 0.98712,	train acc: 0.76170,	eval loss: 1.11256,	eval acc: 0.67089 ,	eval spe: 0.35135	eval_sen: 0.95238
+Epoch:65 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:66 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:69 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 70,	lr: 0.00010,	train loss: 0.95237,	train acc: 0.79007,	eval loss: 1.09230,	eval acc: 0.69620 ,	eval spe: 0.48649	eval_sen: 0.88095
+Epoch:70 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:72 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:73 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 75,	lr: 0.00010,	train loss: 0.91760,	train acc: 0.80851,	eval loss: 1.07542,	eval acc: 0.70886 ,	eval spe: 0.54054	eval_sen: 0.85714
+Epoch:75 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:77 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 80,	lr: 0.00010,	train loss: 0.89577,	train acc: 0.81986,	eval loss: 1.06184,	eval acc: 0.69620 ,	eval spe: 0.45946	eval_sen: 0.90476
+Epoch:80 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:81 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:84 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 85,	lr: 0.00010,	train loss: 0.86235,	train acc: 0.85816,	eval loss: 1.02217,	eval acc: 0.79747 ,	eval spe: 0.81081	eval_sen: 0.78571
+Epoch:85 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:88 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:89 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 90,	lr: 0.00010,	train loss: 0.83033,	train acc: 0.86667,	eval loss: 1.04424,	eval acc: 0.73418 ,	eval spe: 0.83784	eval_sen: 0.64286
+Epoch:93 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 95,	lr: 0.00010,	train loss: 0.80039,	train acc: 0.87092,	eval loss: 0.98452,	eval acc: 0.75949 ,	eval spe: 0.56757	eval_sen: 0.92857
+Epoch:95 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:97 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 100,	lr: 0.00010,	train loss: 0.76977,	train acc: 0.88936,	eval loss: 0.97268,	eval acc: 0.64557 ,	eval spe: 0.78378	eval_sen: 0.52381
+Epoch:100 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:101 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 105,	lr: 0.00010,	train loss: 0.74079,	train acc: 0.91064,	eval loss: 0.95060,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch:108 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 110,	lr: 0.00010,	train loss: 0.72311,	train acc: 0.91489,	eval loss: 1.01271,	eval acc: 0.75949 ,	eval spe: 0.54054	eval_sen: 0.95238
+Epoch:112 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 115,	lr: 0.00010,	train loss: 0.71073,	train acc: 0.91489,	eval loss: 0.90408,	eval acc: 0.77215 ,	eval spe: 0.81081	eval_sen: 0.73810
+Epoch:115 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch:119 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 120,	lr: 0.00010,	train loss: 0.68637,	train acc: 0.92908,	eval loss: 0.92240,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch: 125,	lr: 0.00010,	train loss: 0.64877,	train acc: 0.95461,	eval loss: 0.96415,	eval acc: 0.78481 ,	eval spe: 0.70270	eval_sen: 0.85714
+Epoch: 130,	lr: 0.00010,	train loss: 0.65306,	train acc: 0.93050,	eval loss: 0.97429,	eval acc: 0.75949 ,	eval spe: 0.81081	eval_sen: 0.71429
+Epoch: 135,	lr: 0.00010,	train loss: 0.64066,	train acc: 0.93759,	eval loss: 0.91457,	eval acc: 0.81013 ,	eval spe: 0.75676	eval_sen: 0.85714
+Epoch:137 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 140,	lr: 0.00010,	train loss: 0.62064,	train acc: 0.95603,	eval loss: 0.88885,	eval acc: 0.81013 ,	eval spe: 0.72973	eval_sen: 0.88095
+Epoch:143 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 145,	lr: 0.00010,	train loss: 0.60933,	train acc: 0.95461,	eval loss: 0.94446,	eval acc: 0.77215 ,	eval spe: 0.78378	eval_sen: 0.76190
+Epoch: 150,	lr: 0.00010,	train loss: 0.58371,	train acc: 0.97163,	eval loss: 0.93436,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 155,	lr: 0.00010,	train loss: 0.56831,	train acc: 0.98014,	eval loss: 0.91106,	eval acc: 0.82278 ,	eval spe: 0.86486	eval_sen: 0.78571
+Epoch: 160,	lr: 0.00010,	train loss: 0.56381,	train acc: 0.98440,	eval loss: 0.94872,	eval acc: 0.78481 ,	eval spe: 0.75676	eval_sen: 0.80952
+Epoch: 165,	lr: 0.00010,	train loss: 0.55863,	train acc: 0.97730,	eval loss: 0.90652,	eval acc: 0.81013 ,	eval spe: 0.72973	eval_sen: 0.88095
+Epoch: 170,	lr: 0.00010,	train loss: 0.54192,	train acc: 0.98440,	eval loss: 0.94717,	eval acc: 0.78481 ,	eval spe: 0.75676	eval_sen: 0.80952
+Epoch: 175,	lr: 0.00010,	train loss: 0.52898,	train acc: 0.98582,	eval loss: 0.91046,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 180,	lr: 0.00010,	train loss: 0.53739,	train acc: 0.99007,	eval loss: 0.96172,	eval acc: 0.78481 ,	eval spe: 0.81081	eval_sen: 0.76190
+Epoch: 185,	lr: 0.00010,	train loss: 0.51905,	train acc: 0.99007,	eval loss: 0.89437,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 190,	lr: 0.00010,	train loss: 0.50829,	train acc: 0.99149,	eval loss: 0.87739,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch: 195,	lr: 0.00010,	train loss: 0.50761,	train acc: 0.99574,	eval loss: 0.92742,	eval acc: 0.79747 ,	eval spe: 0.81081	eval_sen: 0.78571
+Epoch: 200,	lr: 0.00010,	train loss: 0.48936,	train acc: 0.99858,	eval loss: 0.97476,	eval acc: 0.83544 ,	eval spe: 0.86486	eval_sen: 0.80952
+Epoch: 205,	lr: 0.00010,	train loss: 0.48910,	train acc: 0.99574,	eval loss: 0.90446,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 210,	lr: 0.00010,	train loss: 0.49274,	train acc: 0.99716,	eval loss: 0.94223,	eval acc: 0.79747 ,	eval spe: 0.83784	eval_sen: 0.76190
+Epoch: 215,	lr: 0.00010,	train loss: 0.48250,	train acc: 0.99574,	eval loss: 0.90154,	eval acc: 0.82278 ,	eval spe: 0.78378	eval_sen: 0.85714
+Epoch: 220,	lr: 0.00010,	train loss: 0.48257,	train acc: 0.99574,	eval loss: 0.94693,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 225,	lr: 0.00010,	train loss: 0.47771,	train acc: 0.99574,	eval loss: 0.97832,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Epoch: 230,	lr: 0.00010,	train loss: 0.47102,	train acc: 0.99858,	eval loss: 0.98678,	eval acc: 0.83544 ,	eval spe: 0.72973	eval_sen: 0.92857
+Epoch: 235,	lr: 0.00010,	train loss: 0.47382,	train acc: 0.99716,	eval loss: 0.84858,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch:235 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 240,	lr: 0.00010,	train loss: 0.46231,	train acc: 0.99858,	eval loss: 0.99531,	eval acc: 0.83544 ,	eval spe: 0.89189	eval_sen: 0.78571
+Epoch: 245,	lr: 0.00010,	train loss: 0.47038,	train acc: 0.99858,	eval loss: 0.91407,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 250,	lr: 0.00010,	train loss: 0.46009,	train acc: 0.99716,	eval loss: 0.95716,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 255,	lr: 0.00010,	train loss: 0.46223,	train acc: 0.99858,	eval loss: 1.03409,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 260,	lr: 0.00010,	train loss: 0.45708,	train acc: 0.99716,	eval loss: 0.98586,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch:264 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 265,	lr: 0.00010,	train loss: 0.45522,	train acc: 0.99858,	eval loss: 1.03762,	eval acc: 0.77215 ,	eval spe: 0.75676	eval_sen: 0.78571
+Epoch: 270,	lr: 0.00010,	train loss: 0.46019,	train acc: 0.99716,	eval loss: 1.00546,	eval acc: 0.79747 ,	eval spe: 0.72973	eval_sen: 0.85714
+Epoch: 275,	lr: 0.00010,	train loss: 0.45650,	train acc: 0.99716,	eval loss: 0.93118,	eval acc: 0.84810 ,	eval spe: 0.86486	eval_sen: 0.83333
+Epoch: 280,	lr: 0.00010,	train loss: 0.45179,	train acc: 1.00000,	eval loss: 0.98630,	eval acc: 0.86076 ,	eval spe: 0.83784	eval_sen: 0.88095
+Epoch: 285,	lr: 0.00010,	train loss: 0.45221,	train acc: 1.00000,	eval loss: 0.98940,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Epoch: 290,	lr: 0.00010,	train loss: 0.45012,	train acc: 0.99858,	eval loss: 1.03881,	eval acc: 0.83544 ,	eval spe: 0.86486	eval_sen: 0.80952
+Epoch: 295,	lr: 0.00010,	train loss: 0.45025,	train acc: 1.00000,	eval loss: 0.95378,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Epoch: 300,	lr: 0.00010,	train loss: 0.44872,	train acc: 1.00000,	eval loss: 1.06996,	eval acc: 0.78481 ,	eval spe: 0.78378	eval_sen: 0.78571
+Epoch: 305,	lr: 0.00010,	train loss: 0.44669,	train acc: 1.00000,	eval loss: 1.01210,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 310,	lr: 0.00010,	train loss: 0.44262,	train acc: 1.00000,	eval loss: 0.80681,	eval acc: 0.84810 ,	eval spe: 0.86486	eval_sen: 0.83333
+Epoch:310 ✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal/fold9.pth
+Epoch: 315,	lr: 0.00010,	train loss: 0.44414,	train acc: 0.99716,	eval loss: 1.03066,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 320,	lr: 0.00010,	train loss: 0.44005,	train acc: 1.00000,	eval loss: 1.02818,	eval acc: 0.82278 ,	eval spe: 0.89189	eval_sen: 0.76190
+Epoch: 325,	lr: 0.00010,	train loss: 0.44484,	train acc: 0.99858,	eval loss: 0.93833,	eval acc: 0.84810 ,	eval spe: 0.81081	eval_sen: 0.88095
+Epoch: 330,	lr: 0.00010,	train loss: 0.44070,	train acc: 0.99858,	eval loss: 1.03468,	eval acc: 0.81013 ,	eval spe: 0.81081	eval_sen: 0.80952
+Epoch: 335,	lr: 0.00010,	train loss: 0.44362,	train acc: 0.99858,	eval loss: 1.03249,	eval acc: 0.84810 ,	eval spe: 0.86486	eval_sen: 0.83333
+Epoch: 340,	lr: 0.00010,	train loss: 0.43957,	train acc: 1.00000,	eval loss: 1.04729,	eval acc: 0.83544 ,	eval spe: 0.81081	eval_sen: 0.85714
+Epoch: 345,	lr: 0.00010,	train loss: 0.43819,	train acc: 0.99858,	eval loss: 1.04469,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 350,	lr: 0.00010,	train loss: 0.43964,	train acc: 1.00000,	eval loss: 1.06147,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 355,	lr: 0.00010,	train loss: 0.43670,	train acc: 1.00000,	eval loss: 1.03442,	eval acc: 0.82278 ,	eval spe: 0.83784	eval_sen: 0.80952
+Epoch: 360,	lr: 0.00010,	train loss: 0.43492,	train acc: 1.00000,	eval loss: 0.97542,	eval acc: 0.82278 ,	eval spe: 0.86486	eval_sen: 0.78571
+Epoch: 365,	lr: 0.00010,	train loss: 0.43753,	train acc: 1.00000,	eval loss: 1.00117,	eval acc: 0.81013 ,	eval spe: 0.78378	eval_sen: 0.83333
+Epoch: 370,	lr: 0.00010,	train loss: 0.43458,	train acc: 1.00000,	eval loss: 1.02577,	eval acc: 0.78481 ,	eval spe: 0.81081	eval_sen: 0.76190
+Epoch: 375,	lr: 0.00010,	train loss: 0.43397,	train acc: 1.00000,	eval loss: 0.98099,	eval acc: 0.81013 ,	eval spe: 0.83784	eval_sen: 0.78571
+Epoch: 380,	lr: 0.00010,	train loss: 0.43767,	train acc: 1.00000,	eval loss: 0.97369,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 385,	lr: 0.00010,	train loss: 0.43335,	train acc: 0.99716,	eval loss: 0.99873,	eval acc: 0.82278 ,	eval spe: 0.81081	eval_sen: 0.83333
+Epoch: 390,	lr: 0.00010,	train loss: 0.43178,	train acc: 1.00000,	eval loss: 0.92869,	eval acc: 0.83544 ,	eval spe: 0.83784	eval_sen: 0.83333
+Epoch: 395,	lr: 0.00010,	train loss: 0.43317,	train acc: 1.00000,	eval loss: 0.96213,	eval acc: 0.86076 ,	eval spe: 0.83784	eval_sen: 0.88095
+Epoch: 400,	lr: 0.00010,	train loss: 0.43783,	train acc: 1.00000,	eval loss: 0.99615,	eval acc: 0.84810 ,	eval spe: 0.81081	eval_sen: 0.88095
+Epoch: 405,	lr: 0.00010,	train loss: 0.43147,	train acc: 0.99858,	eval loss: 1.00135,	eval acc: 0.81013 ,	eval spe: 0.86486	eval_sen: 0.76190
+Epoch: 410,	lr: 0.00010,	train loss: 0.43259,	train acc: 1.00000,	eval loss: 1.02681,	eval acc: 0.84810 ,	eval spe: 0.83784	eval_sen: 0.85714
+Early stopping
+
+ => Fold 9 best val_loss 0.80681, val_acc 0.84810, epoch 310
+
+Training time of 9-fold data: 109.727984375 s
+
+  Number of testing samples 87
+  Start testing...
+  Fold 9 test accuracy 0.82759, AUC 0.92553
+
+========================== Finish ==========================
+=> Average training time in 10-fold CV: 83.10558 s
+=> Average test accuracy in 10-fold CV: 0.82104(0.0037)
+=> Average test sensitivity in 10-fold CV: 0.86332(0.0034)
+=> Average test specificity in 10-fold CV: 0.77226(0.0131)
+=> Average test AUC in 10-fold CV: 0.88463(0.0039)
+=> Average test F1-score in 10-fold CV: 0.83922(0.0026)
+✔ Saved model to:/data/adodas/MM-GTUNets-main/experiments/official_source_ppu_20261014/save_model/MM_GTUNets_ABIDE_aal
