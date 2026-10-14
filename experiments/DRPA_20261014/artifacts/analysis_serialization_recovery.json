@@ -1,0 +1,25 @@
+{
+  "time_utc": "2026-10-14T16:07:16.159074+00:00",
+  "workflow_before": {
+    "state": "stopped_error",
+    "time_utc": "2026-10-14T13:16:45.318474+00:00",
+    "error_type": "RuntimeError",
+    "error": "Command failed (1); inspect /data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.log"
+  },
+  "cause": "NumPy int64 improved_seeds count was not JSON serializable",
+  "correction": "Convert analysis-only seed improvement counts to Python int; add three regression tests",
+  "verified_complete_by_group": {
+    "E0": 30,
+    "E1": 30,
+    "E2": 11,
+    "E3": 11,
+    "E4": 11,
+    "E5": 13,
+    "E6": 12,
+    "E7": 12
+  },
+  "verified_complete_before_resume": 130,
+  "training_code_sha256": "9186fe8b76142e6ef114d850409cb7d8e9ac5f2691d8e132647c389ee60e5572",
+  "training_code_unchanged": true,
+  "resume_policy": "Skip verified complete folds; restart interrupted folds from unchanged anchors"
+}

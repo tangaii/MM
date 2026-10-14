@@ -1,0 +1,659 @@
+2026-10-14T09:52:04.232255+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+
+Loading features....
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 796, in <module>
+    main()
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 789, in main
+    if args.command == "audit": audit()
+                                ^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 216, in audit
+    raw_x, y, ph_dict, ph_data = loader.load_data(save=False)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/utils/mydataloader.py", line 35, in load_data
+    self.features = self.load_tensor(f_load_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/utils/mydataloader.py", line 193, in load_tensor
+    tensor = torch.load(load_path)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/serialization.py", line 1529, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL numpy.core.multiarray._reconstruct was not an allowed global by default. Please use `torch.serialization.add_safe_globals([numpy.core.multiarray._reconstruct])` or the `torch.serialization.safe_globals([numpy.core.multiarray._reconstruct])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
+2026-10-14T09:53:02.066276+00:00 WORKFLOW STOPPED: RuntimeError: Command failed (1); inspect /data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.log
+2026-10-14T09:54:31.380882+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+
+Loading features....
+/data/adodas/MM-GTUNets/utils/mydataloader.py:193: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  tensor = torch.load(load_path)
+Loading labels....
+Loading phenotypic data....
+Data has loaded!
+
+INITIAL AUDIT {"time_utc": "2026-10-14T09:55:40.109499+00:00", "source_commit": "274584ddb435a1fee625a723282b386f87982606", "training_code_sha256": "8edf7764e3df4da6676fd8ae8d5b21e58cc533d5f94523a9c853028547d2d799", "input_shapes": {"image": [871, 6670], "phenotype": [871, 3]}, "label_encoding": {"ASD": 0, "HC": 1}, "environment": {"python": "3.12.3 (main, Jan 30 2026, 14:20:45) [GCC 13.3.0]", "torch": "2.9.0", "numpy": "1.26.0", "sklearn": "1.3.2", "pyg": "2.8.0", "backend_cuda": "12.9", "device": "PPU-ZW810E", "total_memory_bytes": 103079215104, "torch_host_threads": 1, "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD": "1", "host_thread_env": {"OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1"}}, "paper_audit": {"source": "https://arxiv.org/pdf/2406.14455v3", "figures_checked": [1, 2, 3], "sections_checked": ["3.2", "3.3", "3.4", "3.5", "4.1", "4.2", "4.3", "4.4"], "interpretation": "FC upper triangle and site/sex/age inputs; RFE and VAE create equal 500-D sizes, not demonstrated semantic alignment. Original shared embedding is the arithmetic mean of modality GTUNet outputs; specific branches remain in fusion. Training-only projection alignment is added at the two 16-D outputs. VAE, AMRS, graph, encoders, fusion and classifier stay fixed.", "paper_code_differences": "Paper: 300 classifier epochs, 8:1:1, correlation similarity and multi-head/LN diagram. Source/history: 500 epochs, 81:9:10, torch Euclidean similarity, one attention head and no explicit LN. Experiments preserve source/history, not silently the textual settings."}, "preserved_source_behaviors": ["sequential overwritten RFE", "phenotype-loop early return", "shared RP conv", "Euclidean torch similarity", "TransformerConv heads=1", "stochastic eval feature dropout", "stochastic eval VAE", "detached torch.tensor contribution weights/value", "dropout_edge default probability", "np.var reporting", "unregistered RP weights", "shared repeated GTUNet convolutions"], "limitations": ["Inherited cross-fold RFE leakage; no clinical generalization claim", "Same-site transductive CV is not leave-site-out validation", "No explicit identifiability of private vs shared information", "Other users' workloads may share both PPUs; do not stop them"]}
+2026-10-14T09:56:28.527019+00:00 WORKFLOW STOPPED: RuntimeError: Command failed (1); inspect /data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/correctness_test.log
+2026-10-14T09:59:14.046509+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T09:59:48.224165+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T10:01:17.378503+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T10:01:17.478516+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T10:01:17.611156+00:00 START gpu=0 E0 seed=911 sequential folds pid=2548319
+2026-10-14T10:01:17.669343+00:00 START gpu=1 E0 seed=912 sequential folds pid=2548322
+2026-10-14T10:19:51.612199+00:00 WORKFLOW STOPPED: KeyboardInterrupt: 
+2026-10-14T10:35:39.388774+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+
+Loading features....
+/data/adodas/MM-GTUNets/utils/mydataloader.py:193: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  tensor = torch.load(load_path)
+Loading labels....
+Loading phenotypic data....
+Data has loaded!
+
+INITIAL AUDIT {"time_utc": "2026-10-14T10:36:51.803956+00:00", "source_commit": "274584ddb435a1fee625a723282b386f87982606", "training_code_sha256": "9186fe8b76142e6ef114d850409cb7d8e9ac5f2691d8e132647c389ee60e5572", "input_shapes": {"image": [871, 6670], "phenotype": [871, 3]}, "label_encoding": {"ASD": 0, "HC": 1}, "environment": {"python": "3.12.3 (main, Jan 30 2026, 14:20:45) [GCC 13.3.0]", "torch": "2.9.0", "numpy": "1.26.0", "sklearn": "1.3.2", "pyg": "2.8.0", "backend_cuda": "12.9", "device": "PPU-ZW810E", "total_memory_bytes": 103079215104, "torch_host_threads": 1, "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD": "1", "host_thread_env": {"OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1"}}, "paper_audit": {"source": "https://arxiv.org/pdf/2406.14455v3", "figures_checked": [1, 2, 3], "sections_checked": ["3.2", "3.3", "3.4", "3.5", "4.1", "4.2", "4.3", "4.4"], "interpretation": "FC upper triangle and site/sex/age inputs; RFE and VAE create equal 500-D sizes, not demonstrated semantic alignment. Original shared embedding is the arithmetic mean of modality GTUNet outputs; specific branches remain in fusion. Training-only projection alignment is added at the two 16-D outputs. VAE, AMRS, graph, encoders, fusion and classifier stay fixed.", "paper_code_differences": "Paper: 300 classifier epochs, 8:1:1, correlation similarity and multi-head/LN diagram. Source/history: 500 epochs, 81:9:10, torch Euclidean similarity, one attention head and no explicit LN. Experiments preserve source/history, not silently the textual settings."}, "preserved_source_behaviors": ["sequential overwritten RFE", "phenotype-loop early return", "shared RP conv", "Euclidean torch similarity", "TransformerConv heads=1", "stochastic eval feature dropout", "stochastic eval VAE", "detached torch.tensor contribution weights/value", "dropout_edge default probability", "np.var reporting", "unregistered RP weights", "shared repeated GTUNet convolutions"], "limitations": ["Inherited cross-fold RFE leakage; no clinical generalization claim", "Same-site transductive CV is not leave-site-out validation", "No explicit identifiability of private vs shared information", "Other users' workloads may share both PPUs; do not stop them"]}
+2026-10-14T10:37:29.472584+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T10:39:04.711411+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T10:39:04.834581+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T10:39:04.991039+00:00 START gpu=0 E0 seed=911 sequential folds pid=2652608
+2026-10-14T10:39:05.049828+00:00 START gpu=1 E0 seed=912 sequential folds pid=2652609
+2026-10-14T11:17:14.646677+00:00 COMPLETE E0 seed=912 sequential folds
+2026-10-14T11:17:20.104745+00:00 START gpu=1 E0 seed=913 sequential folds pid=2763430
+HISTORY CHECK {"passed": false, "exact_at_original_output_precision": false, "mean_delta_ACC": 0.004545779283523554, "mean_delta_AUC": 0.0005564651293969325, "max_absolute_fold_delta": 0.04840425531914894, "per_fold": [{"fold": 0, "historical_ACC": 0.69318, "replay_ACC": 0.7386363744735718, "delta_ACC": 0.04545637447357176, "historical_AUC": 0.74779, "replay_AUC": 0.7540217955371044, "delta_AUC": 0.006231795537104401}, {"fold": 1, "historical_ACC": 0.83908, "replay_ACC": 0.8505747318267822, "delta_ACC": 0.011494731826782179, "historical_AUC": 0.91145, "replay_AUC": 0.9262990455991517, "delta_AUC": 0.014849045599151678}, {"fold": 2, "historical_ACC": 0.8046, "replay_ACC": 0.8275862336158752, "delta_ACC": 0.022986233615875262, "historical_AUC": 0.89502, "replay_AUC": 0.9194061505832449, "delta_AUC": 0.024386150583244892}, {"fold": 3, "historical_ACC": 0.86207, "replay_ACC": 0.8735632300376892, "delta_ACC": 0.011493230037689206, "historical_AUC": 0.93245, "replay_AUC": 0.9340425531914894, "delta_AUC": 0.001592553191489432}, {"fold": 4, "historical_ACC": 0.77011, "replay_ACC": 0.8160919547080994, "delta_ACC": 0.045981954708099404, "historical_AUC": 0.83085, "replay_AUC": 0.8617021276595744, "delta_AUC": 0.030852127659574458}, {"fold": 5, "historical_ACC": 0.86207, "replay_ACC": 0.8965517282485962, "delta_ACC": 0.03448172824859619, "historical_AUC": 0.9266, "replay_AUC": 0.9473404255319149, "delta_AUC": 0.020740425531914908}, {"fold": 6, "historical_ACC": 0.77011, "replay_ACC": 0.7356321811676025, "delta_ACC": -0.03447781883239742, "historical_AUC": 0.80851, "replay_AUC": 0.8021276595744681, "delta_AUC": -0.006382340425531874}, {"fold": 7, "historical_ACC": 0.86207, "replay_ACC": 0.8160919547080994, "delta_ACC": -0.04597804529190064, "historical_AUC": 0.925, "replay_AUC": 0.8765957446808511, "delta_AUC": -0.04840425531914894}, {"fold": 8, "historical_ACC": 0.91954, "replay_ACC": 0.8965517282485962, "delta_ACC": -0.022988271751403833, "historical_AUC": 0.94309, "replay_AUC": 0.9351063829787235, "delta_AUC": -0.007983617021276479}, {"fold": 9, "historical_ACC": 0.82759, "replay_ACC": 0.8045976758003235, "delta_ACC": -0.02299232419967656, "historical_AUC": 0.92553, "replay_AUC": 0.8952127659574468, "delta_AUC": -0.030317234042553154}], "interpretation": "Not exact; PPU parallel reductions/runtime contention must be investigated before claiming equivalence"}
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 834, in <module>
+    main()
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 830, in main
+    elif args.command == "history-check": history_check()
+                                          ^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 814, in history_check
+    raise RuntimeError("Historical baseline tolerance exceeded; variants are blocked pending diagnosis")
+RuntimeError: Historical baseline tolerance exceeded; variants are blocked pending diagnosis
+2026-10-14T11:19:06.033377+00:00 WORKFLOW STOPPED: RuntimeError: Command failed (1); inspect /data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.log
+2026-10-14T11:23:00.297749+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T11:23:00.436666+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T11:23:04.055194+00:00 Non-exact historical replay reviewed; strict check and all differences remain preserved. Variants still require all 30 disabled-loss equivalence checks.
+2026-10-14T11:23:04.083847+00:00 START gpu=0 E0 seed=913 sequential folds pid=2778977
+2026-10-14T11:54:58.409365+00:00 COMPLETE E0 seed=913 sequential folds
+GROUP COMPLETE E0: ACC 81.88%, BA 81.68%, AUC 88.54%, SEN 78.79%, SPE 84.56%, F1 79.82%
+2026-10-14T11:55:22.572964+00:00 E0 30/30 complete; handoff updated
+2026-10-14T11:57:04.313023+00:00 All 30 actual anchor forward/gradient/Adam-step/RNG disabled-loss equivalence checks passed
+2026-10-14T11:57:05.446735+00:00 START gpu=0 E1 seed=911 fold=0 pid=2852165
+2026-10-14T11:57:05.510649+00:00 START gpu=1 E1 seed=911 fold=1 pid=2852171
+2026-10-14T11:59:19.992326+00:00 COMPLETE E1 seed=911 fold=0
+2026-10-14T11:59:25.198764+00:00 START gpu=0 E1 seed=911 fold=2 pid=2856759
+2026-10-14T11:59:35.620701+00:00 COMPLETE E1 seed=911 fold=1
+2026-10-14T11:59:40.985243+00:00 START gpu=1 E1 seed=911 fold=3 pid=2857320
+2026-10-14T12:02:30.052178+00:00 COMPLETE E1 seed=911 fold=3
+2026-10-14T12:02:35.269358+00:00 START gpu=1 E1 seed=911 fold=4 pid=2863021
+2026-10-14T12:02:40.919960+00:00 COMPLETE E1 seed=911 fold=2
+2026-10-14T12:02:46.183671+00:00 START gpu=0 E1 seed=911 fold=5 pid=2863405
+2026-10-14T12:04:47.796699+00:00 COMPLETE E1 seed=911 fold=4
+2026-10-14T12:04:53.106735+00:00 START gpu=1 E1 seed=911 fold=6 pid=2867548
+2026-10-14T12:05:35.220225+00:00 COMPLETE E1 seed=911 fold=5
+2026-10-14T12:05:40.747171+00:00 START gpu=0 E1 seed=911 fold=7 pid=2869136
+2026-10-14T12:06:44.736525+00:00 COMPLETE E1 seed=911 fold=6
+2026-10-14T12:06:50.086007+00:00 START gpu=1 E1 seed=911 fold=8 pid=2871392
+2026-10-14T12:08:27.184258+00:00 COMPLETE E1 seed=911 fold=7
+2026-10-14T12:08:32.538648+00:00 START gpu=0 E1 seed=911 fold=9 pid=2874780
+2026-10-14T12:09:50.644985+00:00 COMPLETE E1 seed=911 fold=8
+2026-10-14T12:09:56.207999+00:00 START gpu=1 E1 seed=912 fold=0 pid=2877575
+2026-10-14T12:11:43.244759+00:00 COMPLETE E1 seed=911 fold=9
+2026-10-14T12:11:43.391479+00:00 COMPLETE E1 seed=912 fold=0
+2026-10-14T12:11:48.822173+00:00 START gpu=0 E1 seed=912 fold=1 pid=2881353
+2026-10-14T12:11:48.910399+00:00 START gpu=1 E1 seed=912 fold=2 pid=2881354
+2026-10-14T12:14:16.328511+00:00 COMPLETE E1 seed=912 fold=1
+2026-10-14T12:14:16.482910+00:00 COMPLETE E1 seed=912 fold=2
+2026-10-14T12:14:21.932847+00:00 START gpu=0 E1 seed=912 fold=3 pid=2886628
+2026-10-14T12:14:21.991677+00:00 START gpu=1 E1 seed=912 fold=4 pid=2886631
+2026-10-14T12:16:50.286293+00:00 COMPLETE E1 seed=912 fold=4
+2026-10-14T12:16:55.801204+00:00 START gpu=1 E1 seed=912 fold=5 pid=2891743
+2026-10-14T12:17:17.971474+00:00 COMPLETE E1 seed=912 fold=3
+2026-10-14T12:24:55.165000+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T12:24:55.246114+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T12:25:03.792840+00:00 Non-exact historical replay reviewed; strict check and all differences remain preserved. Variants still require all 30 disabled-loss equivalence checks.
+GROUP COMPLETE E0: ACC 81.88%, BA 81.68%, AUC 88.54%, SEN 78.79%, SPE 84.56%, F1 79.82%
+2026-10-14T12:25:26.389687+00:00 E0 30/30 complete; handoff updated
+2026-10-14T12:25:26.408530+00:00 All 30 actual anchor forward/gradient/Adam-step/RNG disabled-loss equivalence checks passed under the documented test-only deterministic backend; formal training remains unchanged
+2026-10-14T12:25:40.859429+00:00 BALANCED VARIANTS tasks=210 per_gpu={'0': 105, '1': 105} already_complete=16 pending=[98, 96] workers_per_gpu=4; training code and anchors unchanged
+2026-10-14T12:25:42.118397+00:00 START gpu=0 E1 seed=912 fold=6 pid=2910175
+2026-10-14T12:25:42.226668+00:00 START gpu=0 E2 seed=911 fold=0 pid=2910177
+2026-10-14T12:25:42.389283+00:00 START gpu=0 E3 seed=911 fold=0 pid=2910182
+2026-10-14T12:25:42.492635+00:00 START gpu=0 E4 seed=911 fold=0 pid=2910185
+2026-10-14T12:25:42.604127+00:00 START gpu=1 E5 seed=911 fold=1 pid=2910189
+2026-10-14T12:25:42.726000+00:00 START gpu=1 E6 seed=911 fold=1 pid=2910191
+2026-10-14T12:25:42.894239+00:00 START gpu=1 E7 seed=911 fold=1 pid=2910192
+2026-10-14T12:25:42.964295+00:00 START gpu=1 E1 seed=912 fold=9 pid=2910198
+2026-10-14T12:28:09.013693+00:00 COMPLETE E2 seed=911 fold=0
+2026-10-14T12:28:09.171534+00:00 COMPLETE E3 seed=911 fold=0
+2026-10-14T12:28:09.355944+00:00 COMPLETE E4 seed=911 fold=0
+2026-10-14T12:28:09.715888+00:00 START gpu=0 E5 seed=911 fold=0 pid=2915085
+2026-10-14T12:28:09.933432+00:00 START gpu=0 E6 seed=911 fold=0 pid=2915086
+2026-10-14T12:28:10.042703+00:00 START gpu=0 E7 seed=911 fold=0 pid=2915107
+2026-10-14T12:28:51.795464+00:00 COMPLETE E1 seed=912 fold=6
+2026-10-14T12:28:52.806990+00:00 START gpu=0 E1 seed=912 fold=7 pid=2916538
+2026-10-14T12:29:10.224621+00:00 COMPLETE E6 seed=911 fold=1
+2026-10-14T12:29:11.139050+00:00 START gpu=1 E2 seed=911 fold=1 pid=2917124
+2026-10-14T12:29:20.170706+00:00 COMPLETE E5 seed=911 fold=1
+2026-10-14T12:29:20.500652+00:00 COMPLETE E7 seed=911 fold=1
+2026-10-14T12:29:20.868824+00:00 COMPLETE E1 seed=912 fold=9
+2026-10-14T12:29:21.185925+00:00 START gpu=1 E3 seed=911 fold=1 pid=2917451
+2026-10-14T12:29:21.262790+00:00 START gpu=1 E4 seed=911 fold=1 pid=2917454
+2026-10-14T12:29:21.483968+00:00 START gpu=1 E5 seed=911 fold=3 pid=2917466
+2026-10-14T12:30:37.771593+00:00 COMPLETE E5 seed=911 fold=0
+2026-10-14T12:30:37.955063+00:00 COMPLETE E6 seed=911 fold=0
+2026-10-14T12:30:38.488661+00:00 COMPLETE E7 seed=911 fold=0
+2026-10-14T12:30:39.065460+00:00 START gpu=0 E2 seed=911 fold=2 pid=2919996
+2026-10-14T12:30:39.188773+00:00 START gpu=0 E3 seed=911 fold=2 pid=2920002
+2026-10-14T12:30:39.274732+00:00 START gpu=0 E4 seed=911 fold=2 pid=2920007
+2026-10-14T12:32:15.190360+00:00 COMPLETE E2 seed=911 fold=1
+2026-10-14T12:32:15.534199+00:00 START gpu=1 E6 seed=911 fold=3 pid=2923227
+2026-10-14T12:32:22.854412+00:00 COMPLETE E3 seed=911 fold=1
+2026-10-14T12:32:23.592189+00:00 START gpu=1 E7 seed=911 fold=3 pid=2923461
+2026-10-14T12:32:30.577429+00:00 COMPLETE E4 seed=911 fold=1
+2026-10-14T12:32:30.918514+00:00 START gpu=1 E1 seed=913 fold=1 pid=2923692
+2026-10-14T12:32:37.363211+00:00 COMPLETE E5 seed=911 fold=3
+2026-10-14T12:32:37.837686+00:00 START gpu=1 E2 seed=911 fold=3 pid=2923895
+2026-10-14T12:32:44.430992+00:00 COMPLETE E1 seed=912 fold=7
+2026-10-14T12:32:44.956861+00:00 START gpu=0 E5 seed=911 fold=2 pid=2924103
+2026-10-14T12:33:24.279111+00:00 COMPLETE E2 seed=911 fold=2
+2026-10-14T12:33:24.749269+00:00 COMPLETE E4 seed=911 fold=2
+2026-10-14T12:33:25.592659+00:00 START gpu=0 E6 seed=911 fold=2 pid=2925553
+2026-10-14T12:33:25.681324+00:00 START gpu=0 E7 seed=911 fold=2 pid=2925555
+2026-10-14T12:33:34.626388+00:00 COMPLETE E3 seed=911 fold=2
+2026-10-14T12:33:35.184725+00:00 START gpu=0 E1 seed=912 fold=8 pid=2925825
+2026-10-14T12:35:14.096497+00:00 COMPLETE E6 seed=911 fold=3
+2026-10-14T12:35:14.445690+00:00 START gpu=1 E3 seed=911 fold=3 pid=2928730
+2026-10-14T12:35:21.233771+00:00 COMPLETE E7 seed=911 fold=3
+2026-10-14T12:35:21.415718+00:00 COMPLETE E5 seed=911 fold=2
+2026-10-14T12:35:21.777144+00:00 START gpu=0 E2 seed=911 fold=5 pid=2928972
+2026-10-14T12:35:21.847284+00:00 START gpu=1 E4 seed=911 fold=3 pid=2928976
+2026-10-14T12:35:28.336171+00:00 COMPLETE E2 seed=911 fold=3
+2026-10-14T12:35:28.635705+00:00 START gpu=1 E5 seed=911 fold=4 pid=2929162
+2026-10-14T12:35:35.076762+00:00 COMPLETE E1 seed=913 fold=1
+2026-10-14T12:35:35.661646+00:00 START gpu=1 E6 seed=911 fold=4 pid=2929372
+2026-10-14T12:35:50.699727+00:00 COMPLETE E1 seed=912 fold=8
+2026-10-14T12:35:51.596238+00:00 START gpu=0 E3 seed=911 fold=5 pid=2929858
+2026-10-14T12:36:12.154940+00:00 COMPLETE E6 seed=911 fold=2
+2026-10-14T12:36:12.561531+00:00 COMPLETE E7 seed=911 fold=2
+2026-10-14T12:36:13.465578+00:00 START gpu=0 E4 seed=911 fold=5 pid=2930526
+2026-10-14T12:36:13.827623+00:00 START gpu=0 E5 seed=911 fold=5 pid=2930540
+2026-10-14T12:38:06.097020+00:00 COMPLETE E2 seed=911 fold=5
+2026-10-14T12:38:06.409022+00:00 START gpu=0 E6 seed=911 fold=5 pid=2933971
+2026-10-14T12:38:13.666154+00:00 COMPLETE E3 seed=911 fold=3
+2026-10-14T12:38:14.711970+00:00 COMPLETE E5 seed=911 fold=4
+2026-10-14T12:38:15.042471+00:00 COMPLETE E6 seed=911 fold=4
+2026-10-14T12:38:15.316320+00:00 START gpu=1 E7 seed=911 fold=4 pid=2934231
+2026-10-14T12:38:15.385995+00:00 START gpu=1 E1 seed=913 fold=3 pid=2934239
+2026-10-14T12:38:15.471024+00:00 START gpu=1 E2 seed=911 fold=4 pid=2934242
+2026-10-14T12:38:22.917158+00:00 COMPLETE E4 seed=911 fold=3
+2026-10-14T12:38:23.111990+00:00 COMPLETE E3 seed=911 fold=5
+2026-10-14T12:38:23.531896+00:00 START gpu=0 E7 seed=911 fold=5 pid=2934514
+2026-10-14T12:38:23.605609+00:00 START gpu=1 E3 seed=911 fold=4 pid=2934519
+2026-10-14T12:38:37.741424+00:00 COMPLETE E5 seed=911 fold=5
+2026-10-14T12:38:38.501427+00:00 START gpu=0 E1 seed=913 fold=0 pid=2934999
+2026-10-14T12:38:47.204937+00:00 COMPLETE E4 seed=911 fold=5
+2026-10-14T12:38:47.814638+00:00 START gpu=0 E2 seed=911 fold=7 pid=2935298
+2026-10-14T12:40:42.229120+00:00 COMPLETE E6 seed=911 fold=5
+2026-10-14T12:40:42.415981+00:00 COMPLETE E1 seed=913 fold=0
+2026-10-14T12:40:42.719069+00:00 START gpu=0 E3 seed=911 fold=7 pid=2938662
+2026-10-14T12:40:42.819615+00:00 START gpu=0 E4 seed=911 fold=7 pid=2938663
+2026-10-14T12:40:59.586344+00:00 COMPLETE E7 seed=911 fold=4
+2026-10-14T12:40:59.756216+00:00 COMPLETE E1 seed=913 fold=3
+2026-10-14T12:41:00.059620+00:00 COMPLETE E2 seed=911 fold=4
+2026-10-14T12:41:00.402357+00:00 COMPLETE E7 seed=911 fold=5
+2026-10-14T12:41:00.598888+00:00 COMPLETE E3 seed=911 fold=4
+2026-10-14T12:41:00.964884+00:00 START gpu=0 E5 seed=911 fold=7 pid=2939206
+2026-10-14T12:41:01.028897+00:00 START gpu=1 E4 seed=911 fold=4 pid=2939214
+2026-10-14T12:41:01.120396+00:00 START gpu=1 E5 seed=911 fold=6 pid=2939218
+2026-10-14T12:41:01.220881+00:00 START gpu=1 E6 seed=911 fold=6 pid=2939220
+2026-10-14T12:41:01.308033+00:00 START gpu=1 E7 seed=911 fold=6 pid=2939224
+2026-10-14T12:41:08.543326+00:00 COMPLETE E2 seed=911 fold=7
+2026-10-14T12:41:09.148372+00:00 START gpu=0 E6 seed=911 fold=7 pid=2939430
+2026-10-14T12:43:46.979682+00:00 COMPLETE E3 seed=911 fold=7
+2026-10-14T12:43:47.186261+00:00 COMPLETE E4 seed=911 fold=7
+2026-10-14T12:43:47.671450+00:00 START gpu=0 E7 seed=911 fold=7 pid=2943941
+2026-10-14T12:43:47.782769+00:00 START gpu=0 E1 seed=913 fold=2 pid=2943944
+2026-10-14T12:44:04.423929+00:00 COMPLETE E5 seed=911 fold=6
+2026-10-14T12:44:04.765160+00:00 START gpu=1 E1 seed=913 fold=5 pid=2944409
+2026-10-14T12:44:15.613432+00:00 COMPLETE E5 seed=911 fold=7
+2026-10-14T12:44:16.363808+00:00 START gpu=0 E2 seed=911 fold=9 pid=2944760
+2026-10-14T12:44:26.390825+00:00 COMPLETE E6 seed=911 fold=6
+2026-10-14T12:44:28.087843+00:00 COMPLETE E7 seed=911 fold=6
+2026-10-14T12:44:28.562781+00:00 COMPLETE E6 seed=911 fold=7
+2026-10-14T12:44:29.303420+00:00 START gpu=0 E3 seed=911 fold=9 pid=2945102
+2026-10-14T12:44:29.393545+00:00 START gpu=1 E2 seed=911 fold=6 pid=2945110
+2026-10-14T12:44:29.581031+00:00 START gpu=1 E3 seed=911 fold=6 pid=2945114
+2026-10-14T12:44:40.785741+00:00 COMPLETE E4 seed=911 fold=4
+2026-10-14T12:44:42.166170+00:00 START gpu=1 E4 seed=911 fold=6 pid=2945474
+2026-10-14T12:48:09.884480+00:00 COMPLETE E7 seed=911 fold=7
+2026-10-14T12:48:11.256190+00:00 START gpu=0 E4 seed=911 fold=9 pid=2951234
+2026-10-14T12:48:21.220739+00:00 COMPLETE E1 seed=913 fold=5
+2026-10-14T12:48:22.317807+00:00 START gpu=1 E5 seed=911 fold=8 pid=2951541
+2026-10-14T12:48:51.696443+00:00 COMPLETE E4 seed=911 fold=6
+2026-10-14T12:48:52.511663+00:00 START gpu=1 E6 seed=911 fold=8 pid=2952349
+2026-10-14T12:49:07.232255+00:00 COMPLETE E2 seed=911 fold=6
+2026-10-14T12:49:07.675210+00:00 COMPLETE E3 seed=911 fold=6
+2026-10-14T12:49:08.708411+00:00 START gpu=1 E7 seed=911 fold=8 pid=2952806
+2026-10-14T12:49:09.050503+00:00 START gpu=1 E1 seed=913 fold=7 pid=2952807
+2026-10-14T12:49:20.128539+00:00 COMPLETE E2 seed=911 fold=9
+2026-10-14T12:49:20.863143+00:00 START gpu=0 E5 seed=911 fold=9 pid=2953168
+2026-10-14T12:49:35.728480+00:00 COMPLETE E3 seed=911 fold=9
+2026-10-14T12:49:36.323014+00:00 START gpu=0 E6 seed=911 fold=9 pid=2953623
+2026-10-14T12:50:17.612213+00:00 COMPLETE E1 seed=913 fold=2
+2026-10-14T12:50:18.303878+00:00 START gpu=0 E7 seed=911 fold=9 pid=2954830
+2026-10-14T12:51:38.740520+00:00 COMPLETE E4 seed=911 fold=9
+2026-10-14T12:51:39.268400+00:00 START gpu=0 E1 seed=913 fold=4 pid=2957156
+2026-10-14T12:52:05.942377+00:00 COMPLETE E1 seed=913 fold=7
+2026-10-14T12:52:06.630289+00:00 START gpu=1 E2 seed=911 fold=8 pid=2957981
+2026-10-14T12:52:26.367566+00:00 COMPLETE E5 seed=911 fold=8
+2026-10-14T12:52:26.935460+00:00 COMPLETE E5 seed=911 fold=9
+2026-10-14T12:52:27.656048+00:00 START gpu=0 E2 seed=912 fold=1 pid=2958583
+2026-10-14T12:52:27.734663+00:00 START gpu=1 E3 seed=911 fold=8 pid=2958587
+2026-10-14T12:52:37.726973+00:00 COMPLETE E6 seed=911 fold=8
+2026-10-14T12:52:37.985241+00:00 COMPLETE E6 seed=911 fold=9
+2026-10-14T12:52:38.547272+00:00 START gpu=0 E3 seed=912 fold=1 pid=2958897
+2026-10-14T12:52:38.645050+00:00 START gpu=1 E4 seed=911 fold=8 pid=2958898
+2026-10-14T12:53:02.454420+00:00 COMPLETE E7 seed=911 fold=8
+2026-10-14T12:53:03.059272+00:00 START gpu=1 E5 seed=912 fold=0 pid=2959625
+2026-10-14T12:53:14.641795+00:00 COMPLETE E7 seed=911 fold=9
+2026-10-14T12:53:15.601396+00:00 START gpu=0 E4 seed=912 fold=1 pid=2959995
+2026-10-14T12:56:11.898826+00:00 COMPLETE E1 seed=913 fold=4
+2026-10-14T12:56:59.267127+00:00 WORKFLOW STOPPED: TimeoutExpired: Command '['nvidia-smi', '--query-gpu=index,memory.total,memory.free', '--format=csv,noheader,nounits']' timed out after 15 seconds
+2026-10-14T13:06:02.264210+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T13:06:02.396383+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T13:06:09.272916+00:00 Non-exact historical replay reviewed; strict check and all differences remain preserved. Variants still require all 30 disabled-loss equivalence checks.
+GROUP COMPLETE E0: ACC 81.88%, BA 81.68%, AUC 88.54%, SEN 78.79%, SPE 84.56%, F1 79.82%
+2026-10-14T13:06:29.667447+00:00 E0 30/30 complete; handoff updated
+2026-10-14T13:06:29.708104+00:00 All 30 actual anchor forward/gradient/Adam-step/RNG disabled-loss equivalence checks passed under the documented test-only deterministic backend; formal training remains unchanged
+2026-10-14T13:07:03.522901+00:00 BALANCED VARIANTS tasks=210 per_gpu={'0': 105, '1': 105} already_complete=84 pending=[62, 64] workers_per_gpu=4; training code and anchors unchanged
+2026-10-14T13:07:07.962181+00:00 START gpu=0 E1 seed=913 fold=6 pid=2983990
+2026-10-14T13:07:08.067867+00:00 START gpu=0 E2 seed=912 fold=1 pid=2984003
+2026-10-14T13:07:08.120323+00:00 START gpu=0 E3 seed=912 fold=1 pid=2984006
+2026-10-14T13:07:08.239616+00:00 START gpu=0 E4 seed=912 fold=1 pid=2984010
+2026-10-14T13:07:08.376759+00:00 START gpu=1 E5 seed=912 fold=0 pid=2984013
+2026-10-14T13:07:08.499458+00:00 START gpu=1 E6 seed=912 fold=0 pid=2984014
+2026-10-14T13:07:08.663970+00:00 START gpu=1 E7 seed=912 fold=0 pid=2984015
+2026-10-14T13:07:08.743429+00:00 START gpu=1 E1 seed=913 fold=9 pid=2984021
+2026-10-14T13:10:41.077255+00:00 COMPLETE E5 seed=912 fold=0
+2026-10-14T13:10:41.492838+00:00 COMPLETE E6 seed=912 fold=0
+2026-10-14T13:10:41.901809+00:00 COMPLETE E7 seed=912 fold=0
+2026-10-14T13:10:42.267764+00:00 START gpu=1 E2 seed=911 fold=8 pid=2990167
+2026-10-14T13:10:42.346163+00:00 START gpu=1 E3 seed=911 fold=8 pid=2990168
+2026-10-14T13:10:42.416011+00:00 START gpu=1 E4 seed=911 fold=8 pid=2990169
+2026-10-14T13:10:52.911265+00:00 COMPLETE E2 seed=912 fold=1
+2026-10-14T13:10:53.073671+00:00 COMPLETE E3 seed=912 fold=1
+2026-10-14T13:10:53.220972+00:00 COMPLETE E1 seed=913 fold=9
+2026-10-14T13:10:53.607062+00:00 START gpu=0 E5 seed=912 fold=1 pid=2990541
+2026-10-14T13:10:53.797672+00:00 START gpu=0 E6 seed=912 fold=1 pid=2990548
+2026-10-14T13:10:53.879915+00:00 START gpu=1 E5 seed=912 fold=2 pid=2990550
+2026-10-14T13:11:04.381626+00:00 COMPLETE E4 seed=912 fold=1
+2026-10-14T13:11:05.041882+00:00 START gpu=0 E7 seed=912 fold=1 pid=2990898
+2026-10-14T13:12:34.729466+00:00 COMPLETE E1 seed=913 fold=6
+2026-10-14T13:12:35.714929+00:00 START gpu=0 E1 seed=913 fold=8 pid=2993589
+2026-10-14T13:14:15.537176+00:00 COMPLETE E5 seed=912 fold=1
+2026-10-14T13:14:16.154650+00:00 COMPLETE E6 seed=912 fold=1
+2026-10-14T13:14:17.479371+00:00 START gpu=0 E2 seed=912 fold=3 pid=2996473
+2026-10-14T13:14:17.676579+00:00 START gpu=0 E3 seed=912 fold=3 pid=2996481
+2026-10-14T13:14:28.738217+00:00 COMPLETE E7 seed=912 fold=1
+2026-10-14T13:14:29.120664+00:00 START gpu=0 E4 seed=912 fold=3 pid=2996807
+2026-10-14T13:15:24.163353+00:00 COMPLETE E5 seed=912 fold=2
+2026-10-14T13:15:24.755496+00:00 START gpu=1 E6 seed=912 fold=2 pid=2998350
+2026-10-14T13:15:45.565677+00:00 COMPLETE E2 seed=911 fold=8
+2026-10-14T13:15:45.833927+00:00 COMPLETE E3 seed=911 fold=8
+2026-10-14T13:15:45.988150+00:00 COMPLETE E4 seed=911 fold=8
+2026-10-14T13:15:46.184105+00:00 COMPLETE E1 seed=913 fold=8
+2026-10-14T13:15:46.680708+00:00 START gpu=0 E5 seed=912 fold=3 pid=2998992
+2026-10-14T13:15:46.977809+00:00 START gpu=1 E7 seed=912 fold=2 pid=2999005
+2026-10-14T13:15:47.068245+00:00 START gpu=1 E2 seed=912 fold=0 pid=2999017
+2026-10-14T13:15:47.157672+00:00 START gpu=1 E3 seed=912 fold=0 pid=2999020
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/analyze.py", line 506, in <module>
+    main()
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/analyze.py", line 498, in main
+    report = summary(args.group)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/analyze.py", line 222, in summary
+    atomic_json(report, out / "summary.json")
+  File "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.py", line 91, in atomic_json
+    json.dump(value, stream, indent=2, allow_nan=False)
+  File "/usr/local/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/local/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 1 more time]
+  File "/usr/local/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
+2026-10-14T13:16:45.348199+00:00 WORKFLOW STOPPED: RuntimeError: Command failed (1); inspect /data/adodas/MM-GTUNets/experiments/DRPA_20261014/run.log
+2026-10-14T16:07:16.216988+00:00 ANALYSIS SERIALIZATION FIX VERIFIED: 3 regression tests; E1 30-fold OOF summary succeeded; completed folds preserved; training code unchanged
+2026-10-14T16:07:25.801991+00:00 DRPA requested workflow started; protected source and historical data remain read-only
+2026-10-14T16:07:25.963689+00:00 Minimal correctness and PPU compatibility tests passed
+2026-10-14T16:07:35.729542+00:00 Non-exact historical replay reviewed; strict check and all differences remain preserved. Variants still require all 30 disabled-loss equivalence checks.
+GROUP COMPLETE E0: ACC 81.88%, BA 81.68%, AUC 88.54%, SEN 78.79%, SPE 84.56%, F1 79.82%
+2026-10-14T16:07:58.418119+00:00 E0 30/30 complete; handoff updated
+2026-10-14T16:07:58.458801+00:00 All 30 actual anchor forward/gradient/Adam-step/RNG disabled-loss equivalence checks passed under the documented test-only deterministic backend; formal training remains unchanged
+2026-10-14T16:08:43.821213+00:00 BALANCED VARIANTS tasks=210 per_gpu={'0': 105, '1': 105} already_complete=100 pending=[54, 56] workers_per_gpu=4; training code and anchors unchanged
+GROUP COMPLETE E1: ACC 81.69%, BA 81.43%, AUC 88.56%, SEN 77.80%, SPE 85.07%, F1 79.39%
+2026-10-14T16:09:06.044373+00:00 E1 30/30 complete; handoff updated
+2026-10-14T16:09:08.744719+00:00 START gpu=0 E2 seed=912 fold=3 pid=3293882
+2026-10-14T16:09:08.853261+00:00 START gpu=0 E3 seed=912 fold=3 pid=3293885
+2026-10-14T16:09:08.977781+00:00 START gpu=0 E4 seed=912 fold=3 pid=3293889
+2026-10-14T16:09:09.057891+00:00 START gpu=0 E5 seed=912 fold=3 pid=3293893
+2026-10-14T16:09:09.218729+00:00 START gpu=1 E5 seed=912 fold=4 pid=3293894
+2026-10-14T16:09:09.277502+00:00 START gpu=1 E6 seed=912 fold=2 pid=3293895
+2026-10-14T16:09:09.344000+00:00 START gpu=1 E7 seed=912 fold=2 pid=3293898
+2026-10-14T16:09:09.424697+00:00 START gpu=1 E2 seed=912 fold=0 pid=3293900
+2026-10-14T16:11:39.475394+00:00 COMPLETE E2 seed=912 fold=0
+2026-10-14T16:11:39.832073+00:00 START gpu=1 E3 seed=912 fold=0 pid=3298209
+2026-10-14T16:11:47.789438+00:00 COMPLETE E2 seed=912 fold=3
+2026-10-14T16:11:48.438300+00:00 START gpu=0 E6 seed=912 fold=3 pid=3298446
+2026-10-14T16:11:57.423620+00:00 COMPLETE E3 seed=912 fold=3
+2026-10-14T16:11:57.783872+00:00 START gpu=0 E7 seed=912 fold=3 pid=3298695
+2026-10-14T16:12:09.163079+00:00 COMPLETE E4 seed=912 fold=3
+2026-10-14T16:12:09.329419+00:00 COMPLETE E5 seed=912 fold=3
+2026-10-14T16:12:10.091826+00:00 COMPLETE E5 seed=912 fold=4
+2026-10-14T16:12:10.871390+00:00 START gpu=0 E2 seed=912 fold=6 pid=3299020
+2026-10-14T16:12:11.027515+00:00 START gpu=0 E3 seed=912 fold=6 pid=3299023
+2026-10-14T16:12:11.264837+00:00 START gpu=1 E4 seed=912 fold=0 pid=3299024
+2026-10-14T16:12:20.539099+00:00 COMPLETE E6 seed=912 fold=2
+2026-10-14T16:12:20.701883+00:00 COMPLETE E7 seed=912 fold=2
+2026-10-14T16:12:21.428572+00:00 START gpu=1 E5 seed=912 fold=5 pid=3299291
+2026-10-14T16:12:21.529109+00:00 START gpu=1 E6 seed=912 fold=4 pid=3299292
+2026-10-14T16:14:09.919625+00:00 COMPLETE E3 seed=912 fold=0
+2026-10-14T16:14:10.483972+00:00 START gpu=1 E7 seed=912 fold=4 pid=3302022
+2026-10-14T16:14:50.306314+00:00 COMPLETE E4 seed=912 fold=0
+2026-10-14T16:14:51.097195+00:00 START gpu=1 E2 seed=912 fold=2 pid=3303049
+2026-10-14T16:15:03.380077+00:00 COMPLETE E6 seed=912 fold=3
+2026-10-14T16:15:04.217218+00:00 START gpu=0 E4 seed=912 fold=6 pid=3303373
+2026-10-14T16:15:16.578949+00:00 COMPLETE E7 seed=912 fold=3
+2026-10-14T16:15:18.425393+00:00 START gpu=0 E5 seed=912 fold=6 pid=3303745
+2026-10-14T16:15:29.130765+00:00 COMPLETE E2 seed=912 fold=6
+2026-10-14T16:15:30.674450+00:00 COMPLETE E3 seed=912 fold=6
+2026-10-14T16:15:30.878186+00:00 COMPLETE E6 seed=912 fold=4
+2026-10-14T16:15:31.952827+00:00 START gpu=0 E6 seed=912 fold=6 pid=3304073
+2026-10-14T16:15:32.246127+00:00 START gpu=0 E7 seed=912 fold=6 pid=3304105
+2026-10-14T16:15:32.516394+00:00 START gpu=1 E3 seed=912 fold=2 pid=3304113
+2026-10-14T16:15:43.542465+00:00 COMPLETE E5 seed=912 fold=5
+2026-10-14T16:15:44.379270+00:00 START gpu=1 E4 seed=912 fold=2 pid=3304419
+2026-10-14T16:17:20.800052+00:00 COMPLETE E7 seed=912 fold=4
+2026-10-14T16:17:21.746522+00:00 START gpu=1 E5 seed=912 fold=9 pid=3306888
+2026-10-14T16:18:41.319527+00:00 COMPLETE E2 seed=912 fold=2
+2026-10-14T16:18:41.497537+00:00 COMPLETE E4 seed=912 fold=6
+2026-10-14T16:18:42.001656+00:00 START gpu=0 E2 seed=912 fold=7 pid=3308787
+2026-10-14T16:18:42.105677+00:00 START gpu=1 E6 seed=912 fold=5 pid=3308793
+2026-10-14T16:18:57.907004+00:00 COMPLETE E5 seed=912 fold=6
+2026-10-14T16:18:58.536638+00:00 START gpu=0 E3 seed=912 fold=7 pid=3309172
+2026-10-14T16:19:10.818185+00:00 COMPLETE E6 seed=912 fold=6
+2026-10-14T16:19:11.904250+00:00 COMPLETE E7 seed=912 fold=6
+2026-10-14T16:19:12.334951+00:00 START gpu=0 E4 seed=912 fold=7 pid=3309522
+2026-10-14T16:19:12.568766+00:00 START gpu=0 E5 seed=912 fold=7 pid=3309523
+2026-10-14T16:19:46.755137+00:00 COMPLETE E3 seed=912 fold=2
+2026-10-14T16:19:47.210010+00:00 COMPLETE E4 seed=912 fold=2
+2026-10-14T16:19:48.925837+00:00 START gpu=1 E7 seed=912 fold=5 pid=3310394
+2026-10-14T16:19:49.554896+00:00 START gpu=1 E2 seed=912 fold=4 pid=3310408
+2026-10-14T16:21:29.753063+00:00 COMPLETE E5 seed=912 fold=9
+2026-10-14T16:21:30.294878+00:00 START gpu=1 E3 seed=912 fold=4 pid=3312912
+2026-10-14T16:22:10.991717+00:00 COMPLETE E6 seed=912 fold=5
+2026-10-14T16:22:11.518704+00:00 START gpu=1 E4 seed=912 fold=4 pid=3313941
+2026-10-14T16:22:43.292488+00:00 COMPLETE E7 seed=912 fold=5
+2026-10-14T16:22:43.811045+00:00 START gpu=1 E5 seed=913 fold=1 pid=3314752
+2026-10-14T16:22:54.386969+00:00 COMPLETE E2 seed=912 fold=4
+2026-10-14T16:22:55.053975+00:00 START gpu=1 E6 seed=912 fold=9 pid=3315038
+2026-10-14T16:23:25.278182+00:00 COMPLETE E2 seed=912 fold=7
+2026-10-14T16:23:25.731913+00:00 START gpu=0 E6 seed=912 fold=7 pid=3315813
+2026-10-14T16:23:35.869233+00:00 COMPLETE E3 seed=912 fold=7
+2026-10-14T16:23:36.109299+00:00 COMPLETE E4 seed=912 fold=7
+2026-10-14T16:23:36.325228+00:00 COMPLETE E5 seed=912 fold=7
+2026-10-14T16:23:36.899047+00:00 START gpu=0 E7 seed=912 fold=7 pid=3316121
+2026-10-14T16:23:36.990640+00:00 START gpu=0 E2 seed=912 fold=8 pid=3316127
+2026-10-14T16:23:37.186652+00:00 START gpu=0 E3 seed=912 fold=8 pid=3316134
+2026-10-14T16:23:59.956763+00:00 COMPLETE E3 seed=912 fold=4
+2026-10-14T16:24:00.655901+00:00 START gpu=1 E7 seed=912 fold=9 pid=3316726
+2026-10-14T16:24:36.247251+00:00 COMPLETE E4 seed=912 fold=4
+2026-10-14T16:24:36.884028+00:00 START gpu=1 E2 seed=912 fold=5 pid=3317644
+2026-10-14T16:26:08.875399+00:00 COMPLETE E6 seed=912 fold=9
+2026-10-14T16:26:09.322811+00:00 START gpu=1 E3 seed=912 fold=5 pid=3319928
+2026-10-14T16:26:18.324625+00:00 COMPLETE E5 seed=913 fold=1
+2026-10-14T16:26:18.730808+00:00 START gpu=1 E4 seed=912 fold=5 pid=3320180
+2026-10-14T16:26:29.040914+00:00 COMPLETE E3 seed=912 fold=8
+2026-10-14T16:26:29.407889+00:00 START gpu=0 E4 seed=912 fold=8 pid=3320444
+2026-10-14T16:26:38.625729+00:00 COMPLETE E2 seed=912 fold=8
+2026-10-14T16:26:39.486550+00:00 START gpu=0 E5 seed=912 fold=8 pid=3320709
+2026-10-14T16:27:00.697298+00:00 COMPLETE E7 seed=912 fold=9
+2026-10-14T16:27:01.196758+00:00 START gpu=1 E5 seed=913 fold=3 pid=3321261
+2026-10-14T16:27:14.382332+00:00 COMPLETE E2 seed=912 fold=5
+2026-10-14T16:27:14.961262+00:00 START gpu=1 E6 seed=913 fold=1 pid=3321609
+2026-10-14T16:27:29.024654+00:00 COMPLETE E6 seed=912 fold=7
+2026-10-14T16:27:29.639050+00:00 START gpu=0 E6 seed=912 fold=8 pid=3321988
+2026-10-14T16:27:41.795480+00:00 COMPLETE E7 seed=912 fold=7
+2026-10-14T16:27:42.240933+00:00 START gpu=0 E7 seed=912 fold=8 pid=3322320
+2026-10-14T16:28:52.576220+00:00 COMPLETE E3 seed=912 fold=5
+2026-10-14T16:28:53.140798+00:00 START gpu=1 E7 seed=913 fold=1 pid=3324139
+2026-10-14T16:29:05.899486+00:00 COMPLETE E4 seed=912 fold=5
+2026-10-14T16:29:06.136183+00:00 COMPLETE E4 seed=912 fold=8
+2026-10-14T16:29:07.940423+00:00 COMPLETE E5 seed=912 fold=8
+2026-10-14T16:29:08.286215+00:00 START gpu=0 E2 seed=913 fold=0 pid=3324529
+2026-10-14T16:29:08.407073+00:00 START gpu=0 E3 seed=913 fold=0 pid=3324534
+2026-10-14T16:29:08.513297+00:00 START gpu=1 E2 seed=912 fold=9 pid=3324537
+2026-10-14T16:29:45.215602+00:00 COMPLETE E5 seed=913 fold=3
+2026-10-14T16:29:45.864113+00:00 COMPLETE E6 seed=913 fold=1
+2026-10-14T16:29:46.241717+00:00 START gpu=1 E3 seed=912 fold=9 pid=3325474
+2026-10-14T16:29:46.516335+00:00 START gpu=1 E4 seed=912 fold=9 pid=3325475
+2026-10-14T16:30:06.165807+00:00 COMPLETE E6 seed=912 fold=8
+2026-10-14T16:30:07.407686+00:00 START gpu=0 E4 seed=913 fold=0 pid=3326019
+2026-10-14T16:30:28.804476+00:00 COMPLETE E7 seed=912 fold=8
+2026-10-14T16:30:30.673844+00:00 START gpu=0 E5 seed=913 fold=0 pid=3326580
+2026-10-14T16:31:43.766887+00:00 COMPLETE E2 seed=913 fold=0
+2026-10-14T16:31:44.111061+00:00 COMPLETE E3 seed=913 fold=0
+2026-10-14T16:31:45.021928+00:00 START gpu=0 E6 seed=913 fold=0 pid=3328388
+2026-10-14T16:31:46.373366+00:00 START gpu=0 E7 seed=913 fold=0 pid=3328393
+2026-10-14T16:32:26.916454+00:00 COMPLETE E4 seed=913 fold=0
+2026-10-14T16:32:27.539859+00:00 START gpu=0 E2 seed=913 fold=2 pid=3329458
+2026-10-14T16:32:43.322644+00:00 COMPLETE E5 seed=913 fold=0
+2026-10-14T16:32:43.668677+00:00 START gpu=0 E3 seed=913 fold=2 pid=3329858
+2026-10-14T16:33:00.427314+00:00 COMPLETE E7 seed=913 fold=1
+2026-10-14T16:33:00.812012+00:00 COMPLETE E2 seed=912 fold=9
+2026-10-14T16:33:01.389437+00:00 START gpu=1 E5 seed=913 fold=5 pid=3330283
+2026-10-14T16:33:01.501634+00:00 START gpu=1 E6 seed=913 fold=3 pid=3330286
+2026-10-14T16:33:31.625050+00:00 COMPLETE E4 seed=912 fold=9
+2026-10-14T16:33:32.409044+00:00 START gpu=1 E7 seed=913 fold=3 pid=3331379
+2026-10-14T16:33:54.637035+00:00 COMPLETE E3 seed=912 fold=9
+2026-10-14T16:33:56.943051+00:00 START gpu=1 E2 seed=913 fold=1 pid=3332009
+2026-10-14T16:34:22.283095+00:00 COMPLETE E6 seed=913 fold=0
+2026-10-14T16:34:22.492501+00:00 COMPLETE E7 seed=913 fold=0
+2026-10-14T16:34:23.413981+00:00 START gpu=0 E4 seed=913 fold=2 pid=3332668
+2026-10-14T16:34:23.516605+00:00 START gpu=0 E5 seed=913 fold=2 pid=3332673
+2026-10-14T16:36:05.098709+00:00 COMPLETE E5 seed=913 fold=5
+2026-10-14T16:36:05.437494+00:00 START gpu=1 E3 seed=913 fold=1 pid=3335166
+2026-10-14T16:36:28.973985+00:00 COMPLETE E6 seed=913 fold=3
+2026-10-14T16:36:29.839828+00:00 START gpu=1 E4 seed=913 fold=1 pid=3335792
+2026-10-14T16:36:40.690406+00:00 COMPLETE E7 seed=913 fold=3
+2026-10-14T16:36:41.246477+00:00 START gpu=1 E5 seed=913 fold=7 pid=3336084
+2026-10-14T16:37:22.467340+00:00 COMPLETE E2 seed=913 fold=2
+2026-10-14T16:37:22.675517+00:00 COMPLETE E2 seed=913 fold=1
+2026-10-14T16:37:23.139337+00:00 START gpu=0 E6 seed=913 fold=2 pid=3337154
+2026-10-14T16:37:23.234638+00:00 START gpu=1 E6 seed=913 fold=5 pid=3337161
+2026-10-14T16:37:37.160337+00:00 COMPLETE E3 seed=913 fold=2
+2026-10-14T16:37:37.781834+00:00 START gpu=0 E7 seed=913 fold=2 pid=3337527
+2026-10-14T16:38:33.164129+00:00 COMPLETE E3 seed=913 fold=1
+2026-10-14T16:38:33.878103+00:00 START gpu=1 E7 seed=913 fold=5 pid=3338900
+2026-10-14T16:38:50.464163+00:00 COMPLETE E4 seed=913 fold=2
+2026-10-14T16:38:51.672198+00:00 COMPLETE E5 seed=913 fold=2
+2026-10-14T16:38:52.847879+00:00 START gpu=0 E2 seed=913 fold=4 pid=3339390
+2026-10-14T16:38:53.329552+00:00 START gpu=0 E3 seed=913 fold=4 pid=3339398
+2026-10-14T16:39:36.553011+00:00 COMPLETE E5 seed=913 fold=7
+2026-10-14T16:39:37.110360+00:00 START gpu=1 E2 seed=913 fold=3 pid=3340501
+2026-10-14T16:40:14.144124+00:00 COMPLETE E4 seed=913 fold=1
+2026-10-14T16:40:14.638797+00:00 COMPLETE E6 seed=913 fold=5
+2026-10-14T16:40:15.166897+00:00 START gpu=1 E3 seed=913 fold=3 pid=3341427
+2026-10-14T16:40:15.498700+00:00 START gpu=1 E4 seed=913 fold=3 pid=3341434
+2026-10-14T16:41:29.198603+00:00 COMPLETE E7 seed=913 fold=5
+2026-10-14T16:41:30.231732+00:00 START gpu=1 E5 seed=913 fold=9 pid=3343305
+2026-10-14T16:42:47.958331+00:00 COMPLETE E6 seed=913 fold=2
+2026-10-14T16:42:48.150902+00:00 COMPLETE E2 seed=913 fold=4
+2026-10-14T16:42:48.453786+00:00 COMPLETE E3 seed=913 fold=4
+2026-10-14T16:42:48.723760+00:00 COMPLETE E2 seed=913 fold=3
+2026-10-14T16:42:49.023846+00:00 START gpu=0 E4 seed=913 fold=4 pid=3345237
+2026-10-14T16:42:49.116567+00:00 START gpu=0 E5 seed=913 fold=4 pid=3345239
+2026-10-14T16:42:49.198899+00:00 START gpu=0 E6 seed=913 fold=4 pid=3345247
+2026-10-14T16:42:49.309646+00:00 START gpu=1 E6 seed=913 fold=7 pid=3345252
+2026-10-14T16:43:03.136618+00:00 COMPLETE E7 seed=913 fold=2
+2026-10-14T16:43:03.526822+00:00 START gpu=0 E7 seed=913 fold=4 pid=3345620
+2026-10-14T16:43:34.858641+00:00 COMPLETE E3 seed=913 fold=3
+2026-10-14T16:43:35.196594+00:00 COMPLETE E4 seed=913 fold=3
+2026-10-14T16:43:35.872515+00:00 START gpu=1 E7 seed=913 fold=7 pid=3346398
+2026-10-14T16:43:36.189506+00:00 START gpu=1 E2 seed=913 fold=5 pid=3346418
+2026-10-14T16:44:27.852446+00:00 COMPLETE E5 seed=913 fold=9
+2026-10-14T16:44:29.195202+00:00 START gpu=1 E3 seed=913 fold=5 pid=3347759
+2026-10-14T16:46:02.987325+00:00 COMPLETE E6 seed=913 fold=7
+2026-10-14T16:46:03.690729+00:00 START gpu=1 E4 seed=913 fold=5 pid=3350097
+2026-10-14T16:46:21.676478+00:00 COMPLETE E4 seed=913 fold=4
+2026-10-14T16:46:21.847516+00:00 COMPLETE E5 seed=913 fold=4
+2026-10-14T16:46:22.018730+00:00 COMPLETE E6 seed=913 fold=4
+2026-10-14T16:46:22.418876+00:00 START gpu=0 E2 seed=913 fold=6 pid=3350563
+2026-10-14T16:46:22.536590+00:00 START gpu=0 E3 seed=913 fold=6 pid=3350569
+2026-10-14T16:46:22.640140+00:00 START gpu=0 E4 seed=913 fold=6 pid=3350570
+2026-10-14T16:46:36.645151+00:00 COMPLETE E7 seed=913 fold=4
+2026-10-14T16:46:36.840387+00:00 COMPLETE E7 seed=913 fold=7
+2026-10-14T16:46:37.166259+00:00 COMPLETE E2 seed=913 fold=5
+2026-10-14T16:46:38.195120+00:00 START gpu=0 E5 seed=913 fold=6 pid=3350971
+2026-10-14T16:46:38.292878+00:00 START gpu=1 E6 seed=913 fold=9 pid=3350972
+2026-10-14T16:46:38.403951+00:00 START gpu=1 E7 seed=913 fold=9 pid=3350973
+2026-10-14T16:47:04.051461+00:00 COMPLETE E3 seed=913 fold=5
+2026-10-14T16:47:04.613475+00:00 START gpu=1 E2 seed=913 fold=7 pid=3351644
+2026-10-14T16:48:32.368822+00:00 COMPLETE E4 seed=913 fold=5
+2026-10-14T16:48:33.470969+00:00 START gpu=1 E3 seed=913 fold=7 pid=3353877
+2026-10-14T16:49:37.028788+00:00 COMPLETE E6 seed=913 fold=9
+2026-10-14T16:49:39.185745+00:00 COMPLETE E7 seed=913 fold=9
+2026-10-14T16:49:40.216599+00:00 START gpu=1 E4 seed=913 fold=7 pid=3355487
+2026-10-14T16:49:40.319773+00:00 START gpu=1 E2 seed=913 fold=9 pid=3355489
+2026-10-14T16:49:56.575099+00:00 COMPLETE E3 seed=913 fold=6
+2026-10-14T16:49:57.646877+00:00 START gpu=0 E6 seed=913 fold=6 pid=3355929
+2026-10-14T16:50:14.376569+00:00 COMPLETE E2 seed=913 fold=7
+2026-10-14T16:50:15.061416+00:00 START gpu=1 E3 seed=913 fold=9 pid=3356364
+2026-10-14T16:51:06.749359+00:00 COMPLETE E4 seed=913 fold=6
+2026-10-14T16:51:07.510253+00:00 START gpu=0 E7 seed=913 fold=6 pid=3357659
+2026-10-14T16:51:34.695799+00:00 COMPLETE E2 seed=913 fold=6
+2026-10-14T16:51:36.822573+00:00 COMPLETE E5 seed=913 fold=6
+2026-10-14T16:51:37.482491+00:00 START gpu=0 E2 seed=913 fold=8 pid=3358409
+2026-10-14T16:51:37.708245+00:00 START gpu=0 E3 seed=913 fold=8 pid=3358415
+2026-10-14T16:51:59.907984+00:00 COMPLETE E3 seed=913 fold=7
+2026-10-14T16:52:00.561138+00:00 START gpu=1 E4 seed=913 fold=9 pid=3358978
+2026-10-14T16:53:22.610070+00:00 COMPLETE E4 seed=913 fold=7
+2026-10-14T16:53:22.828019+00:00 COMPLETE E2 seed=913 fold=9
+2026-10-14T16:53:55.670959+00:00 COMPLETE E3 seed=913 fold=9
+2026-10-14T16:55:10.967564+00:00 COMPLETE E4 seed=913 fold=9
+2026-10-14T16:55:39.963581+00:00 COMPLETE E6 seed=913 fold=6
+2026-10-14T16:55:40.168008+00:00 COMPLETE E2 seed=913 fold=8
+2026-10-14T16:55:40.426004+00:00 COMPLETE E3 seed=913 fold=8
+2026-10-14T16:55:40.742617+00:00 START gpu=0 E4 seed=913 fold=8 pid=3366181
+2026-10-14T16:55:40.952023+00:00 START gpu=0 E5 seed=913 fold=8 pid=3366186
+2026-10-14T16:55:41.051355+00:00 START gpu=0 E6 seed=913 fold=8 pid=3366193
+GROUP COMPLETE E2: ACC 81.35%, BA 81.08%, AUC 88.37%, SEN 77.37%, SPE 84.78%, F1 78.97%
+2026-10-14T16:56:51.143466+00:00 E2 30/30 complete; handoff updated
+GROUP COMPLETE E3: ACC 81.73%, BA 81.50%, AUC 88.60%, SEN 78.14%, SPE 84.86%, F1 79.56%
+2026-10-14T16:57:33.946055+00:00 E3 30/30 complete; handoff updated
+2026-10-14T16:57:46.657872+00:00 COMPLETE E7 seed=913 fold=6
+2026-10-14T16:57:47.420944+00:00 START gpu=0 E7 seed=913 fold=8 pid=3370397
+GROUP COMPLETE E4: ACC 81.42%, BA 81.17%, AUC 88.60%, SEN 77.55%, SPE 84.78%, F1 79.10%
+2026-10-14T16:59:12.664881+00:00 E4 30/30 complete; handoff updated
+GROUP COMPLETE E5: ACC 81.54%, BA 81.29%, AUC 88.60%, SEN 77.72%, SPE 84.85%, F1 79.23%
+2026-10-14T16:59:45.278724+00:00 E5 30/30 complete; handoff updated
+GROUP COMPLETE E6: ACC 81.12%, BA 80.84%, AUC 88.28%, SEN 76.98%, SPE 84.71%, F1 78.72%
+2026-10-14T17:00:21.169511+00:00 E6 30/30 complete; handoff updated
+GROUP COMPLETE E7: ACC 81.35%, BA 81.11%, AUC 88.40%, SEN 77.88%, SPE 84.35%, F1 79.07%
+2026-10-14T17:00:52.475754+00:00 E7 30/30 complete; handoff updated
+2026-10-14T17:00:57.653377+00:00 COMPLETE E4 seed=913 fold=8
+2026-10-14T17:00:57.804374+00:00 COMPLETE E5 seed=913 fold=8
+2026-10-14T17:00:57.989200+00:00 COMPLETE E6 seed=913 fold=8
+2026-10-14T17:00:58.146406+00:00 COMPLETE E7 seed=913 fold=8
+DRPA 正式实验报告
+完成240/240任务；每组2613条OOF，总计20904条，无重复、缺失或标签错位。
+主表：三seed的10折均值 ± 三seed均值SD（百分点，ddof=1）；ASD为阳性，训练编码未改变。
+| Method | ACC | BA | AUC | SEN | SPE | F1 | ΔACC vs E0 | ΔAUC vs E0 |
+|---|---|---|---|---|---|---|---|---|
+| E0 Official Baseline | 81.88±1.39 | 81.68±1.27 | 88.54±0.31 | 78.79±1.65 | 84.56±3.31 | 79.82±1.12 | +0.00 | +0.00 |
+| E1 Capacity / Auxiliary Control | 81.69±1.10 | 81.43±1.06 | 88.56±0.43 | 77.80±2.71 | 85.07±2.99 | 79.39±1.26 | -0.19 | +0.02 |
+| E2 Global Symmetric InfoNCE | 81.35±1.15 | 81.08±1.10 | 88.37±0.49 | 77.37±3.80 | 84.78±3.95 | 78.97±1.45 | -0.53 | -0.17 |
+| E3 Symmetric Shared Alignment | 81.73±1.56 | 81.50±1.48 | 88.60±0.67 | 78.14±1.36 | 84.86±2.66 | 79.56±1.38 | -0.15 | +0.06 |
+| E4 Asymmetric Uniform Alignment | 81.42±0.71 | 81.17±0.57 | 88.60±0.78 | 77.55±2.23 | 84.78±2.98 | 79.10±0.54 | -0.46 | +0.06 |
+| E5 Disease Reliability Gate | 81.54±0.61 | 81.29±0.42 | 88.60±0.63 | 77.72±2.23 | 84.85±3.01 | 79.23±0.27 | -0.34 | +0.06 |
+| E6 Disease + Site Reliability | 81.12±0.63 | 80.84±0.54 | 88.28±0.52 | 76.98±1.94 | 84.71±2.35 | 78.72±0.57 | -0.76 | -0.25 |
+| E7 Shuffled Reliability Control | 81.35±0.35 | 81.11±0.26 | 88.40±0.48 | 77.88±2.35 | 84.35±2.49 | 79.07±0.57 | -0.53 | -0.14 |
+补表：30个seed-fold的描述性SD（百分点，ddof=0），用于展示折间波动；不是30个独立临床样本，也不是主表seed均值SD。
+| Method | ACC SD | BA SD | AUC SD | SEN SD | SPE SD | F1 SD |
+|---|---|---|---|---|---|---|
+| E0 | 7.40 | 7.59 | 8.27 | 11.73 | 7.29 | 8.93 |
+| E1 | 7.42 | 7.64 | 8.34 | 12.35 | 7.24 | 9.10 |
+| E2 | 7.62 | 7.84 | 8.31 | 12.67 | 7.57 | 9.50 |
+| E3 | 7.86 | 8.05 | 8.19 | 12.00 | 7.61 | 9.43 |
+| E4 | 7.60 | 7.83 | 8.63 | 12.25 | 6.75 | 9.47 |
+| E5 | 7.61 | 7.84 | 8.58 | 12.29 | 6.74 | 9.52 |
+| E6 | 7.45 | 7.68 | 8.41 | 12.13 | 7.00 | 9.32 |
+| E7 | 7.53 | 7.77 | 8.49 | 12.61 | 6.95 | 9.45 |
+历史核对：seed911逐折ACC/AUC按官方5位小数一致=False；均值ΔACC=+0.4546、ΔAUC=+0.0556个百分点。
+PPU重复性诊断：同初始化/VAE/测试RNG、无hooks/额外反向的官方原函数三次Fold0 ACC=73.86%/68.18%/68.18%；同一物理PPU也有漂移。具体内核尚未定位，不能把配对锚点说成历史逐折精确复现。
+历史对照继续条件：均值偏差满足0.5个百分点要求，逐折漂移经诊断后继续本轮官方行为配对研究；不声称历史逐折精确复现；原始严格检查passed=False，完整逐折差值保留在history_check.json。
+数值等价性验证：30个实际锚点均通过；原模型和关闭新增损失的模型都在测试专用确定性执行环境中比较，正式训练未开启该附加开关。最大前向/参数梯度/Adam更新误差=0/0/0。
+原始生产路径的单步诊断：相同VAE潜向量、奖励图和融合输入图下，GTUNet/TopK选择可变化；原模型对自身的logits误差约0.005。因而很小的性能差值不能仅凭共享初始化归因为新增机制。证据见anchor_equivalence_diagnosis*.json。
+Q1 普通全局对齐：E2−E1：ΔACC -0.34 个百分点、ΔBA -0.36 个百分点、ΔAUC -0.19 个百分点；ACC/BA/AUC改善seed数{'ACC': 0, 'BA': 0, 'AUC': 1} /3，改善折数{'ACC': 8, 'BA': 10, 'AUC': 12} /30。
+Q1 相比原始模型：E2−E0：ΔACC -0.53 个百分点、ΔBA -0.60 个百分点、ΔAUC -0.17 个百分点；ACC/BA/AUC改善seed数{'ACC': 0, 'BA': 0, 'AUC': 1} /3，改善折数{'ACC': 6, 'BA': 8, 'AUC': 13} /30。
+Q2 非对称对齐：E4−E3：ΔACC -0.31 个百分点、ΔBA -0.33 个百分点、ΔAUC +0.00 个百分点；ACC/BA/AUC改善seed数{'ACC': 1, 'BA': 1, 'AUC': 2} /3，改善折数{'ACC': 9, 'BA': 9, 'AUC': 17} /30。
+Q3 疾病可靠性：E5−E4：ΔACC +0.11 个百分点、ΔBA +0.12 个百分点、ΔAUC -0.00 个百分点；ACC/BA/AUC改善seed数{'ACC': 2, 'BA': 2, 'AUC': 2} /3，改善折数{'ACC': 9, 'BA': 9, 'AUC': 16} /30。
+Q4 跨站点可靠性：E6−E5：ΔACC -0.42 个百分点、ΔBA -0.44 个百分点、ΔAUC -0.31 个百分点；ACC/BA/AUC改善seed数{'ACC': 0, 'BA': 0, 'AUC': 0} /3，改善折数{'ACC': 5, 'BA': 5, 'AUC': 9} /30。
+Q5 打乱对照：E7−E6：ΔACC +0.23 个百分点、ΔBA +0.27 个百分点、ΔAUC +0.11 个百分点；ACC/BA/AUC改善seed数{'ACC': 2, 'BA': 3, 'AUC': 3} /3，改善折数{'ACC': 8, 'BA': 9, 'AUC': 12} /30。
+Q6 E1共享表示：同人/异人cos=0.0047/0.0047，gap=0.0000，I→P R@1=0.11%，均值方差=0.000895。
+Q6 E2共享表示：同人/异人cos=0.0139/0.0139，gap=0.0000，I→P R@1=0.11%，均值方差=0.000718。
+Q6 E6共享表示：同人/异人cos=-0.0100/-0.0100，gap=0.0000，I→P R@1=0.11%，均值方差=0.000928。
+Q6 E7共享表示：同人/异人cos=-0.0125/-0.0125，gap=0.0000，I→P R@1=0.11%，均值方差=0.000925。
+Q6 判断限制：低维表型有相似受试者，R@1与cos上升不等于疾病语义对齐；同时检查分类、方差及辅助分类。
+Q7 E6影像/表型辅助BA=51.79/49.92%，AUC=77.91/48.33%；原融合路径保留，但未显式分解shared/private，不能证明独有诊断信息完全保留。
+Q8 完整DRPA相对辅助控制未实现三个均值指标一致改善；直接对照三个均值指标一致改善的模块为['E3']。当前只能提供原始协议下的机制证据，不能作为MICCAI创新已获验证的充分证据。
+Fold0分析（E6−E0，ACC/BA/AUC，百分点）：
+seed911：-7.95/-8.38/-4.26；其余9折总体均值：-0.64/-0.69/-0.14。
+seed912：+1.14/+1.06/+0.52；其余9折总体均值：-0.64/-0.69/-0.14。
+seed913：+1.14/+0.91/-0.21；其余9折总体均值：-0.64/-0.69/-0.14。
+站点门控：E5/E6覆盖率=100.00/99.99%；E6各站点覆盖范围=99.81–100.00%；逐站点BA/AUC见summary.json，不能推断未见站点泛化。
+站点OOF对照（E6−E5，先每seed计算，再取三seed均值；仅两类样本量均足够的站点）：
+| Site | N ASD/HC | ΔBA | ΔAUC |
+|---|---|---|---|
+| CALTECH | 5/10 | +0.00 | -1.33 |
+| CMU | 6/5 | -2.78 | +0.00 |
+| KKI | 12/21 | -0.60 | -0.13 |
+| LEUVEN_1 | 14/14 | +1.19 | -0.00 |
+| LEUVEN_2 | 12/16 | +1.39 | +0.17 |
+| MAX_MUN | 19/27 | -0.00 | -0.45 |
+| NYU | 74/98 | +0.45 | -0.24 |
+| OHSU | 12/13 | -0.11 | -1.28 |
+| OLIN | 14/14 | -1.19 | -2.21 |
+| PITT | 24/26 | -0.64 | -0.59 |
+| SBL | 12/14 | +0.20 | -0.60 |
+| SDSU | 8/19 | -2.96 | +0.22 |
+| STANFORD | 12/13 | -1.18 | +0.43 |
+| TRINITY | 19/25 | +0.67 | +1.40 |
+| UCLA_1 | 37/27 | -2.42 | -1.63 |
+| UCLA_2 | 11/10 | -3.03 | -2.42 |
+| UM_1 | 34/52 | -1.47 | -0.49 |
+| UM_2 | 13/21 | +1.28 | -0.61 |
+| USM | 43/24 | +0.00 | -0.68 |
+| YALE | 22/19 | -0.76 | -0.64 |
+E7打乱：索引移动94.23%，实际权重改变94.23%。
+条件式站点簇bootstrap E6−E1 95%范围：ACC[-1.46,+0.39]，BA[-1.48,+0.39]，AUC[-0.63,+0.19]个百分点；固定已拟合模型、未重新训练，不作为独立临床显著性。
+条件式站点簇bootstrap E6−E5 95%范围：ACC[-1.08,+0.02]，BA[-1.10,+0.01]，AUC[-0.79,-0.18]个百分点；固定已拟合模型、未重新训练，不作为独立临床显著性。
+条件式站点簇bootstrap E7−E6 95%范围：ACC[-0.28,+0.81]，BA[-0.24,+0.87]，AUC[-0.00,+0.42]个百分点；固定已拟合模型、未重新训练，不作为独立临床显著性。
+局限：跨折RFE泄漏、传导式同站点CV、只有3个重复seed、弱表型近似负样本、无明确私有信息分解；PPU非逐位确定性使很小的增益也可能包含数值重复性误差，共用设备上的其他作业影响耗时；不隐瞒负向消融。
+输入完整性复核：877个原始数据文件及受保护源码哈希未变，根目录已跟踪文件和历史日志无改动。
+下一阶段：先在独立、无跨折筛选泄漏协议及留站点验证中检验可重复的疾病判别增益，再研究共享/私有信息的可识别性；不能以本轮测试结果继续调参。
+
+2026-10-14T17:05:19.909515+00:00 All 240 tasks, statistics, and final handoff complete

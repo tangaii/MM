@@ -1,0 +1,16 @@
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+E1 seed=912 fold=0 epoch=0 train=1.99175 val=1.90429
+E1 seed=912 fold=0 epoch=25 train=1.76928 val=1.74157
+E1 seed=912 fold=0 epoch=50 train=1.57587 val=1.63423
+E1 seed=912 fold=0 epoch=75 train=1.37074 val=1.51798
+E1 seed=912 fold=0 epoch=100 train=1.07862 val=1.49435
+E1 seed=912 fold=0 epoch=125 train=0.89969 val=1.66135
+E1 seed=912 fold=0 epoch=150 train=0.81264 val=1.70191
+E1 seed=912 fold=0 epoch=175 train=0.78216 val=1.74926
+COMPLETE E1 seed=912 fold=0 ACC=0.61364 AUC=0.63518 best=97

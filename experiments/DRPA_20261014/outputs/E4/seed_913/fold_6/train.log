@@ -1,0 +1,24 @@
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+E4 seed=913 fold=6 epoch=0 train=1.37165 val=1.16579
+E4 seed=913 fold=6 epoch=25 train=1.36558 val=1.29348
+E4 seed=913 fold=6 epoch=50 train=1.31192 val=1.28389
+E4 seed=913 fold=6 epoch=75 train=1.14243 val=1.18565
+E4 seed=913 fold=6 epoch=100 train=0.95502 val=1.10625
+E4 seed=913 fold=6 epoch=125 train=0.79811 val=1.00960
+E4 seed=913 fold=6 epoch=150 train=0.68637 val=0.94969
+E4 seed=913 fold=6 epoch=175 train=0.60792 val=0.91021
+E4 seed=913 fold=6 epoch=200 train=0.58076 val=0.85787
+E4 seed=913 fold=6 epoch=225 train=0.56325 val=0.85937
+E4 seed=913 fold=6 epoch=250 train=0.55459 val=0.85849
+E4 seed=913 fold=6 epoch=275 train=0.55375 val=0.86360
+E4 seed=913 fold=6 epoch=300 train=0.57492 val=0.90940
+E4 seed=913 fold=6 epoch=325 train=0.65410 val=0.86304
+E4 seed=913 fold=6 epoch=350 train=0.64130 val=0.87452
+E4 seed=913 fold=6 epoch=375 train=0.65014 val=0.90399
+COMPLETE E4 seed=913 fold=6 ACC=0.85057 AUC=0.90213 best=280

@@ -1,0 +1,330 @@
+{
+  "method": "E0",
+  "name": "Official Baseline",
+  "seed": 911,
+  "fold": 4,
+  "time_utc": "2026-10-14T11:02:13.574230+00:00",
+  "config": {
+    "experiment": "DRPA_20261014",
+    "protocol_version": 1,
+    "source_commit": "274584ddb435a1fee625a723282b386f87982606",
+    "official_commit": "bb9351b931003535503694ad2f777b6cee1c151f",
+    "paper": "https://arxiv.org/pdf/2406.14455v3",
+    "data_folder": "/data/adodas/MM-GTUNets/dataset/ABIDE_aal",
+    "history_folder": "/data/adodas/MM-GTUNets/experiments/official_source_ppu_20261014",
+    "seeds": [
+      911,
+      912,
+      913
+    ],
+    "folds": 10,
+    "val_ratio": 0.1,
+    "epochs": 500,
+    "early_stop": 100,
+    "lr": 0.0001,
+    "vae_lr": 0.001,
+    "weight_decay": 0.0005,
+    "projection": [
+      16,
+      64,
+      16
+    ],
+    "predictor": [
+      16,
+      64,
+      16
+    ],
+    "lambda_aux": 0.05,
+    "lambda_align": 0.1,
+    "temperature": 0.2,
+    "gate_threshold": 0.15,
+    "site_mapping": "sqrt(sigmoid(2*d_img)*sigmoid(2*d_ph))",
+    "site_min_class_count": 2,
+    "site_fallback": "zero_reliability_if_other_sites_lack_either_class_or_prototype_norm_is_zero",
+    "gate_normalization": "sum_of_normalized_weights_equals_number_of_training_subjects",
+    "infonce_normalization": "bidirectional_mean_CE_divided_by_log(number_of_training_candidates)",
+    "shuffle": "within_class_and_site; singleton_groups_shuffled_across_sites_within_class; isolated_singleton_unchanged",
+    "diagnostic_frequency": 25,
+    "minimum_site_metric_samples": 10,
+    "minimum_site_metric_per_class": 2,
+    "history_mean_tolerance": 0.005,
+    "history_fold_tolerance": 0.01,
+    "bootstrap_replicates": 500,
+    "host_threads": 1,
+    "methods": {
+      "E0": {
+        "name": "Official Baseline",
+        "alignment": "none",
+        "auxiliary": false
+      },
+      "E1": {
+        "name": "Capacity / Auxiliary Control",
+        "alignment": "none",
+        "auxiliary": true
+      },
+      "E2": {
+        "name": "Global Symmetric InfoNCE",
+        "alignment": "infonce",
+        "auxiliary": true
+      },
+      "E3": {
+        "name": "Symmetric Shared Alignment",
+        "alignment": "symmetric",
+        "auxiliary": true
+      },
+      "E4": {
+        "name": "Asymmetric Uniform Alignment",
+        "alignment": "asymmetric",
+        "auxiliary": true
+      },
+      "E5": {
+        "name": "Disease Reliability Gate",
+        "alignment": "disease",
+        "auxiliary": true
+      },
+      "E6": {
+        "name": "Disease + Site Reliability",
+        "alignment": "site",
+        "auxiliary": true
+      },
+      "E7": {
+        "name": "Shuffled Reliability Control",
+        "alignment": "shuffled",
+        "auxiliary": true
+      }
+    }
+  },
+  "source_commit": "274584ddb435a1fee625a723282b386f87982606",
+  "training_code_sha256": "9186fe8b76142e6ef114d850409cb7d8e9ac5f2691d8e132647c389ee60e5572",
+  "data_digest": "8b7532d7710a7ea0dd484ca41d7ba7b6541dec33afe0c22d6be54daec8f8653c",
+  "pairing": {
+    "split_fingerprints": {
+      "train": "112d882408cdbff48a2636469ec1e475e616ed18357de371bf1d20b964400772",
+      "val": "5118063e11225995ff8fd4910191cd5cfd0cc85ccdfbd84dcff3d1661befebc3",
+      "test": "10d242963aa060868e6669f4bcae52d0f37cad0e87e97cc9f8bf0b97b94b8777"
+    },
+    "features_fingerprint": "7fbc3d926f4419371103821c44d38089ce3da84a95cf2eeac6b987f5957707ee",
+    "rfe_support_sha256": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+    "initial_core_fingerprint": "4c9decc6e166b11abd15530d65588ce12fc3078f5ef5f245f467ef9efa9799b8",
+    "train_start_core_fingerprint": "c2b357d89a1c7ae16db7bba1a8b049c629e6355a05b9ac217acf93b19c103a05",
+    "vae_sha256": "c1470c19206275f28ad160c8c540df8e26c8ed7715d803423ec797b2051aca1e",
+    "classifier_start_rng": {
+      "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+      "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+      "cpu": "6f7aa8c1eb0504d243a2aaf6c22b5e0b453d7bc1a22f2adb865831c8be0ea927",
+      "cuda": "8fc01a865a1293fabf1b904e3c6ffd0c739f5808595be6f886de630a2db63393"
+    }
+  },
+  "split_sizes": {
+    "train": 705,
+    "val": 79,
+    "test": 87
+  },
+  "best_epoch": 136,
+  "epochs_run": 237,
+  "best_validation_original_loss": 0.6879710555076599,
+  "metrics": {
+    "ACC": 0.8160919540229885,
+    "BA": 0.813031914893617,
+    "SEN": 0.775,
+    "SPE": 0.851063829787234,
+    "F1": 0.7948717948717948,
+    "AUC": 0.8617021276595744
+  },
+  "official_metrics": {
+    "ACC": 0.8160919547080994,
+    "SEN": 0.8510638297854233,
+    "SPE": 0.7749999999980625,
+    "BA": 0.8130319148917429,
+    "AUC": 0.8617021276595744,
+    "F1": 0.833333333281619
+  },
+  "metric_positive_class": "ASD (original label 0)",
+  "official_metric_positive_class": "HC (original label 1)",
+  "best_train_losses": {
+    "epoch": 136,
+    "train_ce": 0.13897642493247986,
+    "train_graph": 0.36039572954177856,
+    "train_official": 0.4993721544742584,
+    "train_total": 0.4993721544742584,
+    "train_aux": 0.0,
+    "train_align": 0.0,
+    "validation_ce": 0.3264099657535553,
+    "validation_graph": 0.3615610897541046,
+    "validation_original_loss": 0.6879710555076599,
+    "train_acc_original": 0.9787233471870422,
+    "validation_acc_original": 0.8607594966888428,
+    "gate_all_zero": false
+  },
+  "last_sampled_gate": null,
+  "diagnostics": {
+    "raw": {
+      "same_subject_cosine": -0.013476715423166752,
+      "different_subject_cosine": -0.024487275630235672,
+      "cosine_gap": 0.01101056020706892,
+      "R_at_1_img_to_ph": 0.0011481055989861488,
+      "R_at_1_ph_to_img": 0.0022962111979722977,
+      "variance_img": 0.05345985293388367,
+      "variance_ph": 0.046920765191316605,
+      "mean_shared_variance": 0.025438839569687843
+    },
+    "sites": {
+      "CALTECH": {
+        "n": 4,
+        "n_asd": 0,
+        "n_hc": 4,
+        "eligible": false
+      },
+      "CMU": {
+        "n": 2,
+        "n_asd": 2,
+        "n_hc": 0,
+        "eligible": false
+      },
+      "KKI": {
+        "n": 4,
+        "n_asd": 1,
+        "n_hc": 3,
+        "eligible": false
+      },
+      "LEUVEN_1": {
+        "n": 3,
+        "n_asd": 0,
+        "n_hc": 3,
+        "eligible": false
+      },
+      "LEUVEN_2": {
+        "n": 0,
+        "n_asd": 0,
+        "n_hc": 0,
+        "eligible": false
+      },
+      "MAX_MUN": {
+        "n": 4,
+        "n_asd": 4,
+        "n_hc": 0,
+        "eligible": false
+      },
+      "NYU": {
+        "n": 14,
+        "n_asd": 7,
+        "n_hc": 7,
+        "eligible": true,
+        "ACC": 0.7857142857142857,
+        "BA": 0.7857142857142857,
+        "SEN": 0.5714285714285714,
+        "SPE": 1.0,
+        "F1": 0.7272727272727273,
+        "AUC": 0.6122448979591837
+      },
+      "OHSU": {
+        "n": 5,
+        "n_asd": 1,
+        "n_hc": 4,
+        "eligible": false
+      },
+      "OLIN": {
+        "n": 5,
+        "n_asd": 1,
+        "n_hc": 4,
+        "eligible": false
+      },
+      "PITT": {
+        "n": 7,
+        "n_asd": 2,
+        "n_hc": 5,
+        "eligible": false
+      },
+      "SBL": {
+        "n": 2,
+        "n_asd": 1,
+        "n_hc": 1,
+        "eligible": false
+      },
+      "SDSU": {
+        "n": 0,
+        "n_asd": 0,
+        "n_hc": 0,
+        "eligible": false
+      },
+      "STANFORD": {
+        "n": 1,
+        "n_asd": 0,
+        "n_hc": 1,
+        "eligible": false
+      },
+      "TRINITY": {
+        "n": 4,
+        "n_asd": 2,
+        "n_hc": 2,
+        "eligible": false
+      },
+      "UCLA_1": {
+        "n": 6,
+        "n_asd": 4,
+        "n_hc": 2,
+        "eligible": false
+      },
+      "UCLA_2": {
+        "n": 3,
+        "n_asd": 2,
+        "n_hc": 1,
+        "eligible": false
+      },
+      "UM_1": {
+        "n": 8,
+        "n_asd": 4,
+        "n_hc": 4,
+        "eligible": false
+      },
+      "UM_2": {
+        "n": 6,
+        "n_asd": 3,
+        "n_hc": 3,
+        "eligible": false
+      },
+      "USM": {
+        "n": 6,
+        "n_asd": 5,
+        "n_hc": 1,
+        "eligible": false
+      },
+      "YALE": {
+        "n": 3,
+        "n_asd": 1,
+        "n_hc": 2,
+        "eligible": false
+      }
+    }
+  },
+  "classifier_seconds": 185.6815756186843,
+  "peak_allocated_memory_bytes": 4328108544,
+  "peak_reserved_memory_bytes": 11974737920,
+  "physical_gpu": "0",
+  "device": "PPU-ZW810E",
+  "parameters": {
+    "core_total": 1190816,
+    "core_receiving_gradients": 803765,
+    "new_total": 0,
+    "new_receiving_gradients": 0
+  },
+  "test_forward_rng": {
+    "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+    "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+    "cpu": "6f7aa8c1eb0504d243a2aaf6c22b5e0b453d7bc1a22f2adb865831c8be0ea927",
+    "cuda": "9e9f4ea18adb396cffe8b4f6b809f88432a07242dc3ecb8a4bcd81aad8c99f01"
+  },
+  "end_rng_fingerprint": {
+    "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+    "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+    "cpu": "6f7aa8c1eb0504d243a2aaf6c22b5e0b453d7bc1a22f2adb865831c8be0ea927",
+    "cuda": "3636c96de5fc8cba9d6b7e27e4cf0ba81dee899289bf3db17f078071b5aa7a65"
+  },
+  "output_sha256": {
+    "best.pt": "12a1fb465a1a60c778a285010bc4ca79a49e0eec74c8d5822e813b3f7e7a3d23",
+    "oof.csv": "dd573976b1e6db8659f457842b3420712b159640ee0316943d36fba219171d67",
+    "embeddings.npz": "194baa916e2dfd6f91306b50f61bdf62d85ba431b1eef81406d299fc4eab01c4",
+    "epochs.jsonl": "954e78c51d9742880d260e842046d8e6d16a77c9de40ad1c95d24b1fbe0ab253"
+  },
+  "vae_pretrain_seconds": 46.50337631627917
+}

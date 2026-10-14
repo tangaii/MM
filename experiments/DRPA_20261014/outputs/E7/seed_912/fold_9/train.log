@@ -1,0 +1,20 @@
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+E7 seed=912 fold=9 epoch=0 train=1.38680 val=1.18806
+E7 seed=912 fold=9 epoch=25 train=1.25788 val=1.15269
+E7 seed=912 fold=9 epoch=50 train=1.12666 val=1.09903
+E7 seed=912 fold=9 epoch=75 train=0.92225 val=1.01077
+E7 seed=912 fold=9 epoch=100 train=0.74570 val=0.91202
+E7 seed=912 fold=9 epoch=125 train=0.62216 val=0.85136
+E7 seed=912 fold=9 epoch=150 train=0.54663 val=0.93053
+E7 seed=912 fold=9 epoch=175 train=0.50549 val=0.87861
+E7 seed=912 fold=9 epoch=200 train=0.48158 val=0.84706
+E7 seed=912 fold=9 epoch=225 train=0.47317 val=0.83960
+E7 seed=912 fold=9 epoch=250 train=0.46529 val=0.88355
+E7 seed=912 fold=9 epoch=275 train=0.46374 val=0.88434
+COMPLETE E7 seed=912 fold=9 ACC=0.82759 AUC=0.89628 best=176

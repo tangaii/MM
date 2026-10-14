@@ -1,0 +1,22 @@
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+E1 seed=911 fold=8 epoch=0 train=1.95474 val=1.90400
+E1 seed=911 fold=8 epoch=25 train=1.79057 val=1.74402
+E1 seed=911 fold=8 epoch=50 train=1.63264 val=1.62187
+E1 seed=911 fold=8 epoch=75 train=1.34271 val=1.43954
+E1 seed=911 fold=8 epoch=100 train=1.17029 val=1.28561
+E1 seed=911 fold=8 epoch=125 train=0.98340 val=1.20100
+E1 seed=911 fold=8 epoch=150 train=0.86162 val=1.11746
+E1 seed=911 fold=8 epoch=175 train=0.78866 val=1.06006
+E1 seed=911 fold=8 epoch=200 train=0.76986 val=1.11003
+E1 seed=911 fold=8 epoch=225 train=0.74427 val=1.05415
+E1 seed=911 fold=8 epoch=250 train=0.72678 val=1.03747
+E1 seed=911 fold=8 epoch=275 train=0.71042 val=1.09370
+E1 seed=911 fold=8 epoch=300 train=0.69785 val=1.17031
+E1 seed=911 fold=8 epoch=325 train=0.70249 val=1.14815
+COMPLETE E1 seed=911 fold=8 ACC=0.89655 AUC=0.94628 best=235

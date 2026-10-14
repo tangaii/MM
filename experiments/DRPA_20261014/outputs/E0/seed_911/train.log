@@ -1,0 +1,363 @@
+
+Loading features....
+/data/adodas/MM-GTUNets/utils/mydataloader.py:193: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  tensor = torch.load(load_path)
+Loading labels....
+Loading phenotypic data....
+Data has loaded!
+
+Number of labeled samples 704
+Number of features selected 500
+/usr/local/lib/python3.12/site-packages/torch/backends/cuda/__init__.py:131: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  return torch._C._get_cublas_allow_tf32()
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 1901329152.00000
+Epoch: 100,	lr: 0.00100,	loss: 365958.25000
+Epoch: 200,	lr: 0.00100,	loss: 360737.03125
+Epoch: 300,	lr: 0.00100,	loss: 359739.37500
+Epoch: 400,	lr: 0.00100,	loss: 359486.84375
+Epoch: 500,	lr: 0.00100,	loss: 359420.65625
+Epoch: 600,	lr: 0.00100,	loss: 359396.96875
+Epoch: 700,	lr: 0.00100,	loss: 359385.46875
+Epoch: 800,	lr: 0.00100,	loss: 359377.50000
+Epoch: 900,	lr: 0.00100,	loss: 359374.40625
+Epoch: 1000,	lr: 0.00100,	loss: 359365.09375
+Epoch: 1100,	lr: 0.00100,	loss: 359368.46875
+Epoch: 1200,	lr: 0.00100,	loss: 359391.18750
+Epoch: 1300,	lr: 0.00100,	loss: 359359.93750
+Epoch: 1400,	lr: 0.00100,	loss: 359358.31250
+Epoch: 1500,	lr: 0.00100,	loss: 359376.65625
+Early stopping
+
+ => Fold 0 best pretrain vae loss 359354.25000, epoch 1384
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+E0 seed=911 fold=0 epoch=0 train=1.66855 val=1.63232
+E0 seed=911 fold=0 epoch=25 train=1.57514 val=1.59873
+E0 seed=911 fold=0 epoch=50 train=1.44305 val=1.54976
+E0 seed=911 fold=0 epoch=75 train=1.25169 val=1.51309
+E0 seed=911 fold=0 epoch=100 train=1.08517 val=1.68227
+E0 seed=911 fold=0 epoch=125 train=0.96361 val=2.07330
+E0 seed=911 fold=0 epoch=150 train=0.91673 val=2.16390
+E0 seed=911 fold=0 epoch=175 train=0.89655 val=2.23531
+COMPLETE E0 seed=911 fold=0 ACC=0.73864 AUC=0.75402 best=78
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 45792904.00000
+Epoch: 100,	lr: 0.00100,	loss: 366529.09375
+Epoch: 200,	lr: 0.00100,	loss: 360412.78125
+Epoch: 300,	lr: 0.00100,	loss: 359656.56250
+Epoch: 400,	lr: 0.00100,	loss: 359482.50000
+Epoch: 500,	lr: 0.00100,	loss: 359420.78125
+Epoch: 600,	lr: 0.00100,	loss: 359401.46875
+Epoch: 700,	lr: 0.00100,	loss: 359388.31250
+Epoch: 800,	lr: 0.00100,	loss: 359378.59375
+Epoch: 900,	lr: 0.00100,	loss: 359374.28125
+Epoch: 1000,	lr: 0.00100,	loss: 359370.84375
+Epoch: 1100,	lr: 0.00100,	loss: 359365.68750
+Epoch: 1200,	lr: 0.00100,	loss: 359367.40625
+Early stopping
+
+ => Fold 1 best pretrain vae loss 359361.75000, epoch 1169
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=1 epoch=0 train=1.08982 val=1.05198
+E0 seed=911 fold=1 epoch=25 train=1.01382 val=1.02052
+E0 seed=911 fold=1 epoch=50 train=0.84879 val=0.94354
+E0 seed=911 fold=1 epoch=75 train=0.66369 val=0.84564
+E0 seed=911 fold=1 epoch=100 train=0.54291 val=0.69262
+E0 seed=911 fold=1 epoch=125 train=0.44719 val=0.71529
+E0 seed=911 fold=1 epoch=150 train=0.37934 val=0.66751
+E0 seed=911 fold=1 epoch=175 train=0.33504 val=0.67649
+E0 seed=911 fold=1 epoch=200 train=0.29033 val=0.74184
+E0 seed=911 fold=1 epoch=225 train=0.26421 val=0.80014
+E0 seed=911 fold=1 epoch=250 train=0.25975 val=0.72797
+E0 seed=911 fold=1 epoch=275 train=0.24232 val=0.71860
+COMPLETE E0 seed=911 fold=1 ACC=0.85057 AUC=0.92630 best=182
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 174504454127616.00000
+Epoch: 100,	lr: 0.00100,	loss: 1657742.37500
+Epoch: 200,	lr: 0.00100,	loss: 363221.84375
+Epoch: 300,	lr: 0.00100,	loss: 359903.59375
+Epoch: 400,	lr: 0.00100,	loss: 359557.68750
+Epoch: 500,	lr: 0.00100,	loss: 359473.09375
+Epoch: 600,	lr: 0.00100,	loss: 359423.31250
+Epoch: 700,	lr: 0.00100,	loss: 359399.81250
+Epoch: 800,	lr: 0.00100,	loss: 359394.25000
+Epoch: 900,	lr: 0.00100,	loss: 359383.46875
+Epoch: 1000,	lr: 0.00100,	loss: 359378.56250
+Epoch: 1100,	lr: 0.00100,	loss: 359383.75000
+Epoch: 1200,	lr: 0.00100,	loss: 359389.81250
+Epoch: 1300,	lr: 0.00100,	loss: 359380.87500
+Early stopping
+
+ => Fold 2 best pretrain vae loss 359368.21875, epoch 1272
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=2 epoch=0 train=1.08642 val=1.07435
+E0 seed=911 fold=2 epoch=25 train=1.06495 val=1.08170
+E0 seed=911 fold=2 epoch=50 train=0.90357 val=0.99976
+E0 seed=911 fold=2 epoch=75 train=0.70762 val=0.90257
+E0 seed=911 fold=2 epoch=100 train=0.58107 val=0.81787
+E0 seed=911 fold=2 epoch=125 train=0.46754 val=0.73619
+E0 seed=911 fold=2 epoch=150 train=0.40708 val=0.74671
+E0 seed=911 fold=2 epoch=175 train=0.36456 val=0.73122
+E0 seed=911 fold=2 epoch=200 train=0.32746 val=0.71088
+E0 seed=911 fold=2 epoch=225 train=0.32267 val=0.81557
+E0 seed=911 fold=2 epoch=250 train=0.30089 val=0.85738
+E0 seed=911 fold=2 epoch=275 train=0.28850 val=0.83254
+E0 seed=911 fold=2 epoch=300 train=0.28780 val=0.86498
+COMPLETE E0 seed=911 fold=2 ACC=0.82759 AUC=0.91941 best=200
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 16919032832.00000
+Epoch: 100,	lr: 0.00100,	loss: 444138.87500
+Epoch: 200,	lr: 0.00100,	loss: 363697.87500
+Epoch: 300,	lr: 0.00100,	loss: 360791.96875
+Epoch: 400,	lr: 0.00100,	loss: 359925.53125
+Epoch: 500,	lr: 0.00100,	loss: 359611.75000
+Epoch: 600,	lr: 0.00100,	loss: 359473.06250
+Epoch: 700,	lr: 0.00100,	loss: 359437.78125
+Epoch: 800,	lr: 0.00100,	loss: 359416.21875
+Epoch: 900,	lr: 0.00100,	loss: 359399.46875
+Epoch: 1000,	lr: 0.00100,	loss: 359388.25000
+Epoch: 1100,	lr: 0.00100,	loss: 359397.06250
+Epoch: 1200,	lr: 0.00100,	loss: 359394.62500
+Epoch: 1300,	lr: 0.00100,	loss: 359385.34375
+Epoch: 1400,	lr: 0.00100,	loss: 359374.75000
+Epoch: 1500,	lr: 0.00100,	loss: 359378.15625
+Early stopping
+
+ => Fold 3 best pretrain vae loss 359364.96875, epoch 1445
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=3 epoch=0 train=1.29762 val=1.28214
+E0 seed=911 fold=3 epoch=25 train=1.19339 val=1.20056
+E0 seed=911 fold=3 epoch=50 train=1.01349 val=1.08587
+E0 seed=911 fold=3 epoch=75 train=0.78986 val=0.95168
+E0 seed=911 fold=3 epoch=100 train=0.58998 val=0.86468
+E0 seed=911 fold=3 epoch=125 train=0.48094 val=0.81889
+E0 seed=911 fold=3 epoch=150 train=0.39634 val=0.82200
+E0 seed=911 fold=3 epoch=175 train=0.33570 val=0.76974
+E0 seed=911 fold=3 epoch=200 train=0.31584 val=0.84047
+E0 seed=911 fold=3 epoch=225 train=0.29457 val=0.87014
+E0 seed=911 fold=3 epoch=250 train=0.28653 val=0.86301
+E0 seed=911 fold=3 epoch=275 train=0.28302 val=0.83719
+COMPLETE E0 seed=911 fold=3 ACC=0.87356 AUC=0.93404 best=193
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 36296114176.00000
+Epoch: 100,	lr: 0.00100,	loss: 372173.50000
+Epoch: 200,	lr: 0.00100,	loss: 360867.71875
+Epoch: 300,	lr: 0.00100,	loss: 359791.03125
+Epoch: 400,	lr: 0.00100,	loss: 359552.78125
+Epoch: 500,	lr: 0.00100,	loss: 359440.96875
+Epoch: 600,	lr: 0.00100,	loss: 359410.25000
+Epoch: 700,	lr: 0.00100,	loss: 359391.96875
+Epoch: 800,	lr: 0.00100,	loss: 359385.96875
+Epoch: 900,	lr: 0.00100,	loss: 359370.87500
+Epoch: 1000,	lr: 0.00100,	loss: 359365.21875
+Epoch: 1100,	lr: 0.00100,	loss: 359361.46875
+Early stopping
+
+ => Fold 4 best pretrain vae loss 359360.46875, epoch 1098
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=4 epoch=0 train=1.33089 val=1.32271
+E0 seed=911 fold=4 epoch=25 train=1.17897 val=1.19493
+E0 seed=911 fold=4 epoch=50 train=1.03735 val=1.11939
+E0 seed=911 fold=4 epoch=75 train=0.82756 val=0.97578
+E0 seed=911 fold=4 epoch=100 train=0.64065 val=0.81295
+E0 seed=911 fold=4 epoch=125 train=0.53161 val=0.74345
+E0 seed=911 fold=4 epoch=150 train=0.46538 val=0.77016
+E0 seed=911 fold=4 epoch=175 train=0.43741 val=0.79440
+E0 seed=911 fold=4 epoch=200 train=0.41449 val=0.80289
+E0 seed=911 fold=4 epoch=225 train=0.39929 val=0.80372
+COMPLETE E0 seed=911 fold=4 ACC=0.81609 AUC=0.86170 best=136
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 1967160688640.00000
+Epoch: 100,	lr: 0.00100,	loss: 502906.68750
+Epoch: 200,	lr: 0.00100,	loss: 362839.21875
+Epoch: 300,	lr: 0.00100,	loss: 360005.87500
+Epoch: 400,	lr: 0.00100,	loss: 359601.28125
+Epoch: 500,	lr: 0.00100,	loss: 359504.59375
+Epoch: 600,	lr: 0.00100,	loss: 359454.53125
+Epoch: 700,	lr: 0.00100,	loss: 359415.00000
+Epoch: 800,	lr: 0.00100,	loss: 359397.00000
+Epoch: 900,	lr: 0.00100,	loss: 359382.09375
+Epoch: 1000,	lr: 0.00100,	loss: 359373.40625
+Epoch: 1100,	lr: 0.00100,	loss: 359378.03125
+Epoch: 1200,	lr: 0.00100,	loss: 359363.53125
+Epoch: 1300,	lr: 0.00100,	loss: 359371.56250
+Early stopping
+
+ => Fold 5 best pretrain vae loss 359358.81250, epoch 1283
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=5 epoch=0 train=0.99890 val=0.98947
+E0 seed=911 fold=5 epoch=25 train=0.92973 val=0.95065
+E0 seed=911 fold=5 epoch=50 train=0.85223 val=0.94935
+E0 seed=911 fold=5 epoch=75 train=0.69096 val=0.87472
+E0 seed=911 fold=5 epoch=100 train=0.53829 val=0.79526
+E0 seed=911 fold=5 epoch=125 train=0.41144 val=0.75750
+E0 seed=911 fold=5 epoch=150 train=0.34118 val=0.69869
+E0 seed=911 fold=5 epoch=175 train=0.30379 val=0.80067
+E0 seed=911 fold=5 epoch=200 train=0.27624 val=0.78645
+E0 seed=911 fold=5 epoch=225 train=0.25684 val=0.79568
+E0 seed=911 fold=5 epoch=250 train=0.25281 val=0.79349
+COMPLETE E0 seed=911 fold=5 ACC=0.89655 AUC=0.94734 best=164
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 61205938176.00000
+Epoch: 100,	lr: 0.00100,	loss: 373885.40625
+Epoch: 200,	lr: 0.00100,	loss: 361088.71875
+Epoch: 300,	lr: 0.00100,	loss: 359847.40625
+Epoch: 400,	lr: 0.00100,	loss: 359540.00000
+Epoch: 500,	lr: 0.00100,	loss: 359449.59375
+Epoch: 600,	lr: 0.00100,	loss: 359414.56250
+Epoch: 700,	lr: 0.00100,	loss: 359399.84375
+Epoch: 800,	lr: 0.00100,	loss: 359385.46875
+Epoch: 900,	lr: 0.00100,	loss: 359377.75000
+Epoch: 1000,	lr: 0.00100,	loss: 359371.87500
+Epoch: 1100,	lr: 0.00100,	loss: 359367.96875
+Epoch: 1200,	lr: 0.00100,	loss: 359392.34375
+Epoch: 1300,	lr: 0.00100,	loss: 359364.28125
+Epoch: 1400,	lr: 0.00100,	loss: 359362.18750
+Early stopping
+
+ => Fold 6 best pretrain vae loss 359356.25000, epoch 1390
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=6 epoch=0 train=1.01871 val=0.98068
+E0 seed=911 fold=6 epoch=25 train=0.97376 val=0.98845
+E0 seed=911 fold=6 epoch=50 train=0.86259 val=0.96867
+E0 seed=911 fold=6 epoch=75 train=0.69387 val=0.89953
+E0 seed=911 fold=6 epoch=100 train=0.53760 val=0.87019
+E0 seed=911 fold=6 epoch=125 train=0.44479 val=0.82835
+E0 seed=911 fold=6 epoch=150 train=0.39078 val=0.88170
+E0 seed=911 fold=6 epoch=175 train=0.35358 val=0.87623
+E0 seed=911 fold=6 epoch=200 train=0.32531 val=0.94541
+E0 seed=911 fold=6 epoch=225 train=0.31611 val=0.89911
+E0 seed=911 fold=6 epoch=250 train=0.29598 val=0.97160
+COMPLETE E0 seed=911 fold=6 ACC=0.73563 AUC=0.80213 best=153
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 12184642560.00000
+Epoch: 100,	lr: 0.00100,	loss: 377956.65625
+Epoch: 200,	lr: 0.00100,	loss: 360996.81250
+Epoch: 300,	lr: 0.00100,	loss: 359869.12500
+Epoch: 400,	lr: 0.00100,	loss: 359526.31250
+Epoch: 500,	lr: 0.00100,	loss: 359445.46875
+Epoch: 600,	lr: 0.00100,	loss: 359411.37500
+Epoch: 700,	lr: 0.00100,	loss: 359385.59375
+Epoch: 800,	lr: 0.00100,	loss: 359375.34375
+Epoch: 900,	lr: 0.00100,	loss: 359365.84375
+Epoch: 1000,	lr: 0.00100,	loss: 359362.40625
+Epoch: 1100,	lr: 0.00100,	loss: 359379.50000
+Epoch: 1200,	lr: 0.00100,	loss: 359358.12500
+Early stopping
+
+ => Fold 7 best pretrain vae loss 359355.09375, epoch 1197
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=7 epoch=0 train=1.05399 val=1.02973
+E0 seed=911 fold=7 epoch=25 train=1.08502 val=1.12813
+E0 seed=911 fold=7 epoch=50 train=0.88597 val=1.04044
+E0 seed=911 fold=7 epoch=75 train=0.71473 val=0.92383
+E0 seed=911 fold=7 epoch=100 train=0.56312 val=0.78631
+E0 seed=911 fold=7 epoch=125 train=0.48433 val=0.75293
+E0 seed=911 fold=7 epoch=150 train=0.42770 val=0.77720
+E0 seed=911 fold=7 epoch=175 train=0.40243 val=0.72906
+E0 seed=911 fold=7 epoch=200 train=0.38278 val=0.78815
+E0 seed=911 fold=7 epoch=225 train=0.38930 val=0.77802
+E0 seed=911 fold=7 epoch=250 train=0.38174 val=0.93915
+COMPLETE E0 seed=911 fold=7 ACC=0.81609 AUC=0.87660 best=160
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 22996081180672.00000
+Epoch: 100,	lr: 0.00100,	loss: 817367.25000
+Epoch: 200,	lr: 0.00100,	loss: 371489.90625
+Epoch: 300,	lr: 0.00100,	loss: 360921.87500
+Epoch: 400,	lr: 0.00100,	loss: 359683.65625
+Epoch: 500,	lr: 0.00100,	loss: 359491.09375
+Epoch: 600,	lr: 0.00100,	loss: 359426.15625
+Epoch: 700,	lr: 0.00100,	loss: 359401.56250
+Epoch: 800,	lr: 0.00100,	loss: 359390.34375
+Epoch: 900,	lr: 0.00100,	loss: 359381.62500
+Epoch: 1000,	lr: 0.00100,	loss: 359385.40625
+Epoch: 1100,	lr: 0.00100,	loss: 359369.46875
+Early stopping
+
+ => Fold 8 best pretrain vae loss 359368.09375, epoch 1089
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=8 epoch=0 train=1.92015 val=1.90400
+E0 seed=911 fold=8 epoch=25 train=1.75451 val=1.74264
+E0 seed=911 fold=8 epoch=50 train=1.60042 val=1.62348
+E0 seed=911 fold=8 epoch=75 train=1.30322 val=1.43523
+E0 seed=911 fold=8 epoch=100 train=1.13505 val=1.28990
+E0 seed=911 fold=8 epoch=125 train=0.95167 val=1.20065
+E0 seed=911 fold=8 epoch=150 train=0.82980 val=1.11339
+E0 seed=911 fold=8 epoch=175 train=0.75414 val=1.06019
+E0 seed=911 fold=8 epoch=200 train=0.73774 val=1.10100
+E0 seed=911 fold=8 epoch=225 train=0.71146 val=1.05078
+E0 seed=911 fold=8 epoch=250 train=0.69071 val=1.01587
+E0 seed=911 fold=8 epoch=275 train=0.67690 val=1.07522
+E0 seed=911 fold=8 epoch=300 train=0.66668 val=1.13442
+E0 seed=911 fold=8 epoch=325 train=0.67172 val=1.12839
+E0 seed=911 fold=8 epoch=350 train=0.66960 val=1.12309
+COMPLETE E0 seed=911 fold=8 ACC=0.89655 AUC=0.93511 best=263
+Number of labeled samples 705
+Number of features selected 500
+Start pretraining vae...
+Epoch: 0,	lr: 0.00100,	loss: 293641650176.00000
+Epoch: 100,	lr: 0.00100,	loss: 413466.68750
+Epoch: 200,	lr: 0.00100,	loss: 361616.53125
+Epoch: 300,	lr: 0.00100,	loss: 359884.62500
+Epoch: 400,	lr: 0.00100,	loss: 359525.50000
+Epoch: 500,	lr: 0.00100,	loss: 359429.87500
+Epoch: 600,	lr: 0.00100,	loss: 359398.15625
+Epoch: 700,	lr: 0.00100,	loss: 359383.87500
+Epoch: 800,	lr: 0.00100,	loss: 359376.65625
+Epoch: 900,	lr: 0.00100,	loss: 359374.75000
+Epoch: 1000,	lr: 0.00100,	loss: 359364.28125
+Early stopping
+
+ => Fold 9 best pretrain vae loss 359363.81250, epoch 972
+
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+E0 seed=911 fold=9 epoch=0 train=1.32085 val=1.26229
+E0 seed=911 fold=9 epoch=25 train=1.21830 val=1.22701
+E0 seed=911 fold=9 epoch=50 train=1.07590 val=1.15752
+E0 seed=911 fold=9 epoch=75 train=0.93500 val=1.08318
+E0 seed=911 fold=9 epoch=100 train=0.76614 val=0.96928
+E0 seed=911 fold=9 epoch=125 train=0.66331 val=0.88154
+E0 seed=911 fold=9 epoch=150 train=0.58423 val=0.93129
+E0 seed=911 fold=9 epoch=175 train=0.52986 val=0.90753
+E0 seed=911 fold=9 epoch=200 train=0.49664 val=0.85728
+E0 seed=911 fold=9 epoch=225 train=0.48398 val=0.94492
+E0 seed=911 fold=9 epoch=250 train=0.46574 val=0.98492
+COMPLETE E0 seed=911 fold=9 ACC=0.80460 AUC=0.89521 best=172
