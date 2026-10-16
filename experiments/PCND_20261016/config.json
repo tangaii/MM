@@ -1,0 +1,100 @@
+{
+  "experiment": "PCND_20261016",
+  "root": "/data/adodas/MM-GTUNets",
+  "data_folder": "/data/adodas/MM-GTUNets/dataset/ABIDE_aal",
+  "seeds": [
+    911,
+    912,
+    913
+  ],
+  "folds": 10,
+  "val_ratio": 0.1,
+  "epochs": 500,
+  "early_stop": 100,
+  "lr": 0.0001,
+  "vae_lr": 0.001,
+  "weight_decay": 0.0005,
+  "pca_dim": 32,
+  "ridge_lambda": 10,
+  "normative_inner_folds": 5,
+  "score_clip": 4,
+  "logit_cap": 0.25,
+  "groups": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "repeat_seed_bases": [
+    51001,
+    51002,
+    51003,
+    51004,
+    51005
+  ],
+  "workers_per_gpu": 4,
+  "gpu_reserve_mib": 8192,
+  "per_worker_budget_mib": 16384,
+  "host_threads": 1,
+  "max_attempts": 2,
+  "cpu_budget": 16,
+  "ram_reserve_mib": 8192,
+  "feature_workers": 2,
+  "p6_shuffle_scope": "partition_within_site",
+  "counterfactual_shuffle_scope": "partition_within_site",
+  "p6_preregistration_revision": {
+    "version": 2,
+    "user_authorized_before_any_formal_training": true,
+    "previous": "cohort_within_site",
+    "current": "train_val_test_partition_within_site",
+    "joint_age_sex": true,
+    "singleton_policy": "unchanged",
+    "labels_used_for_permutation": false,
+    "preserve_P1_P5_formal_features_bitwise": true,
+    "P4_P5_auxiliary_queries": "same revised partition-site permutation; original real TD reference unchanged"
+  },
+  "parity_folds": [
+    [
+      911,
+      0
+    ],
+    [
+      911,
+      1
+    ],
+    [
+      912,
+      0
+    ],
+    [
+      912,
+      1
+    ],
+    [
+      913,
+      0
+    ]
+  ],
+  "equivalence_steps": 3,
+  "repeat_groups": [
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "age_bins": [
+    0,
+    12,
+    18,
+    30,
+    200
+  ],
+  "minimum_site_auc_samples": 20,
+  "minimum_site_auc_per_class": 5,
+  "github_reference": "e48c177dc64da4a91dfa44b939b61cb823b65d7b",
+  "attribution_reference": "d94572601678b0ec68b4bc8dcb44da2b780f0194",
+  "official_reference": "bb9351b931003535503694ad2f777b6cee1c151f",
+  "attribution_readonly_path": "/tmp/PCCI_Attribution_20261016"
+}
+
