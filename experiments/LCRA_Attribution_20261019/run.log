@@ -1,0 +1,498 @@
+{"utc": "2026-10-18T16:56:57.042553+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 584, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 564, in main\n    a=audit()\n      ^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 170, in audit\n    started=time.time(); storage=storage_gate()\n                                 ^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 157, in storage_gate\n    out=p.communicate(timeout=20)[0]; assert p.returncode==0\n        ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 1209, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 2116, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 1253, in _check_timeout\n    raise TimeoutExpired(\nsubprocess.TimeoutExpired: Command '['/root/venvs/mm/bin/python', '-B', '-c', \"import json,sys,time\\nfrom pathlib import Path\\np=Path(sys.argv[1]);missing=0\\nfor i in range(100):\\n try: assert json.loads(p.read_bytes())['phase']>=0\\n except FileNotFoundError: missing+=1\\n time.sleep(.005)\\nprint(missing)\\n\", '/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/storage.probe']' timed out after 20 seconds\n"}
+{"utc": "2026-10-18T17:00:01.780410+00:00", "event": "audit_passed", "protected": 1769, "anchors": 30, "gpu": {"0": 15, "1": 15}}
+{"utc": "2026-10-18T17:00:31.876557+00:00", "event": "worker_start", "seed": 911, "fold": 0, "gpu": "0", "pid": 737476, "preflight": true}
+{"utc": "2026-10-18T17:00:31.893891+00:00", "event": "worker_start", "seed": 911, "fold": 5, "gpu": "1", "pid": 737477, "preflight": true}
+{"utc": "2026-10-18T17:00:43.920438+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 625, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 603, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 512, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 323, in __init__\n    self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().\n"}
+{"utc": "2026-10-18T17:00:43.920438+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 625, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 603, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 512, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 323, in __init__\n    self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().\n"}
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 625, in <module>
+{"utc": "2026-10-18T17:00:43.979636+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 625, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 603, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 512, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 323, in __init__\n    self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().\n"}
+{"utc": "2026-10-18T17:00:43.979636+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 625, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 603, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 512, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 323, in __init__\n    self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().\n"}
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 625, in <module>
+    try:main()
+        ^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 603, in main
+    try:main()
+        ^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 603, in main
+    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return
+                 if args.action=='worker':worker(args.seed,args.fold,args.preflight);return  
+                           ^^  ^^  ^^  ^^  ^^  ^^  ^^  ^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 512, in worker
+^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 512, in worker
+    start=time.time();loaded=Loaded(seed,fold,a)
+                     start=time.time();loaded=Loaded(seed,fold,a)
+                       ^^  ^^  ^^  ^^  ^^  ^^  ^^  ^^  ^^  ^
+^^^^  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 323, in __init__
+^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 323, in __init__
+    self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)
+               self.wrapper.eval();self.wrapper.requires_grad_(False);self.core.rp_attention.weights.requires_grad_(False)
+                                                                                               ^  ^^  ^^  ^^  ^^  ^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^RuntimeError^^: ^^you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().^
+^^
+RuntimeError: you can only change requires_grad flags of leaf variables. If you want to use a computed variable in a subgraph that doesn't require differentiation use var_no_grad = var.detach().
+{"utc": "2026-10-18T17:00:47.084394+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 625, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 613, in main\n    state['status']='preflight';queue(CFG['preflight_anchors'],a,state,True)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 576, in queue\n    if failed and not active:raise RuntimeError('; '.join(failed))\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Worker failed 911/0 PPU0: exit 1; see run.log; Worker failed 911/5 PPU1: exit 1; see run.log\n"}
+{"utc": "2026-10-18T17:01:23.513967+00:00", "event": "worker_start", "seed": 911, "fold": 0, "gpu": "0", "pid": 738412, "preflight": true}
+{"utc": "2026-10-18T17:01:23.528735+00:00", "event": "worker_start", "seed": 911, "fold": 5, "gpu": "1", "pid": 738413, "preflight": true}
+{"utc": "2026-10-18T17:01:37.746532+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 631, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 608, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 515, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 335, in __init__\n    self.b=stage_b(self,detail)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 120, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 419, in stage_b\n    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())\n                       ^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 413, in score\n    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}
+{"utc": "2026-10-18T17:01:37.746532+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 631, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 608, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 515, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 335, in __init__\n    self.b=stage_b(self,detail)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 120, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 419, in stage_b\n    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())\n                       ^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 413, in score\n    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 631, in <module>
+    try:main()
+        ^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 608, in main
+    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 515, in worker
+    start=time.time();loaded=Loaded(seed,fold,a)
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 335, in __init__
+    self.b=stage_b(self,detail)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 419, in stage_b
+    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())
+                       ^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 413, in score
+    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+{"utc": "2026-10-18T17:01:37.813322+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 631, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 608, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 515, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 335, in __init__\n    self.b=stage_b(self,detail)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 120, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 419, in stage_b\n    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())\n                       ^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 413, in score\n    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}
+{"utc": "2026-10-18T17:01:37.813322+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 631, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 608, in main\n    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 515, in worker\n    start=time.time();loaded=Loaded(seed,fold,a)\n                             ^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 335, in __init__\n    self.b=stage_b(self,detail)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 120, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 419, in stage_b\n    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())\n                       ^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 413, in score\n    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}
+Traceback (most recent call last):
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 631, in <module>
+    try:main()
+        ^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 608, in main
+    if args.action=='worker':worker(args.seed,args.fold,args.preflight);return
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 515, in worker
+    start=time.time();loaded=Loaded(seed,fold,a)
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 335, in __init__
+    self.b=stage_b(self,detail)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 419, in stage_b
+    null_scores.append(score(q));null_js.append(js_divergence(p,q).cpu().numpy())
+                       ^^^^^^^^
+  File "/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py", line 413, in score
+    assert torch.allclose(w.sum(-1),torch.ones(len(p),device=device),atol=2e-7,rtol=0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+{"utc": "2026-10-18T17:01:40.987743+00:00", "event": "error", "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 631, in <module>\n    try:main()\n        ^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 619, in main\n    state['status']='preflight';queue(CFG['preflight_anchors'],a,state,True)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/LCRA_Attribution_20261019/run.py\", line 581, in queue\n    raise RuntimeError('; '.join(failed))\nRuntimeError: Worker failed 911/0 PPU0: exit 1; see run.log; Worker failed 911/5 PPU1: exit 1; see run.log\n"}
+{"utc": "2026-10-18T17:02:32.000210+00:00", "event": "worker_start", "seed": 911, "fold": 0, "gpu": "0", "pid": 739650, "preflight": true}
+{"utc": "2026-10-18T17:02:32.078879+00:00", "event": "worker_start", "seed": 911, "fold": 5, "gpu": "1", "pid": 739658, "preflight": true}
+{"utc": "2026-10-18T17:02:53.538121+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 0, "gpu": "1", "preflight": true, "replay_max": 5.960464477539062e-07}
+{"utc": "2026-10-18T17:02:53.538121+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 0, "gpu": "1", "preflight": true, "replay_max": 5.960464477539062e-07}
+{"utc": "2026-10-18T17:02:53.660903+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 6.258487701416016e-07}
+{"utc": "2026-10-18T17:02:53.660903+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 6.258487701416016e-07}
+{"utc": "2026-10-18T17:02:55.705069+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 1, "gpu": "1", "preflight": true, "replay_max": 8.940696716308594e-07}
+{"utc": "2026-10-18T17:02:55.705069+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 1, "gpu": "1", "preflight": true, "replay_max": 8.940696716308594e-07}
+{"utc": "2026-10-18T17:02:55.809359+00:00", "event": "anchor_complete", "seed": 911, "fold": 5, "state": "preflight_passed", "gpu": "1"}
+{"utc": "2026-10-18T17:02:55.809359+00:00", "event": "anchor_complete", "seed": 911, "fold": 5, "state": "preflight_passed", "gpu": "1"}
+{"utc": "2026-10-18T17:02:55.862232+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:02:55.862232+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:02:55.964755+00:00", "event": "anchor_complete", "seed": 911, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:02:55.964755+00:00", "event": "anchor_complete", "seed": 911, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:03:00.437712+00:00", "event": "worker_start", "seed": 912, "fold": 0, "gpu": "0", "pid": 740199, "preflight": true}
+{"utc": "2026-10-18T17:03:00.510397+00:00", "event": "worker_start", "seed": 912, "fold": 5, "gpu": "1", "pid": 740200, "preflight": true}
+{"utc": "2026-10-18T17:03:21.832174+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 0, "gpu": "1", "preflight": true, "replay_max": 2.0563602447509766e-06}
+{"utc": "2026-10-18T17:03:21.832174+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 0, "gpu": "1", "preflight": true, "replay_max": 2.0563602447509766e-06}
+{"utc": "2026-10-18T17:03:22.350603+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:03:22.350603+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:03:24.030868+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 1, "gpu": "1", "preflight": true, "replay_max": 3.516674041748047e-06}
+{"utc": "2026-10-18T17:03:24.030868+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 1, "gpu": "1", "preflight": true, "replay_max": 3.516674041748047e-06}
+{"utc": "2026-10-18T17:03:24.141362+00:00", "event": "anchor_complete", "seed": 912, "fold": 5, "state": "preflight_passed", "gpu": "1"}
+{"utc": "2026-10-18T17:03:24.141362+00:00", "event": "anchor_complete", "seed": 912, "fold": 5, "state": "preflight_passed", "gpu": "1"}
+{"utc": "2026-10-18T17:03:24.634526+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 3.8743019104003906e-07}
+{"utc": "2026-10-18T17:03:24.634526+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 3.8743019104003906e-07}
+{"utc": "2026-10-18T17:03:24.740338+00:00", "event": "anchor_complete", "seed": 912, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:03:24.740338+00:00", "event": "anchor_complete", "seed": 912, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:03:29.035386+00:00", "event": "worker_start", "seed": 913, "fold": 0, "gpu": "0", "pid": 740737, "preflight": true}
+{"utc": "2026-10-18T17:03:49.866494+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:03:49.866494+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 0, "gpu": "0", "preflight": true, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:03:52.083403+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:03:52.083403+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 1, "gpu": "0", "preflight": true, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:03:52.183478+00:00", "event": "anchor_complete", "seed": 913, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:03:52.183478+00:00", "event": "anchor_complete", "seed": 913, "fold": 0, "state": "preflight_passed", "gpu": "0"}
+{"utc": "2026-10-18T17:03:55.913847+00:00", "event": "preflight_passed", "anchors": 5}
+{"utc": "2026-10-18T17:03:56.404439+00:00", "event": "worker_start", "seed": 911, "fold": 0, "gpu": "0", "pid": 741230, "preflight": false}
+{"utc": "2026-10-18T17:03:56.421891+00:00", "event": "worker_start", "seed": 911, "fold": 1, "gpu": "1", "pid": 741231, "preflight": false}
+{"utc": "2026-10-18T17:03:58.618156+00:00", "event": "worker_start", "seed": 912, "fold": 0, "gpu": "0", "pid": 741264, "preflight": false}
+{"utc": "2026-10-18T17:03:58.632943+00:00", "event": "worker_start", "seed": 912, "fold": 1, "gpu": "1", "pid": 741265, "preflight": false}
+{"utc": "2026-10-18T17:04:14.621936+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:04:14.621936+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:04:14.680649+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.3974647521972656e-06}
+{"utc": "2026-10-18T17:04:14.680649+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.3974647521972656e-06}
+{"utc": "2026-10-18T17:04:16.669373+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.7401914596557617e-06}
+{"utc": "2026-10-18T17:04:16.669373+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.7401914596557617e-06}
+{"utc": "2026-10-18T17:04:16.858578+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4139881134033203e-06}
+{"utc": "2026-10-18T17:04:16.858578+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4139881134033203e-06}
+{"utc": "2026-10-18T17:04:16.958635+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:04:16.958635+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:04:17.441480+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.5762786865234375e-07}
+{"utc": "2026-10-18T17:04:17.441480+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.5762786865234375e-07}
+{"utc": "2026-10-18T17:04:18.852971+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:04:18.852971+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:04:19.070052+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.773238182067871e-06}
+{"utc": "2026-10-18T17:04:19.070052+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.773238182067871e-06}
+{"utc": "2026-10-18T17:04:19.300720+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 4.172325134277344e-07}
+{"utc": "2026-10-18T17:04:19.300720+00:00", "event": "draw_complete", "seed": 911, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 4.172325134277344e-07}
+{"utc": "2026-10-18T17:04:19.452008+00:00", "event": "anchor_complete", "seed": 911, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:19.452008+00:00", "event": "anchor_complete", "seed": 911, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:19.797900+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:04:19.797900+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:04:21.137657+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.5033950805664062e-06}
+{"utc": "2026-10-18T17:04:21.137657+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.5033950805664062e-06}
+{"utc": "2026-10-18T17:04:21.401460+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:04:21.401460+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:04:22.055000+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 6.258487701416016e-07}
+{"utc": "2026-10-18T17:04:22.055000+00:00", "event": "draw_complete", "seed": 912, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 6.258487701416016e-07}
+{"utc": "2026-10-18T17:04:22.180826+00:00", "event": "anchor_complete", "seed": 912, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:22.180826+00:00", "event": "anchor_complete", "seed": 912, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:22.988494+00:00", "event": "worker_start", "seed": 913, "fold": 0, "gpu": "0", "pid": 741727, "preflight": false}
+{"utc": "2026-10-18T17:04:23.557751+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.5331974029541016e-06}
+{"utc": "2026-10-18T17:04:23.557751+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.5331974029541016e-06}
+{"utc": "2026-10-18T17:04:23.779251+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:23.779251+00:00", "event": "draw_complete", "seed": 911, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:23.955709+00:00", "event": "anchor_complete", "seed": 911, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:23.955709+00:00", "event": "anchor_complete", "seed": 911, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:25.774498+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:04:25.774498+00:00", "event": "draw_complete", "seed": 912, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:04:25.954435+00:00", "event": "anchor_complete", "seed": 912, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:25.954435+00:00", "event": "anchor_complete", "seed": 912, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:27.621801+00:00", "event": "worker_start", "seed": 911, "fold": 2, "gpu": "0", "pid": 741815, "preflight": false}
+{"utc": "2026-10-18T17:04:27.638383+00:00", "event": "worker_start", "seed": 913, "fold": 1, "gpu": "1", "pid": 741816, "preflight": false}
+{"utc": "2026-10-18T17:04:29.929888+00:00", "event": "worker_start", "seed": 911, "fold": 3, "gpu": "1", "pid": 741857, "preflight": false}
+{"utc": "2026-10-18T17:04:40.828268+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:04:40.828268+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:04:43.066864+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.470348358154297e-07}
+{"utc": "2026-10-18T17:04:43.066864+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.470348358154297e-07}
+{"utc": "2026-10-18T17:04:45.423897+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 5.960464477539062e-07}
+{"utc": "2026-10-18T17:04:45.423897+00:00", "event": "draw_complete", "seed": 913, "fold": 0, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 5.960464477539062e-07}
+{"utc": "2026-10-18T17:04:45.553572+00:00", "event": "anchor_complete", "seed": 913, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:45.553572+00:00", "event": "anchor_complete", "seed": 913, "fold": 0, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:45.651813+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.7881393432617188e-06}
+{"utc": "2026-10-18T17:04:45.651813+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.7881393432617188e-06}
+{"utc": "2026-10-18T17:04:45.709282+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:45.709282+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:47.854524+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:04:47.854524+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:04:48.021005+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.9802322387695312e-06}
+{"utc": "2026-10-18T17:04:48.021005+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.9802322387695312e-06}
+{"utc": "2026-10-18T17:04:48.223555+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:04:48.223555+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:04:49.823570+00:00", "event": "worker_start", "seed": 912, "fold": 2, "gpu": "0", "pid": 742247, "preflight": false}
+{"utc": "2026-10-18T17:04:50.075941+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.2351741790771484e-06}
+{"utc": "2026-10-18T17:04:50.075941+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.2351741790771484e-06}
+{"utc": "2026-10-18T17:04:50.291516+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:50.291516+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.635883331298828e-06}
+{"utc": "2026-10-18T17:04:50.527448+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.6226043701171875e-06}
+{"utc": "2026-10-18T17:04:50.527448+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.6226043701171875e-06}
+{"utc": "2026-10-18T17:04:52.305717+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.5331974029541016e-06}
+{"utc": "2026-10-18T17:04:52.305717+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.5331974029541016e-06}
+{"utc": "2026-10-18T17:04:52.651211+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:04:52.651211+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:04:52.913047+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:04:52.913047+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:04:54.610449+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:04:54.610449+00:00", "event": "draw_complete", "seed": 911, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:04:54.743941+00:00", "event": "anchor_complete", "seed": 911, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:54.743941+00:00", "event": "anchor_complete", "seed": 911, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:04:55.026612+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.9653310775756836e-06}
+{"utc": "2026-10-18T17:04:55.026612+00:00", "event": "draw_complete", "seed": 913, "fold": 1, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.9653310775756836e-06}
+{"utc": "2026-10-18T17:04:55.163398+00:00", "event": "anchor_complete", "seed": 913, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:55.163398+00:00", "event": "anchor_complete", "seed": 913, "fold": 1, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:55.231427+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.296401023864746e-06}
+{"utc": "2026-10-18T17:04:55.231427+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.296401023864746e-06}
+{"utc": "2026-10-18T17:04:57.400383+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.043081283569336e-06}
+{"utc": "2026-10-18T17:04:57.400383+00:00", "event": "draw_complete", "seed": 911, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.043081283569336e-06}
+{"utc": "2026-10-18T17:04:57.549806+00:00", "event": "anchor_complete", "seed": 911, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:57.549806+00:00", "event": "anchor_complete", "seed": 911, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:04:58.703711+00:00", "event": "worker_start", "seed": 913, "fold": 2, "gpu": "0", "pid": 742409, "preflight": false}
+{"utc": "2026-10-18T17:04:58.719621+00:00", "event": "worker_start", "seed": 912, "fold": 3, "gpu": "1", "pid": 742410, "preflight": false}
+{"utc": "2026-10-18T17:05:00.994769+00:00", "event": "worker_start", "seed": 913, "fold": 3, "gpu": "1", "pid": 742455, "preflight": false}
+{"utc": "2026-10-18T17:05:07.277199+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.0728836059570312e-06}
+{"utc": "2026-10-18T17:05:07.277199+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.0728836059570312e-06}
+{"utc": "2026-10-18T17:05:09.535480+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 1.4901161193847656e-06}
+{"utc": "2026-10-18T17:05:09.535480+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 1.4901161193847656e-06}
+{"utc": "2026-10-18T17:05:11.798640+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:05:11.798640+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:05:14.132607+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:14.132607+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:16.453680+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.3709068298339844e-06}
+{"utc": "2026-10-18T17:05:16.453680+00:00", "event": "draw_complete", "seed": 912, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.3709068298339844e-06}
+{"utc": "2026-10-18T17:05:16.598006+00:00", "event": "anchor_complete", "seed": 912, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:16.598006+00:00", "event": "anchor_complete", "seed": 912, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:16.760520+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.5762786865234375e-06}
+{"utc": "2026-10-18T17:05:16.760520+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.5762786865234375e-06}
+{"utc": "2026-10-18T17:05:17.044128+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.516674041748047e-06}
+{"utc": "2026-10-18T17:05:17.044128+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.516674041748047e-06}
+{"utc": "2026-10-18T17:05:18.886540+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.8014183044433594e-06}
+{"utc": "2026-10-18T17:05:18.886540+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.8014183044433594e-06}
+{"utc": "2026-10-18T17:05:18.962313+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:18.962313+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:19.249321+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:05:19.249321+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:05:20.715751+00:00", "event": "worker_start", "seed": 911, "fold": 4, "gpu": "0", "pid": 742831, "preflight": false}
+{"utc": "2026-10-18T17:05:21.199055+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 1.9669532775878906e-06}
+{"utc": "2026-10-18T17:05:21.199055+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 1.9669532775878906e-06}
+{"utc": "2026-10-18T17:05:21.223874+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:21.223874+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:21.471941+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.6242265701293945e-06}
+{"utc": "2026-10-18T17:05:21.471941+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.6242265701293945e-06}
+{"utc": "2026-10-18T17:05:23.554321+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.205371856689453e-06}
+{"utc": "2026-10-18T17:05:23.554321+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.205371856689453e-06}
+{"utc": "2026-10-18T17:05:23.613291+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.8014183044433594e-06}
+{"utc": "2026-10-18T17:05:23.613291+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.8014183044433594e-06}
+{"utc": "2026-10-18T17:05:23.814582+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:05:23.814582+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:05:25.854369+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:05:25.854369+00:00", "event": "draw_complete", "seed": 913, "fold": 2, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:05:25.873705+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.86102294921875e-06}
+{"utc": "2026-10-18T17:05:25.873705+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.86102294921875e-06}
+{"utc": "2026-10-18T17:05:26.013651+00:00", "event": "anchor_complete", "seed": 913, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:26.013651+00:00", "event": "anchor_complete", "seed": 913, "fold": 2, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:26.060938+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.384185791015625e-06}
+{"utc": "2026-10-18T17:05:26.060938+00:00", "event": "draw_complete", "seed": 912, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.384185791015625e-06}
+{"utc": "2026-10-18T17:05:26.208690+00:00", "event": "anchor_complete", "seed": 912, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:26.208690+00:00", "event": "anchor_complete", "seed": 912, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:28.114394+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:05:28.114394+00:00", "event": "draw_complete", "seed": 913, "fold": 3, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:05:28.247298+00:00", "event": "anchor_complete", "seed": 913, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:28.247298+00:00", "event": "anchor_complete", "seed": 913, "fold": 3, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:29.683498+00:00", "event": "worker_start", "seed": 912, "fold": 4, "gpu": "0", "pid": 743002, "preflight": false}
+{"utc": "2026-10-18T17:05:29.700380+00:00", "event": "worker_start", "seed": 911, "fold": 5, "gpu": "1", "pid": 743003, "preflight": false}
+{"utc": "2026-10-18T17:05:31.955194+00:00", "event": "worker_start", "seed": 912, "fold": 5, "gpu": "1", "pid": 743045, "preflight": false}
+{"utc": "2026-10-18T17:05:38.072919+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.039836883544922e-06}
+{"utc": "2026-10-18T17:05:38.072919+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.039836883544922e-06}
+{"utc": "2026-10-18T17:05:40.338756+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.0100345611572266e-06}
+{"utc": "2026-10-18T17:05:40.338756+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.0100345611572266e-06}
+{"utc": "2026-10-18T17:05:42.676949+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:05:42.676949+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:05:44.976375+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.26173210144043e-06}
+{"utc": "2026-10-18T17:05:44.976375+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 4.26173210144043e-06}
+{"utc": "2026-10-18T17:05:47.346890+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 5.27501106262207e-06}
+{"utc": "2026-10-18T17:05:47.346890+00:00", "event": "draw_complete", "seed": 911, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 5.27501106262207e-06}
+{"utc": "2026-10-18T17:05:47.486545+00:00", "event": "anchor_complete", "seed": 911, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:47.486545+00:00", "event": "anchor_complete", "seed": 911, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:47.547835+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.3113021850585938e-06}
+{"utc": "2026-10-18T17:05:47.547835+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.3113021850585938e-06}
+{"utc": "2026-10-18T17:05:47.755329+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.043081283569336e-06}
+{"utc": "2026-10-18T17:05:47.755329+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.043081283569336e-06}
+{"utc": "2026-10-18T17:05:49.793536+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:05:49.793536+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:05:49.925869+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:49.925869+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:05:49.989066+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:49.989066+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:51.647008+00:00", "event": "worker_start", "seed": 913, "fold": 4, "gpu": "0", "pid": 743429, "preflight": false}
+{"utc": "2026-10-18T17:05:52.097491+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 9.238719940185547e-07}
+{"utc": "2026-10-18T17:05:52.097491+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 9.238719940185547e-07}
+{"utc": "2026-10-18T17:05:52.285399+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:05:52.285399+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:05:52.310550+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:52.310550+00:00", "event": "draw_complete", "seed": 911, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:05:52.450704+00:00", "event": "anchor_complete", "seed": 911, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:52.450704+00:00", "event": "anchor_complete", "seed": 911, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:54.370332+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:05:54.370332+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:05:54.467075+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.817941665649414e-06}
+{"utc": "2026-10-18T17:05:54.467075+00:00", "event": "draw_complete", "seed": 912, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.817941665649414e-06}
+{"utc": "2026-10-18T17:05:54.604449+00:00", "event": "anchor_complete", "seed": 912, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:54.604449+00:00", "event": "anchor_complete", "seed": 912, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:05:56.061587+00:00", "event": "worker_start", "seed": 913, "fold": 5, "gpu": "1", "pid": 743517, "preflight": false}
+{"utc": "2026-10-18T17:05:56.664524+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.7583370208740234e-06}
+{"utc": "2026-10-18T17:05:56.664524+00:00", "event": "draw_complete", "seed": 912, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.7583370208740234e-06}
+{"utc": "2026-10-18T17:05:56.796577+00:00", "event": "anchor_complete", "seed": 912, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:56.796577+00:00", "event": "anchor_complete", "seed": 912, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:05:58.346376+00:00", "event": "worker_start", "seed": 911, "fold": 7, "gpu": "1", "pid": 743554, "preflight": false}
+{"utc": "2026-10-18T17:06:00.654448+00:00", "event": "worker_start", "seed": 911, "fold": 6, "gpu": "0", "pid": 743599, "preflight": false}
+{"utc": "2026-10-18T17:06:09.308959+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.9206275939941406e-06}
+{"utc": "2026-10-18T17:06:09.308959+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.9206275939941406e-06}
+{"utc": "2026-10-18T17:06:11.594563+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.5033950805664062e-06}
+{"utc": "2026-10-18T17:06:11.594563+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.5033950805664062e-06}
+{"utc": "2026-10-18T17:06:13.851941+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.294778823852539e-06}
+{"utc": "2026-10-18T17:06:13.851941+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.294778823852539e-06}
+{"utc": "2026-10-18T17:06:14.052472+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 9.5367431640625e-07}
+{"utc": "2026-10-18T17:06:14.052472+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 9.5367431640625e-07}
+{"utc": "2026-10-18T17:06:15.564364+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.115964889526367e-06}
+{"utc": "2026-10-18T17:06:15.564364+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.115964889526367e-06}
+{"utc": "2026-10-18T17:06:16.119961+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 3.3080577850341797e-06}
+{"utc": "2026-10-18T17:06:16.119961+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 3.3080577850341797e-06}
+{"utc": "2026-10-18T17:06:16.353197+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 9.5367431640625e-07}
+{"utc": "2026-10-18T17:06:16.353197+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 9.5367431640625e-07}
+{"utc": "2026-10-18T17:06:17.762194+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.159046173095703e-06}
+{"utc": "2026-10-18T17:06:17.762194+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.159046173095703e-06}
+{"utc": "2026-10-18T17:06:18.182671+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 7.748603820800781e-07}
+{"utc": "2026-10-18T17:06:18.182671+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 7.748603820800781e-07}
+{"utc": "2026-10-18T17:06:18.398183+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:06:18.398183+00:00", "event": "draw_complete", "seed": 913, "fold": 4, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:06:18.534528+00:00", "event": "anchor_complete", "seed": 913, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:18.534528+00:00", "event": "anchor_complete", "seed": 913, "fold": 4, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:18.610220+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.1026859283447266e-06}
+{"utc": "2026-10-18T17:06:18.610220+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 1.1026859283447266e-06}
+{"utc": "2026-10-18T17:06:19.970527+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:06:19.970527+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:06:20.429684+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 4.470348358154297e-07}
+{"utc": "2026-10-18T17:06:20.429684+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 4.470348358154297e-07}
+{"utc": "2026-10-18T17:06:20.898053+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.0728836059570312e-06}
+{"utc": "2026-10-18T17:06:20.898053+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 1.0728836059570312e-06}
+{"utc": "2026-10-18T17:06:22.158116+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.6226043701171875e-06}
+{"utc": "2026-10-18T17:06:22.158116+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.6226043701171875e-06}
+{"utc": "2026-10-18T17:06:22.608988+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:06:22.608988+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 4.76837158203125e-07}
+{"utc": "2026-10-18T17:06:22.692829+00:00", "event": "worker_start", "seed": 912, "fold": 6, "gpu": "0", "pid": 744030, "preflight": false}
+{"utc": "2026-10-18T17:06:23.205079+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.3113021850585938e-06}
+{"utc": "2026-10-18T17:06:23.205079+00:00", "event": "draw_complete", "seed": 913, "fold": 5, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 1.3113021850585938e-06}
+{"utc": "2026-10-18T17:06:23.343215+00:00", "event": "anchor_complete", "seed": 913, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:23.343215+00:00", "event": "anchor_complete", "seed": 913, "fold": 5, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:24.524610+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:24.524610+00:00", "event": "draw_complete", "seed": 911, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:24.661539+00:00", "event": "anchor_complete", "seed": 911, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:24.661539+00:00", "event": "anchor_complete", "seed": 911, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:24.841447+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:06:24.841447+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:06:27.111398+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 6.556510925292969e-07}
+{"utc": "2026-10-18T17:06:27.111398+00:00", "event": "draw_complete", "seed": 911, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 6.556510925292969e-07}
+{"utc": "2026-10-18T17:06:27.255737+00:00", "event": "anchor_complete", "seed": 911, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:27.262717+00:00", "event": "worker_start", "seed": 912, "fold": 7, "gpu": "1", "pid": 744118, "preflight": false}
+{"utc": "2026-10-18T17:06:27.255737+00:00", "event": "anchor_complete", "seed": 911, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:29.635181+00:00", "event": "worker_start", "seed": 913, "fold": 7, "gpu": "1", "pid": 744155, "preflight": false}
+{"utc": "2026-10-18T17:06:31.918055+00:00", "event": "worker_start", "seed": 913, "fold": 6, "gpu": "0", "pid": 744198, "preflight": false}
+{"utc": "2026-10-18T17:06:39.970453+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:06:39.970453+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:06:42.185278+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 4.0531158447265625e-06}
+{"utc": "2026-10-18T17:06:42.185278+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 4.0531158447265625e-06}
+{"utc": "2026-10-18T17:06:44.375831+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.546476364135742e-06}
+{"utc": "2026-10-18T17:06:44.375831+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.546476364135742e-06}
+{"utc": "2026-10-18T17:06:45.076215+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:06:45.076215+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:06:46.641646+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:06:46.641646+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:06:47.070437+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.7567148208618164e-06}
+{"utc": "2026-10-18T17:06:47.070437+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.7567148208618164e-06}
+{"utc": "2026-10-18T17:06:47.404307+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4139881134033203e-06}
+{"utc": "2026-10-18T17:06:47.404307+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4139881134033203e-06}
+{"utc": "2026-10-18T17:06:49.021698+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:49.021698+00:00", "event": "draw_complete", "seed": 912, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:49.170296+00:00", "event": "anchor_complete", "seed": 912, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:49.170296+00:00", "event": "anchor_complete", "seed": 912, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:49.274161+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:06:49.274161+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:06:49.415098+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.652406692504883e-06}
+{"utc": "2026-10-18T17:06:49.415098+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.652406692504883e-06}
+{"utc": "2026-10-18T17:06:49.651018+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:06:49.651018+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:06:51.519933+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:51.519933+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:51.631009+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:51.631009+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:51.911651+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.175569534301758e-06}
+{"utc": "2026-10-18T17:06:51.911651+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.175569534301758e-06}
+{"utc": "2026-10-18T17:06:53.736668+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 4.559755325317383e-06}
+{"utc": "2026-10-18T17:06:53.736668+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 4.559755325317383e-06}
+{"utc": "2026-10-18T17:06:53.837584+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:53.837584+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:06:53.928548+00:00", "event": "worker_start", "seed": 911, "fold": 8, "gpu": "0", "pid": 744615, "preflight": false}
+{"utc": "2026-10-18T17:06:54.175692+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.039836883544922e-06}
+{"utc": "2026-10-18T17:06:54.175692+00:00", "event": "draw_complete", "seed": 912, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 3.039836883544922e-06}
+{"utc": "2026-10-18T17:06:54.312888+00:00", "event": "anchor_complete", "seed": 912, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:54.312888+00:00", "event": "anchor_complete", "seed": 912, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:56.054921+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.950429916381836e-06}
+{"utc": "2026-10-18T17:06:56.054921+00:00", "event": "draw_complete", "seed": 913, "fold": 7, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.950429916381836e-06}
+{"utc": "2026-10-18T17:06:56.078315+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 3.0994415283203125e-06}
+{"utc": "2026-10-18T17:06:56.078315+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 3.0994415283203125e-06}
+{"utc": "2026-10-18T17:06:56.196500+00:00", "event": "anchor_complete", "seed": 913, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:56.196500+00:00", "event": "anchor_complete", "seed": 913, "fold": 7, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:06:58.377891+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:58.377891+00:00", "event": "draw_complete", "seed": 913, "fold": 6, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.2186508178710938e-06}
+{"utc": "2026-10-18T17:06:58.424334+00:00", "event": "worker_start", "seed": 911, "fold": 9, "gpu": "1", "pid": 744701, "preflight": false}
+{"utc": "2026-10-18T17:06:58.517158+00:00", "event": "anchor_complete", "seed": 913, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:06:58.517158+00:00", "event": "anchor_complete", "seed": 913, "fold": 6, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:00.741657+00:00", "event": "worker_start", "seed": 912, "fold": 9, "gpu": "1", "pid": 744744, "preflight": false}
+{"utc": "2026-10-18T17:07:03.090327+00:00", "event": "worker_start", "seed": 912, "fold": 8, "gpu": "0", "pid": 744791, "preflight": false}
+{"utc": "2026-10-18T17:07:11.838767+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.8328428268432617e-06}
+{"utc": "2026-10-18T17:07:11.838767+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 1.8328428268432617e-06}
+{"utc": "2026-10-18T17:07:14.292570+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:07:14.292570+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 1.2516975402832031e-06}
+{"utc": "2026-10-18T17:07:15.836090+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.337860107421875e-06}
+{"utc": "2026-10-18T17:07:15.836090+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 3.337860107421875e-06}
+{"utc": "2026-10-18T17:07:16.555545+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:07:16.555545+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 1.0132789611816406e-06}
+{"utc": "2026-10-18T17:07:18.102969+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:07:18.102969+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 3.4570693969726562e-06}
+{"utc": "2026-10-18T17:07:18.363020+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.294778823852539e-06}
+{"utc": "2026-10-18T17:07:18.363020+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 2.294778823852539e-06}
+{"utc": "2026-10-18T17:07:18.894737+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:07:18.894737+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 1.6093254089355469e-06}
+{"utc": "2026-10-18T17:07:20.445538+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.1888484954833984e-06}
+{"utc": "2026-10-18T17:07:20.445538+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.1888484954833984e-06}
+{"utc": "2026-10-18T17:07:20.699152+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.384185791015625e-06}
+{"utc": "2026-10-18T17:07:20.699152+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.384185791015625e-06}
+{"utc": "2026-10-18T17:07:20.726473+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:07:20.726473+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:07:21.186641+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.1324882507324219e-06}
+{"utc": "2026-10-18T17:07:21.186641+00:00", "event": "draw_complete", "seed": 911, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 1.1324882507324219e-06}
+{"utc": "2026-10-18T17:07:21.343781+00:00", "event": "anchor_complete", "seed": 911, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:21.343781+00:00", "event": "anchor_complete", "seed": 911, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:22.829962+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 3.3974647521972656e-06}
+{"utc": "2026-10-18T17:07:22.829962+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 3.3974647521972656e-06}
+{"utc": "2026-10-18T17:07:22.995499+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:07:22.995499+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 2.592802047729492e-06}
+{"utc": "2026-10-18T17:07:23.088410+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:07:23.088410+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 3.2782554626464844e-06}
+{"utc": "2026-10-18T17:07:24.922823+00:00", "event": "worker_start", "seed": 913, "fold": 8, "gpu": "0", "pid": 745210, "preflight": false}
+{"utc": "2026-10-18T17:07:25.222149+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 6.318092346191406e-06}
+{"utc": "2026-10-18T17:07:25.222149+00:00", "event": "draw_complete", "seed": 911, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 6.318092346191406e-06}
+{"utc": "2026-10-18T17:07:25.279825+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:07:25.279825+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.682209014892578e-06}
+{"utc": "2026-10-18T17:07:25.374885+00:00", "event": "anchor_complete", "seed": 911, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:07:25.374885+00:00", "event": "anchor_complete", "seed": 911, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:07:25.475931+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:07:25.475931+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 2.2649765014648438e-06}
+{"utc": "2026-10-18T17:07:27.543246+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:07:27.543246+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.562999725341797e-06}
+{"utc": "2026-10-18T17:07:27.730892+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.7120113372802734e-06}
+{"utc": "2026-10-18T17:07:27.730892+00:00", "event": "draw_complete", "seed": 912, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 2.7120113372802734e-06}
+{"utc": "2026-10-18T17:07:27.863636+00:00", "event": "anchor_complete", "seed": 912, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:07:27.863636+00:00", "event": "anchor_complete", "seed": 912, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:07:29.454447+00:00", "event": "worker_start", "seed": 913, "fold": 9, "gpu": "1", "pid": 745298, "preflight": false}
+{"utc": "2026-10-18T17:07:29.832622+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.3245811462402344e-06}
+{"utc": "2026-10-18T17:07:29.832622+00:00", "event": "draw_complete", "seed": 912, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 2.3245811462402344e-06}
+{"utc": "2026-10-18T17:07:29.969102+00:00", "event": "anchor_complete", "seed": 912, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:29.969102+00:00", "event": "anchor_complete", "seed": 912, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:42.138537+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:07:42.138537+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 0, "gpu": "0", "preflight": false, "replay_max": 2.7418136596679688e-06}
+{"utc": "2026-10-18T17:07:44.343270+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.3676624298095703e-06}
+{"utc": "2026-10-18T17:07:44.343270+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 1, "gpu": "0", "preflight": false, "replay_max": 3.3676624298095703e-06}
+{"utc": "2026-10-18T17:07:46.566388+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.7120113372802734e-06}
+{"utc": "2026-10-18T17:07:46.566388+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 2, "gpu": "0", "preflight": false, "replay_max": 2.7120113372802734e-06}
+{"utc": "2026-10-18T17:07:46.702844+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 6.556510925292969e-07}
+{"utc": "2026-10-18T17:07:46.702844+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 0, "gpu": "1", "preflight": false, "replay_max": 6.556510925292969e-07}
+{"utc": "2026-10-18T17:07:48.796630+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:07:48.796630+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 3, "gpu": "0", "preflight": false, "replay_max": 2.4437904357910156e-06}
+{"utc": "2026-10-18T17:07:48.856730+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:07:48.856730+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 1, "gpu": "1", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:07:51.018794+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:07:51.018794+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 2, "gpu": "1", "preflight": false, "replay_max": 8.344650268554688e-07}
+{"utc": "2026-10-18T17:07:51.067373+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.0994415283203125e-06}
+{"utc": "2026-10-18T17:07:51.067373+00:00", "event": "draw_complete", "seed": 913, "fold": 8, "draw": 4, "gpu": "0", "preflight": false, "replay_max": 3.0994415283203125e-06}
+{"utc": "2026-10-18T17:07:51.199835+00:00", "event": "anchor_complete", "seed": 913, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:51.199835+00:00", "event": "anchor_complete", "seed": 913, "fold": 8, "state": "complete", "gpu": "0"}
+{"utc": "2026-10-18T17:07:53.170482+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 9.238719940185547e-07}
+{"utc": "2026-10-18T17:07:53.170482+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 3, "gpu": "1", "preflight": false, "replay_max": 9.238719940185547e-07}
+{"utc": "2026-10-18T17:07:55.333722+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:07:55.333722+00:00", "event": "draw_complete", "seed": 913, "fold": 9, "draw": 4, "gpu": "1", "preflight": false, "replay_max": 5.364418029785156e-07}
+{"utc": "2026-10-18T17:07:55.467334+00:00", "event": "anchor_complete", "seed": 913, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:07:55.467334+00:00", "event": "anchor_complete", "seed": 913, "fold": 9, "state": "complete", "gpu": "1"}
+{"utc": "2026-10-18T17:09:47.378228+00:00", "event": "complete", "decision": "D", "anchors": 30, "training": 0, "forwards": 1230, "gpu": {"0": 15, "1": 15}}
+{"utc": "2026-10-18T17:16:27.076149+00:00", "event": "resume_verified", "retraining": false, "new_forward": false}
