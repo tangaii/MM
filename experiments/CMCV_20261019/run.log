@@ -1,0 +1,182 @@
+2026-10-19T05:33:57.162351+00:00 pid=1380275 INPUT_AUDIT start; historical inputs are read-only
+2026-10-19T05:34:58.553124+00:00 pid=1380275 FATAL
+Traceback (most recent call last):
+  File "/tmp/CMCV_20261019/run.py", line 434, in <module>
+    initialize()
+  File "/tmp/CMCV_20261019/run.py", line 152, in initialize
+    'resources': resources(), 'references': {'paper': 'https://arxiv.org/html/2406.14455v3',
+                 ^^^^^^^^^^^
+  File "/tmp/CMCV_20261019/run.py", line 162, in resources
+    'load_average': os.getloadavg(), 'memory_max': Path('/sys/fs/cgroup/memory.max').read_text().strip(),
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/sys/fs/cgroup/memory.max'
+
+2026-10-19T05:35:40.528548+00:00 pid=1382095 INPUT_AUDIT start; historical inputs are read-only
+2026-10-19T05:36:21.854183+00:00 pid=1382095 INPUT_AUDIT passed raw=(871, 6670), protected=1808, seconds=41.31
+2026-10-19T05:36:31.107206+00:00 pid=1382095 TECHNICAL_TESTS passed; CPU/PPU benchmark={'cpu_median_seconds': 0.0158548504114151, 'PPUs': [{'device': 0, 'name': 'PPU-ZW810E', 'end_to_end_median_seconds': 0.0020527057349681854, 'max_abs_error': 1.9984014443252818e-15}, {'device': 1, 'name': 'PPU-ZW810E', 'end_to_end_median_seconds': 0.0016804225742816925, 'max_abs_error': 1.9984014443252818e-15}], 'formal_route': 'CPU sklearn and NumPy', 'formal_PPU_training_tasks': 0, 'rationale': 'sklearn LR/SVC/RFE are CPU algorithms; do not transfer models or occupy devices pointlessly', 'matrix_speedups': [7.723878849912617, 9.435037742332376]}
+2026-10-19T05:36:38.020979+00:00 pid=1383061 RFE_READY R_s911_f0 seconds=5.448
+2026-10-19T05:36:46.960418+00:00 pid=1383061 COMPLETE R_s911_f0 lane=0 seconds=13.35 LR=16 SVC=10
+2026-10-19T05:36:54.031647+00:00 pid=1383343 RFE_READY R_s912_f5 seconds=5.479
+2026-10-19T05:36:54.138311+00:00 pid=1383345 RFE_READY S_NYU seconds=5.531
+2026-10-19T05:37:01.633519+00:00 pid=1383345 COMPLETE S_NYU lane=0 seconds=12.42 LR=13 SVC=10
+2026-10-19T05:37:01.764164+00:00 pid=1382095 QUEUE remaining=1 active=[0, 1] available_GiB=44.0
+2026-10-19T05:37:02.855305+00:00 pid=1383343 COMPLETE R_s912_f5 lane=1 seconds=13.30 LR=16 SVC=10
+2026-10-19T05:37:02.957744+00:00 pid=1382095 QUEUE remaining=1 active=[0, 0] available_GiB=44.2
+2026-10-19T05:37:12.213431+00:00 pid=1383618 RFE_READY S_CMU seconds=7.805
+2026-10-19T05:37:22.250189+00:00 pid=1383618 COMPLETE S_CMU lane=1 seconds=17.22 LR=13 SVC=10
+2026-10-19T05:37:22.362754+00:00 pid=1382095 QUEUE remaining=0 active=[0, 0] available_GiB=44.2
+2026-10-19T05:37:26.137699+00:00 pid=1384109 SKIP_VALID R_s911_f0
+2026-10-19T05:37:29.988633+00:00 pid=1384186 SKIP_VALID R_s912_f5
+2026-10-19T05:37:33.004919+00:00 pid=1384250 SKIP_VALID S_NYU
+2026-10-19T05:37:36.078116+00:00 pid=1384291 SKIP_VALID S_CMU
+2026-10-19T05:37:36.250864+00:00 pid=1382095 PREFLIGHT 4/4 accepted; formal per_lane=2; no result-based method selection
+2026-10-19T05:37:43.429309+00:00 pid=1384359 RFE_READY R_s911_f1 seconds=5.633
+2026-10-19T05:37:43.474873+00:00 pid=1384361 RFE_READY R_s911_f2 seconds=5.549
+2026-10-19T05:37:43.562729+00:00 pid=1384363 RFE_READY R_s911_f3 seconds=5.612
+2026-10-19T05:37:43.666272+00:00 pid=1384365 RFE_READY R_s911_f4 seconds=5.731
+2026-10-19T05:37:52.352544+00:00 pid=1384361 COMPLETE R_s911_f2 lane=0 seconds=13.37 LR=16 SVC=10
+2026-10-19T05:37:52.360107+00:00 pid=1384363 COMPLETE R_s911_f3 lane=1 seconds=13.37 LR=16 SVC=10
+2026-10-19T05:37:52.458735+00:00 pid=1382095 QUEUE remaining=42 active=[1, 2] available_GiB=43.7
+2026-10-19T05:37:52.482080+00:00 pid=1382095 QUEUE remaining=41 active=[2, 1] available_GiB=43.9
+2026-10-19T05:37:52.501989+00:00 pid=1384359 COMPLETE R_s911_f1 lane=1 seconds=13.70 LR=16 SVC=10
+2026-10-19T05:37:52.649867+00:00 pid=1382095 QUEUE remaining=40 active=[2, 1] available_GiB=44.0
+2026-10-19T05:37:52.969767+00:00 pid=1384365 COMPLETE R_s911_f4 lane=0 seconds=14.00 LR=16 SVC=10
+2026-10-19T05:37:53.077923+00:00 pid=1382095 QUEUE remaining=39 active=[1, 2] available_GiB=44.1
+2026-10-19T05:37:59.520577+00:00 pid=1384647 RFE_READY R_s911_f6 seconds=5.610
+2026-10-19T05:37:59.649190+00:00 pid=1384649 RFE_READY R_s911_f5 seconds=5.649
+2026-10-19T05:37:59.879469+00:00 pid=1384654 RFE_READY R_s911_f7 seconds=5.697
+2026-10-19T05:38:00.161685+00:00 pid=1384656 RFE_READY R_s911_f8 seconds=5.601
+2026-10-19T05:38:08.341912+00:00 pid=1384647 COMPLETE R_s911_f6 lane=0 seconds=13.42 LR=16 SVC=10
+2026-10-19T05:38:08.447353+00:00 pid=1382095 QUEUE remaining=38 active=[1, 2] available_GiB=43.7
+2026-10-19T05:38:08.592921+00:00 pid=1384649 COMPLETE R_s911_f5 lane=1 seconds=13.56 LR=16 SVC=10
+2026-10-19T05:38:08.738885+00:00 pid=1382095 QUEUE remaining=37 active=[2, 1] available_GiB=43.9
+2026-10-19T05:38:08.801379+00:00 pid=1384654 COMPLETE R_s911_f7 lane=1 seconds=13.58 LR=16 SVC=10
+2026-10-19T05:38:08.908652+00:00 pid=1384656 COMPLETE R_s911_f8 lane=0 seconds=13.35 LR=16 SVC=10
+2026-10-19T05:38:08.963272+00:00 pid=1382095 QUEUE remaining=36 active=[2, 1] available_GiB=44.0
+2026-10-19T05:38:09.028978+00:00 pid=1382095 QUEUE remaining=35 active=[1, 2] available_GiB=44.2
+2026-10-19T05:38:15.460325+00:00 pid=1384931 RFE_READY R_s912_f0 seconds=5.548
+2026-10-19T05:38:15.871194+00:00 pid=1384934 RFE_READY R_s911_f9 seconds=5.611
+2026-10-19T05:38:16.021953+00:00 pid=1384946 RFE_READY R_s912_f1 seconds=5.604
+2026-10-19T05:38:16.091055+00:00 pid=1384949 RFE_READY R_s912_f2 seconds=5.562
+2026-10-19T05:38:24.578773+00:00 pid=1384934 COMPLETE R_s911_f9 lane=1 seconds=13.29 LR=16 SVC=10
+2026-10-19T05:38:24.679227+00:00 pid=1384931 COMPLETE R_s912_f0 lane=0 seconds=13.75 LR=16 SVC=10
+2026-10-19T05:38:24.739876+00:00 pid=1382095 QUEUE remaining=34 active=[2, 1] available_GiB=43.7
+2026-10-19T05:38:24.795684+00:00 pid=1382095 QUEUE remaining=33 active=[1, 2] available_GiB=43.9
+2026-10-19T05:38:24.833467+00:00 pid=1384946 COMPLETE R_s912_f1 lane=1 seconds=13.41 LR=16 SVC=10
+2026-10-19T05:38:24.874058+00:00 pid=1384949 COMPLETE R_s912_f2 lane=0 seconds=13.32 LR=16 SVC=10
+2026-10-19T05:38:24.945487+00:00 pid=1382095 QUEUE remaining=32 active=[2, 1] available_GiB=44.1
+2026-10-19T05:38:24.997893+00:00 pid=1382095 QUEUE remaining=31 active=[1, 2] available_GiB=44.2
+2026-10-19T05:38:31.789489+00:00 pid=1385223 RFE_READY R_s912_f4 seconds=5.528
+2026-10-19T05:38:31.883676+00:00 pid=1385222 RFE_READY R_s912_f3 seconds=5.594
+2026-10-19T05:38:32.001829+00:00 pid=1385236 RFE_READY R_s912_f6 seconds=5.519
+2026-10-19T05:38:32.044047+00:00 pid=1385234 RFE_READY R_s912_f7 seconds=5.598
+2026-10-19T05:38:40.533537+00:00 pid=1385223 COMPLETE R_s912_f4 lane=0 seconds=13.27 LR=16 SVC=10
+2026-10-19T05:38:40.644480+00:00 pid=1382095 QUEUE remaining=30 active=[1, 2] available_GiB=43.7
+2026-10-19T05:38:40.711827+00:00 pid=1385234 COMPLETE R_s912_f7 lane=1 seconds=13.24 LR=16 SVC=10
+2026-10-19T05:38:40.817167+00:00 pid=1385222 COMPLETE R_s912_f3 lane=1 seconds=13.53 LR=16 SVC=10
+2026-10-19T05:38:40.827919+00:00 pid=1382095 QUEUE remaining=29 active=[2, 1] available_GiB=43.9
+2026-10-19T05:38:40.914060+00:00 pid=1385236 COMPLETE R_s912_f6 lane=0 seconds=13.40 LR=16 SVC=10
+2026-10-19T05:38:40.968968+00:00 pid=1382095 QUEUE remaining=28 active=[2, 1] available_GiB=44.1
+2026-10-19T05:38:41.016253+00:00 pid=1382095 QUEUE remaining=27 active=[1, 2] available_GiB=44.2
+2026-10-19T05:38:47.862632+00:00 pid=1385525 RFE_READY R_s912_f8 seconds=5.754
+2026-10-19T05:38:47.922892+00:00 pid=1385526 RFE_READY R_s912_f9 seconds=5.616
+2026-10-19T05:38:48.123107+00:00 pid=1385527 RFE_READY R_s913_f1 seconds=5.697
+2026-10-19T05:38:48.238183+00:00 pid=1385530 RFE_READY R_s913_f0 seconds=5.719
+2026-10-19T05:38:56.633737+00:00 pid=1385526 COMPLETE R_s912_f9 lane=1 seconds=13.32 LR=16 SVC=10
+2026-10-19T05:38:56.747501+00:00 pid=1385525 COMPLETE R_s912_f8 lane=0 seconds=13.62 LR=16 SVC=10
+2026-10-19T05:38:56.765969+00:00 pid=1382095 QUEUE remaining=26 active=[2, 1] available_GiB=43.7
+2026-10-19T05:38:56.782016+00:00 pid=1385527 COMPLETE R_s913_f1 lane=1 seconds=13.35 LR=16 SVC=10
+2026-10-19T05:38:56.915348+00:00 pid=1382095 QUEUE remaining=25 active=[2, 1] available_GiB=44.0
+2026-10-19T05:38:56.916698+00:00 pid=1382095 QUEUE remaining=24 active=[1, 2] available_GiB=44.0
+2026-10-19T05:38:57.480883+00:00 pid=1385530 COMPLETE R_s913_f0 lane=0 seconds=13.95 LR=16 SVC=10
+2026-10-19T05:38:57.656618+00:00 pid=1382095 QUEUE remaining=23 active=[1, 2] available_GiB=44.1
+2026-10-19T05:39:03.852791+00:00 pid=1385880 RFE_READY R_s913_f3 seconds=5.553
+2026-10-19T05:39:03.949420+00:00 pid=1385881 RFE_READY R_s913_f5 seconds=5.578
+2026-10-19T05:39:04.078695+00:00 pid=1385882 RFE_READY R_s913_f2 seconds=5.666
+2026-10-19T05:39:04.674664+00:00 pid=1385890 RFE_READY R_s913_f4 seconds=5.550
+2026-10-19T05:39:12.613113+00:00 pid=1385881 COMPLETE R_s913_f5 lane=1 seconds=13.20 LR=16 SVC=10
+2026-10-19T05:39:12.665570+00:00 pid=1385882 COMPLETE R_s913_f2 lane=0 seconds=13.24 LR=16 SVC=10
+2026-10-19T05:39:12.729627+00:00 pid=1382095 QUEUE remaining=22 active=[2, 1] available_GiB=43.7
+2026-10-19T05:39:12.730977+00:00 pid=1385880 COMPLETE R_s913_f3 lane=1 seconds=13.43 LR=16 SVC=10
+2026-10-19T05:39:12.810071+00:00 pid=1382095 QUEUE remaining=21 active=[1, 2] available_GiB=43.9
+2026-10-19T05:39:12.865740+00:00 pid=1382095 QUEUE remaining=20 active=[2, 1] available_GiB=44.0
+2026-10-19T05:39:13.414103+00:00 pid=1385890 COMPLETE R_s913_f4 lane=0 seconds=13.29 LR=16 SVC=10
+2026-10-19T05:39:13.567350+00:00 pid=1382095 QUEUE remaining=19 active=[1, 2] available_GiB=44.1
+2026-10-19T05:39:19.913261+00:00 pid=1386167 RFE_READY R_s913_f7 seconds=5.702
+2026-10-19T05:39:19.956327+00:00 pid=1386168 RFE_READY R_s913_f6 seconds=5.681
+2026-10-19T05:39:19.959046+00:00 pid=1386169 RFE_READY R_s913_f9 seconds=5.617
+2026-10-19T05:39:20.585485+00:00 pid=1386177 RFE_READY R_s913_f8 seconds=5.541
+2026-10-19T05:39:28.534735+00:00 pid=1386168 COMPLETE R_s913_f6 lane=0 seconds=13.26 LR=16 SVC=10
+2026-10-19T05:39:28.681184+00:00 pid=1382095 QUEUE remaining=18 active=[1, 2] available_GiB=43.7
+2026-10-19T05:39:28.731187+00:00 pid=1386167 COMPLETE R_s913_f7 lane=1 seconds=13.50 LR=16 SVC=10
+2026-10-19T05:39:28.811447+00:00 pid=1386169 COMPLETE R_s913_f9 lane=1 seconds=13.44 LR=16 SVC=10
+2026-10-19T05:39:28.858128+00:00 pid=1382095 QUEUE remaining=17 active=[2, 1] available_GiB=43.9
+2026-10-19T05:39:28.934669+00:00 pid=1382095 QUEUE remaining=16 active=[2, 1] available_GiB=44.0
+2026-10-19T05:39:29.472180+00:00 pid=1386177 COMPLETE R_s913_f8 lane=0 seconds=13.38 LR=16 SVC=10
+2026-10-19T05:39:29.574797+00:00 pid=1382095 QUEUE remaining=15 active=[1, 2] available_GiB=44.1
+2026-10-19T05:39:37.538624+00:00 pid=1386583 RFE_READY S_MAX_MUN seconds=7.139
+2026-10-19T05:39:37.795163+00:00 pid=1386573 RFE_READY S_CALTECH seconds=7.632
+2026-10-19T05:39:37.956228+00:00 pid=1386578 RFE_READY S_LEUVEN_1 seconds=7.596
+2026-10-19T05:39:38.516890+00:00 pid=1386597 RFE_READY S_KKI seconds=7.474
+2026-10-19T05:39:47.027908+00:00 pid=1386583 COMPLETE S_MAX_MUN lane=1 seconds=16.02 LR=13 SVC=10
+2026-10-19T05:39:47.143290+00:00 pid=1382095 QUEUE remaining=14 active=[2, 1] available_GiB=43.7
+2026-10-19T05:39:47.497980+00:00 pid=1386578 COMPLETE S_LEUVEN_1 lane=1 seconds=16.52 LR=13 SVC=10
+2026-10-19T05:39:47.602070+00:00 pid=1382095 QUEUE remaining=13 active=[2, 1] available_GiB=43.8
+2026-10-19T05:39:48.018755+00:00 pid=1386597 COMPLETE S_KKI lane=0 seconds=16.36 LR=13 SVC=10
+2026-10-19T05:39:48.040897+00:00 pid=1386573 COMPLETE S_CALTECH lane=0 seconds=17.25 LR=13 SVC=10
+2026-10-19T05:39:48.130498+00:00 pid=1382095 QUEUE remaining=12 active=[1, 2] available_GiB=44.0
+2026-10-19T05:39:48.145619+00:00 pid=1382095 QUEUE remaining=11 active=[1, 2] available_GiB=44.1
+2026-10-19T05:39:56.174657+00:00 pid=1386927 RFE_READY S_OHSU seconds=7.528
+2026-10-19T05:39:56.289494+00:00 pid=1386935 RFE_READY S_PITT seconds=7.193
+2026-10-19T05:39:57.114617+00:00 pid=1386943 RFE_READY S_LEUVEN_2 seconds=7.470
+2026-10-19T05:39:57.307379+00:00 pid=1386944 RFE_READY S_OLIN seconds=7.667
+2026-10-19T05:40:05.535396+00:00 pid=1386935 COMPLETE S_PITT lane=1 seconds=15.84 LR=13 SVC=10
+2026-10-19T05:40:05.693613+00:00 pid=1382095 QUEUE remaining=10 active=[2, 1] available_GiB=43.7
+2026-10-19T05:40:06.242924+00:00 pid=1386927 COMPLETE S_OHSU lane=1 seconds=16.97 LR=13 SVC=10
+2026-10-19T05:40:06.399102+00:00 pid=1382095 QUEUE remaining=9 active=[2, 1] available_GiB=43.8
+2026-10-19T05:40:06.866741+00:00 pid=1386943 COMPLETE S_LEUVEN_2 lane=0 seconds=16.62 LR=13 SVC=10
+2026-10-19T05:40:06.969421+00:00 pid=1382095 QUEUE remaining=8 active=[1, 2] available_GiB=43.9
+2026-10-19T05:40:07.351821+00:00 pid=1386944 COMPLETE S_OLIN lane=0 seconds=17.10 LR=13 SVC=10
+2026-10-19T05:40:07.467533+00:00 pid=1382095 QUEUE remaining=7 active=[1, 2] available_GiB=43.7
+2026-10-19T05:40:14.919577+00:00 pid=1387272 RFE_READY S_SDSU seconds=7.667
+2026-10-19T05:40:15.292138+00:00 pid=1387347 RFE_READY S_TRINITY seconds=7.342
+2026-10-19T05:40:16.093969+00:00 pid=1387355 RFE_READY S_SBL seconds=7.622
+2026-10-19T05:40:16.492021+00:00 pid=1387367 RFE_READY S_STANFORD seconds=7.569
+2026-10-19T05:40:24.700481+00:00 pid=1387272 COMPLETE S_SDSU lane=1 seconds=16.85 LR=13 SVC=10
+2026-10-19T05:40:24.853334+00:00 pid=1382095 QUEUE remaining=6 active=[2, 1] available_GiB=43.7
+2026-10-19T05:40:24.939943+00:00 pid=1387347 COMPLETE S_TRINITY lane=1 seconds=16.40 LR=13 SVC=10
+2026-10-19T05:40:25.122241+00:00 pid=1382095 QUEUE remaining=5 active=[2, 1] available_GiB=43.8
+2026-10-19T05:40:26.485914+00:00 pid=1387355 COMPLETE S_SBL lane=0 seconds=17.40 LR=13 SVC=10
+2026-10-19T05:40:26.587150+00:00 pid=1387367 COMPLETE S_STANFORD lane=0 seconds=17.07 LR=13 SVC=10
+2026-10-19T05:40:26.593281+00:00 pid=1382095 QUEUE remaining=4 active=[1, 2] available_GiB=43.5
+2026-10-19T05:40:26.699113+00:00 pid=1382095 QUEUE remaining=3 active=[1, 2] available_GiB=43.6
+2026-10-19T05:40:33.997121+00:00 pid=1387734 RFE_READY S_UCLA_2 seconds=7.667
+2026-10-19T05:40:34.185346+00:00 pid=1387746 RFE_READY S_UM_2 seconds=7.579
+2026-10-19T05:40:34.912008+00:00 pid=1387782 RFE_READY S_UM_1 seconds=6.757
+2026-10-19T05:40:34.982808+00:00 pid=1387856 SUPPLEMENTAL_METADATA_AUDIT 871/871 exact after original documented float32 age cast; sex-1/site exact. Direct float32-vs-CSV-float64 assertion detected 665 representation differences, maximum 1.8310546892053026e-06 years; source CSV float64 retained per frozen new protocol, no reordering or protocol revision
+2026-10-19T05:40:35.166829+00:00 pid=1387781 RFE_READY S_UCLA_1 seconds=7.070
+2026-10-19T05:40:43.983004+00:00 pid=1387746 COMPLETE S_UM_2 lane=1 seconds=16.80 LR=13 SVC=10
+2026-10-19T05:40:44.126574+00:00 pid=1382095 QUEUE remaining=2 active=[2, 1] available_GiB=43.7
+2026-10-19T05:40:44.425789+00:00 pid=1387781 COMPLETE S_UCLA_1 lane=0 seconds=15.72 LR=13 SVC=10
+2026-10-19T05:40:44.465465+00:00 pid=1387782 COMPLETE S_UM_1 lane=0 seconds=15.72 LR=13 SVC=10
+2026-10-19T05:40:44.551492+00:00 pid=1382095 QUEUE remaining=1 active=[1, 2] available_GiB=43.9
+2026-10-19T05:40:44.560601+00:00 pid=1387734 COMPLETE S_UCLA_2 lane=1 seconds=17.63 LR=13 SVC=10
+2026-10-19T05:40:44.619455+00:00 pid=1382095 QUEUE remaining=0 active=[1, 2] available_GiB=44.0
+2026-10-19T05:40:44.708473+00:00 pid=1382095 QUEUE remaining=0 active=[1, 1] available_GiB=44.2
+2026-10-19T05:40:52.949596+00:00 pid=1388213 RFE_READY S_USM seconds=6.886
+2026-10-19T05:40:52.950071+00:00 pid=1388208 RFE_READY S_YALE seconds=7.313
+2026-10-19T05:41:02.212958+00:00 pid=1388213 COMPLETE S_USM lane=0 seconds=15.56 LR=13 SVC=10
+2026-10-19T05:41:02.355934+00:00 pid=1382095 QUEUE remaining=0 active=[0, 1] available_GiB=44.0
+2026-10-19T05:41:02.402979+00:00 pid=1388208 COMPLETE S_YALE lane=1 seconds=16.16 LR=13 SVC=10
+2026-10-19T05:41:02.512037+00:00 pid=1382095 QUEUE remaining=0 active=[0, 0] available_GiB=44.2
+2026-10-19T05:42:31.444272+00:00 pid=1382095 INDEPENDENT_ACCEPTANCE passed {'passed': True, 'tasks': 50, 'R': 30, 'S': 20, 'RFE_fits': 50, 'fit_counts': {'RFE': 50, 'LogisticRegression': 740, 'SVC': 500, 'GTUNet': 0, 'VAE': 0}, 'independent_metric_checks': 44800, 'max_metric_difference': 3.3306690738754696e-16, 'protected_files_SHA_unchanged': 1808, 'raw_cache_SHA_unchanged': True, 'all_train_ID_label_raw6670_hashes_checked': True, 'all_nulls_regenerated_exactly': True, 'all_neighbors_train_only_no_self': True, 'complete_artifact_SHA_verified': True, 'RFE_once_per_task_shared_by_all_groups': True, 'original_neural_model_training': 0}
+2026-10-19T05:42:57.335369+00:00 pid=1382095 BOOTSTRAP start 2000 site-cluster replicates, all pre-registered main comparisons
+2026-10-19T05:43:03.058602+00:00 pid=1382095 FINAL outcome=D; handoff={'status': 'pending_due_to_IO_or_concurrency', 'error': "OSError(5, 'Input/output error')", 'pending_path': '/tmp/CMCV_20261019/handoff_pending.md', 'warning': 'No successful update claimed; original handoff preserved when append could not start'}; wall=442.38
+2026-10-19T05:43:03.069390+00:00 pid=1382095 EXPERIMENT_COMPLETE; 50 tasks and independent audits accepted
+2026-10-19T05:46:48.007178+00:00 pid=1394709 FINAL_INPUT_RECONSTRUCTION {"passed": true, "utc": "2026-10-19T05:46:47.872616+00:00", "subject_IDs_unique": 871, "independently_reconstructed_fit_designs": 1240, "independently_recomputed_neighbor_votes": 900, "max_neighbor_probability_error": 0.0, "independent_RFE_mask_hashes": 50, "all_saved_train_mean_variance_checked": true, "all_model_hyperparameters_checked": true, "artifact_SHA_before_after_identical": true, "model_fits_performed_by_final_review": 0, "RFE_fits_performed_by_final_review": 0, "handoff_original_SHA_preserved": true, "handoff_new_marker_present": false, "metadata_audit": "Historical ph_data age equals CSV cast float32 exactly for all871; sex-1/site names/site codes/ph_dict exactly match. Raw CSV float64 retained by preregistered new protocol. Direct dtype equality check found665 representations with maximum1.8310546892053026e-06 years difference; no subject mismatch."}
