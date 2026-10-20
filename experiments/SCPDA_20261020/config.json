@@ -1,0 +1,152 @@
+{
+  "experiment": "SCPDA_20261020",
+  "root": "/data/adodas/MM-GTUNets",
+  "history": "experiments/DRPA_20261014",
+  "data_folder": "dataset/ABIDE_aal",
+  "official_commit": "bb9351b931003535503694ad2f777b6cee1c151f",
+  "seeds": [
+    911
+  ],
+  "folds": 10,
+  "epochs": 500,
+  "early_stop": 100,
+  "lr": 0.0001,
+  "weight_decay": 0.0005,
+  "vae_lr_readonly": 0.001,
+  "val_ratio_readonly": 0.1,
+  "prototype_folds": 3,
+  "age_bandwidth_floor": 2,
+  "age_valid_range": [
+    0,
+    120
+  ],
+  "age_missing": "finite age >0 and <=120; otherwise train valid median; all-missing train fallback 17.0 years, recorded",
+  "sex_csv": {
+    "1": "male",
+    "2": "female",
+    "other": "unknown"
+  },
+  "sex_kernel": {
+    "same": 1,
+    "different": 0.5,
+    "unknown": 0.75
+  },
+  "embedding_std_floor": 0.05,
+  "embedding_std_ddof": 0,
+  "tau": "detach(mean_train(sum((u_teacher-mean_train(u_teacher))^2))); clamp_min(1.0)",
+  "tau_floor": 1,
+  "epsilon": 1e-12,
+  "shrink_ess_offset": 8,
+  "shrink_ess_range": 32,
+  "reference_empty_class": "exclude unsupported queries from auxiliary CE; graph-compatible zero if none; no teacher from heldout or own subfold",
+  "site_halves": "whole sites assigned greedily to balance per-class counts in each reference subfold; fixed private SHA256 RNG tie-breaks; no site crosses halves",
+  "reliability_min_class_count": 2,
+  "reliability_min_class_ess": 2,
+  "reliability_direction_floor": 1e-8,
+  "reliability_support_scale": 20,
+  "reliability_floor": 0.25,
+  "auxiliary_gradient_ratio": 0.05,
+  "lambda_cap": 0.5,
+  "warmup_last_epoch": 9,
+  "prototype_partition": "train-only greedy per-class/site round robin, private RNG; same mapping all groups",
+  "shuffle": "only outer train, within-site joint-age-sex shuffled cycle; all non-singletons deranged; label blind",
+  "private_seed": "first 15 hex digits SHA256(seed/fold/PCDCA/purpose)",
+  "groups": {
+    "E0": {
+      "name": "Original MM-GTUNets",
+      "kernel": null,
+      "reliable": false,
+      "shuffled": false,
+      "ema": false,
+      "class_calibration": false
+    },
+    "E1": {
+      "name": "Original D4",
+      "kernel": "age_sex",
+      "reliable": false,
+      "shuffled": false,
+      "ema": false,
+      "class_calibration": false
+    },
+    "E2": {
+      "name": "D4 + EMA",
+      "kernel": "age_sex",
+      "reliable": false,
+      "shuffled": false,
+      "ema": true,
+      "class_calibration": false
+    },
+    "E3": {
+      "name": "D4 + class-specific ESS",
+      "kernel": "age_sex",
+      "reliable": false,
+      "shuffled": false,
+      "ema": false,
+      "class_calibration": true
+    },
+    "E4": {
+      "name": "Full SCPDA",
+      "kernel": "age_sex",
+      "reliable": false,
+      "shuffled": false,
+      "ema": true,
+      "class_calibration": true
+    },
+    "E5": {
+      "name": "Full SCPDA + shuffled phenotype",
+      "kernel": "age_sex",
+      "reliable": false,
+      "shuffled": true,
+      "ema": true,
+      "class_calibration": true
+    }
+  },
+  "preflight_anchors": [
+    [
+      911,
+      0
+    ],
+    [
+      911,
+      5
+    ]
+  ],
+  "preflight_steps": 3,
+  "production_deterministic_algorithms": false,
+  "formal_test_grad_enabled": true,
+  "checkpoint_selection": "strict decrease original val CE + native Graph only; native equal-loss patience reset",
+  "diagnostic_frequency": 25,
+  "physical_gpu": "fold modulo 2, paired all groups",
+  "workers_per_gpu": 4,
+  "host_threads": 1,
+  "gpu_reserve_mib": 8192,
+  "gpu_worker_budget_mib": 14336,
+  "host_reserve_mib": 8192,
+  "host_worker_budget_mib": 3072,
+  "max_attempts": 2,
+  "baseline_drift_pp": 0.5,
+  "historical_protocol_limitations": [
+    "cross-fold supervised RFE leakage retained",
+    "transductive 871-node graph",
+    "stochastic VAE and evaluation dropout",
+    "native PPU long-trajectory nondeterminism",
+    "repeated CV seeds are not independent cohorts"
+  ],
+  "no_git": true,
+  "work_directory": "/tmp/SCPDA_20261020",
+  "requested_persistent_directory": "/data/adodas/MM-GTUNets/experiments/SCPDA_20261020",
+  "storage_override": "User authorized /tmp due recurring /data I/O errors; historical inputs remain read-only",
+  "ema_decay": 0.9,
+  "class_support_constant": 32,
+  "statistics": "Single seed 911; arithmetic mean and sample SD of 10 fold metrics (ddof=1); paired fold differences; correlated CV, not independent cohorts",
+  "stages": [
+    "E0 all 10",
+    "E1 all 10",
+    "E2-E5 mixed 40"
+  ],
+  "historical_experiment": "experiments/PCDCA_20261019",
+  "historical_equivalence": "Original D4 source compiled read-only only as preflight oracle; no production imports from historical experiments",
+  "no_extra_inference": true,
+  "decision_rule": "Positive (descriptive, not significance): E4 beats E1 in ACC and AUC with >=6 improved folds each, beats E5 in ACC/AUC, does not reduce SEN vs E1, and has AUC >= E2/E3; Negative if E4 does not improve either ACC or AUC vs E1; otherwise Mixed. Mechanisms and limits must also be reported."
+}
+
