@@ -1,0 +1,42 @@
+{
+  "experiment": "D4_REPRO_AUDIT_20261020",
+  "historical_root": "/data/adodas/MM-GTUNets/experiments/PCDCA_20261019",
+  "new_root": "/tmp/SCPDA_20261020",
+  "pairs": [
+    [
+      "D0",
+      "E0"
+    ],
+    [
+      "D4",
+      "E1"
+    ]
+  ],
+  "seed": 911,
+  "folds": 10,
+  "trajectory_tolerances": [
+    0.0,
+    1e-08,
+    1e-06,
+    1e-05
+  ],
+  "predeclared_diagnostic_rng_seeds": [
+    20261020,
+    20261021,
+    20261022,
+    20261023,
+    20261024
+  ],
+  "cross_inference_folds": [
+    0,
+    2,
+    1
+  ],
+  "selection_rule": "D4/E1 folds 0 and 2 plus stable fold 1; D0/E0 two folds with largest absolute ACC/AUC change plus exact-ACC/AUC-stable fold 9; no score direction selection",
+  "formal_retraining": false,
+  "root_model_modification": false,
+  "handoff_order": [
+    "SCPDA_20261020",
+    "D4_REPRO_AUDIT_20261020"
+  ]
+}
