@@ -1,0 +1,562 @@
+{"utc": "2026-10-21T07:34:26.018775+00:00", "event": "worker_error", "message": "'0'", "group": null, "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 996, in <module>\n    main()\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 975, in main\n    audit()\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 421, in audit\n    assert prepared['info']['prototype_fold_sha256'] == json.loads(\n                                                        ^^^^^^^^^^^\nKeyError: '0'\n"}
+{"utc": "2026-10-21T07:38:24.855525+00:00", "event": "worker_error", "message": "'historical_D4'", "group": null, "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 1000, in <module>\n    main()\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 979, in main\n    audit()\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 434, in audit\n    d4_rows, d4_mean, d4_sd, d4_protected = historical_d4(ctx)\n                                            ^^^^^^^^^^^^^^^^^^\n  File \"/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py\", line 289, in historical_d4\n    if abs(means[key] - target) > 0.00005:\n           ~~~~~^^^^^\nKeyError: 'historical_D4'\n"}
+{"utc": "2026-10-21T07:40:22.423962+00:00", "event": "audit_passed", "anchors": 10, "historical_d4_folds": 10, "protected_files": 465, "code_sha256": "26ce7438835aff1ec04c2f026538023a853377f8e8dd7af3dc8ec37353941ff9"}
+{"utc": "2026-10-21T07:45:26.216373+00:00", "event": "preflight_wait_resources", "gpu": 0, "gpu_resources": {"free_mib": 97378, "used_mib": 926, "utilization": 36}, "host_available_mib": 31505.80078125}
+{"utc": "2026-10-21T07:45:36.497189+00:00", "event": "preflight_wait_resources", "gpu": 0, "gpu_resources": {"free_mib": 97378, "used_mib": 926, "utilization": 18}, "host_available_mib": 31112.453125}
+{"utc": "2026-10-21T07:45:46.717607+00:00", "event": "preflight_dispatch", "seed": 911, "fold": 0, "gpu": 0, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "preflight", "--seed", "911", "--fold", "0"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:46:22.453176+00:00", "event": "preflight_passed", "seed": 911, "fold": 0}
+{"utc": "2026-10-21T07:46:42.355196+00:00", "event": "formal_authorized", "tasks": 40, "manifest_sha256": "528e7c471796ec4b49ddcbb189b69dec2d29db804e8c4d013a4d5f241ace2169"}
+{"utc": "2026-10-21T07:48:40.696037+00:00", "event": "queue_begin", "formal_tasks": 40, "pending": 40, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:48:41.480824+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 0, "gpu": 0, "pid": 489096, "free_mib": 97370, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "0", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:41.497590+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 1, "gpu": 1, "pid": 489135, "free_mib": 89557, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "1", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:41.508787+00:00", "event": "queue_status", "pending": 38, "active": 2, "accepted": 0, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:48:42.179161+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 2, "gpu": 0, "pid": 489829, "free_mib": 97370, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "2", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:42.197613+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 3, "gpu": 1, "pid": 489836, "free_mib": 89557, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "3", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:42.936362+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 4, "gpu": 0, "pid": 490385, "free_mib": 97370, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "4", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:42.959313+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 5, "gpu": 1, "pid": 490418, "free_mib": 89557, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "5", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:43.535305+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 6, "gpu": 0, "pid": 490715, "free_mib": 97370, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "6", "--group", "J1"]}
+{"utc": "2026-10-21T07:48:43.572044+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 7, "gpu": 1, "pid": 490770, "free_mib": 89557, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "7", "--group", "J1"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.setter(val)
+  self.setter(val)
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:48:59.575135+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 0, "epoch": 0, "best_epoch": 0, "val_loss": 1.6323214769363403}
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:49:00.179078+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 1, "epoch": 0, "best_epoch": 0, "val_loss": 1.0519826412200928}
+  self.setter(val)
+  self.setter(val)
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+{"utc": "2026-10-21T07:49:01.135161+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 2, "epoch": 0, "best_epoch": 0, "val_loss": 1.0743497610092163}
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:49:01.800120+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 3, "epoch": 0, "best_epoch": 0, "val_loss": 1.2821357250213623}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:49:03.123292+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 6, "epoch": 0, "best_epoch": 0, "val_loss": 0.9806803464889526}
+{"utc": "2026-10-21T07:49:03.143714+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 4, "epoch": 0, "best_epoch": 0, "val_loss": 1.3227081298828125}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+{"utc": "2026-10-21T07:49:04.636984+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 5, "epoch": 0, "best_epoch": 0, "val_loss": 0.989474892616272}
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:49:04.641159+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 7, "epoch": 0, "best_epoch": 0, "val_loss": 1.0297294855117798}
+{"utc": "2026-10-21T07:49:41.603384+00:00", "event": "queue_status", "pending": 32, "active": 8, "accepted": 0, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:49:52.943834+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 0, "epoch": 100, "best_epoch": 78, "val_loss": 1.6812653541564941}
+{"utc": "2026-10-21T07:49:56.164134+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 2, "epoch": 100, "best_epoch": 93, "val_loss": 0.8173936605453491}
+{"utc": "2026-10-21T07:49:58.935310+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 6, "epoch": 100, "best_epoch": 91, "val_loss": 0.8699703216552734}
+{"utc": "2026-10-21T07:49:58.952170+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 4, "epoch": 100, "best_epoch": 100, "val_loss": 0.8147794008255005}
+{"utc": "2026-10-21T07:50:22.940054+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 1, "epoch": 100, "best_epoch": 99, "val_loss": 0.6925013065338135}
+{"utc": "2026-10-21T07:50:36.617265+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 0, "epochs": 179, "best_epoch": 78, "seconds": 99.71707362309098, "physical_gpu": 0}
+{"utc": "2026-10-21T07:50:40.636611+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 0, "gpu": 0, "returncode": 0, "seconds": 119.15579866617918}
+{"utc": "2026-10-21T07:50:41.002786+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 8, "gpu": 0, "pid": 549530, "free_mib": 74011, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "8", "--group", "J1"]}
+{"utc": "2026-10-21T07:50:41.569389+00:00", "event": "queue_status", "pending": 31, "active": 8, "accepted": 1, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:50:48.306847+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 2, "epoch": 200, "best_epoch": 175, "val_loss": 0.7201792597770691}
+{"utc": "2026-10-21T07:50:50.052885+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 6, "epoch": 200, "best_epoch": 153, "val_loss": 0.9568758010864258}
+{"utc": "2026-10-21T07:50:50.052830+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 4, "epoch": 200, "best_epoch": 136, "val_loss": 0.8022540211677551}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:50:58.226944+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 8, "epoch": 0, "best_epoch": 0, "val_loss": 1.9039982557296753}
+{"utc": "2026-10-21T07:51:10.240129+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 4, "epochs": 237, "best_epoch": 136, "seconds": 129.56053217872977, "physical_gpu": 0}
+{"utc": "2026-10-21T07:51:16.579421+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 4, "gpu": 0, "returncode": 0, "seconds": 153.64307230338454}
+{"utc": "2026-10-21T07:51:17.014686+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 0, "gpu": 0, "pid": 570165, "free_mib": 74011, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "0", "--group", "J2"]}
+{"utc": "2026-10-21T07:51:19.206111+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 6, "epochs": 254, "best_epoch": 153, "seconds": 138.01486728712916, "physical_gpu": 0}
+{"utc": "2026-10-21T07:51:22.929713+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 6, "gpu": 0, "returncode": 0, "seconds": 159.39442297443748}
+{"utc": "2026-10-21T07:51:23.197350+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 2, "gpu": 0, "pid": 573932, "free_mib": 81787, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "2", "--group", "J2"]}
+{"utc": "2026-10-21T07:51:25.571507+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 2, "epochs": 276, "best_epoch": 175, "seconds": 146.96679822728038, "physical_gpu": 0}
+{"utc": "2026-10-21T07:51:30.103931+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 2, "gpu": 0, "returncode": 0, "seconds": 167.9247804172337}
+{"utc": "2026-10-21T07:51:30.547920+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 4, "gpu": 0, "pid": 578559, "free_mib": 89481, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "4", "--group", "J2"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:51:34.880912+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 0, "epoch": 0, "best_epoch": 0, "val_loss": 1.6323214769363403}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:51:40.322666+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 2, "epoch": 0, "best_epoch": 0, "val_loss": 1.0743497610092163}
+{"utc": "2026-10-21T07:51:41.254826+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 8, "epoch": 100, "best_epoch": 96, "val_loss": 1.2913055419921875}
+{"utc": "2026-10-21T07:51:41.941325+00:00", "event": "queue_status", "pending": 28, "active": 8, "accepted": 4, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+{"utc": "2026-10-21T07:51:45.970665+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 1, "epoch": 200, "best_epoch": 182, "val_loss": 0.7306473255157471}
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:51:48.469243+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 4, "epoch": 0, "best_epoch": 0, "val_loss": 1.3227081298828125}
+{"utc": "2026-10-21T07:52:01.118255+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 5, "epoch": 100, "best_epoch": 95, "val_loss": 0.7929848432540894}
+{"utc": "2026-10-21T07:52:01.947481+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 3, "epoch": 100, "best_epoch": 96, "val_loss": 0.8595567345619202}
+{"utc": "2026-10-21T07:52:03.314538+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 7, "epoch": 100, "best_epoch": 100, "val_loss": 0.7833303213119507}
+{"utc": "2026-10-21T07:52:27.160182+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 0, "epoch": 100, "best_epoch": 78, "val_loss": 1.679763913154602}
+{"utc": "2026-10-21T07:52:37.157092+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 2, "epoch": 100, "best_epoch": 93, "val_loss": 0.8163831233978271}
+{"utc": "2026-10-21T07:52:37.157176+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 8, "epoch": 200, "best_epoch": 188, "val_loss": 1.1046199798583984}
+{"utc": "2026-10-21T07:52:42.295383+00:00", "event": "queue_status", "pending": 28, "active": 8, "accepted": 4, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:52:45.665411+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 4, "epoch": 100, "best_epoch": 100, "val_loss": 0.8125733137130737}
+{"utc": "2026-10-21T07:52:50.162160+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 1, "epochs": 283, "best_epoch": 182, "seconds": 232.8502735570073, "physical_gpu": 1}
+{"utc": "2026-10-21T07:52:55.369153+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 1, "gpu": 1, "returncode": 0, "seconds": 253.87157425284386}
+{"utc": "2026-10-21T07:52:55.642258+00:00", "event": "dispatch", "group": "J1", "seed": 911, "fold": 9, "gpu": 1, "pid": 624664, "free_mib": 65617, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "9", "--group", "J1"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+{"utc": "2026-10-21T07:53:12.761233+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 0, "epochs": 179, "best_epoch": 78, "seconds": 99.73716443404555, "physical_gpu": 0}
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:53:12.736292+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 9, "epoch": 0, "best_epoch": 0, "val_loss": 1.2622859477996826}
+{"utc": "2026-10-21T07:53:16.335847+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 0, "gpu": 0, "returncode": 0, "seconds": 119.32117448374629}
+{"utc": "2026-10-21T07:53:16.688961+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 6, "gpu": 0, "pid": 635826, "free_mib": 74343, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "6", "--group", "J2"]}
+{"utc": "2026-10-21T07:53:29.132273+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 8, "epoch": 300, "best_epoch": 235, "val_loss": 1.1622071266174316}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+{"utc": "2026-10-21T07:53:29.976916+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 2, "epoch": 200, "best_epoch": 200, "val_loss": 0.7037978172302246}
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:53:33.061307+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 6, "epoch": 0, "best_epoch": 0, "val_loss": 0.9806803464889526}
+{"utc": "2026-10-21T07:53:37.853980+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 4, "epoch": 200, "best_epoch": 136, "val_loss": 0.7898313999176025}
+{"utc": "2026-10-21T07:53:42.758486+00:00", "event": "queue_status", "pending": 26, "active": 8, "accepted": 6, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:53:49.802803+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 8, "epochs": 336, "best_epoch": 235, "seconds": 173.37514260038733, "physical_gpu": 0}
+{"utc": "2026-10-21T07:53:55.047493+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 8, "gpu": 0, "returncode": 0, "seconds": 194.0447211265564}
+{"utc": "2026-10-21T07:53:55.367537+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 8, "gpu": 0, "pid": 656474, "free_mib": 70237, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "8", "--group", "J2"]}
+{"utc": "2026-10-21T07:53:55.380775+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 4, "epochs": 237, "best_epoch": 136, "seconds": 128.94828332588077, "physical_gpu": 0}
+{"utc": "2026-10-21T07:53:59.066802+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 4, "gpu": 0, "returncode": 0, "seconds": 148.51890808343887}
+{"utc": "2026-10-21T07:53:59.547845+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 0, "gpu": 0, "pid": 658839, "free_mib": 82127, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "0", "--group", "J3"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:54:12.586710+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 2, "epoch": 300, "best_epoch": 200, "val_loss": 0.8773447275161743}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:54:12.665149+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 8, "epoch": 0, "best_epoch": 0, "val_loss": 1.9039981365203857}
+  self.setter(val)
+{"utc": "2026-10-21T07:54:14.215578+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 2, "epochs": 301, "best_epoch": 200, "seconds": 156.01360718533397, "physical_gpu": 0}
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:54:15.374580+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 6, "epoch": 100, "best_epoch": 91, "val_loss": 0.8692905902862549}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:54:16.060296+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 0, "epoch": 0, "best_epoch": 0, "val_loss": 1.6323214769363403}
+{"utc": "2026-10-21T07:54:19.469746+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 2, "gpu": 0, "returncode": 0, "seconds": 176.272402651608}
+{"utc": "2026-10-21T07:54:19.756592+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 2, "gpu": 0, "pid": 670891, "free_mib": 74343, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "2", "--group", "J3"]}
+{"utc": "2026-10-21T07:54:20.233256+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 9, "epoch": 100, "best_epoch": 99, "val_loss": 0.9658550024032593}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:54:36.296311+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 2, "epoch": 0, "best_epoch": 0, "val_loss": 1.0743497610092163}
+{"utc": "2026-10-21T07:54:43.024813+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 5, "epoch": 200, "best_epoch": 164, "val_loss": 0.7802869081497192}
+{"utc": "2026-10-21T07:54:43.218763+00:00", "event": "queue_status", "pending": 23, "active": 8, "accepted": 9, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:54:56.204662+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 3, "epoch": 200, "best_epoch": 193, "val_loss": 0.8353116512298584}
+{"utc": "2026-10-21T07:54:56.965738+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 8, "epoch": 100, "best_epoch": 96, "val_loss": 1.2945475578308105}
+{"utc": "2026-10-21T07:54:57.281102+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 7, "epoch": 200, "best_epoch": 160, "val_loss": 0.7824490070343018}
+{"utc": "2026-10-21T07:55:00.244924+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 6, "epoch": 200, "best_epoch": 153, "val_loss": 0.9500991106033325}
+{"utc": "2026-10-21T07:55:00.365660+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 0, "epoch": 100, "best_epoch": 78, "val_loss": 1.6827930212020874}
+{"utc": "2026-10-21T07:55:14.817881+00:00", "event": "progress", "group": "J1", "seed": 911, "fold": 9, "epoch": 200, "best_epoch": 172, "val_loss": 0.8572605848312378}
+{"utc": "2026-10-21T07:55:22.338265+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 2, "epoch": 100, "best_epoch": 93, "val_loss": 0.8189095258712769}
+{"utc": "2026-10-21T07:55:25.183860+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 6, "epochs": 254, "best_epoch": 153, "seconds": 114.00192767381668, "physical_gpu": 0}
+{"utc": "2026-10-21T07:55:28.853507+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 6, "gpu": 0, "returncode": 0, "seconds": 132.16455891355872}
+{"utc": "2026-10-21T07:55:29.157505+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 4, "gpu": 0, "pid": 704505, "free_mib": 74337, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "4", "--group", "J3"]}
+{"utc": "2026-10-21T07:55:34.300377+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 0, "epochs": 179, "best_epoch": 78, "seconds": 80.40047938004136, "physical_gpu": 0}
+{"utc": "2026-10-21T07:55:35.875582+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 8, "epoch": 200, "best_epoch": 188, "val_loss": 1.0975384712219238}
+{"utc": "2026-10-21T07:55:38.406030+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 0, "gpu": 0, "returncode": 0, "seconds": 98.85822482779622}
+{"utc": "2026-10-21T07:55:38.673784+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 6, "gpu": 0, "pid": 709699, "free_mib": 82119, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "6", "--group", "J3"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+{"utc": "2026-10-21T07:55:43.446516+00:00", "event": "queue_status", "pending": 21, "active": 8, "accepted": 11, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:55:45.815007+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 4, "epoch": 0, "best_epoch": 0, "val_loss": 1.3227081298828125}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+{"utc": "2026-10-21T07:55:53.207842+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 9, "epochs": 273, "best_epoch": 172, "seconds": 162.88095170259476, "physical_gpu": 1}
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:55:55.633565+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 6, "epoch": 0, "best_epoch": 0, "val_loss": 0.9806803464889526}
+{"utc": "2026-10-21T07:55:56.988206+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 9, "gpu": 1, "returncode": 0, "seconds": 181.34596309810877}
+{"utc": "2026-10-21T07:55:57.285135+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 1, "gpu": 1, "pid": 719798, "free_mib": 73437, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "1", "--group", "J2"]}
+{"utc": "2026-10-21T07:55:57.605207+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 2, "epoch": 200, "best_epoch": 152, "val_loss": 0.7223079800605774}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:56:14.365176+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 1, "epoch": 0, "best_epoch": 0, "val_loss": 1.0519826412200928}
+{"utc": "2026-10-21T07:56:17.068605+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 8, "epoch": 300, "best_epoch": 263, "val_loss": 1.1563233137130737}
+{"utc": "2026-10-21T07:56:23.256095+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 2, "epochs": 253, "best_epoch": 152, "seconds": 109.07230636104941, "physical_gpu": 0}
+{"utc": "2026-10-21T07:56:27.089882+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 2, "gpu": 0, "returncode": 0, "seconds": 127.33331637457013}
+{"utc": "2026-10-21T07:56:27.372816+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 8, "gpu": 0, "pid": 734545, "free_mib": 74349, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "8", "--group", "J3"]}
+{"utc": "2026-10-21T07:56:30.393329+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 4, "epoch": 100, "best_epoch": 100, "val_loss": 0.817909300327301}
+{"utc": "2026-10-21T07:56:32.604393+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 5, "epochs": 265, "best_epoch": 164, "seconds": 451.36871614307165, "physical_gpu": 1}
+{"utc": "2026-10-21T07:56:34.281793+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 7, "epochs": 261, "best_epoch": 160, "seconds": 453.8262523673475, "physical_gpu": 1}
+{"utc": "2026-10-21T07:56:36.340748+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 5, "gpu": 1, "returncode": 0, "seconds": 473.3815679997206}
+{"utc": "2026-10-21T07:56:36.658315+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 3, "gpu": 1, "pid": 739496, "free_mib": 72727, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "3", "--group", "J2"]}
+{"utc": "2026-10-21T07:56:38.584094+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 7, "gpu": 1, "returncode": 0, "seconds": 475.0120654217899}
+{"utc": "2026-10-21T07:56:38.914884+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 5, "gpu": 1, "pid": 740608, "free_mib": 81221, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "5", "--group", "J2"]}
+{"utc": "2026-10-21T07:56:38.239875+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 6, "epoch": 100, "best_epoch": 91, "val_loss": 0.8725543022155762}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+{"utc": "2026-10-21T07:56:41.021948+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 8, "epochs": 364, "best_epoch": 263, "seconds": 150.22246707975864, "physical_gpu": 0}
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:56:43.857189+00:00", "event": "queue_status", "pending": 17, "active": 8, "accepted": 15, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+{"utc": "2026-10-21T07:56:44.639362+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 8, "gpu": 0, "returncode": 0, "seconds": 169.27188408002257}
+{"utc": "2026-10-21T07:56:44.944388+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 0, "gpu": 0, "pid": 744187, "free_mib": 74349, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "0", "--group", "J4"]}
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:56:43.792622+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 8, "epoch": 0, "best_epoch": 0, "val_loss": 1.9039981365203857}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:56:52.777722+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 3, "epoch": 0, "best_epoch": 0, "val_loss": 1.2821357250213623}
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:56:55.890049+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 5, "epoch": 0, "best_epoch": 0, "val_loss": 0.989474892616272}
+{"utc": "2026-10-21T07:56:56.825485+00:00", "event": "complete", "group": "J1", "seed": 911, "fold": 3, "epochs": 294, "best_epoch": 193, "seconds": 477.87812428176403, "physical_gpu": 1}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T07:57:00.754437+00:00", "event": "task_accepted", "group": "J1", "seed": 911, "fold": 3, "gpu": 1, "returncode": 0, "seconds": 498.55684181302786}
+{"utc": "2026-10-21T07:57:01.035169+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 7, "gpu": 1, "pid": 753158, "free_mib": 73995, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "7", "--group", "J2"]}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:57:00.871800+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 0, "epoch": 0, "best_epoch": 0, "val_loss": 1.6323214769363403}
+{"utc": "2026-10-21T07:57:08.512744+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 4, "epoch": 200, "best_epoch": 136, "val_loss": 0.7978370189666748}
+{"utc": "2026-10-21T07:57:11.537308+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 1, "epoch": 100, "best_epoch": 99, "val_loss": 0.693875789642334}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:57:18.527013+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 7, "epoch": 0, "best_epoch": 0, "val_loss": 1.0297294855117798}
+{"utc": "2026-10-21T07:57:19.951722+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 6, "epoch": 200, "best_epoch": 153, "val_loss": 0.945391058921814}
+{"utc": "2026-10-21T07:57:25.734822+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 8, "epoch": 100, "best_epoch": 96, "val_loss": 1.2871921062469482}
+{"utc": "2026-10-21T07:57:28.128570+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 4, "epochs": 237, "best_epoch": 136, "seconds": 104.15105123445392, "physical_gpu": 0}
+{"utc": "2026-10-21T07:57:32.345911+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 4, "gpu": 0, "returncode": 0, "seconds": 123.18841685727239}
+{"utc": "2026-10-21T07:57:32.615916+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 2, "gpu": 0, "pid": 767829, "free_mib": 74343, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "2", "--group", "J4"]}
+{"utc": "2026-10-21T07:57:41.684177+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 6, "epochs": 254, "best_epoch": 153, "seconds": 108.58765344321728, "physical_gpu": 0}
+{"utc": "2026-10-21T07:57:43.235617+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 0, "epoch": 100, "best_epoch": 78, "val_loss": 1.6757688522338867}
+{"utc": "2026-10-21T07:57:44.316641+00:00", "event": "queue_status", "pending": 14, "active": 8, "accepted": 18, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:57:45.749362+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 6, "gpu": 0, "returncode": 0, "seconds": 127.07560004293919}
+{"utc": "2026-10-21T07:57:45.993166+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 4, "gpu": 0, "pid": 774971, "free_mib": 81867, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "4", "--group", "J4"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:57:49.090543+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 2, "epoch": 0, "best_epoch": 0, "val_loss": 1.0743497610092163}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+{"utc": "2026-10-21T07:58:00.415469+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 8, "epoch": 200, "best_epoch": 188, "val_loss": 1.1059155464172363}
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:58:02.339130+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 4, "epoch": 0, "best_epoch": 0, "val_loss": 1.3227081298828125}
+{"utc": "2026-10-21T07:58:03.739757+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 3, "epoch": 100, "best_epoch": 96, "val_loss": 0.8592545986175537}
+{"utc": "2026-10-21T07:58:07.261874+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 5, "epoch": 100, "best_epoch": 95, "val_loss": 0.7965067625045776}
+{"utc": "2026-10-21T07:58:13.778490+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 0, "epochs": 179, "best_epoch": 78, "seconds": 74.21882988512516, "physical_gpu": 0}
+{"utc": "2026-10-21T07:58:17.723291+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 0, "gpu": 0, "returncode": 0, "seconds": 92.77893199026585}
+{"utc": "2026-10-21T07:58:18.010910+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 6, "gpu": 0, "pid": 790582, "free_mib": 74343, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "6", "--group", "J4"]}
+{"utc": "2026-10-21T07:58:24.420132+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 1, "epoch": 200, "best_epoch": 174, "val_loss": 0.7445349097251892}
+{"utc": "2026-10-21T07:58:30.340489+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 2, "epoch": 100, "best_epoch": 93, "val_loss": 0.8182657361030579}
+{"utc": "2026-10-21T07:58:30.683445+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 7, "epoch": 100, "best_epoch": 100, "val_loss": 0.7863030433654785}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:58:34.014367+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 6, "epoch": 0, "best_epoch": 0, "val_loss": 0.9806802868843079}
+{"utc": "2026-10-21T07:58:38.733048+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 8, "epoch": 300, "best_epoch": 235, "val_loss": 1.1679229736328125}
+{"utc": "2026-10-21T07:58:44.394548+00:00", "event": "queue_status", "pending": 12, "active": 8, "accepted": 20, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:58:45.655071+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 4, "epoch": 100, "best_epoch": 100, "val_loss": 0.8114397525787354}
+{"utc": "2026-10-21T07:58:54.520981+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 8, "epochs": 336, "best_epoch": 235, "seconds": 132.47851020097733, "physical_gpu": 0}
+{"utc": "2026-10-21T07:58:58.772965+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 8, "gpu": 0, "returncode": 0, "seconds": 151.40017580240965}
+{"utc": "2026-10-21T07:58:59.069698+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 8, "gpu": 0, "pid": 811066, "free_mib": 74343, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "8", "--group", "J4"]}
+{"utc": "2026-10-21T07:59:10.850668+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 2, "epoch": 200, "best_epoch": 175, "val_loss": 0.7112422585487366}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+{"utc": "2026-10-21T07:59:13.214206+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 6, "epoch": 100, "best_epoch": 91, "val_loss": 0.8737884759902954}
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+{"utc": "2026-10-21T07:59:14.400323+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 3, "epoch": 200, "best_epoch": 193, "val_loss": 0.8503280878067017}
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:59:15.414180+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 8, "epoch": 0, "best_epoch": 0, "val_loss": 1.9039983749389648}
+{"utc": "2026-10-21T07:59:17.466544+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 1, "epochs": 275, "best_epoch": 174, "seconds": 184.9662753455341, "physical_gpu": 1}
+{"utc": "2026-10-21T07:59:20.496832+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 5, "epoch": 200, "best_epoch": 164, "val_loss": 0.784023106098175}
+{"utc": "2026-10-21T07:59:21.801764+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 1, "gpu": 1, "returncode": 0, "seconds": 204.5166515558958}
+{"utc": "2026-10-21T07:59:22.191416+00:00", "event": "dispatch", "group": "J2", "seed": 911, "fold": 9, "gpu": 1, "pid": 822958, "free_mib": 73437, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "9", "--group", "J2"]}
+{"utc": "2026-10-21T07:59:27.172671+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 4, "epoch": 200, "best_epoch": 136, "val_loss": 0.8116403818130493}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T07:59:38.266916+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 9, "epoch": 0, "best_epoch": 0, "val_loss": 1.2622859477996826}
+{"utc": "2026-10-21T07:59:40.457797+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 7, "epoch": 200, "best_epoch": 160, "val_loss": 0.7801601886749268}
+{"utc": "2026-10-21T07:59:45.316388+00:00", "event": "queue_status", "pending": 10, "active": 8, "accepted": 22, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T07:59:46.096825+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 4, "epochs": 237, "best_epoch": 136, "seconds": 104.95861525461078, "physical_gpu": 0}
+{"utc": "2026-10-21T07:59:47.798265+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 2, "epochs": 276, "best_epoch": 175, "seconds": 120.32210045307875, "physical_gpu": 0}
+{"utc": "2026-10-21T07:59:50.398044+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 4, "gpu": 0, "returncode": 0, "seconds": 124.4048939794302}
+{"utc": "2026-10-21T07:59:51.788803+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 2, "gpu": 0, "returncode": 0, "seconds": 139.17291663587093}
+{"utc": "2026-10-21T07:59:54.351591+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 6, "epoch": 200, "best_epoch": 121, "val_loss": 0.9421180486679077}
+{"utc": "2026-10-21T07:59:57.849356+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 8, "epoch": 100, "best_epoch": 96, "val_loss": 1.290234088897705}
+{"utc": "2026-10-21T08:00:01.715328+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 6, "epochs": 222, "best_epoch": 121, "seconds": 89.81385103240609, "physical_gpu": 0}
+{"utc": "2026-10-21T08:00:05.418619+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 6, "gpu": 0, "returncode": 0, "seconds": 107.40772532299161}
+{"utc": "2026-10-21T08:00:07.467550+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 5, "epochs": 265, "best_epoch": 164, "seconds": 193.87265953794122, "physical_gpu": 1}
+{"utc": "2026-10-21T08:00:12.004608+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 5, "gpu": 1, "returncode": 0, "seconds": 213.08976583182812}
+{"utc": "2026-10-21T08:00:12.339563+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 1, "gpu": 1, "pid": 851739, "free_mib": 73437, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "1", "--group", "J3"]}
+{"utc": "2026-10-21T08:00:19.863140+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 3, "epochs": 294, "best_epoch": 193, "seconds": 209.0210338048637, "physical_gpu": 1}
+{"utc": "2026-10-21T08:00:23.868199+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 3, "gpu": 1, "returncode": 0, "seconds": 227.2098996192217}
+{"utc": "2026-10-21T08:00:24.209203+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 3, "gpu": 1, "pid": 860292, "free_mib": 80947, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "3", "--group", "J3"]}
+{"utc": "2026-10-21T08:00:23.908260+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 7, "epochs": 261, "best_epoch": 160, "seconds": 188.02034800872207, "physical_gpu": 1}
+{"utc": "2026-10-21T08:00:24.163972+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 8, "epoch": 200, "best_epoch": 188, "val_loss": 1.105548620223999}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+{"utc": "2026-10-21T08:00:28.647810+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 7, "gpu": 1, "returncode": 0, "seconds": 207.6126530095935}
+{"utc": "2026-10-21T08:00:28.900516+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 5, "gpu": 1, "pid": 863750, "free_mib": 81771, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "5", "--group", "J3"]}
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:00:28.207066+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 1, "epoch": 0, "best_epoch": 0, "val_loss": 1.0519827604293823}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:00:40.267032+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 3, "epoch": 0, "best_epoch": 0, "val_loss": 1.2821358442306519}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+{"utc": "2026-10-21T08:00:43.708874+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 9, "epoch": 100, "best_epoch": 99, "val_loss": 0.9708064794540405}
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T08:00:44.921055+00:00", "event": "queue_status", "pending": 7, "active": 5, "accepted": 28, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:00:45.868891+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 5, "epoch": 0, "best_epoch": 0, "val_loss": 0.989474892616272}
+{"utc": "2026-10-21T08:00:50.639785+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 8, "epoch": 300, "best_epoch": 235, "val_loss": 1.1686724424362183}
+{"utc": "2026-10-21T08:01:01.814950+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 8, "epochs": 336, "best_epoch": 235, "seconds": 107.86681258678436, "physical_gpu": 0}
+{"utc": "2026-10-21T08:01:06.438654+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 8, "gpu": 0, "returncode": 0, "seconds": 127.36898209899664}
+{"utc": "2026-10-21T08:01:41.247985+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 1, "epoch": 100, "best_epoch": 99, "val_loss": 0.6912604570388794}
+{"utc": "2026-10-21T08:01:45.350188+00:00", "event": "queue_status", "pending": 7, "active": 4, "accepted": 29, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:01:59.017316+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 3, "epoch": 100, "best_epoch": 96, "val_loss": 0.8628144264221191}
+{"utc": "2026-10-21T08:02:01.045979+00:00", "event": "progress", "group": "J2", "seed": 911, "fold": 9, "epoch": 200, "best_epoch": 172, "val_loss": 0.854118287563324}
+{"utc": "2026-10-21T08:02:05.382408+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 5, "epoch": 100, "best_epoch": 95, "val_loss": 0.7984132766723633}
+{"utc": "2026-10-21T08:02:45.909219+00:00", "event": "queue_status", "pending": 7, "active": 4, "accepted": 29, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:02:55.153340+00:00", "event": "complete", "group": "J2", "seed": 911, "fold": 9, "epochs": 273, "best_epoch": 172, "seconds": 198.77452316507697, "physical_gpu": 1}
+{"utc": "2026-10-21T08:02:57.143740+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 1, "epoch": 200, "best_epoch": 174, "val_loss": 0.7420588731765747}
+{"utc": "2026-10-21T08:02:59.219950+00:00", "event": "task_accepted", "group": "J2", "seed": 911, "fold": 9, "gpu": 1, "returncode": 0, "seconds": 217.0285445638001}
+{"utc": "2026-10-21T08:02:59.523124+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 7, "gpu": 1, "pid": 979962, "free_mib": 73431, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "7", "--group", "J3"]}
+{"utc": "2026-10-21T08:03:09.073926+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 3, "epoch": 200, "best_epoch": 193, "val_loss": 0.8367371559143066}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T08:03:14.451916+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 5, "epoch": 200, "best_epoch": 164, "val_loss": 0.7835191488265991}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:03:15.237255+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 7, "epoch": 0, "best_epoch": 0, "val_loss": 1.0297296047210693}
+{"utc": "2026-10-21T08:03:45.945182+00:00", "event": "queue_status", "pending": 6, "active": 4, "accepted": 30, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:03:47.373630+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 1, "epochs": 275, "best_epoch": 174, "seconds": 201.15177196636796, "physical_gpu": 1}
+{"utc": "2026-10-21T08:03:51.328496+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 1, "gpu": 1, "returncode": 0, "seconds": 218.98899007961154}
+{"utc": "2026-10-21T08:03:51.637437+00:00", "event": "dispatch", "group": "J3", "seed": 911, "fold": 9, "gpu": 1, "pid": 1021487, "free_mib": 73437, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "9", "--group", "J3"]}
+{"utc": "2026-10-21T08:04:00.069734+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 5, "epochs": 265, "best_epoch": 164, "seconds": 196.12380929291248, "physical_gpu": 1}
+{"utc": "2026-10-21T08:04:03.681071+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 5, "gpu": 1, "returncode": 0, "seconds": 214.7805689536035}
+{"utc": "2026-10-21T08:04:03.949510+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 1, "gpu": 1, "pid": 1031769, "free_mib": 81075, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "1", "--group", "J4"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:04:07.731750+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 9, "epoch": 0, "best_epoch": 0, "val_loss": 1.2622859477996826}
+{"utc": "2026-10-21T08:04:11.747426+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 3, "epochs": 294, "best_epoch": 193, "seconds": 213.8205506168306, "physical_gpu": 1}
+{"utc": "2026-10-21T08:04:16.262620+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 3, "gpu": 1, "returncode": 0, "seconds": 232.0534334667027}
+{"utc": "2026-10-21T08:04:16.572642+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 3, "gpu": 1, "pid": 1042486, "free_mib": 81525, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "3", "--group", "J4"]}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+{"utc": "2026-10-21T08:04:19.078084+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 7, "epoch": 100, "best_epoch": 100, "val_loss": 0.789522647857666}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:04:19.892213+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 1, "epoch": 0, "best_epoch": 0, "val_loss": 1.0519827604293823}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:04:32.355409+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 3, "epoch": 0, "best_epoch": 0, "val_loss": 1.2821357250213623}
+{"utc": "2026-10-21T08:04:46.223166+00:00", "event": "queue_status", "pending": 3, "active": 4, "accepted": 33, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:05:12.708374+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 9, "epoch": 100, "best_epoch": 99, "val_loss": 0.9673382043838501}
+{"utc": "2026-10-21T08:05:28.780099+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 7, "epoch": 200, "best_epoch": 160, "val_loss": 0.7885804772377014}
+{"utc": "2026-10-21T08:05:30.289947+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 1, "epoch": 100, "best_epoch": 99, "val_loss": 0.6941831111907959}
+{"utc": "2026-10-21T08:05:45.447727+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 3, "epoch": 100, "best_epoch": 96, "val_loss": 0.8628402948379517}
+{"utc": "2026-10-21T08:05:46.692591+00:00", "event": "queue_status", "pending": 3, "active": 4, "accepted": 33, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:06:13.385392+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 7, "epochs": 261, "best_epoch": 160, "seconds": 180.52635105326772, "physical_gpu": 1}
+{"utc": "2026-10-21T08:06:17.329742+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 7, "gpu": 1, "returncode": 0, "seconds": 197.80665370821953}
+{"utc": "2026-10-21T08:06:17.595799+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 5, "gpu": 1, "pid": 1142723, "free_mib": 73431, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "5", "--group", "J4"]}
+{"utc": "2026-10-21T08:06:20.308472+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 9, "epoch": 200, "best_epoch": 172, "val_loss": 0.8579703569412231}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:06:33.322431+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 5, "epoch": 0, "best_epoch": 0, "val_loss": 0.989474892616272}
+{"utc": "2026-10-21T08:06:38.645549+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 1, "epoch": 200, "best_epoch": 174, "val_loss": 0.7397830486297607}
+{"utc": "2026-10-21T08:06:47.284845+00:00", "event": "queue_status", "pending": 2, "active": 4, "accepted": 34, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:06:55.295810+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 3, "epoch": 200, "best_epoch": 193, "val_loss": 0.82453453540802}
+{"utc": "2026-10-21T08:07:28.249925+00:00", "event": "progress", "group": "J3", "seed": 911, "fold": 9, "epoch": 300, "best_epoch": 203, "val_loss": 1.0269423723220825}
+{"utc": "2026-10-21T08:07:32.010910+00:00", "event": "complete", "group": "J3", "seed": 911, "fold": 9, "epochs": 304, "best_epoch": 203, "seconds": 206.39546193554997, "physical_gpu": 1}
+{"utc": "2026-10-21T08:07:33.201730+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 1, "epochs": 275, "best_epoch": 174, "seconds": 195.43696949258447, "physical_gpu": 1}
+{"utc": "2026-10-21T08:07:37.129454+00:00", "event": "task_accepted", "group": "J3", "seed": 911, "fold": 9, "gpu": 1, "returncode": 0, "seconds": 225.49203549325466}
+{"utc": "2026-10-21T08:07:37.934719+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 1, "gpu": 1, "returncode": 0, "seconds": 213.9852152504027}
+{"utc": "2026-10-21T08:07:38.179220+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 7, "gpu": 1, "pid": 1209720, "free_mib": 81221, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "7", "--group", "J4"]}
+{"utc": "2026-10-21T08:07:38.648676+00:00", "event": "dispatch", "group": "J4", "seed": 911, "fold": 9, "gpu": 1, "pid": 1210146, "free_mib": 81221, "command": ["/root/venvs/mm/bin/python", "-B", "-u", "/data/adodas/MM-GTUNets/experiments/PCFRA_E18_20261021/run.py", "train", "--seed", "911", "--fold", "9", "--group", "J4"]}
+{"utc": "2026-10-21T08:07:41.882673+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 5, "epoch": 100, "best_epoch": 95, "val_loss": 0.796968936920166}
+{"utc": "2026-10-21T08:07:47.270217+00:00", "event": "queue_status", "pending": 0, "active": 4, "accepted": 36, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+/usr/local/lib/python3.12/site-packages/torch/backends/__init__.py:46: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at ../aten/src/ATen/Context.cpp:80.)
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  self.setter(val)
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:188: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  self.vae.load_state_dict(torch.load(self.vae_save_path, map_location=self.device))
+/data/adodas/MM-GTUNets/model/mm_gtunets.py:133: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:07:54.306898+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 7, "epoch": 0, "best_epoch": 0, "val_loss": 1.0297294855117798}
+Consider using tensor.detach() first. (Triggered internally at ../torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  attention_scores = F.softmax(torch.tensor([img_shared_score, ph_shared_score]), dim=0)
+{"utc": "2026-10-21T08:07:55.079361+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 9, "epoch": 0, "best_epoch": 0, "val_loss": 1.2622859477996826}
+{"utc": "2026-10-21T08:07:57.648121+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 3, "epochs": 294, "best_epoch": 193, "seconds": 207.40445422381163, "physical_gpu": 1}
+{"utc": "2026-10-21T08:08:01.640731+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 3, "gpu": 1, "returncode": 0, "seconds": 225.06812003999949}
+{"utc": "2026-10-21T08:08:47.546122+00:00", "event": "queue_status", "pending": 0, "active": 3, "accepted": 37, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:08:47.553819+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 5, "epoch": 200, "best_epoch": 164, "val_loss": 0.7867586612701416}
+{"utc": "2026-10-21T08:08:59.391276+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 7, "epoch": 100, "best_epoch": 100, "val_loss": 0.7870438098907471}
+{"utc": "2026-10-21T08:09:04.007828+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 9, "epoch": 100, "best_epoch": 99, "val_loss": 0.9678922295570374}
+{"utc": "2026-10-21T08:09:29.379732+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 5, "epochs": 265, "best_epoch": 164, "seconds": 178.42189836502075, "physical_gpu": 1}
+{"utc": "2026-10-21T08:09:33.506933+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 5, "gpu": 1, "returncode": 0, "seconds": 195.91114854440093}
+{"utc": "2026-10-21T08:09:47.592681+00:00", "event": "queue_status", "pending": 0, "active": 2, "accepted": 38, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:09:59.617224+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 7, "epoch": 200, "best_epoch": 160, "val_loss": 0.7937406897544861}
+{"utc": "2026-10-21T08:10:04.012361+00:00", "event": "progress", "group": "J4", "seed": 911, "fold": 9, "epoch": 200, "best_epoch": 172, "val_loss": 0.8595635890960693}
+{"utc": "2026-10-21T08:10:34.405053+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 7, "epochs": 261, "best_epoch": 160, "seconds": 162.346432056278, "physical_gpu": 1}
+{"utc": "2026-10-21T08:10:38.396084+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 7, "gpu": 1, "returncode": 0, "seconds": 180.21688289940357}
+{"utc": "2026-10-21T08:10:45.058276+00:00", "event": "complete", "group": "J4", "seed": 911, "fold": 9, "epochs": 273, "best_epoch": 172, "seconds": 172.54545115679502, "physical_gpu": 1}
+{"utc": "2026-10-21T08:10:47.914251+00:00", "event": "queue_status", "pending": 0, "active": 1, "accepted": 39, "skipped": 0, "worker_caps": {"0": 4, "1": 4}}
+{"utc": "2026-10-21T08:10:48.586275+00:00", "event": "task_accepted", "group": "J4", "seed": 911, "fold": 9, "gpu": 1, "returncode": 0, "seconds": 189.93761046603322}
+{"utc": "2026-10-21T08:11:10.930889+00:00", "event": "queue_complete", "formal_tasks": 40, "completed_unique_tasks": 40, "accepted_this_queue": 40, "skipped_valid": 0, "wall_seconds": 1350.139663707465, "completed_utc": "2026-10-21T08:11:10.835717+00:00", "gpu_completed": {"0": 20, "1": 20}}
