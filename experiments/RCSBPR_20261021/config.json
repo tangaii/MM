@@ -1,0 +1,52 @@
+{
+  "experiment": "RCSBPR_20261021",
+  "root": "/data/adodas/MM-GTUNets",
+  "history": "experiments/DRPA_20261014",
+  "historical_d4": "experiments/PCDCA_20261019",
+  "historical_g2_g3": "experiments/PCFRA_20261020",
+  "historical_j1": "experiments/PCFRA_E18_20261021",
+  "data_folder": "dataset/ABIDE_aal",
+  "seeds": [911],
+  "folds": 10,
+  "groups": {
+    "K1": {"site_reliability": true, "cross_mode": "none", "within_mix": 1.0},
+    "K2": {"site_reliability": false, "cross_mode": "real", "within_mix": 0.75},
+    "K3": {"site_reliability": true, "cross_mode": "real", "within_mix": 0.75},
+    "K4": {"site_reliability": true, "cross_mode": "shuffle", "within_mix": 0.75}
+  },
+  "epochs": 500,
+  "early_stop": 100,
+  "lr": 0.0001,
+  "weight_decay": 0.0005,
+  "age_bandwidth_floor": 2.0,
+  "age_valid_range": [0, 120],
+  "sex_kernel": {"same": 1.0, "different": 0.5, "unknown": 0.75},
+  "epsilon": 1e-12,
+  "auxiliary_gradient_ratio": 0.05,
+  "lambda_cap": 0.5,
+  "warmup_last_epoch": 9,
+  "checkpoint_selection": "strict decrease validation CE plus native Graph only; native EarlyStopping tie increments patience",
+  "formal_test_grad_enabled": true,
+  "physical_gpu": "fold parity: even GPU0, odd GPU1; process-local cuda:0",
+  "workers_per_gpu": 4,
+  "host_threads": 1,
+  "gpu_reserve_mib": 8192,
+  "gpu_worker_budget_mib": 14336,
+  "host_reserve_mib": 8192,
+  "host_worker_budget_mib": 3072,
+  "max_attempts": 2,
+  "historical_reference_percent": {
+    "historical_D4": {"ACC": 82.55877742946709, "SEN": 79.92682926829268, "SPE": 84.84273820536541, "AUC": 88.68971819227905},
+    "historical_G2": {"ACC": 82.7912748171369, "SEN": 79.9390243902439, "SPE": 85.26827012025903, "AUC": 88.5617709437964},
+    "historical_G3": {"ACC": 82.90491118077325, "SEN": 81.92682926829268, "SPE": 83.77890841813135, "AUC": 88.39687168610814},
+    "historical_J1": {"ACC": 83.36468129571578, "SEN": 80.92682926829268, "SPE": 85.4995374653099, "AUC": 88.67764152433384}
+  },
+  "historical_protocol_limitations": [
+    "cross-fold supervised RFE leakage retained",
+    "transductive 871-node graph",
+    "stochastic VAE and evaluation dropout",
+    "native PPU long-trajectory nondeterminism",
+    "one seed is not evidence of multi-seed stability"
+  ],
+  "no_git": true
+}
