@@ -1,0 +1,94 @@
+{
+  "experiment": "PCDPAX_20261021",
+  "name": "PCDPA-X",
+  "full_name": "Phenotype-Conditioned Dual-Modal Prototype Relational Alignment",
+  "root": "/data/adodas/MM-GTUNets",
+  "history": "experiments/DRPA_20261014",
+  "historical_prototype": "experiments/PCDCA_20261019/prototype.py",
+  "data_folder": "dataset/ABIDE_aal",
+  "seeds": [911],
+  "folds": 10,
+  "epochs": 500,
+  "early_stop": 100,
+  "lr": 0.0001,
+  "weight_decay": 0.0005,
+  "gamma": 0.25,
+  "semantic_temperature": 1.0,
+  "image_gradient_budget": 0.05,
+  "phenotype_gradient_budget": 0.05,
+  "lambda_cap": 0.5,
+  "warmup_last_epoch": 9,
+  "gradient_epsilon": 1e-12,
+  "diagnostic_frequency": 25,
+  "host_threads": 1,
+  "workers_per_gpu": 4,
+  "gpu_reserve_mib": 8192,
+  "gpu_worker_budget_mib": 14336,
+  "host_reserve_mib": 8192,
+  "host_worker_budget_mib": 3072,
+  "max_attempts": 2,
+  "official_commit": "bb9351b931003535503694ad2f777b6cee1c151f",
+  "groups": {
+    "M1": {
+      "name": "D4 + Phenotype Prototype CE",
+      "alignment": null,
+      "alignment_prototype": null
+    },
+    "M2": {
+      "name": "M1 + Global-Prototype Semantic Alignment",
+      "alignment": "global",
+      "alignment_prototype": "D1"
+    },
+    "M3": {
+      "name": "M1 + Phenotype-Conditioned Semantic Alignment",
+      "alignment": "real",
+      "alignment_prototype": "D4"
+    },
+    "M4": {
+      "name": "M1 + Shuffled-Condition Semantic Alignment",
+      "alignment": "shuffled",
+      "alignment_prototype": "D5"
+    }
+  },
+  "historical_groups": {
+    "D1": {"name": "Global disease prototype", "kernel": "global", "reliable": false, "shuffled": false},
+    "D4": {"name": "Age-sex disease prototype", "kernel": "age_sex", "reliable": false, "shuffled": false},
+    "D5": {"name": "Shuffled age-sex disease prototype", "kernel": "age_sex", "reliable": false, "shuffled": true}
+  },
+  "prototype": {
+    "prototype_folds": 3,
+    "age_bandwidth_floor": 2.0,
+    "age_valid_range": [0, 120],
+    "age_missing": "finite age >0 and <=120; otherwise outer-train valid median; all-missing fallback 17.0",
+    "sex_kernel": {"same": 1.0, "different": 0.5, "unknown": 0.75},
+    "embedding_std_floor": 0.05,
+    "embedding_std_ddof": 0,
+    "tau_floor": 1.0,
+    "epsilon": 1e-12,
+    "shrink_ess_offset": 8,
+    "shrink_ess_range": 32,
+    "reference_empty_class": "exclude unsupported outer-train queries; never use query's private fold or heldout rows",
+    "site_halves": "historical whole-site greedy split for D4 math compatibility; no site crosses halves",
+    "reliability_min_class_count": 2,
+    "reliability_min_class_ess": 2.0,
+    "reliability_direction_floor": 1e-8,
+    "reliability_support_scale": 20.0,
+    "reliability_floor": 0.25,
+    "private_seed": "first 15 hex digits SHA256(seed/fold/PCDCA/purpose)",
+    "shuffle": "condition-shuffle/{site}; outer-train only, within-site joint-age-sex derangement, labels and inputs unchanged"
+  },
+  "splits": "DRPA seed_911/fold_{0..9}/splits.pt, read-only",
+  "initialization": "DRPA seed_911/fold_{0..9}/train_start.pt, read-only",
+  "vae": "DRPA seed_911/vae/fold{fold}_pretrain.pth, read-only",
+  "rfe": "DRPA seed_911/selected_features.pt and rfe_support.npy, read-only",
+  "native_training": "Adam, CE + original graph loss, original validation CE + graph checkpoint selection, original patience, grad-enabled single stochastic test forward",
+  "test_probability": "softmax(native_fusion_logits, dim=1)[:, 0] (ASD class 0)",
+  "formal_metrics": ["ACC", "SEN-ASD", "SPE-TD", "probability AUC"],
+  "historical_d4_reference_percent": {
+    "ACC": 82.5588,
+    "SEN-ASD": 79.9268,
+    "SPE-TD": 84.8427,
+    "probability_AUC": 88.6897
+  },
+  "no_git": true
+}

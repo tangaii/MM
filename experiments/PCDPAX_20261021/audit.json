@@ -1,0 +1,1913 @@
+{
+  "experiment": "PCDPAX_20261021",
+  "created_utc": "2026-10-21T11:53:02.633618+00:00",
+  "training_code_sha256": "19e4ab36e7cc1a08528d65d26cb5040c3a4e894f8745e53fcc3efba4451ad44a",
+  "training_code_files_sha256": {
+    "config.json": "09a63df51b28e2adab7a0cb49925fee5434b64589a67e9174c93bb4dae67ef8d",
+    "alignment.py": "c4d81afd44fc765f6274727800aea90a4a2bf5777ac74c100754adfb68fba4f1",
+    "run.py": "6aa99c2e4f8bb001b5111a05c7eafe0f89a90ece5478dc0dc227b3aaec4e6cab",
+    "launch.py": "d198ace78e5d567fc65dfd618142fe27be8d88a821f0bc1db4efecd2e8faf6e5"
+  },
+  "original_source_sha256": {
+    "opt.py": "068a2fac00ce756eab4a0528a1d5ecc6a4e6e8f4fdd6af87e64fcedb2c18de3a",
+    "train_mm_gtunets.py": "539b4af31189e2215a5a17adcafe78fe2cf4d1d9fafcb5a62aaa8061ce938cba",
+    "model/mm_gtunets.py": "cb0c27fdc29426e55746a3dc4926ffd2a316d15042fd33a3bd8f207a10e31158",
+    "model/gtunet.py": "30539f14be3b69128610a7bf2a03df4f9ef36a9552002e739ce45558c0d6496c",
+    "model/rp_graph.py": "d1c79f3319f9569c8caf98737f3ade96c7c5d334bb97f5c56255ee4ddc3a1783",
+    "utils/mydataloader.py": "7993dc3321c2a6bd2469313371793f1e6210a503a348a6a5d390dc654913ccf5",
+    "utils/tools.py": "b08dfd36935b506b90712c5588488956c4a91b670b3bf8ba1186dd14602c3192",
+    "utils/metrics.py": "59405483453a068143de753301910250f2609fa148fd4a42d4cf56ebcc432056"
+  },
+  "historical_pcdca_prototype_sha256": "ded24a70e72fc1f990d644f88b4445ea0ace750f01629330a9d540853dd44feb",
+  "historical_pcdca_code_sha256": "92cef3785e540e3cf0a96d10514091101a61ede63039581e14f2efd9a76d8093",
+  "historical_pcdca_audit_sha256": "166b4d4b9d9bdb57fefa2b971235eefe8420e2566ee88762a04a283b167fc722",
+  "context_sha256": "74711ee4a2ae8de9ad275402f2d469906504c2c97ba031887e28cc1a2d2226ab",
+  "raw_feature_tensor_sha256": "7c8641a0ffbe8e1775d2b8a14c828c3913a3baed2bf28242671c37f553819748",
+  "cohort": {
+    "subjects": 871,
+    "ASD_label": 0,
+    "TD_label": 1,
+    "class_counts": [
+      403,
+      468
+    ],
+    "non_imaging_fields": [
+      "SITE_ID",
+      "SEX",
+      "AGE_AT_SCAN"
+    ],
+    "non_imaging_tensor_shape": [
+      871,
+      3
+    ],
+    "RFE_shape": [
+      871,
+      500
+    ],
+    "sites": 20
+  },
+  "metadata": {
+    "age_range": [
+      6.47,
+      58.0
+    ],
+    "csv_sex_coding": "1=male, 2=female; verified against cohort counts"
+  },
+  "anchors": {
+    "0": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold0_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/splits.pt": "354e7670cd6135b6843aef90bbd7f7ec0e3ae7a372df74a8bac198622109eca7",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/train_start.pt": "d548b7f377b72ca691c887c0d4abe8a24566d5c2ab308e08e76cca7b8a0f6120",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/fingerprints.json": "d217f8927c26287fdfe484beffff5a355f00d4c3dc795215f589f6a9fa871819",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold0_pretrain.pth": "771cd846b5a14a8c68ff6ffe8b7dce261338bb5c1e07a5ca740c288d459bc8ee"
+      },
+      "train_start_core_sha256": "664571bb71120d00345766116db372aed3145d79e0b67339385d7f501ff24e39",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "076ebbe2d7532aaf823d1beed0f2084a10185bda91aca5d50735d00612533054",
+        "cuda": "333948e49ec8c696d5c88f6f83f95b79233fb4220c6bc8cdb348996a3f2f4f2b"
+      },
+      "split_fingerprints": {
+        "train": "f618e16a128ddc605f2c37c1293019f21cf929715c84d6e4892273c45209fc0e",
+        "val": "886b9c41442c097cee665795044b40b4dca2205e05d2012b1f772ee839327aad",
+        "test": "bf12757778eac802348e05a6ba49372a972ea507dc738a0742268998c20a2eb0"
+      },
+      "prototype_preparation_sha256": "5356f1cbfd522f45263cc7294d347ef88d9837393e4027f00176de8539cc2059",
+      "gpu": 0
+    },
+    "1": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold1_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/splits.pt": "15b9f72b89dd380876a4e5c81594f169ad422c281b1bff3c917f7ebc01c25e13",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/train_start.pt": "0497220694d0f127af8dba9e3a6a0ff017e986fa65740126aee4cdc5cf471c4f",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/fingerprints.json": "ef25af9521afb1f2b565e3b2ef49919f9b5c8950d2336afdabc2c0c276465f69",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold1_pretrain.pth": "45f7dd8ee958dc828fc4441a2b9866aaa0e0d7a406754fa55141811731e16446"
+      },
+      "train_start_core_sha256": "1ad1bc28f022b3fb34a86468c1607c2efe838a201d01d94c78841b0e0b9f01d2",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "9a748d41bbef4071ea23e3e39a2f6c2ff2aaf955073e73bcfe05b6cf778eea7c",
+        "cuda": "56daa7813cc303ebeaa2346f6b4605fa773df602f35724a7dc8f9be1542bccae"
+      },
+      "split_fingerprints": {
+        "train": "5bf4d191fa7b8b1686e610b523fc28017ddabd86711c3cc21fd2e3181da7e16e",
+        "val": "48372abcf0f66861711f9300348cab8f8565848d410cce42cef2a5eeec9dcdc0",
+        "test": "b21dd9c8cc94f98bffd79cb683863079e71081cb713035c3768d28778be6659b"
+      },
+      "prototype_preparation_sha256": "b120f49ab7e6bfd09962767599a42e29a0d4ed963c12ea81f57df1295761ef5c",
+      "gpu": 1
+    },
+    "2": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold2_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/splits.pt": "46293ef95fd5a70ab6ae558803fdbfb268f58344c336090f936ef0526903d286",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/train_start.pt": "0a919b05a7e9e9ff4c1866eacaadc79bde62aa8657caa2674499017ba09a2540",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/fingerprints.json": "dcab042a50905b84b619a61c5142eaccc4c49ff834712bfbffe01fe8062a909c",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold2_pretrain.pth": "2cbf99d2e6a998d4f7844fa9a23714984e8e041be9a6c8c912979e025ce43795"
+      },
+      "train_start_core_sha256": "8a14534b66e1024ad65267ed68cbdaa3911a8ab8a99ab612250a9571349eedff",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "c0105a195e8b13952fdf333a6410279ba0e6190b87e7b94b80f944c650adac76",
+        "cuda": "98f7fd0867e1b9e8e869b0fde45c72a64dfe5a4d6445799218c1ceb0fd97d0d2"
+      },
+      "split_fingerprints": {
+        "train": "56651c1ca52219f4510675cc91c29b85d3aeed59a71600e70a8f5c456c97e33b",
+        "val": "38422cc56bcd62b018bdc8f6699e3d51ffccdde05f42b47d5e52e7b98628b71e",
+        "test": "4b98959ffb209f2cd87fd5550851593d9e8e2e0388e2f872d6b29b1dd4ddb53d"
+      },
+      "prototype_preparation_sha256": "bd89e2645c3d09d67a9136a42d1ea571e2fe17d051f621420b5cdc12a6ee8cde",
+      "gpu": 0
+    },
+    "3": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold3_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/splits.pt": "6da9089f513ab848d5d37ee60061e9a2c7baa5c72e990bfe8aa7a8f25f705628",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/train_start.pt": "28704304f42fc983d93c183be7b3b261e610defb0b532aeaad4128919c11cfee",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/fingerprints.json": "30f7fbc365fbf974c8becf303197c194e3c465a046ef1471e3074524e944d9ce",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold3_pretrain.pth": "7498f1780ca2889744638e307890c3ce20ffa945d191e05f2f0d7b4d1ca3e3fe"
+      },
+      "train_start_core_sha256": "9af00f8b48a166d438ca992fdb5d925be11041abe8904447a5e6e9ef37ff55d1",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "03c1b6b993d45981dc2971c5ac98970dfb98041ab638a37ac212bdc249f7854a",
+        "cuda": "5ca39522ff702758df5fecab70afe08f04d2de21962342e281f690b34b6ef163"
+      },
+      "split_fingerprints": {
+        "train": "2f4c67e41ce424bc425348453435a9216dd1265da67ec5699e9e1244190d257a",
+        "val": "50e3c63f8378eed7fcf1c0d0478d139aaf619de6e532d8e7288ead7e62c5f819",
+        "test": "24961953ff92f6863aa29237c364c2efa56e0b8e1c324e480525433c98fdbca2"
+      },
+      "prototype_preparation_sha256": "dadebb4a5ffca43fac6c656ef46d0c4bc08c9a95df465341ef17b3d55bd946b7",
+      "gpu": 1
+    },
+    "4": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold4_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/splits.pt": "dd4d6c953e35c26962e36c0a13adc428b29f4b6bc21bc1770c9dd8fe5cbc47bf",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/train_start.pt": "54a40ae4f383ad13a6cb7e334c2e0cb25092e62564a0100dc5cfa52161dc84d9",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/fingerprints.json": "d4eb64142f98fdce0b7b379f96cb1a4954b02a9123528aa8bda663d0620fb2b3",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold4_pretrain.pth": "c1470c19206275f28ad160c8c540df8e26c8ed7715d803423ec797b2051aca1e"
+      },
+      "train_start_core_sha256": "c2b357d89a1c7ae16db7bba1a8b049c629e6355a05b9ac217acf93b19c103a05",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "6f7aa8c1eb0504d243a2aaf6c22b5e0b453d7bc1a22f2adb865831c8be0ea927",
+        "cuda": "8fc01a865a1293fabf1b904e3c6ffd0c739f5808595be6f886de630a2db63393"
+      },
+      "split_fingerprints": {
+        "train": "112d882408cdbff48a2636469ec1e475e616ed18357de371bf1d20b964400772",
+        "val": "5118063e11225995ff8fd4910191cd5cfd0cc85ccdfbd84dcff3d1661befebc3",
+        "test": "10d242963aa060868e6669f4bcae52d0f37cad0e87e97cc9f8bf0b97b94b8777"
+      },
+      "prototype_preparation_sha256": "7f1d39357d30084e917360fa9c01923dcc5cab8fee0de840bf38cceb2b7d9da4",
+      "gpu": 0
+    },
+    "5": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold5_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/splits.pt": "616dacd5e01d75d14dbd5bf5b5cd8ed5ce37fad8e351ac9a2c1e5cfeee387709",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/train_start.pt": "1634a8421c66d9e543b64ed2b4c8bf65971bf0acdb9eee7fb96db8f77ec71139",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/fingerprints.json": "349d948b4c41271dd4ad2c38ac1dae2dafa57592809639734722107b28bbe942",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold5_pretrain.pth": "4c79b6631cd983c4f98670b157f9f60b3da4362be853d437b41cb9cc7cafd2f8"
+      },
+      "train_start_core_sha256": "62b8b40ecdd67f3bd5a7ab74401b88ac65995eca2073fcf546ea1a65d95cf4d7",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "79dd662f70552ef6ed7542579415bbc7a2a34887e016a51d54253582dbe2cfa1",
+        "cuda": "28b49886cccf5bf8faa91dddea1b0fd5ff8f13d9c06d2a4503d59875cd91fa4f"
+      },
+      "split_fingerprints": {
+        "train": "04727a7331d2b0be681077a80e59d1ba1e024d116e4a17cfb3d094df861e43a2",
+        "val": "7384aa62c2cca2f5a85fe667f7202d890e650b716aabbb2cd2c74b6b116ac2bb",
+        "test": "ec2ea15129b76438059647b290a445179620a21cce0c072b1c7a7a45368a7a7c"
+      },
+      "prototype_preparation_sha256": "073978b455a0ddde2e1c0843134927fc443aee2894390759ad3097620dd5b224",
+      "gpu": 1
+    },
+    "6": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold6_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/splits.pt": "97d32acf1725095ffce404f25f49f7b553a73ddf760f4ea4ed0496006e68b2cf",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/train_start.pt": "1ca576869f32b2a0c1ae2a6e6ca05fc957e38391203862ddcc73c7176561f671",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/fingerprints.json": "39d788e83b2469fa1e4b878d17a4454bcdcfbfb262eed0960e7422760fba19af",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold6_pretrain.pth": "e9aa231cc148345228ec3eb9e90717e29f33e3457f515baa810958096fa2e869"
+      },
+      "train_start_core_sha256": "9cd996d5829d0ade724bd511d274d872c500c5ad0f08afd266dc752685d2d3a8",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "b479fc737976725ca8a3250313293ed942fcc39d03ecf4edc76040b63f5201d1",
+        "cuda": "77d314ac65482f3bc866d7f5023ae0c821c9f8e2afe86476ebc4c020fbe3d9fc"
+      },
+      "split_fingerprints": {
+        "train": "1a081516ca1f99db58054509fc397f3779588aa3b367df3b4431a5b5d9e6d863",
+        "val": "86e656b2670f4a2fccea44629411241a3e0464cca06d55e07fcabf5d8201f052",
+        "test": "1fff1a78176308484c834a87afb3edc78836db53c011b2843a8d0ac296061df7"
+      },
+      "prototype_preparation_sha256": "8304f179ce0a605ab4110cfac2543e83805ea1be1113c35f2b6b09e473995165",
+      "gpu": 0
+    },
+    "7": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold7_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/splits.pt": "a19eb6f345bc76fbcc902f61153547ea446bef39636c83d0b459973a522e5181",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/train_start.pt": "51fb80ad271703d418f868868b6c28e39137ca18ea9d93dc879cbb7b5ff5585f",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/fingerprints.json": "45aa8b7cb3c2151fd2ef78e2f568b41aa856e5f20b27e0a1a2fc187a5b8feda4",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold7_pretrain.pth": "c65f3bf4c227b6bfe108aa8706e12765b51b9a30789196486891e75e76c09ff4"
+      },
+      "train_start_core_sha256": "6cc46675ee61b60cc5919bb869d6c030ddc9ae7645871d416ef8c46ddad54a87",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "655c4fd980d76d90dd24946788f64f9ff9272d9f68e950fce0b80c914fd4c1ec",
+        "cuda": "fbad8a6bc0ad379bbb57d55a21a7d85a5829c6321f07231af6026b86a84ae615"
+      },
+      "split_fingerprints": {
+        "train": "4402f3fc167487f4f2c5bff433016b98e06ada4a05eb0d0a195ce86dfe0e8b01",
+        "val": "521cf27d5a21fcc9850c2b03f949c0465a5bb2e8d0e93ad8c75820551ae38e6d",
+        "test": "86f2bd47073d5886fda578fc12f14bab40bc8685809d3d027d1e3ca6d5ff59fc"
+      },
+      "prototype_preparation_sha256": "f94e0d64e0c74d57d3a88c509ef636ce162ed4b0289622256714db6cf9dd76d4",
+      "gpu": 1
+    },
+    "8": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold8_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/splits.pt": "9a9bbda87ff637c52b7bc6da27c4e508d6d74de9c1fdedb85891c00d822943df",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/train_start.pt": "8f34e5aac5f3704668a20ffc050f12cdadfdb97743929ea7b19f0b6a171a34bd",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/fingerprints.json": "6d01b032320fad05b7e1c6f5edb0684e55c0a4543444fcaec8ed34ac3fc1e122",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold8_pretrain.pth": "d7241b595067da73154b2aba085fe7bbc10c26036fae54bd443f9c04d40ad062"
+      },
+      "train_start_core_sha256": "38329ea5ad3bc018b8dbc39da38d062df2fa3171e6166775512645e3fba5b45b",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "04a244711347453a47af3a72556f171832ef2b965030c3e10e47f8a216c7786a",
+        "cuda": "b9666c17bd63da7e23f2ea8168c3bdf4f648063ea1cb899277e6dba7f2ca496a"
+      },
+      "split_fingerprints": {
+        "train": "902ecfb2e09249ef25fe99b214ef5a2879ef48a44a3cfc13f3ce0c188894b58c",
+        "val": "de83d1acfcfb9aa7c6b49774379a746a74f8db7a4b4e4ce4de425b6e95088e9b",
+        "test": "f60e3e9b7359764a61bd7ee8440f9eb58d1f9cc4dca6e440e5953faee59075e4"
+      },
+      "prototype_preparation_sha256": "254e146ebc9d589168c466037da4643f523516b22d5a8416ee5a8866ba6cc9c5",
+      "gpu": 0
+    },
+    "9": {
+      "paths": {
+        "split": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/splits.pt",
+        "train_start": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/train_start.pt",
+        "fingerprints": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/fingerprints.json",
+        "selected_features": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt",
+        "rfe_support": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy",
+        "vae": "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold9_pretrain.pth"
+      },
+      "sha256": {
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/splits.pt": "dc6e0c9c39ea2f3497480718d4442d509c056574869c1c9cf3193d3080815b83",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/train_start.pt": "1460e5c96331e84a2559020540a5249eebd8f50d0d7871d7852522112a8fff27",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/fingerprints.json": "b66dd4e177ad63eceec7c97c0e70b294a5bec83bcdb6b712a8178529e7e716db",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+        "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold9_pretrain.pth": "80c46532769f4a08c4127af2af52934e00b2d4df09a90bf7943dd6e7b2af19a7"
+      },
+      "train_start_core_sha256": "feeb074630f7374e939758228f1ace269356154c29bab2adbb841d33965710f9",
+      "train_start_rng_sha256": {
+        "python": "04bfa5f9f9ce4cc56a931c618b30e8f5d7feaa8cebce0541517cae91949030af",
+        "numpy": "6b0922bdbdb07ba67cd06ce14c9913ce5b357c0d08102825c16fd7bbc2e74c64",
+        "cpu": "3aad4c18d2696aa77e8a828af67f7b08bc68b80a5ec232f0cba59bb72cc77621",
+        "cuda": "0f44912808bbac9e97ffa6904ee60fcd94cd328bda2a583ef6a7b4d7546e8431"
+      },
+      "split_fingerprints": {
+        "train": "27207d5d08d7bd1873cd097781451a4b6040bdb9d25115278c7c33a099921423",
+        "val": "cd023347e8d9a0b3f6cd282770da3d431c362e3ad89502a73f12cd63f923c872",
+        "test": "a198416201852d60b1c9b4e9d975917b95b37829bd310029253a1c0d7094b3a8"
+      },
+      "prototype_preparation_sha256": "1b95c8aaedc86a7d439bd6bf22d17c9e9369058639f7b327570e4f57d693ed53",
+      "gpu": 1
+    }
+  },
+  "history_policy": {
+    "D0_retrained": false,
+    "D4_retrained": false,
+    "other_historical_experiments_retrained": false,
+    "RFE_refit": false,
+    "VAE_pretrained": false,
+    "split_created": false,
+    "historical_weights_read_only": true
+  },
+  "handoff_before": {
+    "path": "/data/adodas/MM-GTUNets/handoff.md",
+    "bytes": 170563,
+    "sha256": "af9ff24ec6f7ba8d714b8115e4379bbe3ad04e74e8d97a29df0ef82b5020e12c"
+  },
+  "paper": "https://arxiv.org/html/2406.14455v3",
+  "repository": "https://github.com/tangaii/MM",
+  "git_commit_at_audit": "c23fdfc57b1755ebcce0539059687530dd597391",
+  "formal_authorized": true,
+  "preflight": {
+    "passed": true,
+    "seed": 911,
+    "fold": 0,
+    "timestamp_utc": "2026-10-21T12:10:20.353667+00:00",
+    "single_core_forward": true,
+    "forward_count": 1,
+    "native_logits_shape": [
+      871,
+      2
+    ],
+    "z_img_shape": [
+      871,
+      16
+    ],
+    "z_ph_shape": [
+      871,
+      16
+    ],
+    "native_loss": 1.66854989528656,
+    "groups": {
+      "M1": {
+        "image_d4_loss": 0.6946606040000916,
+        "phenotype_real_ce": 0.6918898224830627,
+        "alignment_kl": null,
+        "teacher_logits_sha256": "37160e2edcc7d8cb14ecfd90962c492064107f0f3865a3af57353d153c8ab260",
+        "student_logits_sha256": null,
+        "kl_img_embedding_gradient_norm": null,
+        "kl_ph_embedding_gradient_norm": null,
+        "kl_img_unet_parameter_gradient_norm": null,
+        "kl_ph_unet_parameter_gradient_norm": null
+      },
+      "M2": {
+        "image_d4_loss": 0.6946606040000916,
+        "phenotype_real_ce": 0.6918898224830627,
+        "alignment_kl": 0.0009275554912164807,
+        "teacher_logits_sha256": "37160e2edcc7d8cb14ecfd90962c492064107f0f3865a3af57353d153c8ab260",
+        "student_logits_sha256": "7d18f1bbcb5dfb13907d56895539f2e9ac17f38b10939cafd7b57284522b55f5",
+        "kl_img_embedding_gradient_norm": 0.0,
+        "kl_ph_embedding_gradient_norm": 0.0005026235594414175,
+        "kl_img_unet_parameter_gradient_norm": 0.0,
+        "kl_ph_unet_parameter_gradient_norm": 0.002301995176821947
+      },
+      "M3": {
+        "image_d4_loss": 0.6946606040000916,
+        "phenotype_real_ce": 0.6918898224830627,
+        "alignment_kl": 0.0011667950311675668,
+        "teacher_logits_sha256": "37160e2edcc7d8cb14ecfd90962c492064107f0f3865a3af57353d153c8ab260",
+        "student_logits_sha256": "a548c24d0985fad74e40edf7147c4137d88b648a833e9831330587cc62ddedd9",
+        "kl_img_embedding_gradient_norm": 0.0,
+        "kl_ph_embedding_gradient_norm": 0.0009452788508497179,
+        "kl_img_unet_parameter_gradient_norm": 0.0,
+        "kl_ph_unet_parameter_gradient_norm": 0.004473285283893347
+      },
+      "M4": {
+        "image_d4_loss": 0.6946606040000916,
+        "phenotype_real_ce": 0.6918898224830627,
+        "alignment_kl": 0.0011646455386653543,
+        "teacher_logits_sha256": "37160e2edcc7d8cb14ecfd90962c492064107f0f3865a3af57353d153c8ab260",
+        "student_logits_sha256": "2aae927326e56093d6d7f758f7ea2c10db8be66d47c740032def1e0872fb5081",
+        "kl_img_embedding_gradient_norm": 0.0,
+        "kl_ph_embedding_gradient_norm": 0.0008351380238309503,
+        "kl_img_unet_parameter_gradient_norm": 0.0,
+        "kl_ph_unet_parameter_gradient_norm": 0.0035744518972933292
+      }
+    },
+    "m3_m4_student_prototype_max_abs_difference": 0.5657668709754944,
+    "input_unchanged": true,
+    "heldout_auxiliary_invariance": true,
+    "parameter_count_unchanged": true,
+    "original_fusion_path_unchanged": "No model/module/parameter modifications; read-only hooks capture both native GTUNet outputs.",
+    "limitations": [
+      "The historical population graph is transductive and includes heldout nodes as in the original protocol."
+    ],
+    "physical_gpu": 0,
+    "device": "PPU-ZW810E"
+  },
+  "manifest_sha256": "8abf1425538f537325fbbff20af82380771e19ed43c53f1e3e2753f945a66a3b",
+  "freeze_attempts": [
+    {
+      "recorded_utc": "2026-10-21T12:07:50.873110+00:00",
+      "manifest_file": "manifest.pre_launcher_fix.json",
+      "manifest_sha256": "dd13a5af43e99ad539667db5632676c2a67243c3b3b7dbb67f84a922921c48ae",
+      "training_code_sha256": "91d1c4a5c1ce261b2aa844a29d25679ffc238b908da157bee510bc31ed217d46",
+      "status": "revoked_before_task_spawn",
+      "launch_error": "NameError: name 'ROOT' is not defined",
+      "formal_tasks_started": false
+    }
+  ],
+  "execution": {
+    "tasks": 40,
+    "gpu0": 20,
+    "gpu1": 20,
+    "completed": 40,
+    "failures": [],
+    "retries": 8,
+    "queue_wall_seconds": 777.6959101706743,
+    "worker_seconds": 5490.996850695461,
+    "peak_workers": {
+      "0": 4,
+      "1": 4
+    },
+    "resource_samples": [
+      {
+        "utc": "2026-10-21T12:11:42Z",
+        "gpu": 0,
+        "free_mib": 98321.63670349121,
+        "total_mib": 98304.0,
+        "host_available_mib": 51996.0859375,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:42Z",
+        "gpu": 1,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 51944.07421875,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:47Z",
+        "gpu": 0,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 50292.265625,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:47Z",
+        "gpu": 1,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 50251.12890625,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:52Z",
+        "gpu": 0,
+        "free_mib": 98313.58396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 49471.3671875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:52Z",
+        "gpu": 1,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 49406.44921875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:57Z",
+        "gpu": 0,
+        "free_mib": 98113.54100036621,
+        "total_mib": 98304.0,
+        "host_available_mib": 47217.3671875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:11:58Z",
+        "gpu": 1,
+        "free_mib": 98097.54100036621,
+        "total_mib": 98304.0,
+        "host_available_mib": 47156.32421875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:13:15Z",
+        "gpu": 0,
+        "free_mib": 73253.33006286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22036.25,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:13:51Z",
+        "gpu": 0,
+        "free_mib": 73253.33006286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22099.78515625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:13:56Z",
+        "gpu": 1,
+        "free_mib": 72689.32615661621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23446.5546875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:03Z",
+        "gpu": 0,
+        "free_mib": 89959.49803161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26799.87109375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:08Z",
+        "gpu": 0,
+        "free_mib": 84825.42381286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 31409.56640625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:08Z",
+        "gpu": 1,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 31369.6484375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:13Z",
+        "gpu": 1,
+        "free_mib": 93195.51756286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 29501.70703125,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:18Z",
+        "gpu": 1,
+        "free_mib": 89945.48631286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26112.58203125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:24Z",
+        "gpu": 1,
+        "free_mib": 89945.48631286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25774.9765625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:14:30Z",
+        "gpu": 1,
+        "free_mib": 89945.48631286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24718.29296875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:15:21Z",
+        "gpu": 0,
+        "free_mib": 73099.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22079.70703125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:15:26Z",
+        "gpu": 0,
+        "free_mib": 81599.40428161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23174.609375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:15:57Z",
+        "gpu": 1,
+        "free_mib": 72683.32615661621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21870.91015625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:08Z",
+        "gpu": 0,
+        "free_mib": 73105.32225036621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23247.3515625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:13Z",
+        "gpu": 0,
+        "free_mib": 81605.41209411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23597.51953125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:33Z",
+        "gpu": 1,
+        "free_mib": 72689.33006286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22057.4296875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:44Z",
+        "gpu": 1,
+        "free_mib": 89959.50193786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25446.52734375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:50Z",
+        "gpu": 1,
+        "free_mib": 89959.50193786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25612.859375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:16:55Z",
+        "gpu": 1,
+        "free_mib": 89951.48240661621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24675.3046875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:17:31Z",
+        "gpu": 0,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22036.55078125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:17:52Z",
+        "gpu": 0,
+        "free_mib": 73253.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24004.875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:17:52Z",
+        "gpu": 1,
+        "free_mib": 72683.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23999.33984375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:18:17Z",
+        "gpu": 0,
+        "free_mib": 81559.37693786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22801.19921875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:18:43Z",
+        "gpu": 0,
+        "free_mib": 73259.34178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19838.57421875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:18:49Z",
+        "gpu": 0,
+        "free_mib": 73259.34178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19837.8359375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:18:54Z",
+        "gpu": 0,
+        "free_mib": 73259.34178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19837.08984375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:18:59Z",
+        "gpu": 0,
+        "free_mib": 73259.34178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19837.5078125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:19:04Z",
+        "gpu": 0,
+        "free_mib": 73259.34178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19832.08203125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:19:09Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19556.55859375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:19:14Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19554.796875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:19:19Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19555.14453125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:19:24Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21770.515625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:19:24Z",
+        "gpu": 1,
+        "free_mib": 72139.27537536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21771.9609375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:19:30Z",
+        "gpu": 1,
+        "free_mib": 80499.36131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 23369.96484375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:19:35Z",
+        "gpu": 0,
+        "free_mib": 81605.40818786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25473.4296875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:19:36Z",
+        "gpu": 1,
+        "free_mib": 89401.42381286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25463.84765625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:19:46Z",
+        "gpu": 1,
+        "free_mib": 81055.35350036621,
+        "total_mib": 98304.0,
+        "host_available_mib": 22088.73046875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:20:07Z",
+        "gpu": 0,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19702.55078125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:20:12Z",
+        "gpu": 0,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21885.40234375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:20:13Z",
+        "gpu": 1,
+        "free_mib": 72703.28709411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21883.83984375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:20:44Z",
+        "gpu": 0,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19725.99609375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:20:49Z",
+        "gpu": 0,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19730.265625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:20:54Z",
+        "gpu": 0,
+        "free_mib": 73099.31834411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19758.87109375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:20:59Z",
+        "gpu": 0,
+        "free_mib": 81607.42381286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21950.12890625,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:04Z",
+        "gpu": 0,
+        "free_mib": 81599.40428161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21671.484375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:15Z",
+        "gpu": 0,
+        "free_mib": 81599.40428161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 20931.1015625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:35Z",
+        "gpu": 1,
+        "free_mib": 72139.27146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 19749.046875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 3
+      },
+      {
+        "utc": "2026-10-21T12:21:41Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21954.47265625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:41Z",
+        "gpu": 1,
+        "free_mib": 72139.27146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 21954.47265625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:46Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24169.84765625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:51Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25765.72265625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:51Z",
+        "gpu": 1,
+        "free_mib": 81035.40037536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25765.59765625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:21:56Z",
+        "gpu": 0,
+        "free_mib": 73259.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25414.71484375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:02Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 28009.73828125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:02Z",
+        "gpu": 1,
+        "free_mib": 81035.40428161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 28009.75390625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:08Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27679.88671875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:14Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25838.82421875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:19Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25636.3828125,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:24Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24572.89453125,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:29Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24559.859375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:34Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24559.1796875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:39Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 24554.54296875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:44Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26775.6171875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:44Z",
+        "gpu": 1,
+        "free_mib": 73247.33787536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26775.2421875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:49Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26054.88671875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:54Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25677.390625,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:59Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26432.2734375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:22:59Z",
+        "gpu": 1,
+        "free_mib": 73247.33396911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26432.15625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:04Z",
+        "gpu": 0,
+        "free_mib": 81613.43162536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25779.27734375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:04Z",
+        "gpu": 1,
+        "free_mib": 73239.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25779.27734375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:12Z",
+        "gpu": 0,
+        "free_mib": 77507.41600036621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25266.8671875,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:12Z",
+        "gpu": 1,
+        "free_mib": 73239.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 25266.6171875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:21Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27097.83984375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:21Z",
+        "gpu": 1,
+        "free_mib": 73239.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27097.10546875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:27Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26571.99609375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:27Z",
+        "gpu": 1,
+        "free_mib": 73239.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26569.99609375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:32Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26351.18359375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:32Z",
+        "gpu": 1,
+        "free_mib": 73239.31443786621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26350.8203125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:37Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26229.39453125,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:37Z",
+        "gpu": 1,
+        "free_mib": 73107.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26229.39453125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:42Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26405.73046875,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:42Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26405.73046875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:47Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26401.5234375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:47Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26401.48828125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:52Z",
+        "gpu": 0,
+        "free_mib": 89967.52146911621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26404.45703125,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:52Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26404.08203125,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:57Z",
+        "gpu": 0,
+        "free_mib": 89815.50584411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26420.8125,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:23:57Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 26420.6875,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:03Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 28617.27734375,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:03Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 28617.80859375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:08Z",
+        "gpu": 0,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27855.609375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:08Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27853.984375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:13Z",
+        "gpu": 0,
+        "free_mib": 98313.59178161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27598.7109375,
+        "active_workers_gpu": 1,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:13Z",
+        "gpu": 1,
+        "free_mib": 72703.27928161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 27598.7109375,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:18Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 30046.1640625,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:18Z",
+        "gpu": 1,
+        "free_mib": 81063.37303161621,
+        "total_mib": 98304.0,
+        "host_available_mib": 30046.1640625,
+        "active_workers_gpu": 3,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:23Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 30863.55078125,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:23Z",
+        "gpu": 1,
+        "free_mib": 80911.35740661621,
+        "total_mib": 98304.0,
+        "host_available_mib": 30863.55078125,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:28Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 32169.55859375,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:28Z",
+        "gpu": 1,
+        "free_mib": 89409.44334411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 32169.43359375,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:33Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 33633.33203125,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:33Z",
+        "gpu": 1,
+        "free_mib": 97769.53709411621,
+        "total_mib": 98304.0,
+        "host_available_mib": 33649.36328125,
+        "active_workers_gpu": 2,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:39Z",
+        "gpu": 0,
+        "free_mib": 98321.61131286621,
+        "total_mib": 98304.0,
+        "host_available_mib": 35268.00390625,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      },
+      {
+        "utc": "2026-10-21T12:24:39Z",
+        "gpu": 1,
+        "free_mib": 97777.55662536621,
+        "total_mib": 98304.0,
+        "host_available_mib": 35268.00390625,
+        "active_workers_gpu": 0,
+        "allowed_workers_gpu": 4
+      }
+    ],
+    "task_attempt_validation_failures_reconciled": [
+      {
+        "group": "M1",
+        "seed": 911,
+        "fold": 7,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f7.launcher.log"
+      },
+      {
+        "group": "M1",
+        "seed": 911,
+        "fold": 5,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f5.launcher.log"
+      },
+      {
+        "group": "M2",
+        "seed": 911,
+        "fold": 1,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M2/s911_f1.launcher.log"
+      },
+      {
+        "group": "M3",
+        "seed": 911,
+        "fold": 1,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M3/s911_f1.launcher.log"
+      },
+      {
+        "group": "M4",
+        "seed": 911,
+        "fold": 0,
+        "gpu": 0,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f0.launcher.log"
+      },
+      {
+        "group": "M4",
+        "seed": 911,
+        "fold": 3,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f3.launcher.log"
+      },
+      {
+        "group": "M4",
+        "seed": 911,
+        "fold": 8,
+        "gpu": 0,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f8.launcher.log"
+      },
+      {
+        "group": "M4",
+        "seed": 911,
+        "fold": 5,
+        "gpu": 1,
+        "attempt": 2,
+        "return_code": 1,
+        "error": "Worker returned 1",
+        "log": "/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f5.launcher.log"
+      }
+    ],
+    "validation_retries_reconciled": 8,
+    "output_validation": {
+      "complete": true,
+      "validated_artifacts": 40,
+      "changed_artifacts": 8,
+      "verification_failures": []
+    }
+  },
+  "mathematical_tests": {
+    "passed": true,
+    "checks": {
+      "ASD_TD_class_order": [
+        0,
+        1
+      ],
+      "age_kernel_elementwise": true,
+      "sex_kernel_elementwise": true,
+      "global_kernel_is_unconditioned": true,
+      "private_three_fold_mapping": true,
+      "no_self_reference": true,
+      "no_same_private_fold_reference": true,
+      "heldout_not_reference": true,
+      "D4_CE_equals_historical_CE": true,
+      "phenotype_uses_own_mean_std_tau": true,
+      "phenotype_tau_independent": true,
+      "global_prototype_unconditioned": true,
+      "real_vs_shuffled_prototype_differs": true,
+      "student_global_logits_class_order": true,
+      "student_shuffle_logits_class_order": true,
+      "all_prototype_statistics_stop_gradient": true,
+      "KL_nonnegative": true,
+      "KL_identical_distributions_zero": true,
+      "KL_teacher_stopped": true,
+      "KL_student_gradient_nonzero": true,
+      "gradient_scale_finite_and_capped": true,
+      "gradient_scale_within_budget_for_test_case": true,
+      "labels_are_ASD0_TD1": true,
+      "heldout_metadata_labels_and_embeddings_invariant": true
+    },
+    "failed": [],
+    "synthetic_KL": 0.006596222519874573,
+    "gradient_scale": {
+      "native_z_gradient_norm": 0.007155327126383781,
+      "auxiliary_z_gradient_norm": 0.00710324989631772,
+      "lambda": 0.05036657676100731,
+      "weighted_auxiliary_z_gradient_ratio": 0.05000000074505806,
+      "lambda_cap_hit": false,
+      "native_gradient_near_zero": false
+    }
+  },
+  "preflight_attempts": [
+    {
+      "recorded_utc": "2026-10-21T11:57:24.390638+00:00",
+      "status": "failed_before_formal_training",
+      "error": "NameError in PCDPAXObjective lazy construction of M2 global prototype; corrected in alignment.py",
+      "core_forwards": 1,
+      "formal_tasks_started": false
+    },
+    {
+      "recorded_utc": "2026-10-21T12:01:55.518820+00:00",
+      "status": "passed_superseded_by_training_code_change",
+      "training_code_sha256": "20843540e0168808ba22210bdad9be5c93f0221a236345be983e5968c3edc6a3",
+      "core_forwards": 1,
+      "formal_tasks_started": false
+    },
+    {
+      "recorded_utc": "2026-10-21T12:09:29.583196+00:00",
+      "status": "passed_superseded_by_training_code_change",
+      "training_code_sha256": "91d1c4a5c1ce261b2aa844a29d25679ffc238b908da157bee510bc31ed217d46",
+      "core_forwards": 1,
+      "formal_tasks_started": false
+    }
+  ],
+  "probability_normalization": [
+    {
+      "timestamp_utc": "2026-10-21T12:26:22.278843+00:00",
+      "method": "CPU float32 softmax recomputed from unchanged saved native logits; metrics recalculated",
+      "training_code_sha256": "19e4ab36e7cc1a08528d65d26cb5040c3a4e894f8745e53fcc3efba4451ad44a",
+      "changed_artifacts": 8,
+      "records": [
+        {
+          "group": "M1",
+          "fold": 5,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "7c054059ba3d40ef469888c22be8b19173da8c01a1990826033260f4c5fad475",
+          "new_artifact_sha256": "83ec87467ebac81092df9aa7dee790212fbbf0b6c067b613aafbf9b97bd9896b",
+          "old_metrics": {
+            "ACC": 0.8850574712643678,
+            "SEN-ASD": 0.925,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9414893617021276
+          },
+          "new_metrics": {
+            "ACC": 0.8850574712643678,
+            "SEN-ASD": 0.925,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9414893617021276
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M1",
+            "seed": 911,
+            "fold": 5,
+            "failed_utc": "2026-10-21T12:14:03.322751+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f5.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f5.pt\n"
+          }
+        },
+        {
+          "group": "M1",
+          "fold": 7,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "bdf44aeba6bfdfc8489236f915856c45194193559d9bfb9166fef44d2b53bb46",
+          "new_artifact_sha256": "e4075c678c37ea3b1c253baeecd0fc58b88d80021d9d64e0cad085d20e717b07",
+          "old_metrics": {
+            "ACC": 0.7931034482758621,
+            "SEN-ASD": 0.725,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.8845744680851064
+          },
+          "new_metrics": {
+            "ACC": 0.7931034482758621,
+            "SEN-ASD": 0.725,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.8845744680851064
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M1",
+            "seed": 911,
+            "fold": 7,
+            "failed_utc": "2026-10-21T12:14:04.068731+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f7.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M1/s911_f7.pt\n"
+          }
+        },
+        {
+          "group": "M2",
+          "fold": 1,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "d53f85d9477f472512c6c01a7c85b3c95718676c8b20961e581537b94920dc08",
+          "new_artifact_sha256": "60a5c2535d2c5d21738f8bdc73351a8c222021db6629da4d861a3aff13864335",
+          "old_metrics": {
+            "ACC": 0.8390804597701149,
+            "SEN-ASD": 0.8536585365853658,
+            "SPE-TD": 0.8260869565217391,
+            "probability_AUC": 0.911983032873807
+          },
+          "new_metrics": {
+            "ACC": 0.8390804597701149,
+            "SEN-ASD": 0.8536585365853658,
+            "SPE-TD": 0.8260869565217391,
+            "probability_AUC": 0.911983032873807
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M2",
+            "seed": 911,
+            "fold": 1,
+            "failed_utc": "2026-10-21T12:16:30.456028+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M2/s911_f1.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M2/s911_f1.pt\n"
+          }
+        },
+        {
+          "group": "M3",
+          "fold": 1,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "68ac684aad51f5e9395ad83db67d172a82f37a99e6055aeedf3ad3084621e14d",
+          "new_artifact_sha256": "4880926d80262828beddbed4f416f9b0bed1cba7a4a3303d156ad78d45a9f794",
+          "old_metrics": {
+            "ACC": 0.8505747126436781,
+            "SEN-ASD": 0.8536585365853658,
+            "SPE-TD": 0.8478260869565217,
+            "probability_AUC": 0.9125132555673383
+          },
+          "new_metrics": {
+            "ACC": 0.8505747126436781,
+            "SEN-ASD": 0.8536585365853658,
+            "SPE-TD": 0.8478260869565217,
+            "probability_AUC": 0.9125132555673383
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M3",
+            "seed": 911,
+            "fold": 1,
+            "failed_utc": "2026-10-21T12:19:25.572843+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M3/s911_f1.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M3/s911_f1.pt\n"
+          }
+        },
+        {
+          "group": "M4",
+          "fold": 0,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "9d3b8c24f55e99dc02ec38c16ee4896b327b40b434f5abf0611039d454573e8a",
+          "new_artifact_sha256": "cf02e70b42141f072e7a7b7a32867d95f31971953db4a00545c0580d0e62d2c3",
+          "old_metrics": {
+            "ACC": 0.7386363636363636,
+            "SEN-ASD": 0.6585365853658537,
+            "SPE-TD": 0.8085106382978723,
+            "probability_AUC": 0.7467566165023352
+          },
+          "new_metrics": {
+            "ACC": 0.7386363636363636,
+            "SEN-ASD": 0.6585365853658537,
+            "SPE-TD": 0.8085106382978723,
+            "probability_AUC": 0.7467566165023352
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M4",
+            "seed": 911,
+            "fold": 0,
+            "failed_utc": "2026-10-21T12:20:52.542820+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f0.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f0.pt\n"
+          }
+        },
+        {
+          "group": "M4",
+          "fold": 3,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "87d52545de8a14788cc7d956d312eaa500c4d56e3731182c438cee35856cc1e7",
+          "new_artifact_sha256": "4e61e12c39f526e11e39b4034e2563f9bbfdd67f886e6a186fd11442faa5062d",
+          "old_metrics": {
+            "ACC": 0.8735632183908046,
+            "SEN-ASD": 0.85,
+            "SPE-TD": 0.8936170212765957,
+            "probability_AUC": 0.9345744680851064
+          },
+          "new_metrics": {
+            "ACC": 0.8735632183908046,
+            "SEN-ASD": 0.85,
+            "SPE-TD": 0.8936170212765957,
+            "probability_AUC": 0.9345744680851064
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M4",
+            "seed": 911,
+            "fold": 3,
+            "failed_utc": "2026-10-21T12:22:37.583713+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f3.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f3.pt\n"
+          }
+        },
+        {
+          "group": "M4",
+          "fold": 5,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "50319c68f789d9420bd2d28a8a00d08bde1a2944126b372f5ccf57d7ae6dfe64",
+          "new_artifact_sha256": "b863a4ecb19a835a66ff5f5b8b8cd7b6599c0b46869cf47dda5522537bef34ab",
+          "old_metrics": {
+            "ACC": 0.896551724137931,
+            "SEN-ASD": 0.95,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9377659574468085
+          },
+          "new_metrics": {
+            "ACC": 0.896551724137931,
+            "SEN-ASD": 0.95,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9377659574468085
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M4",
+            "seed": 911,
+            "fold": 5,
+            "failed_utc": "2026-10-21T12:24:15.352606+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f5.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f5.pt\n"
+          }
+        },
+        {
+          "group": "M4",
+          "fold": 8,
+          "max_abs_probability_delta": 1.1920928955078125e-07,
+          "old_artifact_sha256": "662845c532d8bacbc4e8cfd284fe5eb53c7d8e76d75a17c744e4ab2c7aaab748",
+          "new_artifact_sha256": "3a0b346836b9a4abb7eb1737a5d4ec1d39ce1f5b9e28ae48722bf8b2bcd8d03a",
+          "old_metrics": {
+            "ACC": 0.896551724137931,
+            "SEN-ASD": 0.95,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9446808510638298
+          },
+          "new_metrics": {
+            "ACC": 0.896551724137931,
+            "SEN-ASD": 0.95,
+            "SPE-TD": 0.851063829787234,
+            "probability_AUC": 0.9446808510638298
+          },
+          "previous_status": {
+            "state": "failed",
+            "group": "M4",
+            "seed": 911,
+            "fold": 8,
+            "failed_utc": "2026-10-21T12:23:56.940548+00:00",
+            "error": "AssertionError('Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f8.pt')",
+            "traceback": "Traceback (most recent call last):\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 1068, in train_one\n    valid_result(group, seed, fold, audit_info, required=True)\n  File \"/data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/run.py\", line 677, in valid_result\n    raise AssertionError(f\"Stored ASD probabilities do not match logits: {path}\")\nAssertionError: Stored ASD probabilities do not match logits: /data/adodas/MM-GTUNets/experiments/PCDPAX_20261021/runs/M4/s911_f8.pt\n"
+          }
+        }
+      ],
+      "verified_artifacts": 40,
+      "verification_failures": []
+    }
+  ],
+  "run_log_integrity": {
+    "nul_bytes_removed": 1346,
+    "nul_bytes_remaining": 0,
+    "valid_json_lines": 381,
+    "invalid_json_lines": 0,
+    "sha256": "1b5c0079c437af716f9108e8ca4b3a8ad6b58fef3ad91fac2eb5718d0f8b6ae0",
+    "bytes": 77525
+  },
+  "analysis": {
+    "completed_utc": "2026-10-21T12:37:37.469113+00:00",
+    "analysis_code_sha256": "e4e8ded6b41aa79f881b72fdb08ac5ff47a6d8b07acb9262ec45affc3c093ba0",
+    "artifact_errors": [],
+    "independent_metric_recalculation": true
+  }
+}

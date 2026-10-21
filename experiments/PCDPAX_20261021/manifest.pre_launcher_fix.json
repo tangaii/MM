@@ -1,0 +1,148 @@
+{
+  "experiment": "PCDPAX_20261021",
+  "name": "PCDPA-X",
+  "frozen_utc": "2026-10-21T12:06:54.037632+00:00",
+  "training_code_sha256": "91d1c4a5c1ce261b2aa844a29d25679ffc238b908da157bee510bc31ed217d46",
+  "training_code_files_sha256": {
+    "config.json": "09a63df51b28e2adab7a0cb49925fee5434b64589a67e9174c93bb4dae67ef8d",
+    "alignment.py": "c4d81afd44fc765f6274727800aea90a4a2bf5777ac74c100754adfb68fba4f1",
+    "run.py": "6aa99c2e4f8bb001b5111a05c7eafe0f89a90ece5478dc0dc227b3aaec4e6cab",
+    "launch.py": "e9579278416a5952d5a803b298d88c5eb88136fb6b88d4d115d25acf19d165fe"
+  },
+  "preflight_passed": true,
+  "preflight_sha256": "0171a9793164c4bdaf95a7fdbc893f174849448b48293d25f3510de7479b85eb",
+  "math_tests_sha256": "d5ff7dbcdc156a5d3694db6406e70fa1a18b9e56f02cf94441e2e6a40189294d",
+  "seed": 911,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "groups": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "tasks": 40,
+  "gpu0_folds": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "gpu1_folds": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.0001,
+    "weight_decay": 0.0005
+  },
+  "historical_model_source_sha256": {
+    "opt.py": "068a2fac00ce756eab4a0528a1d5ecc6a4e6e8f4fdd6af87e64fcedb2c18de3a",
+    "train_mm_gtunets.py": "539b4af31189e2215a5a17adcafe78fe2cf4d1d9fafcb5a62aaa8061ce938cba",
+    "model/mm_gtunets.py": "cb0c27fdc29426e55746a3dc4926ffd2a316d15042fd33a3bd8f207a10e31158",
+    "model/gtunet.py": "30539f14be3b69128610a7bf2a03df4f9ef36a9552002e739ce45558c0d6496c",
+    "model/rp_graph.py": "d1c79f3319f9569c8caf98737f3ade96c7c5d334bb97f5c56255ee4ddc3a1783",
+    "utils/mydataloader.py": "7993dc3321c2a6bd2469313371793f1e6210a503a348a6a5d390dc654913ccf5",
+    "utils/tools.py": "b08dfd36935b506b90712c5588488956c4a91b670b3bf8ba1186dd14602c3192",
+    "utils/metrics.py": "59405483453a068143de753301910250f2609fa148fd4a42d4cf56ebcc432056"
+  },
+  "historical_inputs_sha256": {
+    "0": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/splits.pt": "354e7670cd6135b6843aef90bbd7f7ec0e3ae7a372df74a8bac198622109eca7",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/train_start.pt": "d548b7f377b72ca691c887c0d4abe8a24566d5c2ab308e08e76cca7b8a0f6120",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_0/fingerprints.json": "d217f8927c26287fdfe484beffff5a355f00d4c3dc795215f589f6a9fa871819",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold0_pretrain.pth": "771cd846b5a14a8c68ff6ffe8b7dce261338bb5c1e07a5ca740c288d459bc8ee"
+    },
+    "1": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/splits.pt": "15b9f72b89dd380876a4e5c81594f169ad422c281b1bff3c917f7ebc01c25e13",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/train_start.pt": "0497220694d0f127af8dba9e3a6a0ff017e986fa65740126aee4cdc5cf471c4f",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_1/fingerprints.json": "ef25af9521afb1f2b565e3b2ef49919f9b5c8950d2336afdabc2c0c276465f69",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold1_pretrain.pth": "45f7dd8ee958dc828fc4441a2b9866aaa0e0d7a406754fa55141811731e16446"
+    },
+    "2": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/splits.pt": "46293ef95fd5a70ab6ae558803fdbfb268f58344c336090f936ef0526903d286",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/train_start.pt": "0a919b05a7e9e9ff4c1866eacaadc79bde62aa8657caa2674499017ba09a2540",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_2/fingerprints.json": "dcab042a50905b84b619a61c5142eaccc4c49ff834712bfbffe01fe8062a909c",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold2_pretrain.pth": "2cbf99d2e6a998d4f7844fa9a23714984e8e041be9a6c8c912979e025ce43795"
+    },
+    "3": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/splits.pt": "6da9089f513ab848d5d37ee60061e9a2c7baa5c72e990bfe8aa7a8f25f705628",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/train_start.pt": "28704304f42fc983d93c183be7b3b261e610defb0b532aeaad4128919c11cfee",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_3/fingerprints.json": "30f7fbc365fbf974c8becf303197c194e3c465a046ef1471e3074524e944d9ce",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold3_pretrain.pth": "7498f1780ca2889744638e307890c3ce20ffa945d191e05f2f0d7b4d1ca3e3fe"
+    },
+    "4": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/splits.pt": "dd4d6c953e35c26962e36c0a13adc428b29f4b6bc21bc1770c9dd8fe5cbc47bf",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/train_start.pt": "54a40ae4f383ad13a6cb7e334c2e0cb25092e62564a0100dc5cfa52161dc84d9",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_4/fingerprints.json": "d4eb64142f98fdce0b7b379f96cb1a4954b02a9123528aa8bda663d0620fb2b3",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold4_pretrain.pth": "c1470c19206275f28ad160c8c540df8e26c8ed7715d803423ec797b2051aca1e"
+    },
+    "5": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/splits.pt": "616dacd5e01d75d14dbd5bf5b5cd8ed5ce37fad8e351ac9a2c1e5cfeee387709",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/train_start.pt": "1634a8421c66d9e543b64ed2b4c8bf65971bf0acdb9eee7fb96db8f77ec71139",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_5/fingerprints.json": "349d948b4c41271dd4ad2c38ac1dae2dafa57592809639734722107b28bbe942",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold5_pretrain.pth": "4c79b6631cd983c4f98670b157f9f60b3da4362be853d437b41cb9cc7cafd2f8"
+    },
+    "6": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/splits.pt": "97d32acf1725095ffce404f25f49f7b553a73ddf760f4ea4ed0496006e68b2cf",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/train_start.pt": "1ca576869f32b2a0c1ae2a6e6ca05fc957e38391203862ddcc73c7176561f671",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_6/fingerprints.json": "39d788e83b2469fa1e4b878d17a4454bcdcfbfb262eed0960e7422760fba19af",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold6_pretrain.pth": "e9aa231cc148345228ec3eb9e90717e29f33e3457f515baa810958096fa2e869"
+    },
+    "7": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/splits.pt": "a19eb6f345bc76fbcc902f61153547ea446bef39636c83d0b459973a522e5181",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/train_start.pt": "51fb80ad271703d418f868868b6c28e39137ca18ea9d93dc879cbb7b5ff5585f",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_7/fingerprints.json": "45aa8b7cb3c2151fd2ef78e2f568b41aa856e5f20b27e0a1a2fc187a5b8feda4",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold7_pretrain.pth": "c65f3bf4c227b6bfe108aa8706e12765b51b9a30789196486891e75e76c09ff4"
+    },
+    "8": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/splits.pt": "9a9bbda87ff637c52b7bc6da27c4e508d6d74de9c1fdedb85891c00d822943df",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/train_start.pt": "8f34e5aac5f3704668a20ffc050f12cdadfdb97743929ea7b19f0b6a171a34bd",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_8/fingerprints.json": "6d01b032320fad05b7e1c6f5edb0684e55c0a4543444fcaec8ed34ac3fc1e122",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold8_pretrain.pth": "d7241b595067da73154b2aba085fe7bbc10c26036fae54bd443f9c04d40ad062"
+    },
+    "9": {
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/splits.pt": "dc6e0c9c39ea2f3497480718d4442d509c056574869c1c9cf3193d3080815b83",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/train_start.pt": "1460e5c96331e84a2559020540a5249eebd8f50d0d7871d7852522112a8fff27",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/fold_9/fingerprints.json": "b66dd4e177ad63eceec7c97c0e70b294a5bec83bcdb6b712a8178529e7e716db",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/selected_features.pt": "ecf1eac05796852bf9e87b1179fbbc6b6432ddaf7a55e0ee87ace4693dcfac57",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/rfe_support.npy": "f3a21fe4e51602ac522881e8411f6a766df7f87e6ece0d0ce124a7fba5bc01b2",
+      "/data/adodas/MM-GTUNets/experiments/DRPA_20261014/artifacts/seed_911/vae/fold9_pretrain.pth": "80c46532769f4a08c4127af2af52934e00b2d4df09a90bf7943dd6e7b2af19a7"
+    }
+  },
+  "read_only_prototype_source_sha256": "ded24a70e72fc1f990d644f88b4445ea0ace750f01629330a9d540853dd44feb",
+  "no_git": true
+}
