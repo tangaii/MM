@@ -1,0 +1,91 @@
+{
+  "experiment": 25,
+  "name": "IA-FiLM",
+  "english": "Identity-Anchored Phenotype FiLM",
+  "chinese": "恒等锚定的表型条件化影像特征调制",
+  "project_root": "/data/adodas/MM-GTUNets",
+  "requested_output": "/data/adodas/MM-GTUNets/experiments/IAFiLM_20261023",
+  "actual_output": "/tmp/IAFiLM_20261023",
+  "output_deviation": "The requested /data experiment directory creation returned EIO (errno 5); execution is under /tmp as explicitly requested by the user. Artifacts are pending migration, not archived under /data.",
+  "dataset": "ABIDE",
+  "subjects": 871,
+  "labels": {"ASD": 0, "TD": 1, "counts": [403, 468]},
+  "seed": 911,
+  "folds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "groups": {
+    "F1": {"film_position": "post_attention_joint_pre_classifier", "phenotype_kl": true, "condition": "true"},
+    "F2": {"film_position": "pre_attention_image_only", "phenotype_kl": true, "condition": "true"},
+    "F3": {"film_position": "pre_attention_image_only", "phenotype_kl": false, "condition": "true"},
+    "F4": {"film_position": "pre_attention_image_only", "phenotype_kl": false, "condition": "fixed_within_split_site_derangement"}
+  },
+  "film": {
+    "architecture": [3, 16, 32],
+    "activation": "GELU",
+    "final_linear_bias": false,
+    "final_linear_initialization": "all-zero weight",
+    "reference": "mean of real, train-only standardized age plus male/female one-hot rows",
+    "age_valid_range": [0, 120],
+    "age_imputation": "valid outer-train median; fallback 17.0 only if every outer-train age is invalid",
+    "age_scaling": "outer-train imputed mean and population SD (ddof=0); constant SD becomes 1",
+    "age_z_clip": [-3, 3],
+    "sex_encoding": {"1": [1, 0], "2": [0, 1], "unknown": [0, 0]},
+    "rho": "0.1 * min(epoch / 9, 1)",
+    "formula": "delta=f(d)-f(d_ref); gamma=1+rho*tanh(delta_gamma); beta=rho*tanh(delta_beta); h_new=gamma*h+beta",
+    "parameter_count": 576,
+    "no_extra_dropout_norm_gate_projection_or_film_loss": true
+  },
+  "mechanism_subgroups": {
+    "age_years": [[0, 12], [12, 18], [18, 30], [30, 121]],
+    "age_group_boundaries": "fixed inclusive lower, exclusive upper; invalid-age imputation counted separately",
+    "sex": ["male_1", "female_2", "unknown"],
+    "fit_or_select_from_heldout": false
+  },
+  "research_judgement_operationalization": {
+    "candidate_go_requires_auc": "For F2-F1, F3-F2, F3-F4, and F3-historical D4/M1/M3, mean probability-AUC delta is positive, at least 6/10 paired folds are positive, and every leave-one-fold-out mean remains positive.",
+    "candidate_go_requires_class_balance": "F3 mean ACC, SEN-ASD, and SPE-TD are each no lower than historical D4, M1, and M3.",
+    "candidate_go_requires_mechanism": "F3 has nonzero measured modulation and native gradient; F4 true-versus-wrong conditions change the captured test representation; all four groups retain exact train-reference identity.",
+    "otherwise": "NO_GO; this is a conservative candidate screen, not statistical significance or a MICCAI acceptance claim."
+  },
+  "F4_permutation": {
+    "scope": "separately within train, validation and test, then SITE_ID",
+    "derangement": "random cyclic derangement for groups of size >=2; singleton unchanged",
+    "labels_used": false,
+    "rng": "local numpy Generator seeded from SHA256('911/fold/IAFiLM/F4/split/site-derangement')",
+    "permuted_fields": ["standardized_age", "sex_male", "sex_female"],
+    "d_ref_source": "true outer-train conditions"
+  },
+  "historical_m3": {
+    "objective_source": "experiments/PCDPAX_20261021/alignment.py:PCDPAXObjective",
+    "prototype_source": "experiments/PCDCA_20261019/prototype.py:PrototypeObjective",
+    "native": "CE + original Graph loss",
+    "image_aux": "D4 image prototype CE",
+    "ph_aux_F1_F2": "real age/sex-conditioned ph prototype CE + 0.25 * original stopped-image-teacher KL",
+    "ph_aux_F3_F4": "real age/sex-conditioned ph prototype CE only",
+    "image_and_ph_gradient_budgets": 0.05,
+    "warmup": "epoch / 9",
+    "lambda_cap": 0.5,
+    "kl_gamma": 0.25,
+    "temperature": 1.0,
+    "labels_in_original_train_order": true
+  },
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0005,
+    "epochs": 500,
+    "early_stopping_patience": 100,
+    "selection": "strict minimum native validation CE + original Graph loss; native EarlyStopping",
+    "test_forwards": 1,
+    "test_grad_enabled": true,
+    "test_probability": "softmax(native_logits, dim=1)[:,0]",
+    "metrics": ["ACC", "SEN-ASD", "SPE-TD", "probability_AUC"],
+    "formal_tasks": 40,
+    "gpu0_folds": [0, 2, 4, 6, 8],
+    "gpu1_folds": [1, 3, 5, 7, 9],
+    "workers_per_gpu_cap": 4,
+    "host_threads_per_worker": 1,
+    "resume_policy": "validated complete artifacts skip; retries use identical frozen source, historical start and seed"
+  },
+  "historical_retraining": false,
+  "git_commit_or_push": false
+}

@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "IAFiLM": {
+    "passed": true,
+    "passed_count": 31,
+    "checks": {
+      "parameter_count_576": true,
+      "zero_head_strict_identity": true,
+      "zero_head_reference_identity": true,
+      "zero_head_gamma_beta_identity": true,
+      "rho_epoch0_zero": true,
+      "rho_epoch9_cap": true,
+      "reference_condition_strict_identity": true,
+      "gamma_bound": true,
+      "beta_bound": true,
+      "real_conditions_change_output": true,
+      "age_condition_changes_output": true,
+      "sex_condition_changes_output": true,
+      "input_gradient_nonzero": true,
+      "film_parameters_receive_gradient": true,
+      "age_statistics_train_only": true,
+      "zero_age_is_valid": true,
+      "age_clip": true,
+      "unknown_sex_zero": true,
+      "sex_male_female_order": true,
+      "heldout_age_does_not_change_fit": true,
+      "reference_is_train_mean": true,
+      "F4_permutation_bijection": true,
+      "F4_permutation_split_and_site_bounded": true,
+      "F4_non_singleton_derangement": true,
+      "F4_singletons_retained": true,
+      "F4_fixed_sha_seed": true,
+      "F2_hook_called_once": true,
+      "F2_raw_input_unchanged": true,
+      "F2_epoch0_identity": true,
+      "hook_removal": true,
+      "asymmetric_label_order_detects_permutation": true
+    },
+    "formal_metrics_computed": 0,
+    "model_forwards": 0
+  },
+  "patient_transition_direction": {
+    "passed": true,
+    "non_symmetric_fixture": {
+      "left_corrects_right_errors": 2,
+      "left_introduces_errors": 1,
+      "net_correct_change_left_minus_right": 1,
+      "ASD_net": 1,
+      "TD_net": 0
+    },
+    "reverse_fixture": {
+      "left_corrects_right_errors": 1,
+      "left_introduces_errors": 2,
+      "net_correct_change_left_minus_right": -1,
+      "ASD_net": -1,
+      "TD_net": 0
+    }
+  },
+  "historical_M3_reused_math": {
+    "passed": true,
+    "checks": {
+      "ASD_TD_class_order": [
+        0,
+        1
+      ],
+      "age_kernel_elementwise": true,
+      "sex_kernel_elementwise": true,
+      "global_kernel_is_unconditioned": true,
+      "private_three_fold_mapping": true,
+      "no_self_reference": true,
+      "no_same_private_fold_reference": true,
+      "heldout_not_reference": true,
+      "D4_CE_equals_historical_CE": true,
+      "phenotype_uses_own_mean_std_tau": true,
+      "phenotype_tau_independent": true,
+      "global_prototype_unconditioned": true,
+      "real_vs_shuffled_prototype_differs": true,
+      "student_global_logits_class_order": true,
+      "student_shuffle_logits_class_order": true,
+      "all_prototype_statistics_stop_gradient": true,
+      "KL_nonnegative": true,
+      "KL_identical_distributions_zero": true,
+      "KL_teacher_stopped": true,
+      "KL_student_gradient_nonzero": true,
+      "gradient_scale_finite_and_capped": true,
+      "gradient_scale_within_budget_for_test_case": true,
+      "labels_are_ASD0_TD1": true,
+      "heldout_metadata_labels_and_embeddings_invariant": true
+    },
+    "failed": [],
+    "synthetic_KL": 0.006596222519874573,
+    "gradient_scale": {
+      "native_z_gradient_norm": 0.007155327126383781,
+      "auxiliary_z_gradient_norm": 0.00710324989631772,
+      "lambda": 0.05036657676100731,
+      "weighted_auxiliary_z_gradient_ratio": 0.05000000074505806,
+      "lambda_cap_hit": false,
+      "native_gradient_near_zero": false
+    }
+  },
+  "real_labels": {
+    "ASD": 0,
+    "TD": 1
+  },
+  "asymmetric_label_permutation": true,
+  "formal_metrics": 0,
+  "model_forwards": 0
+}
