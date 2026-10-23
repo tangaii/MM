@@ -1,0 +1,426 @@
+{
+  "fold": 4,
+  "D4_best_checkpoint": "/data/adodas/MM-GTUNets/experiments/PCDCA_20261019/runs/D4/s911_f4.pt",
+  "D4_best_checkpoint_sha256": "35c821e0c12ea68f5907f36d8480017df393bc028b30981390ec86aefebd426f",
+  "diagnostic_private_rng_seed": 145542296,
+  "diagnostic_private_rng_start_sha256": "fe505653ff64874f398ca0e1662fe7f39135750cfcc9b64c884ab01ab03c9e9c",
+  "diagnostic_private_rng_after_forward_sha256": "53efe3ebd3701a7f54b132a38dc4a85901e777ca16965e13ed94eccbe2006841",
+  "native_forward_count": 1,
+  "z_img_shape_extracted": [
+    705,
+    16
+  ],
+  "outer_train_only": true,
+  "outer_val_test_embeddings_excluded": true,
+  "outer_val_test_labels_excluded": true,
+  "condition_stats": {
+    "age_fill_train_median": 14.75,
+    "age_train_mean": 17.02698127659574,
+    "age_train_std": 7.458579722827738,
+    "valid_age_count_train": 705,
+    "unknown_sex_count": 0,
+    "d_ref": [
+      -0.01059485569840656,
+      -0.6624113475177305
+    ],
+    "heldout_stats_used": false
+  },
+  "true": {
+    "MSE_Base": 0.22963078895459624,
+    "MSE_Interaction": 0.25322835624765905,
+    "Delta_MSE": -0.02359756729306281,
+    "subfolds": [
+      {
+        "private_fold": 0,
+        "n_query": 234,
+        "n_reference": 471,
+        "MSE_Base": 0.22366405148564858,
+        "MSE_Interaction": 0.25119326221030025,
+        "Delta_MSE": -0.02752921072465167,
+        "rank": 2,
+        "singular_values": [
+          0.20724351087439372,
+          0.15771247117424242
+        ]
+      },
+      {
+        "private_fold": 1,
+        "n_query": 236,
+        "n_reference": 469,
+        "MSE_Base": 0.23318314719698502,
+        "MSE_Interaction": 0.258928577807043,
+        "Delta_MSE": -0.025745430610057962,
+        "rank": 2,
+        "singular_values": [
+          0.22842502114050303,
+          0.157432322243474
+        ]
+      },
+      {
+        "private_fold": 2,
+        "n_query": 235,
+        "n_reference": 470,
+        "MSE_Base": 0.2320046613908941,
+        "MSE_Interaction": 0.24953031248905205,
+        "Delta_MSE": -0.017525651098157957,
+        "rank": 2,
+        "singular_values": [
+          0.17502531086720574,
+          0.12693929120584663
+        ]
+      }
+    ]
+  },
+  "null": {
+    "replicates": 32,
+    "mean": -0.01696213865887422,
+    "P95": -0.0077590827164296505,
+    "min": -0.0299292923725544,
+    "max": -0.005250265747941629,
+    "values": [
+      -0.01646578164559323,
+      -0.009748590354439035,
+      -0.022936836230188246,
+      -0.010570250669623582,
+      -0.011663902856108632,
+      -0.02624132915001423,
+      -0.014082964416759491,
+      -0.005747160473680485,
+      -0.015342402153409318,
+      -0.011626128273624997,
+      -0.025607128282744668,
+      -0.021450954452446352,
+      -0.0094052009150426,
+      -0.017080734925377483,
+      -0.019809076752660748,
+      -0.012622423519333126,
+      -0.01578617858199899,
+      -0.012491923849449804,
+      -0.023159931250714028,
+      -0.01732015261509215,
+      -0.02265385279088769,
+      -0.024303393079105784,
+      -0.010853298766265201,
+      -0.0299292923725544,
+      -0.026759500868709846,
+      -0.010885275980430209,
+      -0.020333943325717724,
+      -0.010143371535003276,
+      -0.020181790683501427,
+      -0.02684857857072942,
+      -0.015486821994827316,
+      -0.005250265747941629
+    ],
+    "true_exceeds_P95": false,
+    "true_minus_null_mean": -0.006635428634188589,
+    "condition_change_mean": 0.9879875886524823,
+    "condition_change_min": 0.9815602836879432,
+    "condition_change_by_replicate": [
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9886524822695035,
+        "sex_change_fraction": 0.2695035460992908,
+        "joint_value_change_fraction": 0.9914893617021276,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9843971631205674,
+        "sex_change_fraction": 0.2524822695035461,
+        "joint_value_change_fraction": 0.9872340425531915,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9900709219858156,
+        "sex_change_fraction": 0.26099290780141843,
+        "joint_value_change_fraction": 0.9929078014184397,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9787234042553191,
+        "sex_change_fraction": 0.26666666666666666,
+        "joint_value_change_fraction": 0.9843971631205674,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9900709219858156,
+        "sex_change_fraction": 0.23546099290780143,
+        "joint_value_change_fraction": 0.9914893617021276,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9829787234042553,
+        "sex_change_fraction": 0.2723404255319149,
+        "joint_value_change_fraction": 0.9872340425531915,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9914893617021276,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9858156028368794,
+        "sex_change_fraction": 0.2695035460992908,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9886524822695035,
+        "sex_change_fraction": 0.24113475177304963,
+        "joint_value_change_fraction": 0.9900709219858156,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9829787234042553,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9858156028368794,
+        "sex_change_fraction": 0.26099290780141843,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.2581560283687943,
+        "joint_value_change_fraction": 0.9900709219858156,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9843971631205674,
+        "sex_change_fraction": 0.27801418439716313,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9815602836879432,
+        "sex_change_fraction": 0.24113475177304963,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9929078014184397,
+        "sex_change_fraction": 0.2553191489361702,
+        "joint_value_change_fraction": 0.9929078014184397,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9787234042553191,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9815602836879432,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9773049645390071,
+        "sex_change_fraction": 0.23829787234042554,
+        "joint_value_change_fraction": 0.9843971631205674,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9858156028368794,
+        "sex_change_fraction": 0.24397163120567375,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.2326241134751773,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9815602836879432,
+        "sex_change_fraction": 0.2553191489361702,
+        "joint_value_change_fraction": 0.9886524822695035,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9801418439716312,
+        "sex_change_fraction": 0.26099290780141843,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9815602836879432,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.24964539007092199,
+        "joint_value_change_fraction": 0.9929078014184397,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9872340425531915,
+        "sex_change_fraction": 0.2581560283687943,
+        "joint_value_change_fraction": 0.9900709219858156,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9815602836879432,
+        "sex_change_fraction": 0.26382978723404255,
+        "joint_value_change_fraction": 0.9872340425531915,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9858156028368794,
+        "sex_change_fraction": 0.26382978723404255,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9815602836879432,
+        "sex_change_fraction": 0.2581560283687943,
+        "joint_value_change_fraction": 0.9872340425531915,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9900709219858156,
+        "sex_change_fraction": 0.275177304964539,
+        "joint_value_change_fraction": 0.9900709219858156,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9801418439716312,
+        "sex_change_fraction": 0.2553191489361702,
+        "joint_value_change_fraction": 0.9829787234042553,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9829787234042553,
+        "sex_change_fraction": 0.2581560283687943,
+        "joint_value_change_fraction": 0.9858156028368794,
+        "singletons": 0,
+        "bucket_count": 60
+      },
+      {
+        "index_change_fraction": 1.0,
+        "age_change_fraction": 0.9843971631205674,
+        "sex_change_fraction": 0.24113475177304963,
+        "joint_value_change_fraction": 0.9872340425531915,
+        "singletons": 0,
+        "bucket_count": 60
+      }
+    ]
+  },
+  "directions": [
+    {
+      "private_fold": 0,
+      "rank_interaction": 2,
+      "rank_main": 2,
+      "interaction_singular_values": [
+        0.20724351087439372,
+        0.15771247117424242
+      ],
+      "angle_interaction_to_disease_main_degrees": 86.6529995640243
+    },
+    {
+      "private_fold": 1,
+      "rank_interaction": 2,
+      "rank_main": 2,
+      "interaction_singular_values": [
+        0.22842502114050303,
+        0.157432322243474
+      ],
+      "angle_interaction_to_disease_main_degrees": 87.23792852405832
+    },
+    {
+      "private_fold": 2,
+      "rank_interaction": 2,
+      "rank_main": 2,
+      "interaction_singular_values": [
+        0.17502531086720574,
+        0.12693929120584663
+      ],
+      "angle_interaction_to_disease_main_degrees": 87.51273440138765
+    }
+  ],
+  "direction_stability": {
+    "pairwise_principal_angle_mean_degrees": 66.0894746987421,
+    "pairwise_principal_angle_max_degrees": 83.18226725178133,
+    "inter_to_main_angles_degrees": [
+      86.6529995640243,
+      87.23792852405832,
+      87.51273440138765
+    ]
+  },
+  "private_fold_site_null_changed": {
+    "index_change_fraction": 1.0,
+    "age_change_fraction": 0.9886524822695035,
+    "sex_change_fraction": 0.2695035460992908,
+    "joint_value_change_fraction": 0.9914893617021276,
+    "singletons": 0,
+    "bucket_count": 60
+  }
+}

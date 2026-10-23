@@ -1,0 +1,70 @@
+{
+  "experiment": "PEIM_20261023",
+  "reviewed_utc": "2026-10-23",
+  "repository": {
+    "local_commit": "1538f21c47f26e89074d1e8b2345a0e742d5900e",
+    "remote": "https://github.com/tangaii/MM",
+    "main_commit": "5562ab1b53012db915b1259b207109d3d3ea5537",
+    "experiment_24_branch_commit": "2b12c25a1b111a1a203f40362acbeeb78516c27e",
+    "experiment_25_branch_commit": "b747503d0351236067f2315f551e660e7b9c4c12",
+    "experiment_24_local_directory_present": false,
+    "experiment_25_local_main_directory_present": false,
+    "experiment_25_tmp_reference": "/tmp/IAFiLM_20261023"
+  },
+  "papers_and_official_implementations": [
+    {
+      "name": "MM-GTUNets",
+      "paper": "https://arxiv.org/html/2406.14455v3",
+      "repository": "https://github.com/tangaii/MM",
+      "review": "RFE imaging representation, phenotype VAE, dual 16-dimensional GTUNets, multimodal attention and classifier. Local server source takes precedence."
+    },
+    {
+      "name": "RTGMFF",
+      "paper": "https://arxiv.org/abs/2509.03214",
+      "repository": "https://github.com/BeistMedAI/RTGMFF",
+      "official_model_source": "https://raw.githubusercontent.com/BeistMedAI/RTGMFF/main/model.py",
+      "review": "The model applies age/gender FiLM to the visual representation after its local/global feature fusion. It standardizes age from the current ages tensor and directly applies gamma*h+beta; the paper does not provide an independent FiLM ablation."
+    },
+    {
+      "name": "FiLM",
+      "paper": "https://arxiv.org/abs/1709.07871",
+      "review": "Feature-wise affine conditioning is established; the PEIM claim is limited to disease-task interaction evidence and selective modulation."
+    }
+  ],
+  "local_source_findings": {
+    "model/mm_gtunets.py": [
+      "VAE reparameterization calls randn_like on every forward, including eval.",
+      "Multimodal attention constructs scores with torch.tensor, detaching score-derived modality weights.",
+      "Graph loss uses raw image/phenotype embeddings and attention-derived modality weights; changing attention image input may indirectly change graph loss."
+    ],
+    "model/gtunet.py": ["F.dropout is called without a training argument, so it remains active in eval."],
+    "model/rp_graph.py": ["The population-graph function returns from inside its score loop, preserving first-score behavior."],
+    "data_protocol": [
+      "The cohort is 871-node transductive ABIDE with ASD label 0 (403) and TD label 1 (468).",
+      "RFE is historically cross-fold supervised; this experiment preserves the registered historical inputs and does not claim leakage-free external generalization.",
+      "RP attention weights have special state handling outside the ordinary model state dictionary."
+    ]
+  },
+  "historical_mechanism_review": {
+    "M3": "D4 image prototype CE plus phenotype prototype CE and image-teacher to phenotype-student probability KL. The phenotype branch remained near chance and teacher/student agreement was near 0.5; nonzero gradients did not establish semantic transfer.",
+    "PCCI": "A constant condition-independent residual already damaged classification (C1); age/sex residual (C3) and shuffled residual (C6) were similarly weak, implicating generic feature disturbance rather than reliable individual phenotype signal.",
+    "experiment_24": "The remote TPSSA report is NO_GO_STAGE_A with 0/40 formal tasks; site-controlled age/sex added weak training-internal prediction of image representation, so it stopped before training.",
+    "experiment_25": "F3 learned nonzero FiLM modulation (about 2.53% feature-relative L2), yet versus M3 ACC fell about 0.573 pp and ASD sensitivity fell about 1.488 pp. F3-F4 AUC gain was about 0.588 pp, with fold2 contributing +5.461 pp; excluding fold2 left about +0.047 pp mean AUC change.",
+    "PEIM_question": "Estimate phenotype-by-image disease interaction after removing image, phenotype and site main effects, compare to ordinary disease directions, then gate the same low-rank modulation by train-reference prototype-distance ambiguity."
+  },
+  "historical_artifact_hashes": {
+    "IAFiLM_report_sha256": "5e2076c75ad2e2f742d14d029acb7c677fd27b4ee050bd47484e882c8045a59c",
+    "IAFiLM_summary_sha256": "c9eef0a3288d89ce0f88fb5e8ee645d20f6df972be95627ba4cef97e3cf74f80",
+    "IAFiLM_oof_sha256": "27f5507948508626deac6609fecad23544523b292f32f5e147946a91c4136029",
+    "PCDCA_report_sha256": "1b3d3a92515ab731cc0022110d13bf2ce8a2e77640e31c812f3600685c1454bc",
+    "PCDPAX_report_sha256": "9306bda5fbc8a7025f738e820498e34c66f2d1ecfaa34b892dedc10e71e0a368",
+    "PCCI_report_sha256": "678aeae490ab75f200fe3887fa75fdca2b30918e22c35674abd286e671eaa5b9"
+  },
+  "historical_training_policy": {
+    "D0_retrained": 0,
+    "D4_retrained": 0,
+    "M1_retrained": 0,
+    "M3_retrained": 0,
+    "experiment25_retrained": 0
+  }
+}
