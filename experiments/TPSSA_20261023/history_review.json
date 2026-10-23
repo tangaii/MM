@@ -1,0 +1,134 @@
+{
+  "utc": "2026-10-23T03:28:29.763681+00:00",
+  "review_only": true,
+  "new_network_forwards": 0,
+  "new_neural_training_tasks": 0,
+  "paper": "https://arxiv.org/html/2406.14455v3",
+  "repository": "https://github.com/tangaii/MM",
+  "code_priority": "actual server source",
+  "experiment23_frozen_sources_match": {
+    "residual.py": {
+      "actual_sha256": "163333d067924b161573db57682fe64c4042d53711a61e22bbad7ca536209c67",
+      "registered_sha256": "163333d067924b161573db57682fe64c4042d53711a61e22bbad7ca536209c67",
+      "equal": true
+    },
+    "run.py": {
+      "actual_sha256": "d7294e9ea1a6d391212455922dff9bdb06dc3964bb9d2d9a6b7dc2778ae72439",
+      "registered_sha256": "d7294e9ea1a6d391212455922dff9bdb06dc3964bb9d2d9a6b7dc2778ae72439",
+      "equal": true
+    },
+    "prototype.py": {
+      "actual_sha256": "ded24a70e72fc1f990d644f88b4445ea0ace750f01629330a9d540853dd44feb",
+      "registered_sha256": "ded24a70e72fc1f990d644f88b4445ea0ace750f01629330a9d540853dd44feb",
+      "equal": true
+    }
+  },
+  "experiment23_additional_implementation_failure": {
+    "file": "/tmp/PCRPA_20261022/residual.py",
+    "logit_concat_line": 191,
+    "loss_label_line": 193,
+    "raw_P1_diagnostic_loss_label_line": 228,
+    "problem": "Logits/valid are concatenated by private g, but CE uses original train-order self.y instead of self.y[cat(query_indices)]. The raw P1 comparison repeats the same ordering mistake.",
+    "historical_train_fold_target_misalignment": [
+      {
+        "fold": 0,
+        "n_train": 704,
+        "logit_row_index_changes": 704,
+        "diagnosis_targets_misaligned": 354,
+        "diagnosis_targets_misaligned_fraction": 0.5028409090909091
+      },
+      {
+        "fold": 1,
+        "n_train": 705,
+        "logit_row_index_changes": 705,
+        "diagnosis_targets_misaligned": 356,
+        "diagnosis_targets_misaligned_fraction": 0.5049645390070922
+      },
+      {
+        "fold": 2,
+        "n_train": 705,
+        "logit_row_index_changes": 704,
+        "diagnosis_targets_misaligned": 358,
+        "diagnosis_targets_misaligned_fraction": 0.5078014184397163
+      },
+      {
+        "fold": 3,
+        "n_train": 705,
+        "logit_row_index_changes": 701,
+        "diagnosis_targets_misaligned": 362,
+        "diagnosis_targets_misaligned_fraction": 0.5134751773049645
+      },
+      {
+        "fold": 4,
+        "n_train": 705,
+        "logit_row_index_changes": 705,
+        "diagnosis_targets_misaligned": 362,
+        "diagnosis_targets_misaligned_fraction": 0.5134751773049645
+      },
+      {
+        "fold": 5,
+        "n_train": 705,
+        "logit_row_index_changes": 704,
+        "diagnosis_targets_misaligned": 328,
+        "diagnosis_targets_misaligned_fraction": 0.4652482269503546
+      },
+      {
+        "fold": 6,
+        "n_train": 705,
+        "logit_row_index_changes": 704,
+        "diagnosis_targets_misaligned": 372,
+        "diagnosis_targets_misaligned_fraction": 0.5276595744680851
+      },
+      {
+        "fold": 7,
+        "n_train": 705,
+        "logit_row_index_changes": 705,
+        "diagnosis_targets_misaligned": 352,
+        "diagnosis_targets_misaligned_fraction": 0.49929078014184397
+      },
+      {
+        "fold": 8,
+        "n_train": 705,
+        "logit_row_index_changes": 701,
+        "diagnosis_targets_misaligned": 348,
+        "diagnosis_targets_misaligned_fraction": 0.49361702127659574
+      },
+      {
+        "fold": 9,
+        "n_train": 705,
+        "logit_row_index_changes": 703,
+        "diagnosis_targets_misaligned": 346,
+        "diagnosis_targets_misaligned_fraction": 0.4907801418439716
+      }
+    ],
+    "mean_misaligned_fraction": 0.5019152965828498,
+    "synthetic_oracle": {
+      "n": 120,
+      "reported_R3_loss": 0.7107595205307007,
+      "independent_same_logits_original_order_loss": 0.7107595205307007,
+      "same_logits_correct_query_target_loss": 0.574773907661438,
+      "reported_raw_P1_diagnostic_loss": 0.7111109495162964,
+      "same_raw_P1_logits_correct_target_loss": 0.5746467709541321
+    },
+    "implication": "The reported 0.99918 R3/raw-P1 gradient cosine compares two objectives sharing an incorrect label order; it does not establish near-collinearity with the correctly ordered historical P1 objective. This confounds mechanism attribution; it does not uniquely explain every classification change.",
+    "historical_repairs_or_retrains": 0
+  },
+  "experiment22_analysis_direction_failure": {
+    "file": "/data/adodas/MM-GTUNets/experiments/PCDPACM_20261021/analyze.py",
+    "line": 174,
+    "asymmetric_toy_expected_candidate_net": 1,
+    "historical_function_net": -1,
+    "historical_selftest_limitation": "The two toy groups were identical, so a sign reversal remained invisible.",
+    "historical_files_modified": false
+  },
+  "failures_review": {
+    "20_M3": "Non-image student training accuracy ~0.5018, entropy ~0.6926, ph CE ~0.694; KL rises ~0.0012 to ~0.2601. A nonzero KL gradient did not establish learned disease semantics; AUC below D4 and shuffled M4.",
+    "21_N3": "Age-sex weighted group teacher ~0.4885 ASD probability, cross-patient SD ~0.0169, accuracy ~0.5088. Averaging diluted individual disease information; student stays near chance.",
+    "22_P1_P3": "Paired matching improves age-sex balance, but embedding-derived coupling does not stabilize improvements; P3-P4 AUC change is fold-sensitive. Patient change direction is reversed in the historical analyzer.",
+    "23_R3": "Reported age residualization and near-parallel CE gradients are additionally confounded by the verified auxiliary label-order error above. Site fallback is frequent; small AUC differences coexist with worse ACC/SPE.",
+    "DRPA": "Direct/shared feature alignment and gates did not show consistent independent diagnostic gains; learned projections need not identify useful shared factors.",
+    "PCCI": "Fusion residuals reduce classification performance; correct correspondence evidence is weak and high perturbation need not help diagnosis.",
+    "CMCV": "Raw age/sex did not establish stable independent probability-AUC/CE increment; this is not proof of universal absence of useful nonlinear information.",
+    "LCRA": "Local relation loss is learnable but effective graph/forward probability perturbations are very small; optimization of an auxiliary quantity does not prove an effective prediction mechanism."
+  }
+}
